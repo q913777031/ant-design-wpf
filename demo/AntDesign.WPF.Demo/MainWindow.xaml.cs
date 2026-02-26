@@ -26,11 +26,11 @@ public partial class MainWindow : Window
         view.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
         NavList.ItemsSource = view;
 
-        // Navigate to default page
-        NavigateToPage("Button");
+        // Navigate to Welcome page by default
+        NavigateToPage("Welcome");
 
         // Select the matching nav item
-        var firstItem = _viewModel.AllItems.FirstOrDefault(i => i.PageKey == "Button");
+        var firstItem = _viewModel.AllItems.FirstOrDefault(i => i.PageKey == "Welcome");
         if (firstItem != null)
         {
             _viewModel.SelectedItem = firstItem;
@@ -42,7 +42,7 @@ public partial class MainWindow : Window
     {
         if (NavList.SelectedItem is NavigationItem item)
         {
-            PageTitleText.Text = item.Title;
+            PageTitleText.Text = item.PageKey == "Welcome" ? "Ant Design WPF" : item.Title;
             NavigateToPage(item.PageKey);
         }
     }
@@ -72,6 +72,7 @@ public partial class MainWindow : Window
 
     private UserControl? CreatePage(string key) => key switch
     {
+        "Welcome"    => new WelcomePage(),
         "Button"     => new ButtonPage(),
         "Typography" => new TypographyPage(),
         "Input"      => new InputPage(),

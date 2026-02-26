@@ -69,6 +69,9 @@ public class MainViewModel : ViewModelBase
 
     private void InitializeNavigation()
     {
+        // Overview
+        AllItems.Add(new NavigationItem { Title = "Welcome", Category = "Overview", PageKey = "Welcome", Icon = "H" });
+
         // General
         AllItems.Add(new NavigationItem { Title = "Button", Category = "General", PageKey = "Button", Icon = "B" });
         AllItems.Add(new NavigationItem { Title = "Typography", Category = "General", PageKey = "Typography", Icon = "T" });

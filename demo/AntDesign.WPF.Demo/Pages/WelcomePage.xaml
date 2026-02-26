@@ -1,0 +1,470 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.WelcomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:antd="https://antdesign.wpf/">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Padding="0">
+        <StackPanel Margin="32,24,32,40">
+
+            <!-- ═══════════════════════════════════════════
+                 HERO SECTION
+                 ═══════════════════════════════════════════ -->
+            <Border Margin="0,0,0,32">
+                <StackPanel>
+                    <TextBlock FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}">
+                        <Run Text="Ant Design" /><Run Text=" WPF" Foreground="{DynamicResource AntDesign.Brush.Primary}" />
+                    </TextBlock>
+                    <TextBlock Text="A comprehensive WPF control library following Ant Design specifications."
+                               FontSize="16"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,8,0,0" />
+                    <TextBlock Text="30+ controls  ·  Light/Dark theme  ·  Design tokens  ·  MVVM ready  ·  Accessibility"
+                               FontSize="13"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                               Margin="0,6,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- ═══════════════════════════════════════════
+                 STATS CARDS
+                 ═══════════════════════════════════════════ -->
+            <UniformGrid Rows="1" Columns="4" Margin="0,0,0,28">
+                <!-- Controls -->
+                <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                        BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        Padding="20,16"
+                        Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="30+"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Primary}" />
+                        <TextBlock Text="Custom Controls"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+                </Border>
+                <!-- Theme files -->
+                <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                        BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        Padding="20,16"
+                        Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="18"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Success}" />
+                        <TextBlock Text="WPF Theme Overrides"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+                </Border>
+                <!-- Presets -->
+                <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                        BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        Padding="20,16"
+                        Margin="0,0,12,0">
+                    <StackPanel>
+                        <TextBlock Text="120"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Warning}" />
+                        <TextBlock Text="Color Palettes"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+                </Border>
+                <!-- Design Tokens -->
+                <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                        BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        Padding="20,16"
+                        Margin="0">
+                    <StackPanel>
+                        <TextBlock Text="100+"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Error}" />
+                        <TextBlock Text="Design Tokens"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <!-- ═══════════════════════════════════════════
+                 GETTING STARTED
+                 ═══════════════════════════════════════════ -->
+            <antd:Card Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Quick Start"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,12" />
+
+                    <!-- Step 1 -->
+                    <Border Background="{DynamicResource AntDesign.Brush.Fill.Quaternary}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="16,12"
+                            Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource AntDesign.Brush.Primary}">
+                                <Run Text="Step 1" /> <Run Text="— Install NuGet Package" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                            </TextBlock>
+                            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    CornerRadius="4"
+                                    Padding="12,8"
+                                    Margin="0,8,0,0">
+                                <TextBlock FontFamily="Consolas"
+                                           FontSize="13"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                           Text="dotnet add package AntDesign.WPF --version 1.0.0-preview.1" />
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Step 2 -->
+                    <Border Background="{DynamicResource AntDesign.Brush.Fill.Quaternary}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="16,12"
+                            Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource AntDesign.Brush.Primary}">
+                                <Run Text="Step 2" /> <Run Text="— Configure App.xaml" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                            </TextBlock>
+                            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    CornerRadius="4"
+                                    Padding="12,8"
+                                    Margin="0,8,0,0">
+                                <TextBlock FontFamily="Consolas"
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                           TextWrapping="Wrap"
+                                           xml:space="preserve"><Run Text="&lt;Application.Resources&gt;" />
+<Run Text="  &lt;ResourceDictionary&gt;" />
+<Run Text="    &lt;ResourceDictionary.MergedDictionaries&gt;" />
+<Run Text="      &lt;antd:AntDesignTheme /&gt;" />
+<Run Text="      &lt;ResourceDictionary Source=&quot;pack://application:,,,/" />
+<Run Text="        AntDesign.WPF;component/Themes/AntDesign.Defaults.xaml&quot; /&gt;" />
+<Run Text="    &lt;/ResourceDictionary.MergedDictionaries&gt;" />
+<Run Text="  &lt;/ResourceDictionary&gt;" />
+<Run Text="&lt;/Application.Resources&gt;" /></TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Step 3 -->
+                    <Border Background="{DynamicResource AntDesign.Brush.Fill.Quaternary}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="16,12"
+                            Margin="0,0,0,0">
+                        <StackPanel>
+                            <TextBlock FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource AntDesign.Brush.Primary}">
+                                <Run Text="Step 3" /> <Run Text="— Use Controls" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                            </TextBlock>
+                            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    CornerRadius="4"
+                                    Padding="12,8"
+                                    Margin="0,8,0,0">
+                                <TextBlock FontFamily="Consolas"
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                           TextWrapping="Wrap"
+                                           xml:space="preserve"><Run Text="&lt;antd:Card&gt;" />
+<Run Text="  &lt;antd:Alert Type=&quot;Success&quot; Message=&quot;It works!&quot; /&gt;" />
+<Run Text="&lt;/antd:Card&gt;" /></TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </antd:Card>
+
+            <!-- ═══════════════════════════════════════════
+                 COLOR PALETTE SHOWCASE
+                 ═══════════════════════════════════════════ -->
+            <antd:Card Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Color Palette"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,12" />
+
+                    <!-- Primary color row -->
+                    <TextBlock Text="Primary"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                               Margin="0,0,0,6" />
+                    <UniformGrid Rows="1" Columns="10" Height="36" Margin="0,0,0,12">
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.Bg}" CornerRadius="4,0,0,4" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.Bg.Hover}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.Border}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.Border.Hover}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.Hover}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.7}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.8}" />
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary.9}" CornerRadius="0,4,4,0" />
+                    </UniformGrid>
+
+                    <!-- Status colors -->
+                    <TextBlock Text="Semantic Colors"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                               Margin="0,0,0,6" />
+                    <UniformGrid Rows="1" Columns="4" Height="36" Margin="0,0,0,12">
+                        <Border Background="{DynamicResource AntDesign.Brush.Success}" CornerRadius="4,0,0,4" Margin="0,0,2,0">
+                            <TextBlock Text="Success" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Primary}" Margin="0,0,2,0">
+                            <TextBlock Text="Info" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Warning}" Margin="0,0,2,0">
+                            <TextBlock Text="Warning" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Error}" CornerRadius="0,4,4,0">
+                            <TextBlock Text="Error" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </UniformGrid>
+
+                    <!-- Neutral tones -->
+                    <TextBlock Text="Neutral / Text"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                               Margin="0,0,0,6" />
+                    <UniformGrid Rows="1" Columns="5" Height="36">
+                        <Border Background="{DynamicResource AntDesign.Brush.Text}" CornerRadius="4,0,0,4" Margin="0,0,2,0">
+                            <TextBlock Text="Title" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Text.Secondary}" Margin="0,0,2,0">
+                            <TextBlock Text="Secondary" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Text.Tertiary}" Margin="0,0,2,0">
+                            <TextBlock Text="Tertiary" FontSize="11" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Border}" Margin="0,0,2,0">
+                            <TextBlock Text="Border" FontSize="11" Foreground="{DynamicResource AntDesign.Brush.Text}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="{DynamicResource AntDesign.Brush.Fill.Quaternary}" CornerRadius="0,4,4,0">
+                            <TextBlock Text="Fill" FontSize="11" Foreground="{DynamicResource AntDesign.Brush.Text}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </UniformGrid>
+                </StackPanel>
+            </antd:Card>
+
+            <!-- ═══════════════════════════════════════════
+                 FEATURES
+                 ═══════════════════════════════════════════ -->
+            <antd:Card Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Features"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,16" />
+
+                    <UniformGrid Rows="2" Columns="3">
+                        <!-- Feature 1 -->
+                        <Border Margin="0,0,12,12">
+                            <StackPanel>
+                                <TextBlock Text="&#127912;" FontSize="24" Margin="0,0,0,6" />
+                                <TextBlock Text="Design Token System"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock Text="100+ design tokens for colors, typography, spacing, and more. Fully dynamic at runtime."
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <!-- Feature 2 -->
+                        <Border Margin="0,0,12,12">
+                            <StackPanel>
+                                <TextBlock Text="&#127763;" FontSize="24" Margin="0,0,0,6" />
+                                <TextBlock Text="Light / Dark Theme"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock Text="One-click theme switching with smooth transitions. All 120 color tokens update instantly."
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <!-- Feature 3 -->
+                        <Border Margin="0,0,0,12">
+                            <StackPanel>
+                                <TextBlock Text="&#9889;" FontSize="24" Margin="0,0,0,6" />
+                                <TextBlock Text="High Performance"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock Text="Frozen brushes, ISupportInitialize, cached pages, and optimized animations."
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <!-- Feature 4 -->
+                        <Border Margin="0,0,12,0">
+                            <StackPanel>
+                                <TextBlock Text="&#9855;" FontSize="24" Margin="0,0,0,6" />
+                                <TextBlock Text="Accessibility"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock Text="AutomationPeer for all controls, keyboard navigation, focus management, screen reader support."
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <!-- Feature 5 -->
+                        <Border Margin="0,0,12,0">
+                            <StackPanel>
+                                <TextBlock Text="&#128640;" FontSize="24" Margin="0,0,0,6" />
+                                <TextBlock Text="MVVM Ready"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock Text="Built-in RelayCommand, ICommand support on all interactive controls, two-way bindings."
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                        <!-- Feature 6 -->
+                        <Border Margin="0,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="&#128230;" FontSize="24" Margin="0,0,0,6" />
+                                <TextBlock Text="Easy Integration"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock Text="Single NuGet package. Add 2 lines to App.xaml and start using antd: namespace."
+                                           FontSize="12"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+                </StackPanel>
+            </antd:Card>
+
+            <!-- ═══════════════════════════════════════════
+                 LIVE CONTROLS PREVIEW
+                 ═══════════════════════════════════════════ -->
+            <antd:Card Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Live Controls Preview"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,16" />
+
+                    <!-- Buttons row -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                        <Button Content="Primary" Style="{DynamicResource AntDesignButton.Primary}" Margin="0,0,8,0" />
+                        <Button Content="Default" Style="{DynamicResource AntDesignButton}" Margin="0,0,8,0" />
+                        <Button Content="Dashed" Style="{DynamicResource AntDesignButton.Dashed}" Margin="0,0,8,0" />
+                        <Button Content="Text" Style="{DynamicResource AntDesignButton.Text}" Margin="0,0,8,0" />
+                        <Button Content="Link" Style="{DynamicResource AntDesignButton.Link}" Margin="0,0,8,0" />
+                        <Button Content="Danger" Style="{DynamicResource AntDesignButton.Danger}" />
+                    </StackPanel>
+
+                    <!-- Tags row -->
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                        <antd:Tag Content="Processing" PresetColor="Blue" Margin="0,0,8,0" />
+                        <antd:Tag Content="Success" PresetColor="Green" Margin="0,0,8,0" />
+                        <antd:Tag Content="Error" PresetColor="Red" Margin="0,0,8,0" />
+                        <antd:Tag Content="Warning" PresetColor="Gold" Margin="0,0,8,0" />
+                        <antd:Tag Content="Default" Margin="0,0,8,0" />
+                        <antd:Tag Content="Purple" PresetColor="Purple" Margin="0,0,8,0" />
+                        <antd:Tag Content="Cyan" PresetColor="Cyan" />
+                    </StackPanel>
+
+                    <!-- Alerts row -->
+                    <antd:Alert Type="Success" Message="Welcome to Ant Design WPF!" Description="This library provides enterprise-grade UI components." Margin="0,0,0,8" />
+                    <antd:Alert Type="Info" Message="Use the sidebar to explore all available controls." Margin="0,0,0,8" />
+
+                    <!-- Controls row -->
+                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                        <antd:AntSwitch IsChecked="True" Margin="0,0,16,0" />
+                        <ProgressBar Value="72" Width="200" Height="6" Margin="0,0,16,0"
+                                     Style="{DynamicResource AntDesignProgressBar}" />
+                        <antd:Badge Count="5">
+                            <Border Width="42" Height="42"
+                                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                    Background="{DynamicResource AntDesign.Brush.Fill.Quaternary}">
+                                <TextBlock Text="&#128230;" FontSize="20"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </antd:Badge>
+                    </StackPanel>
+                </StackPanel>
+            </antd:Card>
+
+            <!-- ═══════════════════════════════════════════
+                 THEME SWITCHING DEMO
+                 ═══════════════════════════════════════════ -->
+            <antd:Card>
+                <StackPanel>
+                    <TextBlock Text="Runtime Theme Switching"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Use the color swatches and theme toggle in the top bar to see all controls update in real-time."
+                               FontSize="13"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,12" />
+                    <Border Background="{DynamicResource AntDesign.Brush.Fill.Quaternary}"
+                            CornerRadius="4"
+                            Padding="12,8">
+                        <TextBlock FontFamily="Consolas"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                   TextWrapping="Wrap"
+                                   xml:space="preserve"><Run Text="// Switch to dark theme" />
+<Run Text="ThemeHelper.SetBaseTheme(BaseTheme.Dark);" />
+<Run Text="" />
+<Run Text="// Change primary color" />
+<Run Text="ThemeHelper.SetPrimaryColor(PresetColor.Purple);" />
+<Run Text="" />
+<Run Text="// Update border radius" />
+<Run Text="ThemeHelper.SetBorderRadius(8);" /></TextBlock>
+                    </Border>
+                </StackPanel>
+            </antd:Card>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

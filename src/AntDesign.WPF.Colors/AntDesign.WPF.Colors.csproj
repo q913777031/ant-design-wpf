@@ -5,9 +5,10 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>AntDesign.WPF.Colors</RootNamespace>
     <AssemblyName>AntDesign.WPF.Colors</AssemblyName>
-    <Description>Ant Design color palette for WPF</Description>
+    <Description>Ant Design 5.x color palette for WPF — 12 preset colors with 10-level gradients, plus neutral grays.</Description>
     <PackageId>AntDesign.WPF.Colors</PackageId>
-    <PackageTags>wpf;antdesign;colors;palette</PackageTags>
+    <PackageTags>wpf;antdesign;colors;palette;design-tokens</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
