@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>AntDesign.WPF.Demo</RootNamespace>
+    <AssemblyName>AntDesign.WPF.Demo</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AntDesign.WPF\AntDesign.WPF.csproj" />
+  </ItemGroup>
+
+</Project>

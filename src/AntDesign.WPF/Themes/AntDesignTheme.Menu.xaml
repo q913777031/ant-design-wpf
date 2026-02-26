@@ -1,0 +1,377 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ===================================================================
+         Shared popup border style (used by submenu and context menu)
+         =================================================================== -->
+    <Style x:Key="AntDesign.Menu.PopupBorder" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource AntDesign.Brush.Bg.Elevated}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Border.Secondary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource AntDesign.CornerRadius.LG}" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect
+                    Color="#000000"
+                    Opacity="0.12"
+                    BlurRadius="12"
+                    ShadowDepth="4"
+                    Direction="270" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         Separator Style
+         =================================================================== -->
+    <Style x:Key="AntDesign.Separator" TargetType="{x:Type Separator}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource AntDesign.Brush.Border.Secondary}" />
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="0,4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        Height="{TemplateBinding Height}"
+                        Margin="{TemplateBinding Margin}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         MenuItem submenu arrow indicator
+         =================================================================== -->
+    <ControlTemplate x:Key="AntDesign.MenuItem.SubmenuArrow">
+        <Path
+            x:Name="Arrow"
+            Data="M 0 0 L 4 4 L 0 8"
+            Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+            StrokeThickness="1.5"
+            StrokeLineJoin="Round"
+            StrokeStartLineCap="Round"
+            StrokeEndLineCap="Round"
+            Width="5"
+            Height="9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+    </ControlTemplate>
+
+    <!-- ===================================================================
+         Top-level MenuItem Style (menu bar items)
+         =================================================================== -->
+    <Style x:Key="AntDesign.MenuItem.TopLevel" TargetType="{x:Type MenuItem}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border
+                        x:Name="ItemBorder"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius.SM}"
+                        Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Icon area -->
+                            <ContentPresenter
+                                Grid.Column="0"
+                                x:Name="Icon"
+                                Content="{TemplateBinding Icon}"
+                                Width="16"
+                                Height="16"
+                                Margin="0,0,8,0"
+                                VerticalAlignment="Center"
+                                Visibility="Collapsed" />
+
+                            <!-- Header text -->
+                            <ContentPresenter
+                                Grid.Column="1"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                    <!-- Submenu popup -->
+                    <ControlTemplate.Triggers>
+                        <!-- Show icon when present -->
+                        <DataTrigger Binding="{Binding Icon, RelativeSource={RelativeSource Self}}"
+                                     Value="{x:Null}">
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <!-- Checked/Selected -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Bg}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <!-- Submenu open -->
+                        <Trigger Property="IsSubmenuOpen" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         Submenu MenuItem Style (items inside a popup submenu)
+         =================================================================== -->
+    <Style x:Key="AntDesign.MenuItem.Submenu" TargetType="{x:Type MenuItem}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="MinWidth" Value="120" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border
+                        x:Name="ItemBorder"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius.SM}"
+                        Padding="{TemplateBinding Padding}"
+                        MinWidth="{TemplateBinding MinWidth}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" MinWidth="0" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Checkmark area -->
+                            <Border
+                                Grid.Column="0"
+                                x:Name="CheckMarkBorder"
+                                Width="16"
+                                Height="16"
+                                Margin="0,0,8,0"
+                                Visibility="Collapsed">
+                                <Path
+                                    x:Name="CheckMark"
+                                    Data="M 1 5 L 5 9 L 11 2"
+                                    Stroke="{DynamicResource AntDesign.Brush.Primary}"
+                                    StrokeThickness="1.8"
+                                    StrokeLineJoin="Round"
+                                    StrokeStartLineCap="Round"
+                                    StrokeEndLineCap="Round"
+                                    Width="12"
+                                    Height="9"
+                                    Stretch="Uniform"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Visibility="Hidden" />
+                            </Border>
+
+                            <!-- Icon area -->
+                            <ContentPresenter
+                                Grid.Column="0"
+                                x:Name="Icon"
+                                Content="{TemplateBinding Icon}"
+                                Width="16"
+                                Height="16"
+                                Margin="0,0,8,0"
+                                VerticalAlignment="Center"
+                                Visibility="Collapsed" />
+
+                            <!-- Header -->
+                            <ContentPresenter
+                                Grid.Column="1"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True"
+                                VerticalAlignment="Center" />
+
+                            <!-- Input gesture text (keyboard shortcut) -->
+                            <TextBlock
+                                Grid.Column="2"
+                                x:Name="InputGestureText"
+                                Text="{TemplateBinding InputGestureText}"
+                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                Visibility="Collapsed" />
+
+                            <!-- Submenu arrow -->
+                            <ContentControl
+                                Grid.Column="3"
+                                x:Name="SubmenuArrow"
+                                Template="{StaticResource AntDesign.MenuItem.SubmenuArrow}"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Nested submenu popup -->
+                    <ControlTemplate.Resources>
+                        <Popup
+                            x:Key="SubMenuPopup"
+                            AllowsTransparency="True"
+                            IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                            Placement="Right"
+                            PlacementTarget="{Binding ElementName=ItemBorder}"
+                            HorizontalOffset="4"
+                            PopupAnimation="Fade"
+                            Focusable="False" />
+                    </ControlTemplate.Resources>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Show input gesture text when not empty -->
+                        <DataTrigger
+                            Binding="{Binding InputGestureText, RelativeSource={RelativeSource Self}}"
+                            Value="">
+                            <Setter TargetName="InputGestureText" Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+
+                        <!-- Show submenu indicator when has items -->
+                        <Trigger Property="HasItems" Value="True">
+                            <Setter TargetName="SubmenuArrow" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <!-- Checkable items -->
+                        <Trigger Property="IsCheckable" Value="True">
+                            <Setter TargetName="CheckMarkBorder" Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsCheckable" Value="True" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <!-- Highlighted (keyboard navigation) -->
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <!-- Checked/Selected -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Bg}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         Menu Style (top-level menu bar)
+         =================================================================== -->
+    <Style x:Key="AntDesign.Menu" TargetType="{x:Type Menu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource AntDesign.Brush.Bg.Container}" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Border.Secondary}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource AntDesign.MenuItem.TopLevel}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Menu}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                        <StackPanel
+                            IsItemsHost="True"
+                            Orientation="Horizontal" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         ContextMenu Style
+         =================================================================== -->
+    <Style x:Key="AntDesign.ContextMenu" TargetType="{x:Type ContextMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource AntDesign.MenuItem.Submenu}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Border
+                        Background="{DynamicResource AntDesign.Brush.Bg.Elevated}"
+                        BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius.LG}"
+                        Padding="4"
+                        MinWidth="120">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#000000"
+                                Opacity="0.12"
+                                BlurRadius="12"
+                                ShadowDepth="4"
+                                Direction="270" />
+                        </Border.Effect>
+                        <ItemsPresenter
+                            x:Name="ItemsPresenter"
+                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default implicit styles -->
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource AntDesign.Menu}" />
+    <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource AntDesign.ContextMenu}" />
+    <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource AntDesign.Separator}" />
+
+</ResourceDictionary>

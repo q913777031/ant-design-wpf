@@ -1,0 +1,71 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        Ant Design WPF — GroupBox (Card) Style
+        Design:
+          - Outer border  : 1 px Border brush, CornerRadius.LG (8)
+          - Header        : padding 12,16 (vertical,horizontal); border-bottom 1 px Border; bold text
+          - Content       : padding 16; Bg.Container background
+    -->
+
+    <Style TargetType="{x:Type GroupBox}">
+        <Setter Property="Background"          Value="{DynamicResource AntDesign.Brush.Bg.Container}" />
+        <Setter Property="Foreground"          Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="FontSize"            Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="BorderBrush"         Value="{DynamicResource AntDesign.Brush.Border}" />
+        <Setter Property="BorderThickness"     Value="1" />
+        <Setter Property="Padding"             Value="16" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"   Value="Top" />
+        <Setter Property="FocusVisualStyle"    Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupBox}">
+                    <!-- Card outer border with rounded corners -->
+                    <Border x:Name="CardBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius.LG}"
+                            SnapsToDevicePixels="True">
+                        <DockPanel LastChildFill="True">
+
+                            <!-- ─────────── Header / Legend ─────────── -->
+                            <Border DockPanel.Dock="Top"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="16,12"
+                                    SnapsToDevicePixels="True">
+                                <ContentPresenter ContentSource="Header"
+                                                  RecognizesAccessKey="True"
+                                                  VerticalAlignment="Center"
+                                                  TextElement.FontWeight="SemiBold"
+                                                  TextElement.FontSize="{DynamicResource AntDesign.FontSize}"
+                                                  TextElement.Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                            </Border>
+
+                            <!-- ─────────── Content ─────────── -->
+                            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    Padding="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                        </DockPanel>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

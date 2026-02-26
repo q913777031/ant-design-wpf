@@ -1,0 +1,313 @@
+<Window x:Class="AntDesign.WPF.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AntDesign WPF Demo"
+        Width="1200"
+        Height="800"
+        MinWidth="900"
+        MinHeight="600"
+        Style="{StaticResource AntDesignWindow}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0"
+                Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                BorderThickness="0,0,1,0">
+            <DockPanel>
+                <!-- Sidebar Header -->
+                <Border DockPanel.Dock="Top"
+                        Background="{DynamicResource AntDesign.Brush.Primary}"
+                        Padding="20,16">
+                    <StackPanel>
+                        <TextBlock Text="AntDesign WPF"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="White" />
+                        <TextBlock Text="v1.0 Demo"
+                                   FontSize="12"
+                                   Foreground="#CCFFFFFF"
+                                   Margin="0,2,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Navigation List -->
+                <ScrollViewer DockPanel.Dock="Bottom"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <ListBox x:Name="NavListBox"
+                             SelectionChanged="NavListBox_SelectionChanged"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Padding="8">
+
+                        <!-- General -->
+                        <ListBoxItem IsEnabled="False" Padding="12,8,8,4" Margin="0,8,0,0">
+                            <TextBlock Text="GENERAL"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                                       />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Buttons" Padding="16,8">
+                            <TextBlock Text="Button" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Divider" Padding="16,8">
+                            <TextBlock Text="Divider" />
+                        </ListBoxItem>
+
+                        <!-- Data Entry -->
+                        <ListBoxItem IsEnabled="False" Padding="12,8,8,4" Margin="0,8,0,0">
+                            <TextBlock Text="DATA ENTRY"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Input" Padding="16,8">
+                            <TextBlock Text="Input" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="CheckBox" Padding="16,8">
+                            <TextBlock Text="Checkbox / Radio" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Select" Padding="16,8">
+                            <TextBlock Text="Select" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="DataEntry" Padding="16,8">
+                            <TextBlock Text="Slider / DatePicker" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Switch" Padding="16,8">
+                            <TextBlock Text="Switch" />
+                        </ListBoxItem>
+
+                        <!-- Data Display -->
+                        <ListBoxItem IsEnabled="False" Padding="12,8,8,4" Margin="0,8,0,0">
+                            <TextBlock Text="DATA DISPLAY"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Badge" Padding="16,8">
+                            <TextBlock Text="Badge" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Card" Padding="16,8">
+                            <TextBlock Text="Card" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Table" Padding="16,8">
+                            <TextBlock Text="Table" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Tag" Padding="16,8">
+                            <TextBlock Text="Tag" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Timeline" Padding="16,8">
+                            <TextBlock Text="Timeline" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Empty" Padding="16,8">
+                            <TextBlock Text="Empty" />
+                        </ListBoxItem>
+
+                        <!-- Feedback -->
+                        <ListBoxItem IsEnabled="False" Padding="12,8,8,4" Margin="0,8,0,0">
+                            <TextBlock Text="FEEDBACK"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Alert" Padding="16,8">
+                            <TextBlock Text="Alert" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Modal" Padding="16,8">
+                            <TextBlock Text="Modal" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Drawer" Padding="16,8">
+                            <TextBlock Text="Drawer" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Progress" Padding="16,8">
+                            <TextBlock Text="Progress" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Result" Padding="16,8">
+                            <TextBlock Text="Result" />
+                        </ListBoxItem>
+
+                        <!-- Navigation -->
+                        <ListBoxItem IsEnabled="False" Padding="12,8,8,4" Margin="0,8,0,0">
+                            <TextBlock Text="NAVIGATION"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Steps" Padding="16,8">
+                            <TextBlock Text="Steps" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Tabs" Padding="16,8">
+                            <TextBlock Text="Tabs" />
+                        </ListBoxItem>
+
+                        <!-- Other -->
+                        <ListBoxItem IsEnabled="False" Padding="12,8,8,4" Margin="0,8,0,0">
+                            <TextBlock Text="CUSTOMIZATION"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}" />
+                        </ListBoxItem>
+                        <ListBoxItem Tag="Theme" Padding="16,8">
+                            <TextBlock Text="Theme" />
+                        </ListBoxItem>
+
+                        <ListBoxItem Padding="0,16" />
+                    </ListBox>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="56" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Top Bar -->
+            <Border Grid.Row="0"
+                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="0,0,0,1"
+                    Padding="20,0">
+                <DockPanel>
+                    <TextBlock x:Name="PageTitleText"
+                               DockPanel.Dock="Left"
+                               Text="AntDesign WPF Demo"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}" />
+
+                    <StackPanel DockPanel.Dock="Right"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right">
+
+                        <!-- Theme Toggle -->
+                        <TextBlock Text="Dark Mode"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                        <CheckBox x:Name="DarkModeToggle"
+                                  VerticalAlignment="Center"
+                                  Checked="DarkModeToggle_Checked"
+                                  Unchecked="DarkModeToggle_Unchecked"
+                                  Margin="0,0,20,0" />
+
+                        <!-- Primary Color Buttons -->
+                        <TextBlock Text="Color:"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,8,0"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                        <Button Tag="Blue"
+                                Width="20"
+                                Height="20"
+                                Margin="2,0"
+                                Background="#1677FF"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                ToolTip="Blue"
+                                Click="ColorButton_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Width="20"
+                                            Height="20" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="Green"
+                                Width="20"
+                                Height="20"
+                                Margin="2,0"
+                                Background="#52C41A"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                ToolTip="Green"
+                                Click="ColorButton_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Width="20"
+                                            Height="20" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="Red"
+                                Width="20"
+                                Height="20"
+                                Margin="2,0"
+                                Background="#FF4D4F"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                ToolTip="Red"
+                                Click="ColorButton_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Width="20"
+                                            Height="20" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="Purple"
+                                Width="20"
+                                Height="20"
+                                Margin="2,0"
+                                Background="#722ED1"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                ToolTip="Purple"
+                                Click="ColorButton_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Width="20"
+                                            Height="20" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="Orange"
+                                Width="20"
+                                Height="20"
+                                Margin="2,0"
+                                Background="#FA8C16"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                ToolTip="Orange"
+                                Click="ColorButton_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            Width="20"
+                                            Height="20" />
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- Page Content Frame -->
+            <Frame x:Name="ContentFrame"
+                   Grid.Row="1"
+                   NavigationUIVisibility="Hidden"
+                   Background="{DynamicResource AntDesign.Brush.Bg.Layout}" />
+        </Grid>
+    </Grid>
+</Window>

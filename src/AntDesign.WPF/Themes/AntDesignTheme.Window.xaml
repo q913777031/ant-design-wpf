@@ -1,0 +1,26 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        Ant Design WPF — Window Style
+        Named style "AntDesignWindow":
+          - Background : Bg.Layout
+          - Foreground : Text
+          - FontFamily : Segoe UI
+          - FontSize   : 14 (AntDesign.FontSize token)
+        Usage: <Window Style="{StaticResource AntDesignWindow}" ...>
+    -->
+
+    <Style x:Key="AntDesignWindow" TargetType="{x:Type Window}">
+        <Setter Property="Background"      Value="{DynamicResource AntDesign.Brush.Bg.Layout}" />
+        <Setter Property="Foreground"      Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="FontFamily"      Value="Segoe UI" />
+        <Setter Property="FontSize"        Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode"  Value="Auto" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,11 @@
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\AntDesign.WPF.Colors.GeneratedMSBuildEditorConfig.editorconfig
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\bin\Debug\net8.0-windows\AntDesign.WPF.Colors.deps.json
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\bin\Debug\net8.0-windows\AntDesign.WPF.Colors.dll
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\bin\Debug\net8.0-windows\AntDesign.WPF.Colors.pdb
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\AntDesign.WPF.Colors.AssemblyInfoInputs.cache
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\AntDesign.WPF.Colors.AssemblyInfo.cs
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\AntDesign.WPF.Colors.csproj.CoreCompileInputs.cache
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\AntDesign.WPF.Colors.dll
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\refint\AntDesign.WPF.Colors.dll
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\AntDesign.WPF.Colors.pdb
+C:\wpf_ant_design\src\AntDesign.WPF.Colors\obj\Debug\net8.0-windows\ref\AntDesign.WPF.Colors.dll

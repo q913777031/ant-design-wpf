@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/demo/">
+    <Project Path="demo/AntDesign.WPF.Demo/AntDesign.WPF.Demo.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AntDesign.WPF.Colors/AntDesign.WPF.Colors.csproj" />
+    <Project Path="src/AntDesign.WPF/AntDesign.WPF.csproj" />
+  </Folder>
+</Solution>

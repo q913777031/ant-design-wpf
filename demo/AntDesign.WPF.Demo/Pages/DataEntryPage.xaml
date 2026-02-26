@@ -1,0 +1,107 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.DataEntryPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Slider / DatePicker"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Form data entry controls including Slider and DatePicker."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Slider -->
+            <TextBlock Text="Slider"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Basic Slider"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <Slider Minimum="0"
+                            Maximum="100"
+                            Value="50"
+                            Width="300"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,0,16" />
+
+                    <TextBlock Text="Slider with value display"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <StackPanel Orientation="Horizontal">
+                        <Slider x:Name="ValueSlider"
+                                Minimum="0"
+                                Maximum="100"
+                                Value="30"
+                                Width="260"
+                                VerticalAlignment="Center"
+                                Margin="0,0,12,0" />
+                        <TextBlock Text="{Binding ElementName=ValueSlider, Path=Value, StringFormat={}{0:F0}}"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                    </StackPanel>
+
+                    <TextBlock Text="Disabled Slider"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,16,0,8" />
+                    <Slider Minimum="0"
+                            Maximum="100"
+                            Value="60"
+                            Width="300"
+                            HorizontalAlignment="Left"
+                            IsEnabled="False" />
+                </StackPanel>
+            </Border>
+
+            <!-- Section: DatePicker -->
+            <TextBlock Text="DatePicker"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Basic DatePicker"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <DatePicker Width="200"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,0,16" />
+
+                    <TextBlock Text="Disabled DatePicker"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <DatePicker Width="200"
+                                HorizontalAlignment="Left"
+                                IsEnabled="False" />
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

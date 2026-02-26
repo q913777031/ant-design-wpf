@@ -1,0 +1,90 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.TimelinePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="clr-namespace:AntDesign.WPF.Controls;assembly=AntDesign.WPF"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Timeline"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Vertical display time flow information."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Basic Timeline -->
+            <TextBlock Text="Basic Timeline"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <antd:Timeline>
+                    <antd:TimelineItem>Create a services site 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem>Solve initial network problems 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem>Technical testing 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem>Network problems being solved 2015-09-01</antd:TimelineItem>
+                </antd:Timeline>
+            </Border>
+
+            <!-- Section: Timeline with Colors -->
+            <TextBlock Text="Timeline with Colors"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <antd:Timeline>
+                    <antd:TimelineItem Color="#52C41A">Create a services site 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Color="#52C41A">Solve initial network problems 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Color="#FF4D4F">Technical testing 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem>Network problems being solved 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Color="#BFBFBF">Create a services site 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Color="#BFBFBF">Technical testing 2015-09-01</antd:TimelineItem>
+                </antd:Timeline>
+            </Border>
+
+            <!-- Section: Pending Timeline -->
+            <TextBlock Text="Pending Timeline"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <antd:Timeline Pending="True">
+                    <antd:TimelineItem>Create a services site 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem>Solve initial network problems 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem>Technical testing 2015-09-01</antd:TimelineItem>
+                </antd:Timeline>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
