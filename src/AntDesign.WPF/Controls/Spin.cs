@@ -1,5 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -21,45 +23,31 @@ public enum SpinSize
 /// <summary>
 /// A loading spinner that can wrap arbitrary content with a translucent overlay
 /// while an asynchronous operation is in progress.
-/// The <see cref="ContentControl.Content"/> property holds the content being wrapped.
 /// Follows the Ant Design Spin specification.
 /// </summary>
 public class Spin : ContentControl
 {
+    private Storyboard? _spinStoryboard;
+    private FrameworkElement? _spinnerRing;
+
     // -------------------------------------------------------------------------
     // Dependency Properties
     // -------------------------------------------------------------------------
 
-    /// <summary>Identifies the <see cref="IsSpinning"/> dependency property.</summary>
     public static readonly DependencyProperty IsSpinningProperty =
-        DependencyProperty.Register(
-            nameof(IsSpinning),
-            typeof(bool),
-            typeof(Spin),
-            new PropertyMetadata(true));
+        DependencyProperty.Register(nameof(IsSpinning), typeof(bool), typeof(Spin),
+            new PropertyMetadata(true, OnIsSpinningChanged));
 
-    /// <summary>Identifies the <see cref="Tip"/> dependency property.</summary>
     public static readonly DependencyProperty TipProperty =
-        DependencyProperty.Register(
-            nameof(Tip),
-            typeof(string),
-            typeof(Spin),
+        DependencyProperty.Register(nameof(Tip), typeof(string), typeof(Spin),
             new PropertyMetadata(null));
 
-    /// <summary>Identifies the <see cref="Size"/> dependency property.</summary>
     public static readonly DependencyProperty SizeProperty =
-        DependencyProperty.Register(
-            nameof(Size),
-            typeof(SpinSize),
-            typeof(Spin),
+        DependencyProperty.Register(nameof(Size), typeof(SpinSize), typeof(Spin),
             new PropertyMetadata(SpinSize.Default));
 
-    /// <summary>Identifies the <see cref="Delay"/> dependency property.</summary>
     public static readonly DependencyProperty DelayProperty =
-        DependencyProperty.Register(
-            nameof(Delay),
-            typeof(int),
-            typeof(Spin),
+        DependencyProperty.Register(nameof(Delay), typeof(int), typeof(Spin),
             new PropertyMetadata(0, null, CoerceDelay));
 
     // -------------------------------------------------------------------------
@@ -68,48 +56,31 @@ public class Spin : ContentControl
 
     static Spin()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(
-            typeof(Spin),
-            new FrameworkPropertyMetadata(typeof(Spin)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(Spin), new FrameworkPropertyMetadata(typeof(Spin)));
     }
 
     // -------------------------------------------------------------------------
     // CLR Properties
     // -------------------------------------------------------------------------
 
-    /// <summary>
-    /// Gets or sets a value indicating whether the spinner overlay is active.
-    /// Defaults to <see langword="true"/>.
-    /// </summary>
     public bool IsSpinning
     {
         get => (bool)GetValue(IsSpinningProperty);
         set => SetValue(IsSpinningProperty, value);
     }
 
-    /// <summary>
-    /// Gets or sets an optional descriptive text rendered below the spinning indicator
-    /// while loading is in progress.
-    /// </summary>
     public string? Tip
     {
         get => (string?)GetValue(TipProperty);
         set => SetValue(TipProperty, value);
     }
 
-    /// <summary>Gets or sets the size variant of the spinner indicator.</summary>
     public SpinSize Size
     {
         get => (SpinSize)GetValue(SizeProperty);
         set => SetValue(SizeProperty, value);
     }
 
-    /// <summary>
-    /// Gets or sets the delay in milliseconds before the spinner becomes visible
-    /// after <see cref="IsSpinning"/> transitions to <see langword="true"/>.
-    /// This prevents flickering for short operations. Defaults to 0 (no delay).
-    /// Values less than 0 are coerced to 0.
-    /// </summary>
     public int Delay
     {
         get => (int)GetValue(DelayProperty);
@@ -117,8 +88,59 @@ public class Spin : ContentControl
     }
 
     // -------------------------------------------------------------------------
-    // Coercion Callbacks
+    // Template
     // -------------------------------------------------------------------------
+
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        _spinnerRing = GetTemplateChild("SpinnerRing") as FrameworkElement;
+        SetupSpinAnimation();
+
+        if (IsSpinning)
+            StartSpinning();
+    }
+
+    private void SetupSpinAnimation()
+    {
+        if (_spinnerRing is null) return;
+
+        // Ensure we have a RotateTransform
+        if (_spinnerRing.RenderTransform is not RotateTransform)
+        {
+            _spinnerRing.RenderTransform = new RotateTransform(0,
+                _spinnerRing.Width / 2, _spinnerRing.Height / 2);
+        }
+
+        _spinStoryboard = new Storyboard { RepeatBehavior = RepeatBehavior.Forever };
+        var rotateAnim = new DoubleAnimation(0, 360, new Duration(TimeSpan.FromSeconds(1)));
+        Storyboard.SetTarget(rotateAnim, _spinnerRing);
+        Storyboard.SetTargetProperty(rotateAnim,
+            new PropertyPath("(UIElement.RenderTransform).(RotateTransform.Angle)"));
+        _spinStoryboard.Children.Add(rotateAnim);
+    }
+
+    private void StartSpinning()
+    {
+        _spinStoryboard?.Begin(this, true);
+    }
+
+    private void StopSpinning()
+    {
+        _spinStoryboard?.Stop(this);
+    }
+
+    private static void OnIsSpinningChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is Spin spin && spin._spinStoryboard is not null)
+        {
+            if ((bool)e.NewValue)
+                spin.StartSpinning();
+            else
+                spin.StopSpinning();
+        }
+    }
 
     private static object CoerceDelay(DependencyObject d, object baseValue)
     {
