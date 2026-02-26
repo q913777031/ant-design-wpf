@@ -1,0 +1,2173 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:AntDesign.WPF.Controls"
+    xmlns:converters="clr-namespace:AntDesign.WPF.Converters">
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         CARD
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Card}">
+        <Setter Property="Background"        Value="{DynamicResource AntDesign.Brush.Bg.Container}" />
+        <Setter Property="BorderBrush"       Value="{DynamicResource AntDesign.Brush.Border}" />
+        <Setter Property="BorderThickness"   Value="1" />
+        <Setter Property="Padding"           Value="0" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Foreground"        Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Card}">
+                    <Border x:Name="PART_RootBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="CardShadow"
+                                              Color="#000000"
+                                              Opacity="0.06"
+                                              BlurRadius="8"
+                                              ShadowDepth="2"
+                                              Direction="270" />
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Header -->
+                            <Grid x:Name="PART_Header"
+                                  Grid.Row="0"
+                                  Margin="24,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{TemplateBinding Title}"
+                                           FontWeight="SemiBold"
+                                           FontSize="{DynamicResource AntDesign.FontSize}"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                           VerticalAlignment="Center"
+                                           Padding="0,16" />
+                                <ContentPresenter Grid.Column="1"
+                                                  Content="{TemplateBinding Extra}"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Right" />
+                            </Grid>
+
+                            <!-- Separator line below header (only when Title is set) -->
+                            <Border x:Name="HeaderDivider"
+                                    Grid.Row="1"
+                                    Height="1"
+                                    Background="{DynamicResource AntDesign.Brush.Border}"
+                                    Visibility="Collapsed" />
+
+                            <!-- Body -->
+                            <Border x:Name="PART_Body"
+                                    Grid.Row="2"
+                                    Padding="{TemplateBinding BodyPadding}">
+                                <ContentPresenter />
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Show header divider when title has text -->
+                        <Trigger Property="Title" Value="{x:Null}">
+                            <Setter TargetName="PART_Header" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Value="">
+                            <Setter TargetName="PART_Header" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <!-- Show divider when header is visible -->
+                        <Trigger Property="Title" Value="{x:Null}">
+                            <Setter TargetName="HeaderDivider" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!-- Bordered=false -->
+                        <Trigger Property="Bordered" Value="False">
+                            <Setter TargetName="PART_RootBorder" Property="BorderThickness" Value="0" />
+                        </Trigger>
+                        <!-- Hoverable: enhance shadow on mouse over -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Hoverable" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_RootBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#000000" Opacity="0.18" BlurRadius="20" ShadowDepth="2" Direction="270" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Expose header divider visibility when Title is non-null via style trigger -->
+        <Style.Triggers>
+            <Trigger Property="Title" Value="{x:Null}">
+                <!-- Header already hidden in template -->
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         TAG
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Tag}">
+        <Setter Property="Foreground"      Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background"      Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+        <Setter Property="BorderBrush"     Value="{DynamicResource AntDesign.Brush.Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize"        Value="{DynamicResource AntDesign.FontSize.SM}" />
+        <Setter Property="Cursor"          Value="Default" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Tag}">
+                    <Border x:Name="RootBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius.SM}"
+                            Padding="1,5"
+                            Visibility="{Binding IsTagVisible, RelativeSource={RelativeSource TemplatedParent},
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <!-- Optional leading icon -->
+                            <ContentPresenter x:Name="IconPresenter"
+                                              Content="{TemplateBinding Icon}"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,4,0"
+                                              Visibility="Collapsed" />
+                            <!-- Tag content -->
+                            <ContentPresenter VerticalAlignment="Center"
+                                              Margin="6,0" />
+                            <!-- Close button -->
+                            <Border x:Name="PART_CloseButton"
+                                    Width="14"
+                                    Height="14"
+                                    CornerRadius="7"
+                                    Margin="2,0,4,0"
+                                    Background="Transparent"
+                                    Cursor="Hand"
+                                    Visibility="Collapsed"
+                                    VerticalAlignment="Center">
+                                <Path Data="M3,3 L11,11 M11,3 L3,11"
+                                      Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                      StrokeThickness="1.5"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="IconPresenter" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Closable" Value="True">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!-- Preset color: Magenta -->
+                        <Trigger Property="PresetColor" Value="Magenta">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#fff0f6" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#ffadd2" />
+                            <Setter Property="Foreground"                           Value="#c41d7f" />
+                        </Trigger>
+                        <!-- Preset color: Red -->
+                        <Trigger Property="PresetColor" Value="Red">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#fff1f0" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#ffa39e" />
+                            <Setter Property="Foreground"                           Value="#cf1322" />
+                        </Trigger>
+                        <!-- Preset color: Volcano -->
+                        <Trigger Property="PresetColor" Value="Volcano">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#fff2e8" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#ffbb96" />
+                            <Setter Property="Foreground"                           Value="#d4380d" />
+                        </Trigger>
+                        <!-- Preset color: Orange -->
+                        <Trigger Property="PresetColor" Value="Orange">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#fff7e6" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#ffd591" />
+                            <Setter Property="Foreground"                           Value="#d46b08" />
+                        </Trigger>
+                        <!-- Preset color: Gold -->
+                        <Trigger Property="PresetColor" Value="Gold">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#fffbe6" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#ffe58f" />
+                            <Setter Property="Foreground"                           Value="#d48806" />
+                        </Trigger>
+                        <!-- Preset color: Lime -->
+                        <Trigger Property="PresetColor" Value="Lime">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#fcffe6" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#eaff8f" />
+                            <Setter Property="Foreground"                           Value="#7cb305" />
+                        </Trigger>
+                        <!-- Preset color: Green -->
+                        <Trigger Property="PresetColor" Value="Green">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#f6ffed" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#b7eb8f" />
+                            <Setter Property="Foreground"                           Value="#389e0d" />
+                        </Trigger>
+                        <!-- Preset color: Cyan -->
+                        <Trigger Property="PresetColor" Value="Cyan">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#e6fffb" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#87e8de" />
+                            <Setter Property="Foreground"                           Value="#08979c" />
+                        </Trigger>
+                        <!-- Preset color: Blue -->
+                        <Trigger Property="PresetColor" Value="Blue">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#e6f4ff" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#91caff" />
+                            <Setter Property="Foreground"                           Value="#0958d9" />
+                        </Trigger>
+                        <!-- Preset color: Geekblue -->
+                        <Trigger Property="PresetColor" Value="Geekblue">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#f0f5ff" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#adc6ff" />
+                            <Setter Property="Foreground"                           Value="#1d39c4" />
+                        </Trigger>
+                        <!-- Preset color: Purple -->
+                        <Trigger Property="PresetColor" Value="Purple">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="#f9f0ff" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="#d3adf7" />
+                            <Setter Property="Foreground"                           Value="#531dab" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         BADGE
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Badge}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Badge}">
+                    <Grid>
+                        <!-- Wrapped content -->
+                        <ContentPresenter x:Name="InnerContent"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top" />
+
+                        <!-- Count badge (pill) -->
+                        <Border x:Name="PART_CountBadge"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Margin="0,-8,-8,0"
+                                MinWidth="20"
+                                Height="20"
+                                CornerRadius="10"
+                                Background="{DynamicResource AntDesign.Brush.Error}"
+                                Padding="5,0"
+                                Visibility="Collapsed">
+                            <TextBlock x:Name="CountText"
+                                       Text="{TemplateBinding DisplayCount}"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}"
+                                       FontSize="11"
+                                       FontWeight="Normal"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+
+                        <!-- Dot badge -->
+                        <Ellipse x:Name="PART_DotBadge"
+                                 Width="6"
+                                 Height="6"
+                                 Fill="{DynamicResource AntDesign.Brush.Error}"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Top"
+                                 Margin="0,-3,-3,0"
+                                 Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Show count badge when IsBadgeVisible and not Dot -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsBadgeVisible" Value="True" />
+                                <Condition Property="Dot" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_CountBadge" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <!-- Show dot badge when Dot=true -->
+                        <Trigger Property="Dot" Value="True">
+                            <Setter TargetName="PART_DotBadge" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_CountBadge" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!-- Status colors for dot -->
+                        <Trigger Property="Status" Value="Success">
+                            <Setter TargetName="PART_DotBadge"   Property="Fill" Value="{DynamicResource AntDesign.Brush.Success}" />
+                            <Setter TargetName="PART_CountBadge" Property="Background" Value="{DynamicResource AntDesign.Brush.Success}" />
+                        </Trigger>
+                        <Trigger Property="Status" Value="Warning">
+                            <Setter TargetName="PART_DotBadge"   Property="Fill" Value="{DynamicResource AntDesign.Brush.Warning}" />
+                            <Setter TargetName="PART_CountBadge" Property="Background" Value="{DynamicResource AntDesign.Brush.Warning}" />
+                        </Trigger>
+                        <Trigger Property="Status" Value="Default">
+                            <Setter TargetName="PART_DotBadge"   Property="Fill" Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter TargetName="PART_CountBadge" Property="Background" Value="{DynamicResource AntDesign.Brush.Border}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         ALERT
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Alert}">
+        <Setter Property="FontSize"  Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Alert}">
+                    <Border x:Name="RootBorder"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            BorderThickness="1"
+                            Padding="12,8"
+                            Visibility="{Binding IsAlertVisible,
+                                         RelativeSource={RelativeSource TemplatedParent},
+                                         Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Icon -->
+                            <Border x:Name="IconArea"
+                                    Grid.Column="0"
+                                    Width="16"
+                                    Height="16"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Top">
+                                <Path x:Name="AlertIcon"
+                                      Data="M8,1 A7,7,0,1,1,8,15 A7,7,0,1,1,8,1 M8,5 L8,9 M8,11 L8,12"
+                                      Stroke="{DynamicResource AntDesign.Brush.Primary}"
+                                      StrokeThickness="1.5"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round"
+                                      Stretch="Uniform" />
+                            </Border>
+
+                            <!-- Message + Description -->
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Vertical">
+                                <TextBlock x:Name="MessageText"
+                                           Text="{TemplateBinding Message}"
+                                           FontWeight="SemiBold"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                                <TextBlock x:Name="DescriptionText"
+                                           Text="{TemplateBinding Description}"
+                                           FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                           Visibility="Collapsed" />
+                            </StackPanel>
+
+                            <!-- Close button -->
+                            <Border x:Name="PART_CloseButton"
+                                    Grid.Column="2"
+                                    Width="16"
+                                    Height="16"
+                                    Margin="8,0,0,0"
+                                    Cursor="Hand"
+                                    VerticalAlignment="Top"
+                                    Visibility="Collapsed">
+                                <Path Data="M3,3 L13,13 M13,3 L3,13"
+                                      Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                      StrokeThickness="1.5"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Description visibility -->
+                        <Trigger Property="Description" Value="{x:Null}">
+                            <Setter TargetName="DescriptionText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Description, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Value="">
+                            <Setter TargetName="DescriptionText" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <!-- Closable -->
+                        <Trigger Property="Closable" Value="True">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!-- ShowIcon=false -->
+                        <Trigger Property="ShowIcon" Value="False">
+                            <Setter TargetName="IconArea" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <!-- AlertType: Success -->
+                        <Trigger Property="Type" Value="Success">
+                            <Setter TargetName="RootBorder" Property="Background"   Value="{DynamicResource AntDesign.Brush.Success.Bg}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush"  Value="{DynamicResource AntDesign.Brush.Success}" />
+                            <Setter TargetName="AlertIcon"  Property="Stroke"       Value="{DynamicResource AntDesign.Brush.Success}" />
+                            <Setter TargetName="AlertIcon"  Property="Data"         Value="M2,8 L6,12 L14,4" />
+                        </Trigger>
+                        <!-- AlertType: Info -->
+                        <Trigger Property="Type" Value="Info">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="{DynamicResource AntDesign.Brush.Primary.Bg}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Primary.Border}" />
+                            <Setter TargetName="AlertIcon"  Property="Stroke"      Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <!-- AlertType: Warning -->
+                        <Trigger Property="Type" Value="Warning">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="{DynamicResource AntDesign.Brush.Warning.Bg}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Warning}" />
+                            <Setter TargetName="AlertIcon"  Property="Stroke"      Value="{DynamicResource AntDesign.Brush.Warning}" />
+                            <Setter TargetName="AlertIcon"  Property="Data"        Value="M8,1 L15,14 L1,14 Z M8,6 L8,10 M8,12 L8,12.5" />
+                        </Trigger>
+                        <!-- AlertType: Error -->
+                        <Trigger Property="Type" Value="Error">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="{DynamicResource AntDesign.Brush.Error.Bg}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Error}" />
+                            <Setter TargetName="AlertIcon"  Property="Stroke"      Value="{DynamicResource AntDesign.Brush.Error}" />
+                            <Setter TargetName="AlertIcon"  Property="Data"        Value="M3,3 L13,13 M13,3 L3,13" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         DIVIDER
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Divider}">
+        <Setter Property="Foreground"  Value="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+        <Setter Property="FontSize"    Value="{DynamicResource AntDesign.FontSize.SM}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Divider}">
+                    <Grid x:Name="RootGrid">
+                        <!-- Horizontal divider -->
+                        <Grid x:Name="HorizontalLayout">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0"
+                                    Height="1"
+                                    Background="{DynamicResource AntDesign.Brush.Border}"
+                                    VerticalAlignment="Center" />
+                            <ContentPresenter Grid.Column="1"
+                                              Margin="16,0"
+                                              VerticalAlignment="Center"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                              TextBlock.FontSize="{TemplateBinding FontSize}" />
+                            <Border Grid.Column="2"
+                                    Height="1"
+                                    Background="{DynamicResource AntDesign.Brush.Border}"
+                                    VerticalAlignment="Center" />
+                        </Grid>
+
+                        <!-- Vertical divider -->
+                        <Border x:Name="VerticalLayout"
+                                Width="1"
+                                Background="{DynamicResource AntDesign.Brush.Border}"
+                                HorizontalAlignment="Center"
+                                Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="Vertical">
+                            <Setter TargetName="HorizontalLayout" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="VerticalLayout"   Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         AVATAR
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Avatar}">
+        <Setter Property="Width"       Value="32" />
+        <Setter Property="Height"      Value="32" />
+        <Setter Property="Background"  Value="{DynamicResource AntDesign.Brush.Primary}" />
+        <Setter Property="Foreground"  Value="{DynamicResource AntDesign.Brush.Text.LightSolid}" />
+        <Setter Property="FontSize"    Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Avatar}">
+                    <Grid>
+                        <!-- Circle shape (default) -->
+                        <Border x:Name="CircleShape"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                CornerRadius="100"
+                                Background="{TemplateBinding Background}"
+                                ClipToBounds="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                              TextBlock.FontSize="{TemplateBinding FontSize}" />
+                        </Border>
+
+                        <!-- Square shape -->
+                        <Border x:Name="SquareShape"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                Background="{TemplateBinding Background}"
+                                ClipToBounds="True"
+                                Visibility="Collapsed">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                              TextBlock.FontSize="{TemplateBinding FontSize}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="Square">
+                            <Setter TargetName="CircleShape" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="SquareShape" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         EMPTY
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Empty}">
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+        <Setter Property="FontSize"   Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Empty}">
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <!-- Default placeholder image -->
+                        <Border Width="64"
+                                Height="41"
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,16">
+                            <Canvas Width="64" Height="41">
+                                <!-- Simple gray box illustration -->
+                                <Rectangle Canvas.Left="8"  Canvas.Top="0"
+                                           Width="48" Height="30"
+                                           Fill="{DynamicResource AntDesign.Brush.Fill.Tertiary}"
+                                           RadiusX="2" RadiusY="2" />
+                                <Rectangle Canvas.Left="0"  Canvas.Top="15"
+                                           Width="64" Height="20"
+                                           Fill="{DynamicResource AntDesign.Brush.Fill.Secondary}"
+                                           RadiusX="2" RadiusY="2" />
+                                <Ellipse   Canvas.Left="22" Canvas.Top="10"
+                                           Width="20" Height="20"
+                                           Fill="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                           Stroke="{DynamicResource AntDesign.Brush.Border}"
+                                           StrokeThickness="1" />
+                            </Canvas>
+                        </Border>
+
+                        <!-- Description -->
+                        <TextBlock x:Name="DescriptionText"
+                                   Text="{TemplateBinding Tag}"
+                                   HorizontalAlignment="Center"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Margin="0,0,0,8" />
+
+                        <!-- Extra content -->
+                        <ContentPresenter HorizontalAlignment="Center" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         SPIN
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Spin}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Spin}">
+                    <Grid>
+                        <!-- Underlying content -->
+                        <ContentPresenter x:Name="InnerContent" />
+
+                        <!-- Spinning overlay -->
+                        <Border x:Name="SpinOverlay"
+                                Background="{DynamicResource AntDesign.Brush.Bg.Mask}"
+                                Visibility="Collapsed">
+                            <Grid HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                                <StackPanel Orientation="Vertical"
+                                            HorizontalAlignment="Center">
+                                    <!-- Spinner arc -->
+                                    <Ellipse x:Name="SpinnerRing"
+                                             Width="24"
+                                             Height="24"
+                                             Stroke="{DynamicResource AntDesign.Brush.Primary}"
+                                             StrokeThickness="2"
+                                             StrokeDashArray="12 4"
+                                             HorizontalAlignment="Center">
+                                        <Ellipse.RenderTransform>
+                                            <RotateTransform x:Name="SpinRotate" CenterX="12" CenterY="12" />
+                                        </Ellipse.RenderTransform>
+                                        <Ellipse.Triggers>
+                                            <EventTrigger RoutedEvent="Loaded">
+                                                <BeginStoryboard>
+                                                    <Storyboard RepeatBehavior="Forever">
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="SpinRotate"
+                                                            Storyboard.TargetProperty="Angle"
+                                                            From="0" To="360"
+                                                            Duration="0:0:1" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </Ellipse.Triggers>
+                                    </Ellipse>
+                                    <!-- Tip text -->
+                                    <TextBlock x:Name="TipText"
+                                               Text="{TemplateBinding Tag}"
+                                               Foreground="{DynamicResource AntDesign.Brush.Primary}"
+                                               FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                               HorizontalAlignment="Center"
+                                               Margin="0,8,0,0"
+                                               Visibility="Collapsed" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Spinning state controlled via Tag="Spinning" -->
+                        <Trigger Property="Tag" Value="Spinning">
+                            <Setter TargetName="SpinOverlay"  Property="Visibility" Value="Visible" />
+                            <Setter TargetName="InnerContent" Property="Opacity"    Value="0.5" />
+                        </Trigger>
+                        <!-- Show tip when Tag contains text (use Tip attached via Content fallback) -->
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="TipText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         ANTSWITCH
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:AntSwitch}">
+        <Setter Property="Width"    Value="44" />
+        <Setter Property="Height"   Value="22" />
+        <Setter Property="Cursor"   Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AntSwitch}">
+                    <Border x:Name="PART_Track"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="11"
+                            Background="{DynamicResource AntDesign.Brush.Fill.Secondary}"
+                            Padding="2">
+                        <Grid>
+                            <!-- Checked / Unchecked labels -->
+                            <ContentPresenter x:Name="CheckedLabel"
+                                              Content="{TemplateBinding CheckedContent}"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Margin="6,0,22,0"
+                                              Visibility="Collapsed"
+                                              TextBlock.Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}"
+                                              TextBlock.FontSize="11" />
+                            <ContentPresenter x:Name="UncheckedLabel"
+                                              Content="{TemplateBinding UncheckedContent}"
+                                              HorizontalAlignment="Right"
+                                              VerticalAlignment="Center"
+                                              Margin="22,0,6,0"
+                                              Visibility="Visible"
+                                              TextBlock.Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                              TextBlock.FontSize="11" />
+
+                            <!-- Thumb (circle handle) -->
+                            <Ellipse x:Name="PART_Thumb"
+                                     Width="18"
+                                     Height="18"
+                                     Fill="White"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Margin="0">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect ShadowDepth="1"
+                                                      BlurRadius="3"
+                                                      Opacity="0.2"
+                                                      Color="#000000"
+                                                      Direction="270" />
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Checked state -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="PART_Track"      Property="Background"           Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="PART_Thumb"      Property="HorizontalAlignment"  Value="Right" />
+                            <Setter TargetName="CheckedLabel"    Property="Visibility"           Value="Visible" />
+                            <Setter TargetName="UncheckedLabel"  Property="Visibility"           Value="Collapsed" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Track" Property="Opacity" Value="0.4" />
+                        </Trigger>
+                        <!-- Small size -->
+                        <Trigger Property="Size" Value="Small">
+                            <Setter Property="Width"  Value="28" />
+                            <Setter Property="Height" Value="16" />
+                            <Setter TargetName="PART_Thumb" Property="Width"  Value="12" />
+                            <Setter TargetName="PART_Thumb" Property="Height" Value="12" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         RATE
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Rate}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Rate}">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Margin="2,0" Width="20" Height="20" Stretch="Uniform"
+                              Data="M12,2 L14.4,9.2 L22,9.2 L15.8,13.8 L18.2,21 L12,16.4 L5.8,21 L8.2,13.8 L2,9.2 L9.6,9.2 Z"
+                              Fill="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                        <Path Margin="2,0" Width="20" Height="20" Stretch="Uniform"
+                              Data="M12,2 L14.4,9.2 L22,9.2 L15.8,13.8 L18.2,21 L12,16.4 L5.8,21 L8.2,13.8 L2,9.2 L9.6,9.2 Z"
+                              Fill="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                        <Path Margin="2,0" Width="20" Height="20" Stretch="Uniform"
+                              Data="M12,2 L14.4,9.2 L22,9.2 L15.8,13.8 L18.2,21 L12,16.4 L5.8,21 L8.2,13.8 L2,9.2 L9.6,9.2 Z"
+                              Fill="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                        <Path Margin="2,0" Width="20" Height="20" Stretch="Uniform"
+                              Data="M12,2 L14.4,9.2 L22,9.2 L15.8,13.8 L18.2,21 L12,16.4 L5.8,21 L8.2,13.8 L2,9.2 L9.6,9.2 Z"
+                              Fill="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                        <Path Margin="2,0" Width="20" Height="20" Stretch="Uniform"
+                              Data="M12,2 L14.4,9.2 L22,9.2 L15.8,13.8 L18.2,21 L12,16.4 L5.8,21 L8.2,13.8 L2,9.2 L9.6,9.2 Z"
+                              Fill="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PROGRESS (line variant)
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Progress}">
+        <Setter Property="Height"      Value="8" />
+        <Setter Property="Background"  Value="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+        <Setter Property="Foreground"  Value="{DynamicResource AntDesign.Brush.Primary}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Progress}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Track -->
+                        <Border Grid.Column="0"
+                                Height="{TemplateBinding Height}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                ClipToBounds="True"
+                                VerticalAlignment="Center">
+                            <!-- Fill -->
+                            <Border x:Name="FillBar"
+                                    Background="{TemplateBinding Foreground}"
+                                    CornerRadius="4"
+                                    HorizontalAlignment="Left">
+                                <Border.Width>
+                                    <MultiBinding>
+                                        <MultiBinding.Converter>
+                                            <converters:PercentageWidthConverter  />
+                                        </MultiBinding.Converter>
+                                        <Binding Path="Percent" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border, AncestorLevel=1}" />
+                                    </MultiBinding>
+                                </Border.Width>
+                            </Border>
+                        </Border>
+
+                        <!-- Percentage text -->
+                        <TextBlock Grid.Column="1"
+                                   Margin="8,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}">
+                            <Run Text="{Binding Percent, RelativeSource={RelativeSource TemplatedParent}}" /><Run Text="%" />
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         STEP ITEM
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:StepItem}">
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:StepItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Step indicator column -->
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Vertical"
+                                    HorizontalAlignment="Center">
+                            <!-- Circle indicator -->
+                            <Border x:Name="StepCircle"
+                                    Width="32"
+                                    Height="32"
+                                    CornerRadius="16"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    HorizontalAlignment="Center">
+                                <TextBlock x:Name="StepNumber"
+                                           Text="{TemplateBinding Tag}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                            </Border>
+                            <!-- Connector line -->
+                            <Border x:Name="ConnectorLine"
+                                    Width="1"
+                                    MinHeight="20"
+                                    Background="{DynamicResource AntDesign.Brush.Border}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,4,0,0" />
+                        </StackPanel>
+
+                        <!-- Step content column -->
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Vertical"
+                                    Margin="12,0,0,16">
+                            <TextBlock x:Name="TitleText"
+                                       Text="{TemplateBinding Title}"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                       FontSize="{DynamicResource AntDesign.FontSize}"
+                                       Margin="0,4,0,0" />
+                            <!-- Description serves as subtitle -->
+                            <TextBlock x:Name="DescText"
+                                       Text="{TemplateBinding Description}"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                                       FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,4,0,0"
+                                       Visibility="Collapsed" />
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Finished state -->
+                        <Trigger Property="ComputedStatus" Value="Finish">
+                            <Setter TargetName="StepCircle"  Property="Background"   Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="StepCircle"  Property="BorderBrush"  Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="StepNumber"  Property="Text"         Value="✓" />
+                            <Setter TargetName="StepNumber"  Property="Foreground"   Value="{DynamicResource AntDesign.Brush.Text.LightSolid}" />
+                        </Trigger>
+                        <!-- Active / Process state -->
+                        <Trigger Property="ComputedStatus" Value="Process">
+                            <Setter TargetName="StepCircle"  Property="Background"   Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="StepCircle"  Property="BorderBrush"  Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="StepNumber"  Property="Foreground"   Value="{DynamicResource AntDesign.Brush.Text.LightSolid}" />
+                            <Setter TargetName="TitleText"   Property="Foreground"   Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <!-- Error state -->
+                        <Trigger Property="ComputedStatus" Value="Error">
+                            <Setter TargetName="StepCircle"  Property="Background"   Value="{DynamicResource AntDesign.Brush.Error.Bg}" />
+                            <Setter TargetName="StepCircle"  Property="BorderBrush"  Value="{DynamicResource AntDesign.Brush.Error}" />
+                            <Setter TargetName="StepNumber"  Property="Foreground"   Value="{DynamicResource AntDesign.Brush.Error}" />
+                            <Setter TargetName="TitleText"   Property="Foreground"   Value="{DynamicResource AntDesign.Brush.Error}" />
+                        </Trigger>
+                        <!-- (subtitle removed - using Description instead) -->
+                        <!-- Description -->
+                        <Trigger Property="Description" Value="{x:Null}">
+                            <Setter TargetName="DescText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         STEPS
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Steps}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Steps}">
+                    <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         BREADCRUMB ITEM
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:BreadcrumbItem}">
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+        <Setter Property="FontSize"   Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Cursor"     Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BreadcrumbItem}">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <ContentPresenter x:Name="ItemContent"
+                                          VerticalAlignment="Center"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}" />
+                        <!-- Separator -->
+                        <TextBlock x:Name="Separator"
+                                   Text="/"
+                                   Margin="8,0"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ItemContent" Property="TextBlock.Foreground" Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         BREADCRUMB
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Breadcrumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Breadcrumb}">
+                    <Border Background="Transparent">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PAGINATION
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Pagination}">
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Pagination}">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <!-- Previous button -->
+                        <Button x:Name="PART_PrevButton"
+                                Width="32"
+                                Height="32"
+                                Margin="0,0,4,0"
+                                Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                BorderThickness="1"
+                                ToolTip="Previous Page">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{DynamicResource AntDesign.CornerRadius}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Path Data="M10,6 L6,10 L10,14"
+                                  Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                  StrokeThickness="1.5"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round"
+                                  StrokeLineJoin="Round"
+                                  Width="16" Height="20"
+                                  Stretch="None"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+                        </Button>
+
+                        <!-- Current page indicator -->
+                        <Border Width="32"
+                                Height="32"
+                                Margin="0,0,4,0"
+                                Background="{DynamicResource AntDesign.Brush.Primary}"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource AntDesign.Brush.Primary}"
+                                CornerRadius="{DynamicResource AntDesign.CornerRadius}">
+                            <TextBlock Text="{TemplateBinding Current}"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}"
+                                       FontSize="{DynamicResource AntDesign.FontSize}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center" />
+                        </Border>
+
+                        <!-- Page count hint -->
+                        <TextBlock Text="/"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,4,0" />
+                        <TextBlock Text="{TemplateBinding PageCount}"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,4,0" />
+
+                        <!-- Next button -->
+                        <Button x:Name="PART_NextButton"
+                                Width="32"
+                                Height="32"
+                                Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                BorderThickness="1"
+                                ToolTip="Next Page">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{DynamicResource AntDesign.CornerRadius}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Path Data="M6,6 L10,10 L6,14"
+                                  Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                  StrokeThickness="1.5"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round"
+                                  StrokeLineJoin="Round"
+                                  Width="16" Height="20"
+                                  Stretch="None"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+                        </Button>
+
+                        <!-- Quick jumper -->
+                        <StackPanel x:Name="QuickJumperPanel"
+                                    Orientation="Horizontal"
+                                    Margin="8,0,0,0"
+                                    Visibility="Collapsed">
+                            <TextBlock Text="Go to"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,4,0"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                            <TextBox x:Name="PART_QuickJumper"
+                                     Width="48"
+                                     Height="32"
+                                     VerticalContentAlignment="Center"
+                                     Padding="4,0"
+                                     BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                     BorderThickness="1" />
+                        </StackPanel>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowQuickJumper" Value="True">
+                            <Setter TargetName="QuickJumperPanel" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         TIMELINE ITEM
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:TimelineItem}">
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TimelineItem}">
+                    <Grid MinHeight="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="24" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Line + Dot column -->
+                        <Grid Grid.Column="0">
+                            <!-- Vertical line -->
+                            <Border x:Name="VertLine"
+                                    Width="2"
+                                    Background="{DynamicResource AntDesign.Brush.Border}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,20,0,0" />
+                            <!-- Dot -->
+                            <Ellipse x:Name="DotIndicator"
+                                     Width="10"
+                                     Height="10"
+                                     Fill="{DynamicResource AntDesign.Brush.Primary}"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Top"
+                                     Margin="0,7,0,0" />
+                        </Grid>
+
+                        <!-- Content -->
+                        <StackPanel Grid.Column="1"
+                                    Margin="12,4,0,16"
+                                    Orientation="Vertical">
+                            <!-- Label -->
+                            <TextBlock x:Name="LabelText"
+                                       Text="{TemplateBinding Label}"
+                                       FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                       Margin="0,0,0,2"
+                                       Visibility="Collapsed" />
+                            <!-- Main content -->
+                            <ContentPresenter TextBlock.Foreground="{TemplateBinding Foreground}" />
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Label" Value="{x:Null}">
+                            <Setter TargetName="LabelText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Label, RelativeSource={RelativeSource TemplatedParent}}" Value="">
+                            <Setter TargetName="LabelText" Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <!-- Color variants via Tag -->
+                        <Trigger Property="Tag" Value="Success">
+                            <Setter TargetName="DotIndicator" Property="Fill" Value="{DynamicResource AntDesign.Brush.Success}" />
+                        </Trigger>
+                        <Trigger Property="Tag" Value="Error">
+                            <Setter TargetName="DotIndicator" Property="Fill" Value="{DynamicResource AntDesign.Brush.Error}" />
+                        </Trigger>
+                        <Trigger Property="Tag" Value="Warning">
+                            <Setter TargetName="DotIndicator" Property="Fill" Value="{DynamicResource AntDesign.Brush.Warning}" />
+                        </Trigger>
+                        <Trigger Property="Tag" Value="Gray">
+                            <Setter TargetName="DotIndicator" Property="Fill" Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         TIMELINE
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Timeline}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Timeline}">
+                    <Border Background="Transparent">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         SEGMENTED ITEM
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:SegmentedItem}">
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor"     Value="Hand" />
+        <Setter Property="FontSize"   Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SegmentedItem}">
+                    <Border x:Name="ItemBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius.SM}"
+                            Padding="12,4">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Selected -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource AntDesign.Brush.Bg.Container}" />
+                            <Setter TargetName="ItemBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="1"
+                                                      BlurRadius="4"
+                                                      Opacity="0.1"
+                                                      Color="#000000"
+                                                      Direction="270" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+                        </Trigger>
+                        <!-- Hover -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                        </MultiTrigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                            <Setter Property="Cursor" Value="Arrow" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         SEGMENTED
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Segmented}">
+        <Setter Property="Background"    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+        <Setter Property="BorderBrush"   Value="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Segmented}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="4">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         RESULT
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Result}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Result}">
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <!-- Icon area -->
+                        <Border x:Name="IconArea"
+                                Width="72"
+                                Height="72"
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,24">
+                            <!-- Default: Info icon -->
+                            <Path x:Name="StatusIcon"
+                                  Data="M36,4 A32,32,0,1,1,36,68 A32,32,0,1,1,36,4 M36,24 L36,36 M36,46 L36,48"
+                                  Stroke="{DynamicResource AntDesign.Brush.Primary}"
+                                  StrokeThickness="3"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round"
+                                  Stretch="Uniform" />
+                        </Border>
+
+                        <!-- Custom icon (overrides built-in) -->
+                        <ContentPresenter x:Name="CustomIcon"
+                                          Content="{TemplateBinding Icon}"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,0,0,24"
+                                          Visibility="Collapsed" />
+
+                        <!-- Title -->
+                        <TextBlock Text="{TemplateBinding Title}"
+                                   FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   Margin="0,0,0,8" />
+
+                        <!-- SubTitle -->
+                        <TextBlock Text="{TemplateBinding SubTitle}"
+                                   FontSize="{DynamicResource AntDesign.FontSize}"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,24" />
+
+                        <!-- Extra content (e.g. buttons) -->
+                        <ContentPresenter Content="{TemplateBinding Extra}"
+                                          HorizontalAlignment="Center"
+                                          Margin="0,0,0,16" />
+
+                        <!-- Main content slot -->
+                        <ContentPresenter HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <!-- Custom icon overrides -->
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="CustomIcon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="IconArea"   Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!-- Success -->
+                        <Trigger Property="Status" Value="Success">
+                            <Setter TargetName="StatusIcon" Property="Data"   Value="M4,36 L16,48 L44,20" />
+                            <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource AntDesign.Brush.Success}" />
+                        </Trigger>
+                        <!-- Error -->
+                        <Trigger Property="Status" Value="Error">
+                            <Setter TargetName="StatusIcon" Property="Data"   Value="M20,20 L52,52 M52,20 L20,52" />
+                            <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource AntDesign.Brush.Error}" />
+                        </Trigger>
+                        <!-- Warning -->
+                        <Trigger Property="Status" Value="Warning">
+                            <Setter TargetName="StatusIcon" Property="Data"   Value="M36,8 L64,60 L8,60 Z M36,36 L36,46 M36,52 L36,54" />
+                            <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource AntDesign.Brush.Warning}" />
+                        </Trigger>
+                        <!-- Forbidden 403 -->
+                        <Trigger Property="Status" Value="Forbidden403">
+                            <Setter TargetName="StatusIcon" Property="Data"   Value="M36,4 A32,32,0,1,1,36,68 A32,32,0,1,1,36,4 M20,36 L52,36" />
+                            <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource AntDesign.Brush.Warning}" />
+                        </Trigger>
+                        <!-- Not Found 404 -->
+                        <Trigger Property="Status" Value="NotFound404">
+                            <Setter TargetName="StatusIcon" Property="Data"   Value="M16,36 L56,36 M16,28 L36,8 L56,28" />
+                            <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                        </Trigger>
+                        <!-- Server Error 500 -->
+                        <Trigger Property="Status" Value="ServerError500">
+                            <Setter TargetName="StatusIcon" Property="Data"   Value="M16,20 L56,20 M16,36 L56,36 M16,52 L40,52" />
+                            <Setter TargetName="StatusIcon" Property="Stroke" Value="{DynamicResource AntDesign.Brush.Error}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         INPUT NUMBER
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:InputNumber}">
+        <Setter Property="Height"          Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Background"      Value="{DynamicResource AntDesign.Brush.Bg.Container}" />
+        <Setter Property="BorderBrush"     Value="{DynamicResource AntDesign.Brush.Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize"        Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Foreground"      Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:InputNumber}">
+                    <Border x:Name="RootBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Height="{TemplateBinding Height}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="22" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Text input -->
+                            <TextBox x:Name="PART_TextBox"
+                                     Grid.Column="0"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Padding="11,4"
+                                     VerticalContentAlignment="Center"
+                                     FontSize="{TemplateBinding FontSize}"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+
+                            <!-- Up/Down button stack -->
+                            <Border Grid.Column="1"
+                                    BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                    BorderThickness="1,0,0,0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Up -->
+                                    <Border x:Name="PART_UpButton"
+                                            Grid.Row="0"
+                                            BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                            BorderThickness="0,0,0,1"
+                                            Background="Transparent"
+                                            Cursor="Hand">
+                                        <Path Data="M5,8 L10,3 L15,8"
+                                              Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                              StrokeThickness="1.2"
+                                              StrokeStartLineCap="Round"
+                                              StrokeEndLineCap="Round"
+                                              StrokeLineJoin="Round"
+                                              Width="20" Height="11"
+                                              Stretch="None"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                                    </Border>
+
+                                    <!-- Down -->
+                                    <Border x:Name="PART_DownButton"
+                                            Grid.Row="1"
+                                            Background="Transparent"
+                                            Cursor="Hand">
+                                        <Path Data="M5,3 L10,8 L15,3"
+                                              Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                              StrokeThickness="1.2"
+                                              StrokeStartLineCap="Round"
+                                              StrokeEndLineCap="Round"
+                                              StrokeLineJoin="Round"
+                                              Width="20" Height="11"
+                                              Stretch="None"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Background"  Value="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         MODAL
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Modal}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Modal}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="OpenStates">
+                                <VisualState x:Name="Open">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverlayRoot"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="OverlayRoot"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0" To="1"
+                                                         Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Closed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="OverlayRoot"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1" To="0"
+                                                         Duration="0:0:0.15" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverlayRoot"
+                                                                       Storyboard.TargetProperty="Visibility"
+                                                                       BeginTime="0:0:0.15">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <!-- Page content underneath -->
+                        <ContentPresenter />
+
+                        <!-- Overlay (mask + dialog) -->
+                        <Grid x:Name="OverlayRoot"
+                              Visibility="Collapsed"
+                              Opacity="0">
+                            <!-- Semi-transparent mask -->
+                            <Border x:Name="PART_Mask"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Mask}" />
+
+                            <!-- Dialog panel -->
+                            <Border x:Name="PART_DialogRoot"
+                                    Width="{TemplateBinding DialogWidth}"
+                                    MaxHeight="80vh"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    CornerRadius="{DynamicResource AntDesign.CornerRadius.LG}"
+                                    Padding="0">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="4"
+                                                      BlurRadius="24"
+                                                      Opacity="0.18"
+                                                      Color="#000000"
+                                                      Direction="270" />
+                                </Border.Effect>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Title bar -->
+                                    <Grid x:Name="PART_TitleBar"
+                                          Grid.Row="0"
+                                          Margin="24,16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{TemplateBinding Title}"
+                                                   FontWeight="SemiBold"
+                                                   FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                                                   Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                                   VerticalAlignment="Center" />
+                                        <!-- Close X button -->
+                                        <Button x:Name="PART_CloseButton"
+                                                Grid.Column="1"
+                                                Width="22"
+                                                Height="22"
+                                                Padding="0"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Cursor="Hand"
+                                                VerticalAlignment="Center">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderThickness="0"
+                                                            CornerRadius="4">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                            <Path Data="M4,4 L18,18 M18,4 L4,18"
+                                                  Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                                  StrokeThickness="1.5"
+                                                  StrokeStartLineCap="Round"
+                                                  StrokeEndLineCap="Round"
+                                                  Width="22" Height="22"
+                                                  Stretch="None"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                                        </Button>
+                                    </Grid>
+
+                                    <!-- Divider under title -->
+                                    <Border Grid.Row="0"
+                                            Height="1"
+                                            Background="{DynamicResource AntDesign.Brush.Border}"
+                                            VerticalAlignment="Bottom" />
+
+                                    <!-- Dialog body -->
+                                    <ScrollViewer Grid.Row="1"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  Margin="24,16">
+                                        <ContentPresenter Content="{TemplateBinding DialogContent}" />
+                                    </ScrollViewer>
+
+                                    <!-- Footer -->
+                                    <Border Grid.Row="2"
+                                            BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                            BorderThickness="0,1,0,0"
+                                            Padding="16,12">
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Right">
+                                            <Button x:Name="PART_CancelButton"
+                                                    Content="{TemplateBinding CancelText}"
+                                                    Margin="0,0,8,0"
+                                                    Height="32"
+                                                    Padding="16,0"
+                                                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                                    BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                                    BorderThickness="1"
+                                                    Foreground="{DynamicResource AntDesign.Brush.Text}">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border Background="{TemplateBinding Background}"
+                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                                                Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                                              VerticalAlignment="Center"
+                                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                            <Button x:Name="PART_OkButton"
+                                                    Content="{TemplateBinding OkText}"
+                                                    Height="32"
+                                                    Padding="16,0"
+                                                    Background="{DynamicResource AntDesign.Brush.Primary}"
+                                                    BorderBrush="{DynamicResource AntDesign.Brush.Primary}"
+                                                    BorderThickness="1"
+                                                    Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border Background="{TemplateBinding Background}"
+                                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                                CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                                                Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                                              VerticalAlignment="Center"
+                                                                              TextBlock.Foreground="{TemplateBinding Foreground}" />
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Hide close button when Closable=false -->
+                        <Trigger Property="Closable" Value="False">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         DRAWER
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Drawer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Drawer}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="OpenStates">
+                                <VisualState x:Name="Open">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverlayRoot"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Mask"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="0" To="1"
+                                                         Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_DrawerPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                         To="0"
+                                                         Duration="0:0:0.25">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Closed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Mask"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         From="1" To="0"
+                                                         Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetName="PART_DrawerPanel"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                                         To="400"
+                                                         Duration="0:0:0.25">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseIn" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OverlayRoot"
+                                                                       Storyboard.TargetProperty="Visibility"
+                                                                       BeginTime="0:0:0.25">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="PlacementStates">
+                                <VisualState x:Name="PlacementRight" />
+                                <VisualState x:Name="PlacementLeft">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DrawerPanel"
+                                                                       Storyboard.TargetProperty="HorizontalAlignment">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Left}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PlacementTop">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DrawerPanel"
+                                                                       Storyboard.TargetProperty="HorizontalAlignment">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DrawerPanel"
+                                                                       Storyboard.TargetProperty="VerticalAlignment">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Top}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PlacementBottom">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DrawerPanel"
+                                                                       Storyboard.TargetProperty="HorizontalAlignment">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static HorizontalAlignment.Stretch}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_DrawerPanel"
+                                                                       Storyboard.TargetProperty="VerticalAlignment">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Bottom}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <!-- Underlying page content -->
+                        <ContentPresenter />
+
+                        <!-- Overlay -->
+                        <Grid x:Name="OverlayRoot"
+                              Visibility="Collapsed">
+                            <!-- Mask -->
+                            <Border x:Name="PART_Mask"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Mask}"
+                                    Opacity="0" />
+
+                            <!-- Drawer panel -->
+                            <Border x:Name="PART_DrawerPanel"
+                                    Width="{TemplateBinding DrawerWidth}"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Stretch"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                    Padding="0">
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="400" />
+                                </Border.RenderTransform>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0"
+                                                      BlurRadius="16"
+                                                      Opacity="0.16"
+                                                      Color="#000000" />
+                                </Border.Effect>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Title bar -->
+                                    <Grid x:Name="PART_TitleBar"
+                                          Grid.Row="0"
+                                          Margin="24,16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0"
+                                                   Text="{TemplateBinding Title}"
+                                                   FontWeight="SemiBold"
+                                                   FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                                                   Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                                   VerticalAlignment="Center" />
+                                        <Button x:Name="PART_CloseButton"
+                                                Grid.Column="1"
+                                                Width="22"
+                                                Height="22"
+                                                Padding="0"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Cursor="Hand"
+                                                VerticalAlignment="Center">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderThickness="0"
+                                                            CornerRadius="4">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                            <Path Data="M4,4 L18,18 M18,4 L4,18"
+                                                  Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                                  StrokeThickness="1.5"
+                                                  StrokeStartLineCap="Round"
+                                                  StrokeEndLineCap="Round"
+                                                  Width="22" Height="22"
+                                                  Stretch="None"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                                        </Button>
+                                    </Grid>
+
+                                    <!-- Divider -->
+                                    <Border Grid.Row="0"
+                                            Height="1"
+                                            Background="{DynamicResource AntDesign.Brush.Border}"
+                                            VerticalAlignment="Bottom" />
+
+                                    <!-- Drawer content -->
+                                    <ScrollViewer Grid.Row="1"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  Padding="24,16">
+                                        <ContentPresenter Content="{TemplateBinding DrawerContent}" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Closable" Value="False">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         MESSAGE CONTAINER
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:MessageContainer}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment"   Value="Top" />
+        <Setter Property="Margin"              Value="0,16,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MessageContainer}">
+                    <Border HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Margin="0,16,0,0">
+                        <ItemsControl x:Name="PART_MessageList"
+                                      ItemsSource="{TemplateBinding ItemsSource}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"
+                                                HorizontalAlignment="Center" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="0,0,0,8"
+                                            Padding="16,8"
+                                            Background="{DynamicResource AntDesign.Brush.Bg.Elevated}"
+                                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                            HorizontalAlignment="Center">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="2"
+                                                              BlurRadius="8"
+                                                              Opacity="0.1"
+                                                              Color="#000000"
+                                                              Direction="270" />
+                                        </Border.Effect>
+                                        <StackPanel Orientation="Horizontal">
+                                            <!-- Icon placeholder -->
+                                            <Ellipse Width="14"
+                                                     Height="14"
+                                                     Fill="{DynamicResource AntDesign.Brush.Primary}"
+                                                     Margin="0,0,8,0"
+                                                     VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding Content}"
+                                                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                                       FontSize="{DynamicResource AntDesign.FontSize}"
+                                                       VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         NOTIFICATION CONTAINER
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:NotificationContainer}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment"   Value="Top" />
+        <Setter Property="Margin"              Value="0,24,24,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NotificationContainer}">
+                    <Border HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,24,24,0">
+                        <ItemsControl x:Name="PART_NotificationList"
+                                      ItemsSource="{TemplateBinding ItemsSource}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="320"
+                                            Margin="0,0,0,8"
+                                            Padding="16"
+                                            Background="{DynamicResource AntDesign.Brush.Bg.Elevated}"
+                                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                            BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                                            BorderThickness="1">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="2"
+                                                              BlurRadius="12"
+                                                              Opacity="0.12"
+                                                              Color="#000000"
+                                                              Direction="270" />
+                                        </Border.Effect>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <!-- Icon -->
+                                            <Ellipse Grid.Column="0"
+                                                     Width="16"
+                                                     Height="16"
+                                                     Fill="{DynamicResource AntDesign.Brush.Primary}"
+                                                     Margin="0,2,10,0"
+                                                     VerticalAlignment="Top" />
+                                            <!-- Title + Description -->
+                                            <StackPanel Grid.Column="1"
+                                                        Orientation="Vertical">
+                                                <TextBlock Text="{Binding Title}"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                                           FontSize="{DynamicResource AntDesign.FontSize}"
+                                                           Margin="0,0,0,4" />
+                                                <TextBlock Text="{Binding Description}"
+                                                           Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                                           FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                                           TextWrapping="Wrap" />
+                                            </StackPanel>
+                                            <!-- Close button -->
+                                            <Border Grid.Column="2"
+                                                    Width="16"
+                                                    Height="16"
+                                                    Margin="8,0,0,0"
+                                                    Cursor="Hand"
+                                                    VerticalAlignment="Top">
+                                                <Path Data="M3,3 L13,13 M13,3 L3,13"
+                                                      Stroke="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                                      StrokeThickness="1.2"
+                                                      StrokeStartLineCap="Round"
+                                                      StrokeEndLineCap="Round"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center" />
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         POPCONFIRM
+    ════════════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type controls:Popconfirm}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Popconfirm}">
+                    <Grid>
+                        <!-- Trigger content -->
+                        <ContentPresenter x:Name="TriggerContent" />
+
+                        <!-- Popup -->
+                        <Popup x:Name="PART_Popup"
+                               PlacementTarget="{Binding ElementName=TriggerContent}"
+                               Placement="Bottom"
+                               StaysOpen="False"
+                               AllowsTransparency="True"
+                               IsOpen="{Binding IsPopupOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <Border MinWidth="200"
+                                    MaxWidth="350"
+                                    Padding="12,8"
+                                    Background="{DynamicResource AntDesign.Brush.Bg.Elevated}"
+                                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                                    BorderThickness="1"
+                                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                                    Margin="0,4,0,0">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="2"
+                                                      BlurRadius="8"
+                                                      Opacity="0.1"
+                                                      Color="#000000"
+                                                      Direction="270" />
+                                </Border.Effect>
+                                <StackPanel Orientation="Vertical">
+                                    <!-- Title row with icon -->
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0,0,0,8">
+                                        <Path Data="M8,1 L15,14 L1,14 Z M8,6 L8,9 M8,11 L8,11.5"
+                                              Stroke="{DynamicResource AntDesign.Brush.Warning}"
+                                              StrokeThickness="1.2"
+                                              StrokeStartLineCap="Round"
+                                              StrokeEndLineCap="Round"
+                                              Width="16" Height="16"
+                                              Stretch="Uniform"
+                                              Margin="0,0,8,0"
+                                              VerticalAlignment="Center" />
+                                        <TextBlock Text="{TemplateBinding Title}"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                                   FontSize="{DynamicResource AntDesign.FontSize}"
+                                                   VerticalAlignment="Center" />
+                                    </StackPanel>
+
+                                    <!-- Spacing -->
+
+                                    <!-- Action buttons -->
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Right">
+                                        <Button x:Name="PART_CancelButton"
+                                                Content="{TemplateBinding CancelText}"
+                                                Height="24"
+                                                Padding="8,0"
+                                                Margin="0,0,8,0"
+                                                Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                                BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                                                BorderThickness="1"
+                                                Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                                FontSize="{DynamicResource AntDesign.FontSize.SM}">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            CornerRadius="{DynamicResource AntDesign.CornerRadius.SM}"
+                                                            Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center"
+                                                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                                          TextBlock.FontSize="{DynamicResource AntDesign.FontSize.SM}" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                        <Button x:Name="PART_OkButton"
+                                                Content="{TemplateBinding OkText}"
+                                                Height="24"
+                                                Padding="8,0"
+                                                Background="{DynamicResource AntDesign.Brush.Primary}"
+                                                BorderBrush="{DynamicResource AntDesign.Brush.Primary}"
+                                                BorderThickness="1"
+                                                Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}"
+                                                FontSize="{DynamicResource AntDesign.FontSize.SM}">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            CornerRadius="{DynamicResource AntDesign.CornerRadius.SM}"
+                                                            Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center"
+                                                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                                          TextBlock.FontSize="{DynamicResource AntDesign.FontSize.SM}" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

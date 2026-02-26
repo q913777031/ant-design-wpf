@@ -1,0 +1,159 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.ButtonPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Button"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="To trigger an operation."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Button Types -->
+            <TextBlock Text="Button Types"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Basic types: Primary, Default, Dashed, Text, Link"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,16" />
+                    <WrapPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource AntDesignPrimaryButton}"
+                                Content="Primary"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignDefaultButton}"
+                                Content="Default"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignDashedButton}"
+                                Content="Dashed"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignTextButton}"
+                                Content="Text"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignLinkButton}"
+                                Content="Link"
+                                Margin="0,0,8,8" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Section: Danger Buttons -->
+            <TextBlock Text="Danger Buttons"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Danger variants for destructive actions"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,16" />
+                    <WrapPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource AntDesignDangerButton}"
+                                Content="Danger Primary"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignDangerDefaultButton}"
+                                Content="Danger Default"
+                                Margin="0,0,8,8" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Section: Button Sizes -->
+            <TextBlock Text="Button Sizes"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Buttons in different sizes: Large, Default, Small"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,16" />
+                    <WrapPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Style="{StaticResource AntDesignLargePrimaryButton}"
+                                Content="Large"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignPrimaryButton}"
+                                Content="Default"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignSmallPrimaryButton}"
+                                Content="Small"
+                                Margin="0,0,8,8" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Section: Disabled State -->
+            <TextBlock Text="Disabled State"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Buttons in disabled state"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,16" />
+                    <WrapPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource AntDesignPrimaryButton}"
+                                Content="Primary (disabled)"
+                                IsEnabled="False"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignDefaultButton}"
+                                Content="Default (disabled)"
+                                IsEnabled="False"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignDashedButton}"
+                                Content="Dashed (disabled)"
+                                IsEnabled="False"
+                                Margin="0,0,8,8" />
+                        <Button Style="{StaticResource AntDesignTextButton}"
+                                Content="Text (disabled)"
+                                IsEnabled="False"
+                                Margin="0,0,8,8" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

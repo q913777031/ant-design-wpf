@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>AntDesign.WPF.Colors</RootNamespace>
+    <AssemblyName>AntDesign.WPF.Colors</AssemblyName>
+    <Description>Ant Design color palette for WPF</Description>
+    <PackageId>AntDesign.WPF.Colors</PackageId>
+    <PackageTags>wpf;antdesign;colors;palette</PackageTags>
+  </PropertyGroup>
+
+</Project>

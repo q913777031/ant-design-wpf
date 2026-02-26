@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Company>AntDesign.WPF Contributors</Company>
+    <Copyright>Copyright (c) 2026 AntDesign.WPF Contributors</Copyright>
+    <Version>1.0.0-preview.1</Version>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,93 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.ModalPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="clr-namespace:AntDesign.WPF.Controls;assembly=AntDesign.WPF"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Modal"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Modal dialogs for displaying messages that require attention."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- The Modal wraps the entire content area -->
+            <antd:Modal x:Name="DemoModal"
+                        Title="Basic Modal"
+                        DialogContent="Some contents in the modal dialog. Click OK or Cancel to close."
+                        OkText="OK"
+                        CancelText="Cancel">
+
+                <!-- Page content (behind the modal overlay) -->
+                <StackPanel>
+
+                    <!-- Section: Basic Modal -->
+                    <TextBlock Text="Basic Modal"
+                               FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,16" />
+
+                    <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                            BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="24"
+                            Margin="0,0,0,24">
+                        <StackPanel>
+                            <TextBlock Text="Click the button to open a modal dialog:"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                       Margin="0,0,0,16" />
+                            <WrapPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource AntDesignPrimaryButton}"
+                                        Content="Open Modal"
+                                        Margin="0,0,8,8"
+                                        Click="OpenModal_Click" />
+                                <Button Style="{StaticResource AntDesignDefaultButton}"
+                                        Content="Open Confirm Modal"
+                                        Margin="0,0,8,8"
+                                        Click="OpenConfirmModal_Click" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Section: Modal Width -->
+                    <TextBlock Text="Custom Width"
+                               FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,16" />
+
+                    <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                            BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="24"
+                            Margin="0,0,0,24">
+                        <StackPanel>
+                            <TextBlock Text="Open a 720px wide modal:"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                       Margin="0,0,0,16" />
+                            <Button Style="{StaticResource AntDesignDefaultButton}"
+                                    Content="Open Wide Modal"
+                                    HorizontalAlignment="Left"
+                                    Click="OpenWideModal_Click" />
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </antd:Modal>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

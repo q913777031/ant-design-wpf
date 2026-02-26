@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "AntDesign.WPF/1.0.0-preview.1": {
+        "dependencies": {
+          "AntDesign.WPF.Colors": "1.0.0-preview.1"
+        },
+        "runtime": {
+          "AntDesign.WPF.dll": {}
+        }
+      },
+      "AntDesign.WPF.Colors/1.0.0-preview.1": {
+        "runtime": {
+          "AntDesign.WPF.Colors.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AntDesign.WPF/1.0.0-preview.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AntDesign.WPF.Colors/1.0.0-preview.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

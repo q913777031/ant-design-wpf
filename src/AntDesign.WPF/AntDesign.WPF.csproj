@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>AntDesign.WPF</RootNamespace>
+    <AssemblyName>AntDesign.WPF</AssemblyName>
+    <Description>Ant Design style control library for WPF</Description>
+    <PackageId>AntDesign.WPF</PackageId>
+    <PackageTags>wpf;antdesign;controls;ui;theme</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AntDesign.WPF.Colors\AntDesign.WPF.Colors.csproj" />
+  </ItemGroup>
+
+</Project>

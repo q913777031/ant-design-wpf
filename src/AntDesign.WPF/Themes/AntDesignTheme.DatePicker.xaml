@@ -1,0 +1,279 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ===================================================================
+         Calendar Day Button Style
+         =================================================================== -->
+    <Style x:Key="AntDesign.CalendarDayButton" TargetType="{x:Type CalendarDayButton}">
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CalendarDayButton}">
+                    <Border
+                        x:Name="DayBorder"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="DayBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="DayBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.LightSolid}" />
+                        </Trigger>
+                        <Trigger Property="IsToday" Value="True">
+                            <Setter TargetName="DayBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="DayBorder" Property="BorderThickness" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsBlackedOut" Value="True">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                            <Setter Property="IsEnabled" Value="False" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsToday" Value="True" />
+                                <Condition Property="IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DayBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="DayBorder" Property="BorderThickness" Value="0" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         Calendar Button Style (month/year navigation buttons)
+         =================================================================== -->
+    <Style x:Key="AntDesign.CalendarButton" TargetType="{x:Type CalendarButton}">
+        <Setter Property="MinWidth" Value="60" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CalendarButton}">
+                    <Border
+                        x:Name="CalBtnBorder"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        Padding="4,2">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CalBtnBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="CalBtnBorder" Property="Background"
+                                    Value="Transparent" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         Calendar Style
+         =================================================================== -->
+    <Style x:Key="AntDesign.Calendar" TargetType="{x:Type Calendar}">
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="{DynamicResource AntDesign.Brush.Bg.Elevated}" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="CalendarDayButtonStyle" Value="{StaticResource AntDesign.CalendarDayButton}" />
+        <Setter Property="CalendarButtonStyle" Value="{StaticResource AntDesign.CalendarButton}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Calendar}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius.LG}"
+                        Padding="12">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                Color="#000000"
+                                Opacity="0.12"
+                                BlurRadius="12"
+                                ShadowDepth="4"
+                                Direction="270" />
+                        </Border.Effect>
+                        <CalendarItem
+                            x:Name="PART_CalendarItem"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         DatePicker TextBox Style
+         =================================================================== -->
+    <Style x:Key="AntDesign.DatePickerTextBox" TargetType="{x:Type DatePickerTextBox}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
+                    <TextBox
+                        x:Name="PART_TextBox"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="{TemplateBinding Foreground}"
+                        FontSize="{TemplateBinding FontSize}"
+                        Padding="{TemplateBinding Padding}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Text="{Binding Path=SelectedDate,
+                                       RelativeSource={RelativeSource AncestorType={x:Type DatePicker}},
+                                       StringFormat={}{0:yyyy-MM-dd}}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===================================================================
+         DatePicker Style
+         =================================================================== -->
+    <Style x:Key="AntDesign.DatePicker" TargetType="{x:Type DatePicker}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Height" Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="FontSize" Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Text}" />
+        <Setter Property="Background" Value="{DynamicResource AntDesign.Brush.Bg.Container}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AntDesign.Brush.Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="11,4" />
+        <Setter Property="CalendarStyle" Value="{StaticResource AntDesign.Calendar}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePicker}">
+                    <Border
+                        x:Name="OuterBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                        SnapsToDevicePixels="True">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Text input area -->
+                            <DatePickerTextBox
+                                Grid.Column="0"
+                                x:Name="PART_TextBox"
+                                Style="{StaticResource AntDesign.DatePickerTextBox}"
+                                Foreground="{TemplateBinding Foreground}"
+                                FontSize="{TemplateBinding FontSize}"
+                                VerticalAlignment="Center" />
+
+                            <!-- Calendar icon button -->
+                            <Button
+                                Grid.Column="1"
+                                x:Name="PART_Button"
+                                Focusable="False"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Padding="4,0,0,0"
+                                Cursor="Hand"
+                                VerticalAlignment="Center">
+                                <!-- Calendar icon using Path geometry -->
+                                <Path
+                                    x:Name="CalendarIcon"
+                                    Width="14"
+                                    Height="14"
+                                    Stretch="Uniform"
+                                    Fill="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                    Data="M 1 2 C 1 1.448 1.448 1 2 1 L 3 1 L 3 0 L 4 0 L 4 1 L 8 1 L 8 0 L 9 0 L 9 1 L 10 1 C 10.552 1 11 1.448 11 2 L 11 11 C 11 11.552 10.552 12 10 12 L 2 12 C 1.448 12 1 11.552 1 11 Z M 2 2 L 2 11 L 10 11 L 10 2 Z M 3 5 L 5 5 L 5 7 L 3 7 Z M 6 5 L 8 5 L 8 7 L 6 7 Z M 9 5 L 9 7 L 9 5 Z M 3 8 L 5 8 L 5 10 L 3 10 Z M 6 8 L 8 8 L 8 10 L 6 10 Z M 2 3 L 10 3 L 10 4 L 2 4 Z" />
+                            </Button>
+
+                            <!-- Dropdown popup -->
+                            <Popup
+                                x:Name="PART_Popup"
+                                AllowsTransparency="True"
+                                Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=OuterBorder}"
+                                StaysOpen="False"
+                                VerticalOffset="4"
+                                PopupAnimation="Fade">
+                                <Calendar
+                                    x:Name="PART_Calendar"
+                                    Style="{StaticResource AntDesign.Calendar}"
+                                    DisplayDate="{Binding DisplayDate, RelativeSource={RelativeSource TemplatedParent}}"
+                                    SelectedDate="{Binding SelectedDate, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                            </Popup>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="OuterBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="CalendarIcon" Property="Fill"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <!-- Focus -->
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter TargetName="OuterBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                            <Setter TargetName="CalendarIcon" Property="Fill"
+                                    Value="{DynamicResource AntDesign.Brush.Primary}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="OuterBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Bg.Layout}" />
+                            <Setter TargetName="OuterBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Border.Secondary}" />
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Default implicit style -->
+    <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource AntDesign.DatePicker}" />
+
+</ResourceDictionary>

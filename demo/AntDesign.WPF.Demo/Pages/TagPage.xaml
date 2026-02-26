@@ -1,0 +1,81 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.TagPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="clr-namespace:AntDesign.WPF.Controls;assembly=AntDesign.WPF"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Tag"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Tag for categorizing or marking."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Basic Tags -->
+            <TextBlock Text="Basic Tags"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <WrapPanel Orientation="Horizontal">
+                    <antd:Tag Margin="0,0,8,8">Default Tag</antd:Tag>
+                    <antd:Tag PresetColor="Blue" Margin="0,0,8,8">Blue</antd:Tag>
+                    <antd:Tag PresetColor="Green" Margin="0,0,8,8">Green</antd:Tag>
+                    <antd:Tag PresetColor="Red" Margin="0,0,8,8">Red</antd:Tag>
+                    <antd:Tag PresetColor="Gold" Margin="0,0,8,8">Gold</antd:Tag>
+                    <antd:Tag PresetColor="Purple" Margin="0,0,8,8">Purple</antd:Tag>
+                    <antd:Tag PresetColor="Cyan" Margin="0,0,8,8">Cyan</antd:Tag>
+                    <antd:Tag PresetColor="Orange" Margin="0,0,8,8">Orange</antd:Tag>
+                    <antd:Tag PresetColor="Magenta" Margin="0,0,8,8">Magenta</antd:Tag>
+                    <antd:Tag PresetColor="Lime" Margin="0,0,8,8">Lime</antd:Tag>
+                    <antd:Tag PresetColor="Volcano" Margin="0,0,8,8">Volcano</antd:Tag>
+                    <antd:Tag PresetColor="GeekBlue" Margin="0,0,8,8">GeekBlue</antd:Tag>
+                </WrapPanel>
+            </Border>
+
+            <!-- Section: Closable Tags -->
+            <TextBlock Text="Closable Tags"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Click the × on a tag to close it:"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,12" />
+                    <WrapPanel Orientation="Horizontal">
+                        <antd:Tag Closable="True" Margin="0,0,8,8">Closable Tag</antd:Tag>
+                        <antd:Tag Closable="True" PresetColor="Blue" Margin="0,0,8,8">Blue Closable</antd:Tag>
+                        <antd:Tag Closable="True" PresetColor="Green" Margin="0,0,8,8">Green Closable</antd:Tag>
+                        <antd:Tag Closable="True" PresetColor="Red" Margin="0,0,8,8">Red Closable</antd:Tag>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

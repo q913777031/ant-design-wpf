@@ -1,0 +1,91 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.DrawerPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="clr-namespace:AntDesign.WPF.Controls;assembly=AntDesign.WPF"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Drawer"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="A panel that slides in from the edge of the screen."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Drawer wrapping page content -->
+            <antd:Drawer x:Name="DemoDrawer"
+                         Title="Drawer Title"
+                         DrawerWidth="378"
+                         DrawerHeight="300">
+
+                <antd:Drawer.DrawerContent>
+                    <StackPanel Margin="16">
+                        <TextBlock Text="Drawer Content"
+                                   FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text}"
+                                   Margin="0,0,0,12" />
+                        <TextBlock Text="This is the content inside the drawer panel."
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,8" />
+                        <TextBlock Text="You can place any content here, such as forms, lists, or other controls."
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </antd:Drawer.DrawerContent>
+
+                <StackPanel>
+                    <!-- Section: Placement -->
+                    <TextBlock Text="Drawer Placement"
+                               FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,16" />
+
+                    <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                            BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Padding="24"
+                            Margin="0,0,0,24">
+                        <StackPanel>
+                            <TextBlock Text="Click to open drawer from different positions:"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                       Margin="0,0,0,16" />
+                            <WrapPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource AntDesignPrimaryButton}"
+                                        Content="Right Drawer"
+                                        Margin="0,0,8,8"
+                                        Click="OpenRightDrawer_Click" />
+                                <Button Style="{StaticResource AntDesignDefaultButton}"
+                                        Content="Left Drawer"
+                                        Margin="0,0,8,8"
+                                        Click="OpenLeftDrawer_Click" />
+                                <Button Style="{StaticResource AntDesignDefaultButton}"
+                                        Content="Top Drawer"
+                                        Margin="0,0,8,8"
+                                        Click="OpenTopDrawer_Click" />
+                                <Button Style="{StaticResource AntDesignDefaultButton}"
+                                        Content="Bottom Drawer"
+                                        Margin="0,0,8,8"
+                                        Click="OpenBottomDrawer_Click" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </antd:Drawer>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

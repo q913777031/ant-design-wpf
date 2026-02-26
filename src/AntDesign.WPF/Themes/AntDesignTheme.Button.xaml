@@ -1,0 +1,443 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--
+        Ant Design WPF — Button Styles
+        All colors, radii, and sizes are resolved via DynamicResource so that
+        theme switches (light ↔ dark, token overrides) propagate at runtime.
+    -->
+
+    <!-- =====================================================================
+         AntDesignDefaultButton
+         Default / outlined variant: white background, border, text color.
+         ===================================================================== -->
+    <Style x:Key="AntDesignDefaultButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="RootBorder"
+                            Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                            BorderBrush="{DynamicResource AntDesign.Brush.Border}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Hover}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Hover}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         AntDesignPrimaryButton
+         Filled / primary variant: brand color background, white text.
+         ===================================================================== -->
+    <Style x:Key="AntDesignPrimaryButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="RootBorder"
+                            Background="{DynamicResource AntDesign.Brush.Primary}"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Hover}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         AntDesignDashedButton
+         Dashed border variant: uses a Rectangle with StrokeDashArray inside
+         the template to achieve the dashed border effect (WPF Border does not
+         support dashed strokes natively).
+         ===================================================================== -->
+    <Style x:Key="AntDesignDashedButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <!-- Dashed border rectangle drawn behind content -->
+                        <Rectangle x:Name="DashBorder"
+                                   Stroke="{DynamicResource AntDesign.Brush.Border}"
+                                   StrokeThickness="1"
+                                   StrokeDashArray="4 2"
+                                   Fill="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                   RadiusX="6" RadiusY="6"
+                                   SnapsToDevicePixels="True" />
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="DashBorder" Property="Stroke"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Hover}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Hover}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="DashBorder" Property="Stroke"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="DashBorder" Property="Fill"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+                            <Setter TargetName="DashBorder" Property="Stroke"
+                                    Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         AntDesignTextButton
+         Ghost / text variant: no border, no background; subtle fill on hover.
+         ===================================================================== -->
+    <Style x:Key="AntDesignTextButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="RootBorder"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Secondary}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         AntDesignLinkButton
+         Hyperlink variant: no border, no background; primary / link color text.
+         ===================================================================== -->
+    <Style x:Key="AntDesignLinkButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="RootBorder"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Link}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Link.Hover}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Link.Active}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         AntDesignDangerButton
+         Danger / filled variant: error-red background, white text.
+         ===================================================================== -->
+    <Style x:Key="AntDesignDangerButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="RootBorder"
+                            Background="{DynamicResource AntDesign.Brush.Error}"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Text.LightSolid}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Error.Hover}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Error.Active}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         AntDesignDangerDefaultButton
+         Danger / outlined variant: white background, error-red border and text.
+         ===================================================================== -->
+    <Style x:Key="AntDesignDangerDefaultButton" TargetType="{x:Type Button}" BasedOn="{x:Null}">
+        <Setter Property="Height"            Value="{DynamicResource AntDesign.ControlHeight}" />
+        <Setter Property="Padding"           Value="15,4" />
+        <Setter Property="FontSize"          Value="{DynamicResource AntDesign.FontSize}" />
+        <Setter Property="FontFamily"        Value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" />
+        <Setter Property="Cursor"            Value="Hand" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment"   Value="Center" />
+        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="RootBorder"
+                            Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                            BorderBrush="{DynamicResource AntDesign.Brush.Error}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          TextElement.Foreground="{DynamicResource AntDesign.Brush.Error}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Error.Hover}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Error.Hover}" />
+                        </Trigger>
+                        <!-- Pressed -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Error.Active}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Error.Active}" />
+                        </Trigger>
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootBorder" Property="Background"
+                                    Value="{DynamicResource AntDesign.Brush.Fill.Quaternary}" />
+                            <Setter TargetName="RootBorder" Property="BorderBrush"
+                                    Value="{DynamicResource AntDesign.Brush.Border}" />
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground"
+                                    Value="{DynamicResource AntDesign.Brush.Text.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
+         Size variants
+         These styles use BasedOn to inherit the visual template from the
+         default style and only override dimension / typography properties.
+         ===================================================================== -->
+
+    <!-- Small button — 24 px height, compact padding -->
+    <Style x:Key="AntDesignSmallButton" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource AntDesignDefaultButton}">
+        <Setter Property="Height"    Value="{DynamicResource AntDesign.ControlHeight.SM}" />
+        <Setter Property="Padding"   Value="7,0" />
+        <Setter Property="FontSize"  Value="{DynamicResource AntDesign.FontSize.SM}" />
+    </Style>
+
+    <!-- Small primary button -->
+    <Style x:Key="AntDesignSmallPrimaryButton" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource AntDesignPrimaryButton}">
+        <Setter Property="Height"    Value="{DynamicResource AntDesign.ControlHeight.SM}" />
+        <Setter Property="Padding"   Value="7,0" />
+        <Setter Property="FontSize"  Value="{DynamicResource AntDesign.FontSize.SM}" />
+    </Style>
+
+    <!-- Large button — 40 px height, generous padding -->
+    <Style x:Key="AntDesignLargeButton" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource AntDesignDefaultButton}">
+        <Setter Property="Height"    Value="{DynamicResource AntDesign.ControlHeight.LG}" />
+        <Setter Property="Padding"   Value="15,6" />
+        <Setter Property="FontSize"  Value="{DynamicResource AntDesign.FontSize.LG}" />
+    </Style>
+
+    <!-- Large primary button -->
+    <Style x:Key="AntDesignLargePrimaryButton" TargetType="{x:Type Button}"
+           BasedOn="{StaticResource AntDesignPrimaryButton}">
+        <Setter Property="Height"    Value="{DynamicResource AntDesign.ControlHeight.LG}" />
+        <Setter Property="Padding"   Value="15,6" />
+        <Setter Property="FontSize"  Value="{DynamicResource AntDesign.FontSize.LG}" />
+    </Style>
+
+</ResourceDictionary>

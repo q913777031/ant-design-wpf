@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:deepwiki.com)",
+      "WebFetch(domain:andyfengc.github.io)",
+      "WebFetch(domain:ant.design)",
+      "WebFetch(domain:blog.carbonteq.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:atmos.style)",
+      "WebFetch(domain:colors.id)",
+      "WebFetch(domain:photon-design.neocities.org)",
+      "WebFetch(domain:betterprogramming.pub)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:npmjs.com)",
+      "WebFetch(domain:gary-shen.github.io)",
+      "WebFetch(domain:2x.ant.design)",
+      "WebFetch(domain:socket.dev)",
+      "Bash(dotnet new:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(rm:*)",
+      "Bash(dotnet build:*)",
+      "Bash(echo exit: $?:*)",
+      "Bash(python3:*)",
+      "Bash(where:*)",
+      "Bash(dotnet:*)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(xargs grep:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
