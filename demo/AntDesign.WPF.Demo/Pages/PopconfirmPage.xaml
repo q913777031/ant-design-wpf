@@ -1,0 +1,85 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.PopconfirmPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="https://antdesign.wpf/"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Popconfirm"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="A simple and compact confirmation dialog of an action."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Basic -->
+            <TextBlock Text="Basic"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Click the button to see the popconfirm:"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,16" />
+                    <WrapPanel Orientation="Horizontal">
+                        <antd:Popconfirm Title="Are you sure you want to delete this?"
+                                         Confirmed="OnDeleteConfirmed"
+                                         Margin="0,0,16,8">
+                            <Button Style="{StaticResource AntDesignDangerButton}"
+                                    Content="Delete" />
+                        </antd:Popconfirm>
+
+                        <antd:Popconfirm Title="Proceed with this action?"
+                                         OkText="Yes"
+                                         CancelText="No"
+                                         Margin="0,0,16,8">
+                            <Button Style="{StaticResource AntDesignPrimaryButton}"
+                                    Content="Confirm Action" />
+                        </antd:Popconfirm>
+
+                        <antd:Popconfirm Title="Are you sure?"
+                                         OkType="Danger"
+                                         OkText="Delete"
+                                         CancelText="Cancel"
+                                         Margin="0,0,0,8">
+                            <Button Style="{StaticResource AntDesignDefaultButton}"
+                                    Content="Danger Confirm" />
+                        </antd:Popconfirm>
+                    </WrapPanel>
+                    <TextBlock x:Name="StatusText"
+                               Text=""
+                               Foreground="{DynamicResource AntDesign.Brush.Success}"
+                               Margin="0,12,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- Code: Basic -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Popconfirm</Run> <Run Foreground="#D19A66">Title</Run>=<Run Foreground="#98C379">"Are you sure?"</Run>
+                  <Run Foreground="#D19A66">OkText</Run>=<Run Foreground="#98C379">"Yes"</Run>
+                  <Run Foreground="#D19A66">CancelText</Run>=<Run Foreground="#98C379">"No"</Run>
+                  <Run Foreground="#D19A66">Confirmed</Run>=<Run Foreground="#98C379">"OnConfirmed"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Delete"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Popconfirm&gt;</Run></TextBlock>
+            </Expander>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

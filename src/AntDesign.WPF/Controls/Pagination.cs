@@ -434,6 +434,32 @@ public class Pagination : Control
     }
 
     /// <inheritdoc/>
+    protected override void OnKeyDown(KeyEventArgs e)
+    {
+        base.OnKeyDown(e);
+
+        switch (e.Key)
+        {
+            case Key.Left:
+                PreviousPage();
+                e.Handled = true;
+                break;
+            case Key.Right:
+                NextPage();
+                e.Handled = true;
+                break;
+            case Key.Home:
+                Current = 1;
+                e.Handled = true;
+                break;
+            case Key.End:
+                if (PageCount > 0) Current = PageCount;
+                e.Handled = true;
+                break;
+        }
+    }
+
+    /// <inheritdoc/>
     protected override AutomationPeer OnCreateAutomationPeer()
         => new PaginationAutomationPeer(this);
 }

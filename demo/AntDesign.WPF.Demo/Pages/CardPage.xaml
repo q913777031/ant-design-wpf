@@ -37,6 +37,14 @@
                            TextWrapping="Wrap" />
             </antd:Card>
 
+            <!-- Code: Basic Card -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Card</Run> <Run Foreground="#D19A66">Title</Run>=<Run Foreground="#98C379">"Card Title"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;TextBlock</Run> <Run Foreground="#D19A66">Text</Run>=<Run Foreground="#98C379">"Card content goes here."</Run>
+               <Run Foreground="#D19A66">TextWrapping</Run>=<Run Foreground="#98C379">"Wrap"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Card&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: Card with Extra -->
             <TextBlock Text="Card with Extra Content"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
@@ -58,6 +66,17 @@
                            TextWrapping="Wrap" />
             </antd:Card>
 
+            <!-- Code: Card with Extra -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Card</Run> <Run Foreground="#D19A66">Title</Run>=<Run Foreground="#98C379">"Card with Extra"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:Card.Extra&gt;</Run>
+        <Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignLinkButton}"</Run>
+                <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"More"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+    <Run Foreground="#C678DD">&lt;/antd:Card.Extra&gt;</Run>
+    <Run Foreground="#C678DD">&lt;TextBlock</Run> <Run Foreground="#D19A66">Text</Run>=<Run Foreground="#98C379">"Content here."</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Card&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: Hoverable Card -->
             <TextBlock Text="Hoverable Card"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
@@ -74,6 +93,14 @@
                            Foreground="{DynamicResource AntDesign.Brush.Text}"
                            TextWrapping="Wrap" />
             </antd:Card>
+
+            <!-- Code: Hoverable Card -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Card</Run> <Run Foreground="#D19A66">Title</Run>=<Run Foreground="#98C379">"Hoverable"</Run>
+             <Run Foreground="#D19A66">Hoverable</Run>=<Run Foreground="#98C379">"True"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;TextBlock</Run> <Run Foreground="#D19A66">Text</Run>=<Run Foreground="#98C379">"Hover to see shadow."</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Card&gt;</Run></TextBlock>
+            </Expander>
 
             <!-- Section: Card without Border -->
             <TextBlock Text="Borderless Card"

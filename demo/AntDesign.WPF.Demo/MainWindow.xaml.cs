@@ -79,6 +79,7 @@ public partial class MainWindow : Window
         "CheckBox"   => new CheckBoxPage(),
         "Select"     => new SelectPage(),
         "Switch"     => new SwitchPage(),
+        "Rate"       => new RatePage(),
         "DataEntry"  => new DataEntryPage(),
         "Card"       => new CardPage(),
         "Tag"        => new TagPage(),
@@ -90,11 +91,15 @@ public partial class MainWindow : Window
         "Empty"      => new EmptyPage(),
         "Alert"      => new AlertPage(),
         "Progress"   => new ProgressPage(),
+        "Spin"       => new SpinPage(),
         "Modal"      => new ModalPage(),
         "Drawer"     => new DrawerPage(),
+        "Popconfirm" => new PopconfirmPage(),
         "Message"    => new MessagePage(),
         "Result"     => new ResultPage(),
         "Steps"      => new StepsPage(),
+        "Pagination" => new PaginationPage(),
+        "Segmented"  => new SegmentedPage(),
         "Theme"      => new ThemePage(),
         _            => null
     };

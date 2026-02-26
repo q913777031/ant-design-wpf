@@ -110,6 +110,14 @@ public class Progress : Control
             typeof(Progress),
             new PropertyMetadata(ProgressSize.Default));
 
+    /// <summary>Identifies the <see cref="CircleDiameter"/> dependency property.</summary>
+    public static readonly DependencyProperty CircleDiameterProperty =
+        DependencyProperty.Register(
+            nameof(CircleDiameter),
+            typeof(double),
+            typeof(Progress),
+            new PropertyMetadata(120d));
+
     // -------------------------------------------------------------------------
     // Static Constructor
     // -------------------------------------------------------------------------
@@ -175,6 +183,13 @@ public class Progress : Control
     {
         get => (ProgressSize)GetValue(SizeProperty);
         set => SetValue(SizeProperty, value);
+    }
+
+    /// <summary>Gets or sets the diameter of circle/dashboard variants. Defaults to 120.</summary>
+    public double CircleDiameter
+    {
+        get => (double)GetValue(CircleDiameterProperty);
+        set => SetValue(CircleDiameterProperty, value);
     }
 
     // -------------------------------------------------------------------------

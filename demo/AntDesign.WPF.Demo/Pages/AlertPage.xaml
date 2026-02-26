@@ -50,6 +50,18 @@
                 </StackPanel>
             </Border>
 
+            <!-- Code: Basic Alerts -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Success"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Success Tips"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Info"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Informational Notes"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Warning"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Warning"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Error"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Error"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: With Description -->
             <TextBlock Text="With Description"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
@@ -83,6 +95,13 @@
                 </StackPanel>
             </Border>
 
+            <!-- Code: With Description -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Success"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Success Tips"</Run>
+             <Run Foreground="#D19A66">Description</Run>=<Run Foreground="#98C379">"Detailed description..."</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: Closable Alerts -->
             <TextBlock Text="Closable Alerts"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
@@ -111,6 +130,17 @@
                                 Margin="0,0,0,0" />
                 </StackPanel>
             </Border>
+
+            <!-- Code: Closable Alerts -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Info"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Closable Alert"</Run>
+             <Run Foreground="#D19A66">Closable</Run>=<Run Foreground="#98C379">"True"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Alert</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Warning"</Run>
+             <Run Foreground="#D19A66">Message</Run>=<Run Foreground="#98C379">"Warning with Description"</Run>
+             <Run Foreground="#D19A66">Description</Run>=<Run Foreground="#98C379">"You can close this warning."</Run>
+             <Run Foreground="#D19A66">Closable</Run>=<Run Foreground="#98C379">"True"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
 
         </StackPanel>
     </ScrollViewer>
