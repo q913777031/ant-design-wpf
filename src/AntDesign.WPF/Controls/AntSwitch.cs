@@ -1,6 +1,11 @@
+using System;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -22,7 +27,7 @@ public enum SwitchSize
 /// <see cref="System.Windows.Controls.Primitives"/> internals.
 /// Follows the Ant Design Switch specification.
 /// </summary>
-[TemplatePart(Name = AntSwitch.PART_Track, Type = typeof(FrameworkElement))]
+[TemplatePart(Name = AntSwitch.PART_Track, Type = typeof(Border))]
 [TemplatePart(Name = AntSwitch.PART_Thumb, Type = typeof(FrameworkElement))]
 public class AntSwitch : Control
 {
@@ -31,6 +36,9 @@ public class AntSwitch : Control
 
     /// <summary>Template part name for the sliding thumb.</summary>
     public const string PART_Thumb = "PART_Thumb";
+
+    private FrameworkElement? _thumb;
+    private Border? _track;
 
     // -------------------------------------------------------------------------
     // Routed Events
@@ -192,6 +200,12 @@ public class AntSwitch : Control
     {
         base.OnApplyTemplate();
         Focusable = true;
+
+        _thumb = GetTemplateChild(PART_Thumb) as FrameworkElement;
+        _track = GetTemplateChild(PART_Track) as Border;
+
+        // Apply the correct initial position without animation
+        ApplySwitchState(IsChecked, animate: false);
     }
 
     /// <inheritdoc/>
@@ -223,6 +237,77 @@ public class AntSwitch : Control
     }
 
     // -------------------------------------------------------------------------
+    // Animation
+    // -------------------------------------------------------------------------
+
+    private void ApplySwitchState(bool isChecked, bool animate)
+    {
+        AnimateThumb(isChecked, animate);
+        AnimateTrack(isChecked, animate);
+    }
+
+    private void AnimateThumb(bool isChecked, bool animate)
+    {
+        if (_thumb == null) return;
+
+        var targetMargin = isChecked
+            ? new Thickness(22, 2, 2, 2)
+            : new Thickness(2, 2, 22, 2);
+
+        if (!animate)
+        {
+            // Stop any running animation and set the value directly
+            _thumb.BeginAnimation(MarginProperty, null);
+            _thumb.Margin = targetMargin;
+            return;
+        }
+
+        var animation = new ThicknessAnimation
+        {
+            To = targetMargin,
+            Duration = TimeSpan.FromMilliseconds(200),
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut },
+            FillBehavior = FillBehavior.HoldEnd,
+        };
+        _thumb.BeginAnimation(MarginProperty, animation);
+    }
+
+    private void AnimateTrack(bool isChecked, bool animate)
+    {
+        if (_track == null) return;
+
+        // Resolve colors from resources with sensible fallbacks
+        var primaryBrush = TryFindResource("AntDesign.Brush.Primary") as SolidColorBrush;
+        var secondaryBrush = TryFindResource("AntDesign.Brush.Fill.Secondary") as SolidColorBrush;
+
+        var targetColor = isChecked
+            ? (primaryBrush?.Color ?? Color.FromRgb(22, 119, 255))
+            : (secondaryBrush?.Color ?? Color.FromArgb(15, 0, 0, 0));
+
+        if (!animate)
+        {
+            _track.Background = new SolidColorBrush(targetColor);
+            return;
+        }
+
+        // The Background must be a non-frozen SolidColorBrush to animate the Color sub-property
+        if (_track.Background is not SolidColorBrush currentBrush || currentBrush.IsFrozen)
+        {
+            var fromColor = _track.Background is SolidColorBrush scb ? scb.Color : targetColor;
+            _track.Background = new SolidColorBrush(fromColor);
+        }
+
+        var colorAnimation = new ColorAnimation
+        {
+            To = targetColor,
+            Duration = TimeSpan.FromMilliseconds(200),
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut },
+            FillBehavior = FillBehavior.HoldEnd,
+        };
+        _track.Background.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
+    }
+
+    // -------------------------------------------------------------------------
     // Property Changed Callbacks
     // -------------------------------------------------------------------------
 
@@ -231,5 +316,10 @@ public class AntSwitch : Control
         var sw = (AntSwitch)d;
         bool isChecked = (bool)e.NewValue;
         sw.RaiseEvent(new RoutedEventArgs(isChecked ? CheckedEvent : UncheckedEvent, sw));
+        sw.ApplySwitchState(isChecked, animate: true);
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new AntSwitchAutomationPeer(this);
 }

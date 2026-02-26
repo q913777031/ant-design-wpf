@@ -1,6 +1,11 @@
+using System;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Shapes;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -9,8 +14,12 @@ namespace AntDesign.WPF.Controls;
 /// Supports half-star precision and a clear-on-re-click gesture.
 /// Follows the Ant Design Rate specification.
 /// </summary>
+[TemplatePart(Name = PART_StarsPanel, Type = typeof(StackPanel))]
 public class Rate : Control
 {
+    private const string PART_StarsPanel = "PART_StarsPanel";
+    private StackPanel? _starsPanel;
+
     // -------------------------------------------------------------------------
     // Routed Events
     // -------------------------------------------------------------------------
@@ -44,7 +53,7 @@ public class Rate : Control
             nameof(Count),
             typeof(int),
             typeof(Rate),
-            new PropertyMetadata(5, null, CoerceCount));
+            new PropertyMetadata(5, OnCountChanged, CoerceCount));
 
     /// <summary>Identifies the <see cref="AllowHalf"/> dependency property.</summary>
     public static readonly DependencyProperty AllowHalfProperty =
@@ -52,7 +61,7 @@ public class Rate : Control
             nameof(AllowHalf),
             typeof(bool),
             typeof(Rate),
-            new PropertyMetadata(false));
+            new PropertyMetadata(false, OnAllowHalfChanged));
 
     /// <summary>Identifies the <see cref="AllowClear"/> dependency property.</summary>
     public static readonly DependencyProperty AllowClearProperty =
@@ -68,7 +77,7 @@ public class Rate : Control
             nameof(Disabled),
             typeof(bool),
             typeof(Rate),
-            new PropertyMetadata(false));
+            new PropertyMetadata(false, OnDisabledChanged));
 
     // -------------------------------------------------------------------------
     // Static Constructor
@@ -149,6 +158,149 @@ public class Rate : Control
     }
 
     // -------------------------------------------------------------------------
+    // Template
+    // -------------------------------------------------------------------------
+
+    /// <inheritdoc/>
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+        _starsPanel = GetTemplateChild(PART_StarsPanel) as StackPanel;
+        BuildStars();
+    }
+
+    // -------------------------------------------------------------------------
+    // Star Building
+    // -------------------------------------------------------------------------
+
+    private void BuildStars()
+    {
+        if (_starsPanel == null) return;
+        _starsPanel.Children.Clear();
+
+        for (int i = 0; i < Count; i++)
+        {
+            var starIndex = i;
+
+            var starContainer = new Border
+            {
+                Width = 24,
+                Height = 24,
+                Margin = new Thickness(2, 0, 2, 0),
+                Background = Brushes.Transparent,
+                Cursor = Disabled ? Cursors.Arrow : Cursors.Hand,
+            };
+
+            var starPath = new Path
+            {
+                Data = Geometry.Parse("M12,2 L14.4,9.2 L22,9.2 L15.8,13.8 L18.2,21 L12,16.4 L5.8,21 L8.2,13.8 L2,9.2 L9.6,9.2 Z"),
+                Stretch = Stretch.Uniform,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Width = 20,
+                Height = 20,
+            };
+
+            UpdateStarFill(starPath, starIndex);
+
+            if (!Disabled)
+            {
+                starContainer.MouseLeftButtonDown += (s, e) =>
+                {
+                    double newValue = starIndex + 1;
+                    if (AllowHalf)
+                    {
+                        var pos = e.GetPosition(starContainer);
+                        if (pos.X < starContainer.ActualWidth / 2)
+                            newValue = starIndex + 0.5;
+                    }
+                    if (AllowClear && Math.Abs(Value - newValue) < 0.01)
+                        Value = 0;
+                    else
+                        Value = newValue;
+                    e.Handled = true;
+                };
+
+                starContainer.MouseEnter += (s, e) =>
+                {
+                    if (_starsPanel == null) return;
+                    for (int j = 0; j < _starsPanel.Children.Count; j++)
+                    {
+                        if (_starsPanel.Children[j] is Border b && b.Child is Path p)
+                        {
+                            var brush = j <= starIndex
+                                ? TryFindResource("AntDesign.Brush.Warning") as Brush ?? Brushes.Gold
+                                : TryFindResource("AntDesign.Brush.Fill.Tertiary") as Brush ?? Brushes.LightGray;
+                            p.Fill = brush;
+                        }
+                    }
+                };
+
+                starContainer.MouseLeave += (s, e) => RefreshAllStars();
+            }
+
+            starContainer.Child = starPath;
+            _starsPanel.Children.Add(starContainer);
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Star Fill Helpers
+    // -------------------------------------------------------------------------
+
+    private void UpdateStarFill(Path star, int index)
+    {
+        var filledBrush = TryFindResource("AntDesign.Brush.Warning") as Brush ?? Brushes.Gold;
+        var emptyBrush = TryFindResource("AntDesign.Brush.Fill.Tertiary") as Brush ?? Brushes.LightGray;
+
+        if (index + 1 <= Value)
+            star.Fill = filledBrush;
+        else if (AllowHalf && index + 0.5 <= Value)
+            star.Fill = filledBrush; // simplified - full star for half (proper half-star needs clip)
+        else
+            star.Fill = emptyBrush;
+    }
+
+    private void RefreshAllStars()
+    {
+        if (_starsPanel == null) return;
+        for (int i = 0; i < _starsPanel.Children.Count; i++)
+        {
+            if (_starsPanel.Children[i] is Border b && b.Child is Path p)
+                UpdateStarFill(p, i);
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Keyboard Interaction
+    // -------------------------------------------------------------------------
+
+    /// <inheritdoc/>
+    protected override void OnKeyDown(KeyEventArgs e)
+    {
+        base.OnKeyDown(e);
+
+        if (Disabled) return;
+
+        double step = AllowHalf ? 0.5d : 1d;
+
+        switch (e.Key)
+        {
+            case Key.Right:
+            case Key.Up:
+                Value = Math.Min(Count, Value + step);
+                e.Handled = true;
+                break;
+
+            case Key.Left:
+            case Key.Down:
+                Value = Math.Max(0d, Value - step);
+                e.Handled = true;
+                break;
+        }
+    }
+
+    // -------------------------------------------------------------------------
     // Coercion Callbacks
     // -------------------------------------------------------------------------
 
@@ -176,6 +328,8 @@ public class Rate : Control
     private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var rate = (Rate)d;
+        rate.RefreshAllStars();
+
         var args = new RoutedPropertyChangedEventArgs<double>(
             (double)e.OldValue,
             (double)e.NewValue,
@@ -186,53 +340,22 @@ public class Rate : Control
         rate.RaiseEvent(args);
     }
 
-    // -------------------------------------------------------------------------
-    // Interaction
-    // -------------------------------------------------------------------------
-
-    /// <summary>
-    /// Sets the rating value to the specified star index.
-    /// Handles clear-on-same-value when <see cref="AllowClear"/> is enabled.
-    /// </summary>
-    /// <param name="starValue">
-    /// The new value to assign. Pass a .5 increment for half-star selection.
-    /// </param>
-    public void SetValue(double starValue)
+    private static void OnCountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (Disabled) return;
+        if (d is Rate rate) rate.BuildStars();
+    }
 
-        if (AllowClear && Value == starValue)
-        {
-            Value = 0d;
-        }
-        else
-        {
-            Value = starValue;
-        }
+    private static void OnAllowHalfChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is Rate rate) rate.RefreshAllStars();
+    }
+
+    private static void OnDisabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is Rate rate) rate.BuildStars();
     }
 
     /// <inheritdoc/>
-    protected override void OnKeyDown(KeyEventArgs e)
-    {
-        base.OnKeyDown(e);
-
-        if (Disabled) return;
-
-        double step = AllowHalf ? 0.5d : 1d;
-
-        switch (e.Key)
-        {
-            case Key.Right:
-            case Key.Up:
-                Value = Math.Min(Count, Value + step);
-                e.Handled = true;
-                break;
-
-            case Key.Left:
-            case Key.Down:
-                Value = Math.Max(0d, Value - step);
-                e.Handled = true;
-                break;
-        }
-    }
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new RateAutomationPeer(this);
 }

@@ -1,5 +1,7 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -231,4 +233,8 @@ public class Alert : Control
         IsAlertVisible = false;
         RaiseEvent(new RoutedEventArgs(ClosedEvent, this));
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new AlertAutomationPeer(this);
 }

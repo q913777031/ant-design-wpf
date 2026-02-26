@@ -30,6 +30,9 @@ public static class ThemeHelper
     // Read
     // ===================================================================
 
+    // Resource key used to persistently store the base theme name.
+    private const string BaseThemeKey = "AntDesign.BaseTheme";
+
     /// <summary>
     /// Reconstructs the logical <see cref="ITheme"/> that is currently reflected in
     /// <see cref="Application.Current.Resources"/>.
@@ -41,12 +44,11 @@ public static class ThemeHelper
         var resources = EnsureApplicationResources();
         var theme = new AntTheme();
 
-        // Detect base theme from the background container color.
-        if (resources[DesignTokens.ColorBgContainer] is Color bgContainer)
+        // Read base theme from the stored string resource (set by SetTheme / SetBaseTheme).
+        if (resources[BaseThemeKey] is string baseThemeStr
+            && Enum.TryParse<BaseTheme>(baseThemeStr, out var parsedBaseTheme))
         {
-            // #141414 is the dark-mode container background — anything very dark implies dark mode.
-            byte luminance = (byte)((bgContainer.R * 299 + bgContainer.G * 587 + bgContainer.B * 114) / 1000);
-            theme.BaseTheme = luminance < 128 ? BaseTheme.Dark : BaseTheme.Light;
+            theme.BaseTheme = parsedBaseTheme;
         }
 
         // Read primary color.
@@ -92,6 +94,72 @@ public static class ThemeHelper
             theme.BaseTheme,
             ResolvePresetColorFromColor(theme.PrimaryColor),
             antTheme.BorderRadius);
+
+        // Store the base theme as a named resource for reliable retrieval via GetTheme().
+        var resources = EnsureApplicationResources();
+        resources[BaseThemeKey] = theme.BaseTheme.ToString();
+
+        // Apply all semantic color overrides from the theme object.
+        ApplySemanticColorOverrides(antTheme, theme);
+    }
+
+    /// <summary>
+    /// Applies success, warning, error, and info color overrides from <paramref name="theme"/>
+    /// directly into the live resource dictionary of <paramref name="antTheme"/>.
+    /// </summary>
+    private static void ApplySemanticColorOverrides(AntDesignTheme antTheme, ITheme theme)
+    {
+        bool isDark = theme.BaseTheme == BaseTheme.Dark;
+
+        // Success
+        var successPreset = ResolvePresetColorFromColor(theme.SuccessColor);
+        OverrideColorGroup(antTheme, "Success", ColorPalette.GetPalette(successPreset), isDark);
+
+        // Warning
+        var warningPreset = ResolvePresetColorFromColor(theme.WarningColor);
+        OverrideColorGroup(antTheme, "Warning", ColorPalette.GetPalette(warningPreset), isDark);
+
+        // Error
+        var errorPreset = ResolvePresetColorFromColor(theme.ErrorColor);
+        OverrideColorGroup(antTheme, "Error", ColorPalette.GetPalette(errorPreset), isDark);
+
+        // Info
+        var infoPreset = ResolvePresetColorFromColor(theme.InfoColor);
+        OverrideColorGroup(antTheme, "Info", ColorPalette.GetPalette(infoPreset), isDark);
+    }
+
+    /// <summary>
+    /// Overwrites the color+brush resources for a single semantic group inside
+    /// <paramref name="dict"/> using the supplied <paramref name="palette"/>.
+    /// </summary>
+    private static void OverrideColorGroup(ResourceDictionary dict, string keyPrefix, Color[] palette, bool isDark)
+    {
+        Color main        = isDark ? palette[4] : palette[5];
+        Color hover       = isDark ? palette[3] : palette[4];
+        Color active      = isDark ? palette[5] : palette[6];
+        Color bg          = palette[0];
+        Color bgHover     = palette[1];
+        Color border      = palette[2];
+        Color borderHover = palette[3];
+
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}",             $"AntDesign.Brush.{keyPrefix}",             main);
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}.Hover",       $"AntDesign.Brush.{keyPrefix}.Hover",       hover);
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}.Active",      $"AntDesign.Brush.{keyPrefix}.Active",      active);
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}.Bg",          $"AntDesign.Brush.{keyPrefix}.Bg",          bg);
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}.BgHover",     $"AntDesign.Brush.{keyPrefix}.BgHover",     bgHover);
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}.Border",      $"AntDesign.Brush.{keyPrefix}.Border",      border);
+        SetDictColorAndBrush(dict, $"AntDesign.Color.{keyPrefix}.BorderHover", $"AntDesign.Brush.{keyPrefix}.BorderHover", borderHover);
+    }
+
+    /// <summary>
+    /// Writes a Color and frozen SolidColorBrush entry into <paramref name="dict"/>.
+    /// </summary>
+    private static void SetDictColorAndBrush(ResourceDictionary dict, string colorKey, string brushKey, Color color)
+    {
+        dict[colorKey] = color;
+        var brush = new SolidColorBrush(color);
+        brush.Freeze();
+        dict[brushKey] = brush;
     }
 
     // ===================================================================
@@ -104,6 +172,10 @@ public static class ThemeHelper
     {
         var antTheme = FindOrCreateAntDesignTheme();
         antTheme.BaseTheme = baseTheme;
+
+        // Persist the base theme for reliable GetTheme() round-trip.
+        var resources = EnsureApplicationResources();
+        resources[BaseThemeKey] = baseTheme.ToString();
     }
 
     /// <summary>
@@ -135,6 +207,42 @@ public static class ThemeHelper
     {
         var antTheme = FindOrCreateAntDesignTheme();
         antTheme.BorderRadius = radius;
+    }
+
+    /// <summary>
+    /// Changes the success semantic color at runtime using a <see cref="PresetColor"/>.
+    /// All success-derived tokens (hover, active, bg, border) are recalculated.
+    /// </summary>
+    /// <param name="color">The preset color to use for success states.</param>
+    public static void SetSuccessColor(PresetColor color)
+    {
+        var antTheme = FindOrCreateAntDesignTheme();
+        bool isDark = antTheme.BaseTheme == BaseTheme.Dark;
+        OverrideColorGroup(antTheme, "Success", ColorPalette.GetPalette(color), isDark);
+    }
+
+    /// <summary>
+    /// Changes the warning semantic color at runtime using a <see cref="PresetColor"/>.
+    /// All warning-derived tokens (hover, active, bg, border) are recalculated.
+    /// </summary>
+    /// <param name="color">The preset color to use for warning states.</param>
+    public static void SetWarningColor(PresetColor color)
+    {
+        var antTheme = FindOrCreateAntDesignTheme();
+        bool isDark = antTheme.BaseTheme == BaseTheme.Dark;
+        OverrideColorGroup(antTheme, "Warning", ColorPalette.GetPalette(color), isDark);
+    }
+
+    /// <summary>
+    /// Changes the error semantic color at runtime using a <see cref="PresetColor"/>.
+    /// All error-derived tokens (hover, active, bg, border) are recalculated.
+    /// </summary>
+    /// <param name="color">The preset color to use for error/danger states.</param>
+    public static void SetErrorColor(PresetColor color)
+    {
+        var antTheme = FindOrCreateAntDesignTheme();
+        bool isDark = antTheme.BaseTheme == BaseTheme.Dark;
+        OverrideColorGroup(antTheme, "Error", ColorPalette.GetPalette(color), isDark);
     }
 
     // ===================================================================

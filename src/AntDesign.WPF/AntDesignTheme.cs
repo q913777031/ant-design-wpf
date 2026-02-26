@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 using AntDesign.WPF.Colors;
@@ -23,7 +24,7 @@ namespace AntDesign.WPF;
 /// &lt;/Application.Resources&gt;
 /// </code>
 /// </summary>
-public class AntDesignTheme : ResourceDictionary
+public class AntDesignTheme : ResourceDictionary, ISupportInitialize
 {
     // ------------------------------------------------------------------
     // Backing fields — property setters call Initialize() after all are
@@ -31,9 +32,38 @@ public class AntDesignTheme : ResourceDictionary
     // resources.
     // ------------------------------------------------------------------
 
+    private bool _isInitializing;
+    private int _initCount;
+
     private BaseTheme _baseTheme = BaseTheme.Light;
     private PresetColor _primaryColor = PresetColor.Blue;
     private double _borderRadius = 6.0;
+
+    // ===================================================================
+    // ISupportInitialize — prevents redundant Initialize() calls when
+    // XAML sets multiple properties in sequence.
+    // ===================================================================
+
+    /// <inheritdoc/>
+    public new void BeginInit()
+    {
+        base.BeginInit();
+        _initCount++;
+        _isInitializing = true;
+    }
+
+    /// <inheritdoc/>
+    public new void EndInit()
+    {
+        _initCount--;
+        if (_initCount <= 0)
+        {
+            _isInitializing = false;
+            _initCount = 0;
+            Initialize();
+        }
+        base.EndInit();
+    }
 
     // ===================================================================
     // Public properties (settable from XAML)
@@ -43,14 +73,22 @@ public class AntDesignTheme : ResourceDictionary
     public BaseTheme BaseTheme
     {
         get => _baseTheme;
-        set { _baseTheme = value; Initialize(); }
+        set
+        {
+            _baseTheme = value;
+            if (!_isInitializing) Initialize();
+        }
     }
 
     /// <summary>Gets or sets the primary brand color from the Ant Design preset palette.</summary>
     public PresetColor PrimaryColor
     {
         get => _primaryColor;
-        set { _primaryColor = value; Initialize(); }
+        set
+        {
+            _primaryColor = value;
+            if (!_isInitializing) Initialize();
+        }
     }
 
     /// <summary>
@@ -60,7 +98,11 @@ public class AntDesignTheme : ResourceDictionary
     public double BorderRadius
     {
         get => _borderRadius;
-        set { _borderRadius = value; Initialize(); }
+        set
+        {
+            _borderRadius = value;
+            if (!_isInitializing) Initialize();
+        }
     }
 
     // ===================================================================
@@ -421,15 +463,23 @@ public class AntDesignTheme : ResourceDictionary
     // ===================================================================
 
     /// <summary>
+    /// Creates a frozen <see cref="SolidColorBrush"/> for the given color.
+    /// Frozen brushes are thread-safe and improve rendering performance.
+    /// </summary>
+    private static SolidColorBrush CreateBrush(Color color)
+    {
+        var brush = new SolidColorBrush(color);
+        brush.Freeze();
+        return brush;
+    }
+
+    /// <summary>
     /// Writes both a <see cref="System.Windows.Media.Color"/> resource and the corresponding
     /// frozen <see cref="SolidColorBrush"/> resource under the provided keys.
     /// </summary>
     private void SetColorAndBrush(string colorKey, string brushKey, Color color)
     {
         this[colorKey] = color;
-
-        var brush = new SolidColorBrush(color);
-        brush.Freeze();
-        this[brushKey] = brush;
+        this[brushKey] = CreateBrush(color);
     }
 }

@@ -1,7 +1,9 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -376,4 +378,8 @@ public class Drawer : ContentControl
 
     private void ExecuteOpen(object sender, ExecutedRoutedEventArgs e)  => IsOpen = true;
     private void ExecuteClose(object sender, ExecutedRoutedEventArgs e) => IsOpen = false;
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new DrawerAutomationPeer(this);
 }

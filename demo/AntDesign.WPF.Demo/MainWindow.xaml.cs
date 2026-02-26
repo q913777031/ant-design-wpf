@@ -1,127 +1,115 @@
+namespace AntDesign.WPF.Demo;
+
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using AntDesign.WPF;
 using AntDesign.WPF.Colors;
 using AntDesign.WPF.Demo.Pages;
+using AntDesign.WPF.Demo.ViewModels;
 
-namespace AntDesign.WPF.Demo;
-
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow : Window
 {
+    private readonly MainViewModel _viewModel;
+    private readonly Dictionary<string, UserControl> _pageCache = new();
+
     public MainWindow()
     {
         InitializeComponent();
-        Loaded += MainWindow_Loaded;
-    }
+        _viewModel = new MainViewModel();
+        DataContext = _viewModel;
 
-    private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-    {
-        // Select the first navigable item (Buttons)
-        foreach (ListBoxItem item in NavListBox.Items)
+        // Setup grouped navigation using CollectionViewSource
+        var view = CollectionViewSource.GetDefaultView(_viewModel.FilteredItems);
+        view.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+        NavList.ItemsSource = view;
+
+        // Navigate to default page
+        NavigateToPage("Button");
+
+        // Select the matching nav item
+        var firstItem = _viewModel.AllItems.FirstOrDefault(i => i.PageKey == "Button");
+        if (firstItem != null)
         {
-            if (item.Tag != null)
-            {
-                NavListBox.SelectedItem = item;
-                break;
-            }
+            _viewModel.SelectedItem = firstItem;
+            NavList.SelectedItem = firstItem;
         }
     }
 
-    private void NavListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void NavList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (NavListBox.SelectedItem is ListBoxItem selected && selected.Tag is string tag)
+        if (NavList.SelectedItem is NavigationItem item)
         {
-            NavigateTo(tag);
+            PageTitleText.Text = item.Title;
+            NavigateToPage(item.PageKey);
         }
     }
 
-    private void NavigateTo(string tag)
+    private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        UIElement? page = tag switch
-        {
-            "Buttons"   => new ButtonPage(),
-            "Divider"   => new DividerPage(),
-            "Input"     => new InputPage(),
-            "CheckBox"  => new CheckBoxPage(),
-            "Select"    => new SelectPage(),
-            "DataEntry" => new DataEntryPage(),
-            "Switch"    => new SwitchPage(),
-            "Badge"     => new BadgePage(),
-            "Card"      => new CardPage(),
-            "Table"     => new TablePage(),
-            "Tag"       => new TagPage(),
-            "Timeline"  => new TimelinePage(),
-            "Empty"     => new EmptyPage(),
-            "Alert"     => new AlertPage(),
-            "Modal"     => new ModalPage(),
-            "Drawer"    => new DrawerPage(),
-            "Progress"  => new ProgressPage(),
-            "Result"    => new ResultPage(),
-            "Steps"     => new StepsPage(),
-            "Tabs"      => new TabsPage(),
-            "Theme"     => new ThemePage(),
-            _           => null
-        };
+        _viewModel.SearchText = SearchBox.Text;
 
-        if (page is not null)
-        {
-            PageTitleText.Text = tag switch
-            {
-                "Buttons"   => "Button",
-                "Divider"   => "Divider",
-                "Input"     => "Input",
-                "CheckBox"  => "Checkbox / Radio",
-                "Select"    => "Select",
-                "DataEntry" => "Slider / DatePicker",
-                "Switch"    => "Switch",
-                "Badge"     => "Badge",
-                "Card"      => "Card",
-                "Table"     => "Table",
-                "Tag"       => "Tag",
-                "Timeline"  => "Timeline",
-                "Empty"     => "Empty",
-                "Alert"     => "Alert",
-                "Modal"     => "Modal",
-                "Drawer"    => "Drawer",
-                "Progress"  => "Progress",
-                "Result"    => "Result",
-                "Steps"     => "Steps",
-                "Tabs"      => "Tabs",
-                "Theme"     => "Theme",
-                _           => tag
-            };
+        // Refresh the grouped view
+        var view = CollectionViewSource.GetDefaultView(_viewModel.FilteredItems);
+        view.GroupDescriptions.Clear();
+        view.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+        NavList.ItemsSource = view;
+    }
 
-            ContentFrame.Content = page;
+    private void NavigateToPage(string pageKey)
+    {
+        if (!_pageCache.TryGetValue(pageKey, out var page))
+        {
+            page = CreatePage(pageKey);
+            if (page != null)
+                _pageCache[pageKey] = page;
         }
+        if (page != null)
+            ContentPresenter.Content = page;
     }
 
-    private void DarkModeToggle_Checked(object sender, RoutedEventArgs e)
+    private UserControl? CreatePage(string key) => key switch
     {
-        ThemeHelper.SetBaseTheme(BaseTheme.Dark);
-    }
+        "Button"     => new ButtonPage(),
+        "Typography" => new TypographyPage(),
+        "Input"      => new InputPage(),
+        "CheckBox"   => new CheckBoxPage(),
+        "Select"     => new SelectPage(),
+        "Switch"     => new SwitchPage(),
+        "DataEntry"  => new DataEntryPage(),
+        "Card"       => new CardPage(),
+        "Tag"        => new TagPage(),
+        "Badge"      => new BadgePage(),
+        "Table"      => new TablePage(),
+        "Tabs"       => new TabsPage(),
+        "Timeline"   => new TimelinePage(),
+        "Divider"    => new DividerPage(),
+        "Empty"      => new EmptyPage(),
+        "Alert"      => new AlertPage(),
+        "Progress"   => new ProgressPage(),
+        "Modal"      => new ModalPage(),
+        "Drawer"     => new DrawerPage(),
+        "Message"    => new MessagePage(),
+        "Result"     => new ResultPage(),
+        "Steps"      => new StepsPage(),
+        "Theme"      => new ThemePage(),
+        _            => null
+    };
 
-    private void DarkModeToggle_Unchecked(object sender, RoutedEventArgs e)
-    {
-        ThemeHelper.SetBaseTheme(BaseTheme.Light);
-    }
-
-    private void ColorButton_Click(object sender, RoutedEventArgs e)
+    private void SetPrimaryColor_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button btn && btn.Tag is string colorName)
         {
-            PresetColor color = colorName switch
-            {
-                "Blue"   => PresetColor.Blue,
-                "Green"  => PresetColor.Green,
-                "Red"    => PresetColor.Red,
-                "Purple" => PresetColor.Purple,
-                "Orange" => PresetColor.Orange,
-                _        => PresetColor.Blue
-            };
-            ThemeHelper.SetPrimaryColor(color);
+            if (System.Enum.TryParse<PresetColor>(colorName, out var color))
+                ThemeHelper.SetPrimaryColor(color);
         }
+    }
+
+    private void ToggleTheme_Click(object sender, RoutedEventArgs e)
+    {
+        _viewModel.IsDarkTheme = !_viewModel.IsDarkTheme;
+        ThemeIcon.Text = _viewModel.IsDarkTheme ? "\u263D" : "\u2600";
     }
 }
