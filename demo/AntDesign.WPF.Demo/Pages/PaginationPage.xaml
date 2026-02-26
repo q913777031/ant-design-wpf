@@ -1,0 +1,116 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.PaginationPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="https://antdesign.wpf/"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Pagination"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="A long list can be divided into several pages using Pagination."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Basic -->
+            <TextBlock Text="Basic"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <antd:Pagination Total="50" PageSize="10" Current="1" />
+                </StackPanel>
+            </Border>
+
+            <!-- Code: Basic -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Pagination</Run> <Run Foreground="#D19A66">Total</Run>=<Run Foreground="#98C379">"50"</Run>
+                   <Run Foreground="#D19A66">PageSize</Run>=<Run Foreground="#98C379">"10"</Run>
+                   <Run Foreground="#D19A66">Current</Run>=<Run Foreground="#98C379">"1"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
+            <!-- Section: More Pages -->
+            <TextBlock Text="More Pages"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Total = 500, PageSize = 10 (50 pages)"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,12" />
+                    <antd:Pagination Total="500" PageSize="10" Current="1" />
+                </StackPanel>
+            </Border>
+
+            <!-- Section: Quick Jumper -->
+            <TextBlock Text="Quick Jumper"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Type a page number and press Enter to jump:"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,12" />
+                    <antd:Pagination Total="200" PageSize="10" ShowQuickJumper="True" />
+                </StackPanel>
+            </Border>
+
+            <!-- Code: Quick Jumper -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Pagination</Run> <Run Foreground="#D19A66">Total</Run>=<Run Foreground="#98C379">"200"</Run>
+                   <Run Foreground="#D19A66">PageSize</Run>=<Run Foreground="#98C379">"10"</Run>
+                   <Run Foreground="#D19A66">ShowQuickJumper</Run>=<Run Foreground="#98C379">"True"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
+            <!-- Section: Simple Mode -->
+            <TextBlock Text="Simple Mode"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <antd:Pagination Total="100" PageSize="10" Simple="True" />
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -6,6 +6,7 @@
 
     <!-- Shared converters -->
     <converters:BoolToVisibilityConverter x:Key="BoolToVisConverter" />
+    <converters:HalfValueConverter x:Key="HalfValueConverter" />
 
     <!-- ═══════════════════════════════════════════════════════════════════════
          CARD
@@ -777,8 +778,11 @@
     </Style>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
-         PROGRESS (line variant)
+         PROGRESS
     ════════════════════════════════════════════════════════════════════════ -->
+    <converters:PercentToArcConverter x:Key="PercentToArcConverter" />
+    <converters:TrackArcConverter x:Key="TrackArcConverter" />
+
     <Style TargetType="{x:Type controls:Progress}">
         <Setter Property="Height"      Value="8" />
         <Setter Property="Background"  Value="{DynamicResource AntDesign.Brush.Fill.Tertiary}" />
@@ -787,44 +791,166 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Progress}">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                        <!-- ═══ LINE VARIANT ═══ -->
+                        <Grid x:Name="LinePanel">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                        <!-- Track -->
-                        <Border Grid.Column="0"
-                                Height="{TemplateBinding Height}"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="4"
-                                ClipToBounds="True"
-                                VerticalAlignment="Center">
-                            <!-- Fill -->
-                            <Border x:Name="FillBar"
-                                    Background="{TemplateBinding Foreground}"
+                            <!-- Track -->
+                            <Border Grid.Column="0"
+                                    Height="{TemplateBinding Height}"
+                                    Background="{TemplateBinding Background}"
                                     CornerRadius="4"
-                                    HorizontalAlignment="Left">
-                                <Border.Width>
-                                    <MultiBinding>
+                                    ClipToBounds="True"
+                                    VerticalAlignment="Center">
+                                <Border x:Name="FillBar"
+                                        Background="{TemplateBinding Foreground}"
+                                        CornerRadius="4"
+                                        HorizontalAlignment="Left">
+                                    <Border.Width>
+                                        <MultiBinding>
+                                            <MultiBinding.Converter>
+                                                <converters:PercentageWidthConverter />
+                                            </MultiBinding.Converter>
+                                            <Binding Path="Percent" RelativeSource="{RelativeSource TemplatedParent}" />
+                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border, AncestorLevel=1}" />
+                                        </MultiBinding>
+                                    </Border.Width>
+                                </Border>
+                            </Border>
+
+                            <!-- Percentage text -->
+                            <TextBlock x:Name="LinePercentText"
+                                       Grid.Column="1"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center"
+                                       FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}">
+                                <Run Text="{Binding Percent, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}}" /><Run Text="%" />
+                            </TextBlock>
+                        </Grid>
+
+                        <!-- ═══ CIRCLE VARIANT ═══ -->
+                        <Grid x:Name="CirclePanel"
+                              Visibility="Collapsed"
+                              Width="{TemplateBinding CircleDiameter}"
+                              Height="{TemplateBinding CircleDiameter}">
+                            <!-- Track ring -->
+                            <Path x:Name="CircleTrack"
+                                  StrokeThickness="{Binding StrokeWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="{TemplateBinding Background}"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round">
+                                <Path.Data>
+                                    <MultiBinding ConverterParameter="Circle">
                                         <MultiBinding.Converter>
-                                            <converters:PercentageWidthConverter  />
+                                            <converters:TrackArcConverter />
+                                        </MultiBinding.Converter>
+                                        <Binding Path="CircleDiameter" RelativeSource="{RelativeSource TemplatedParent}" Converter="{StaticResource HalfValueConverter}" />
+                                        <Binding Path="StrokeWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    </MultiBinding>
+                                </Path.Data>
+                            </Path>
+                            <!-- Fill arc -->
+                            <Path x:Name="CircleFill"
+                                  StrokeThickness="{Binding StrokeWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round">
+                                <Path.Data>
+                                    <MultiBinding ConverterParameter="Circle">
+                                        <MultiBinding.Converter>
+                                            <converters:PercentToArcConverter />
                                         </MultiBinding.Converter>
                                         <Binding Path="Percent" RelativeSource="{RelativeSource TemplatedParent}" />
-                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border, AncestorLevel=1}" />
+                                        <Binding Path="CircleDiameter" RelativeSource="{RelativeSource TemplatedParent}" Converter="{StaticResource HalfValueConverter}" />
+                                        <Binding Path="StrokeWidth" RelativeSource="{RelativeSource TemplatedParent}" />
                                     </MultiBinding>
-                                </Border.Width>
-                            </Border>
-                        </Border>
+                                </Path.Data>
+                            </Path>
+                            <!-- Center text -->
+                            <TextBlock x:Name="CirclePercentText"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="{DynamicResource AntDesign.FontSize.XL}"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text}">
+                                <Run Text="{Binding Percent, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}}" /><Run Text="%" />
+                            </TextBlock>
+                        </Grid>
 
-                        <!-- Percentage text -->
-                        <TextBlock Grid.Column="1"
-                                   Margin="8,0,0,0"
-                                   VerticalAlignment="Center"
-                                   FontSize="{DynamicResource AntDesign.FontSize.SM}"
-                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}">
-                            <Run Text="{Binding Percent, RelativeSource={RelativeSource TemplatedParent}}" /><Run Text="%" />
-                        </TextBlock>
+                        <!-- ═══ DASHBOARD VARIANT ═══ -->
+                        <Grid x:Name="DashboardPanel"
+                              Visibility="Collapsed"
+                              Width="{TemplateBinding CircleDiameter}"
+                              Height="{TemplateBinding CircleDiameter}">
+                            <!-- Track arc -->
+                            <Path StrokeThickness="{Binding StrokeWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="{TemplateBinding Background}"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round">
+                                <Path.Data>
+                                    <MultiBinding ConverterParameter="Dashboard">
+                                        <MultiBinding.Converter>
+                                            <converters:TrackArcConverter />
+                                        </MultiBinding.Converter>
+                                        <Binding Path="CircleDiameter" RelativeSource="{RelativeSource TemplatedParent}" Converter="{StaticResource HalfValueConverter}" />
+                                        <Binding Path="StrokeWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    </MultiBinding>
+                                </Path.Data>
+                            </Path>
+                            <!-- Fill arc -->
+                            <Path StrokeThickness="{Binding StrokeWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round">
+                                <Path.Data>
+                                    <MultiBinding ConverterParameter="Dashboard">
+                                        <MultiBinding.Converter>
+                                            <converters:PercentToArcConverter />
+                                        </MultiBinding.Converter>
+                                        <Binding Path="Percent" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Path="CircleDiameter" RelativeSource="{RelativeSource TemplatedParent}" Converter="{StaticResource HalfValueConverter}" />
+                                        <Binding Path="StrokeWidth" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    </MultiBinding>
+                                </Path.Data>
+                            </Path>
+                            <!-- Center text -->
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="{DynamicResource AntDesign.FontSize.XL}"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text}">
+                                <Run Text="{Binding Percent, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}}" /><Run Text="%" />
+                            </TextBlock>
+                        </Grid>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Show Circle panel -->
+                        <Trigger Property="Type" Value="Circle">
+                            <Setter TargetName="LinePanel" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CirclePanel" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!-- Show Dashboard panel -->
+                        <Trigger Property="Type" Value="Dashboard">
+                            <Setter TargetName="LinePanel" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="DashboardPanel" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!-- Status colors -->
+                        <Trigger Property="Status" Value="Success">
+                            <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Success}" />
+                        </Trigger>
+                        <Trigger Property="Status" Value="Exception">
+                            <Setter Property="Foreground" Value="{DynamicResource AntDesign.Brush.Error}" />
+                        </Trigger>
+                        <!-- Hide info -->
+                        <Trigger Property="ShowInfo" Value="False">
+                            <Setter TargetName="LinePercentText" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="CirclePercentText" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

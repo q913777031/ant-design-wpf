@@ -68,6 +68,73 @@
                 </StackPanel>
             </Border>
 
+            <!-- Code: Line Progress -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"30"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"70"</Run> <Run Foreground="#D19A66">Status</Run>=<Run Foreground="#98C379">"Active"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"100"</Run> <Run Foreground="#D19A66">Status</Run>=<Run Foreground="#98C379">"Success"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"70"</Run> <Run Foreground="#D19A66">Status</Run>=<Run Foreground="#98C379">"Exception"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
+            <!-- Section: Circle Progress -->
+            <TextBlock Text="Circle Progress"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel Orientation="Horizontal">
+                    <antd:Progress Type="Circle" Percent="75" Margin="0,0,24,0" />
+                    <antd:Progress Type="Circle" Percent="100" Status="Success" Margin="0,0,24,0" />
+                    <antd:Progress Type="Circle" Percent="70" Status="Exception" />
+                </StackPanel>
+            </Border>
+
+            <!-- Code: Circle Progress -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Circle"</Run>
+               <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"75"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Circle"</Run>
+               <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"100"</Run>
+               <Run Foreground="#D19A66">Status</Run>=<Run Foreground="#98C379">"Success"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
+            <!-- Section: Dashboard Progress -->
+            <TextBlock Text="Dashboard Progress"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel Orientation="Horizontal">
+                    <antd:Progress Type="Dashboard" Percent="75" Margin="0,0,24,0" />
+                    <antd:Progress Type="Dashboard" Percent="100" Status="Success" Margin="0,0,24,0" />
+                    <antd:Progress Type="Dashboard" Percent="50" CircleDiameter="80" StrokeWidth="5" />
+                </StackPanel>
+            </Border>
+
+            <!-- Code: Dashboard Progress -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Dashboard"</Run>
+               <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"75"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Progress</Run> <Run Foreground="#D19A66">Type</Run>=<Run Foreground="#98C379">"Dashboard"</Run>
+               <Run Foreground="#D19A66">Percent</Run>=<Run Foreground="#98C379">"50"</Run>
+               <Run Foreground="#D19A66">CircleDiameter</Run>=<Run Foreground="#98C379">"80"</Run>
+               <Run Foreground="#D19A66">StrokeWidth</Run>=<Run Foreground="#98C379">"5"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: WPF ProgressBar -->
             <TextBlock Text="WPF ProgressBar (styled)"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"

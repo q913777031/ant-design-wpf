@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using AntDesign.WPF.Automation;
+using AntDesign.WPF.Helpers;
 
 namespace AntDesign.WPF.Controls;
 
@@ -251,11 +252,14 @@ public class Modal : ContentControl
     // Constructor
     // -------------------------------------------------------------------------
 
+    private IInputElement? _previousFocus;
+
     /// <summary>Initializes a new instance of the <see cref="Modal"/> class.</summary>
     public Modal()
     {
         CommandBindings.Add(new CommandBinding(OpenCommand,  ExecuteOpen));
         CommandBindings.Add(new CommandBinding(CloseCommand, ExecuteClose));
+        PreviewKeyDown += OnPreviewKeyDown;
     }
 
     // -------------------------------------------------------------------------
@@ -389,9 +393,42 @@ public class Modal : ContentControl
         modal.UpdateVisualState(true);
 
         if ((bool)e.NewValue)
+        {
+            // Save current focus and trap into dialog
+            modal._previousFocus = Keyboard.FocusedElement;
+            modal.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Input, () =>
+            {
+                var dialogRoot = modal.GetTemplateChild(PART_DialogRoot) as FrameworkElement;
+                if (dialogRoot != null)
+                    FocusTrapHelper.FocusFirst(dialogRoot);
+            });
             modal.RaiseEvent(new RoutedEventArgs(OpenedEvent, modal));
+        }
         else
+        {
+            // Restore previous focus
+            modal._previousFocus?.Focus();
+            modal._previousFocus = null;
             modal.RaiseEvent(new RoutedEventArgs(ClosedEvent, modal));
+        }
+    }
+
+    private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (!IsOpen) return;
+
+        // Escape closes the dialog
+        if (e.Key == Key.Escape)
+        {
+            IsOpen = false;
+            e.Handled = true;
+            return;
+        }
+
+        // Tab focus trap within dialog
+        var dialogRoot = GetTemplateChild(PART_DialogRoot) as FrameworkElement;
+        if (dialogRoot != null)
+            FocusTrapHelper.HandleTabKey(dialogRoot, e);
     }
 
     private void OnMaskMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

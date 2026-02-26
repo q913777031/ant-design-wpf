@@ -81,6 +81,7 @@ public class MainViewModel : ViewModelBase
         AllItems.Add(new NavigationItem { Title = "CheckBox", Category = "Data Entry", PageKey = "CheckBox", Icon = "C" });
         AllItems.Add(new NavigationItem { Title = "Select", Category = "Data Entry", PageKey = "Select", Icon = "S" });
         AllItems.Add(new NavigationItem { Title = "Switch", Category = "Data Entry", PageKey = "Switch", Icon = "W" });
+        AllItems.Add(new NavigationItem { Title = "Rate", Category = "Data Entry", PageKey = "Rate", Icon = "R" });
         AllItems.Add(new NavigationItem { Title = "Slider & DatePicker", Category = "Data Entry", PageKey = "DataEntry", Icon = "D" });
 
         // Data Display
@@ -96,13 +97,17 @@ public class MainViewModel : ViewModelBase
         // Feedback
         AllItems.Add(new NavigationItem { Title = "Alert", Category = "Feedback", PageKey = "Alert", Icon = "A" });
         AllItems.Add(new NavigationItem { Title = "Progress", Category = "Feedback", PageKey = "Progress", Icon = "P" });
+        AllItems.Add(new NavigationItem { Title = "Spin", Category = "Feedback", PageKey = "Spin", Icon = "S" });
         AllItems.Add(new NavigationItem { Title = "Modal", Category = "Feedback", PageKey = "Modal", Icon = "M" });
         AllItems.Add(new NavigationItem { Title = "Drawer", Category = "Feedback", PageKey = "Drawer", Icon = "D" });
+        AllItems.Add(new NavigationItem { Title = "Popconfirm", Category = "Feedback", PageKey = "Popconfirm", Icon = "P" });
         AllItems.Add(new NavigationItem { Title = "Message", Category = "Feedback", PageKey = "Message", Icon = "M" });
         AllItems.Add(new NavigationItem { Title = "Result", Category = "Feedback", PageKey = "Result", Icon = "R" });
 
         // Navigation
         AllItems.Add(new NavigationItem { Title = "Steps", Category = "Navigation", PageKey = "Steps", Icon = "S" });
+        AllItems.Add(new NavigationItem { Title = "Pagination", Category = "Navigation", PageKey = "Pagination", Icon = "P" });
+        AllItems.Add(new NavigationItem { Title = "Segmented", Category = "Navigation", PageKey = "Segmented", Icon = "S" });
 
         // Settings
         AllItems.Add(new NavigationItem { Title = "Theme", Category = "Settings", PageKey = "Theme", Icon = "T" });

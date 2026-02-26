@@ -4,7 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 using AntDesign.WPF.Automation;
+using AntDesign.WPF.Helpers;
 
 namespace AntDesign.WPF.Controls;
 
@@ -129,10 +131,13 @@ public class Drawer : ContentControl
         DefaultStyleKeyProperty.OverrideMetadata(typeof(Drawer), new FrameworkPropertyMetadata(typeof(Drawer)));
     }
 
+    private IInputElement? _previousFocus;
+
     public Drawer()
     {
         CommandBindings.Add(new CommandBinding(OpenCommand,  ExecuteOpen));
         CommandBindings.Add(new CommandBinding(CloseCommand, ExecuteClose));
+        PreviewKeyDown += OnPreviewKeyDown;
     }
 
     // -------------------------------------------------------------------------
@@ -355,14 +360,37 @@ public class Drawer : ContentControl
         var drawer = (Drawer)d;
         if ((bool)e.NewValue)
         {
+            drawer._previousFocus = Keyboard.FocusedElement;
             drawer.AnimateOpen();
+            drawer.Dispatcher.BeginInvoke(DispatcherPriority.Input, () =>
+            {
+                if (drawer._drawerPanel != null)
+                    FocusTrapHelper.FocusFirst(drawer._drawerPanel);
+            });
             drawer.RaiseEvent(new RoutedEventArgs(OpenedEvent, drawer));
         }
         else
         {
             drawer.AnimateClose();
+            drawer._previousFocus?.Focus();
+            drawer._previousFocus = null;
             drawer.RaiseEvent(new RoutedEventArgs(ClosedEvent, drawer));
         }
+    }
+
+    private void OnPreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (!IsOpen) return;
+
+        if (e.Key == Key.Escape)
+        {
+            IsOpen = false;
+            e.Handled = true;
+            return;
+        }
+
+        if (_drawerPanel != null)
+            FocusTrapHelper.HandleTabKey(_drawerPanel, e);
     }
 
     private static void OnPlacementChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

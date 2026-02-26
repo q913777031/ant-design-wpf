@@ -9,6 +9,75 @@
                 <antd:AntDesignTheme BaseTheme="Light" PrimaryColor="Blue" BorderRadius="6" />
                 <ResourceDictionary Source="pack://application:,,,/AntDesign.WPF;component/Themes/AntDesign.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Code example expander style for demo pages -->
+            <Style x:Key="CodeBoxExpander" TargetType="Expander">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Margin" Value="0,-8,0,24" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Expander">
+                            <Border BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                                    BorderThickness="1,0,1,1"
+                                    CornerRadius="0,0,6,6"
+                                    ClipToBounds="True">
+                                <DockPanel>
+                                    <ToggleButton x:Name="HeaderToggle"
+                                                  DockPanel.Dock="Top"
+                                                  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                  Cursor="Hand">
+                                        <ToggleButton.Template>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border x:Name="ToggleBg"
+                                                        Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                                                        Padding="16,8"
+                                                        BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                                                        BorderThickness="0,1,0,0">
+                                                    <StackPanel Orientation="Horizontal"
+                                                                HorizontalAlignment="Center">
+                                                        <TextBlock Text="{}{ }"
+                                                                   FontFamily="Consolas"
+                                                                   FontSize="12"
+                                                                   Foreground="{DynamicResource AntDesign.Brush.Primary}"
+                                                                   VerticalAlignment="Center"
+                                                                   Margin="0,0,6,0" />
+                                                        <TextBlock x:Name="ToggleText"
+                                                                   Text="Show Code"
+                                                                   FontSize="12"
+                                                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                                                                   VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsChecked" Value="True">
+                                                        <Setter TargetName="ToggleText" Property="Text" Value="Hide Code" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="ToggleText" Property="Foreground"
+                                                                Value="{DynamicResource AntDesign.Brush.Primary}" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </ToggleButton.Template>
+                                    </ToggleButton>
+                                    <Border x:Name="ContentArea"
+                                            Background="#282C34"
+                                            Padding="20,16"
+                                            Visibility="Collapsed">
+                                        <ContentPresenter />
+                                    </Border>
+                                </DockPanel>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded" Value="True">
+                                    <Setter TargetName="ContentArea" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

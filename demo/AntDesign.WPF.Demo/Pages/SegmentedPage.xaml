@@ -1,0 +1,135 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.SegmentedPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:antd="https://antdesign.wpf/"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="600">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Segmented"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Segmented controls for switching between options."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Section: Basic -->
+            <TextBlock Text="Basic"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <antd:Segmented SelectedIndex="0" Margin="0,0,0,16">
+                        <antd:SegmentedItem Content="Daily" />
+                        <antd:SegmentedItem Content="Weekly" />
+                        <antd:SegmentedItem Content="Monthly" />
+                        <antd:SegmentedItem Content="Quarterly" />
+                        <antd:SegmentedItem Content="Yearly" />
+                    </antd:Segmented>
+                    <antd:Segmented SelectedIndex="1">
+                        <antd:SegmentedItem Content="Map" />
+                        <antd:SegmentedItem Content="Transit" />
+                        <antd:SegmentedItem Content="Satellite" />
+                    </antd:Segmented>
+                </StackPanel>
+            </Border>
+
+            <!-- Code: Basic -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Segmented</Run> <Run Foreground="#D19A66">SelectedIndex</Run>=<Run Foreground="#98C379">"0"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:SegmentedItem</Run> <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Daily"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:SegmentedItem</Run> <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Weekly"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:SegmentedItem</Run> <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Monthly"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Segmented&gt;</Run></TextBlock>
+            </Expander>
+
+            <!-- Section: Size -->
+            <TextBlock Text="Size Variants"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Large:"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <antd:Segmented Size="Large" SelectedIndex="0" Margin="0,0,0,16">
+                        <antd:SegmentedItem Content="Large A" />
+                        <antd:SegmentedItem Content="Large B" />
+                        <antd:SegmentedItem Content="Large C" />
+                    </antd:Segmented>
+
+                    <TextBlock Text="Default:"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <antd:Segmented Size="Default" SelectedIndex="0" Margin="0,0,0,16">
+                        <antd:SegmentedItem Content="Default A" />
+                        <antd:SegmentedItem Content="Default B" />
+                        <antd:SegmentedItem Content="Default C" />
+                    </antd:Segmented>
+
+                    <TextBlock Text="Small:"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <antd:Segmented Size="Small" SelectedIndex="0">
+                        <antd:SegmentedItem Content="Small A" />
+                        <antd:SegmentedItem Content="Small B" />
+                        <antd:SegmentedItem Content="Small C" />
+                    </antd:Segmented>
+                </StackPanel>
+            </Border>
+
+            <!-- Section: Block -->
+            <TextBlock Text="Block Mode"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <antd:Segmented Block="True" SelectedIndex="0">
+                    <antd:SegmentedItem Content="Option A" />
+                    <antd:SegmentedItem Content="Option B" />
+                    <antd:SegmentedItem Content="Option C" />
+                </antd:Segmented>
+            </Border>
+
+            <!-- Code: Block -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Segmented</Run> <Run Foreground="#D19A66">Block</Run>=<Run Foreground="#98C379">"True"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:SegmentedItem</Run> <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Option A"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:SegmentedItem</Run> <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Option B"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Segmented&gt;</Run></TextBlock>
+            </Expander>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -83,6 +83,22 @@
                         </StackPanel>
                     </Border>
 
+                    <!-- Code: Drawer -->
+                    <Expander Style="{StaticResource CodeBoxExpander}">
+                        <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Drawer</Run> <Run Foreground="#D19A66">x:Name</Run>=<Run Foreground="#98C379">"DemoDrawer"</Run>
+              <Run Foreground="#D19A66">Title</Run>=<Run Foreground="#98C379">"Drawer Title"</Run>
+              <Run Foreground="#D19A66">Placement</Run>=<Run Foreground="#98C379">"Right"</Run>
+              <Run Foreground="#D19A66">DrawerWidth</Run>=<Run Foreground="#98C379">"378"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#C678DD">&lt;antd:Drawer.DrawerContent&gt;</Run>
+        <Run Foreground="#C678DD">&lt;TextBlock</Run> <Run Foreground="#D19A66">Text</Run>=<Run Foreground="#98C379">"Drawer content here."</Run> <Run Foreground="#C678DD">/&gt;</Run>
+    <Run Foreground="#C678DD">&lt;/antd:Drawer.DrawerContent&gt;</Run>
+    <Run Foreground="#5C6370">&lt;!-- Page content here --&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Drawer&gt;</Run>
+
+<Run Foreground="#5C6370">// Code-behind:</Run>
+<Run Foreground="#C678DD">DemoDrawer</Run>.IsOpen = <Run Foreground="#D19A66">true</Run>;</TextBlock>
+                    </Expander>
+
                 </StackPanel>
             </antd:Drawer>
 

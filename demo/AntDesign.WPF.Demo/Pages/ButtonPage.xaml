@@ -61,6 +61,20 @@
                 </WrapPanel>
             </Border>
 
+            <!-- Code: Button Types -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignPrimaryButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Primary"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignDefaultButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Default"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignDashedButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Dashed"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignTextButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Text"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignLinkButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Link"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: Danger Buttons -->
             <TextBlock Text="Danger Buttons"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
@@ -94,6 +108,14 @@
                             Margin="0,0,8,8" />
                 </WrapPanel>
             </Border>
+
+            <!-- Code: Danger Buttons -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignDangerButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Primary Danger"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignDangerDefaultButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Default Danger"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
 
             <!-- Section: Button Sizes -->
             <TextBlock Text="Size"
@@ -157,6 +179,16 @@
                     </WrapPanel>
                 </StackPanel>
             </Border>
+
+            <!-- Code: Button Sizes -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignLargePrimaryButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Large"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignPrimaryButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Default"</Run> <Run Foreground="#C678DD">/&gt;</Run>
+<Run Foreground="#C678DD">&lt;Button</Run> <Run Foreground="#D19A66">Style</Run>=<Run Foreground="#98C379">"{StaticResource AntDesignSmallPrimaryButton}"</Run>
+        <Run Foreground="#D19A66">Content</Run>=<Run Foreground="#98C379">"Small"</Run> <Run Foreground="#C678DD">/&gt;</Run></TextBlock>
+            </Expander>
 
             <!-- Section: Disabled State -->
             <TextBlock Text="Disabled"

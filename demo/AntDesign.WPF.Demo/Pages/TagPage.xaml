@@ -50,6 +50,15 @@
                 </WrapPanel>
             </Border>
 
+            <!-- Code: Basic Tags -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Tag&gt;</Run><Run Foreground="#ABB2BF">Default Tag</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Tag</Run> <Run Foreground="#D19A66">PresetColor</Run>=<Run Foreground="#98C379">"Blue"</Run><Run Foreground="#C678DD">&gt;</Run><Run Foreground="#ABB2BF">Blue</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Tag</Run> <Run Foreground="#D19A66">PresetColor</Run>=<Run Foreground="#98C379">"Green"</Run><Run Foreground="#C678DD">&gt;</Run><Run Foreground="#ABB2BF">Green</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Tag</Run> <Run Foreground="#D19A66">PresetColor</Run>=<Run Foreground="#98C379">"Red"</Run><Run Foreground="#C678DD">&gt;</Run><Run Foreground="#ABB2BF">Red</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Tag</Run> <Run Foreground="#D19A66">PresetColor</Run>=<Run Foreground="#98C379">"Gold"</Run><Run Foreground="#C678DD">&gt;</Run><Run Foreground="#ABB2BF">Gold</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run></TextBlock>
+            </Expander>
+
             <!-- Section: Closable Tags -->
             <TextBlock Text="Closable Tags"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
@@ -75,6 +84,13 @@
                     </WrapPanel>
                 </StackPanel>
             </Border>
+
+            <!-- Code: Closable Tags -->
+            <Expander Style="{StaticResource CodeBoxExpander}">
+                <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Tag</Run> <Run Foreground="#D19A66">Closable</Run>=<Run Foreground="#98C379">"True"</Run><Run Foreground="#C678DD">&gt;</Run><Run Foreground="#ABB2BF">Closable Tag</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run>
+<Run Foreground="#C678DD">&lt;antd:Tag</Run> <Run Foreground="#D19A66">Closable</Run>=<Run Foreground="#98C379">"True"</Run>
+          <Run Foreground="#D19A66">PresetColor</Run>=<Run Foreground="#98C379">"Blue"</Run><Run Foreground="#C678DD">&gt;</Run><Run Foreground="#ABB2BF">Blue Closable</Run><Run Foreground="#C678DD">&lt;/antd:Tag&gt;</Run></TextBlock>
+            </Expander>
 
         </StackPanel>
     </ScrollViewer>

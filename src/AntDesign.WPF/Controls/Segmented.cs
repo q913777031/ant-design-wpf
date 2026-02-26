@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace AntDesign.WPF.Controls;
 
@@ -127,6 +128,40 @@ public class Segmented : Selector
             {
                 SelectedIndex = index;
             }
+        }
+    }
+
+    /// <inheritdoc/>
+    protected override void OnKeyDown(KeyEventArgs e)
+    {
+        base.OnKeyDown(e);
+
+        int count = Items.Count;
+        if (count == 0) return;
+
+        switch (e.Key)
+        {
+            case Key.Left:
+            case Key.Up:
+                SelectedIndex = SelectedIndex > 0 ? SelectedIndex - 1 : count - 1;
+                e.Handled = true;
+                break;
+
+            case Key.Right:
+            case Key.Down:
+                SelectedIndex = SelectedIndex < count - 1 ? SelectedIndex + 1 : 0;
+                e.Handled = true;
+                break;
+
+            case Key.Home:
+                SelectedIndex = 0;
+                e.Handled = true;
+                break;
+
+            case Key.End:
+                SelectedIndex = count - 1;
+                e.Handled = true;
+                break;
         }
     }
 }

@@ -61,6 +61,20 @@
                         </StackPanel>
                     </Border>
 
+                    <!-- Code: Basic Modal -->
+                    <Expander Style="{StaticResource CodeBoxExpander}">
+                        <TextBlock FontFamily="Consolas" FontSize="12" Foreground="#ABB2BF" xml:space="preserve"><Run Foreground="#C678DD">&lt;antd:Modal</Run> <Run Foreground="#D19A66">x:Name</Run>=<Run Foreground="#98C379">"DemoModal"</Run>
+              <Run Foreground="#D19A66">Title</Run>=<Run Foreground="#98C379">"Basic Modal"</Run>
+              <Run Foreground="#D19A66">DialogContent</Run>=<Run Foreground="#98C379">"Some contents..."</Run>
+              <Run Foreground="#D19A66">OkText</Run>=<Run Foreground="#98C379">"OK"</Run>
+              <Run Foreground="#D19A66">CancelText</Run>=<Run Foreground="#98C379">"Cancel"</Run><Run Foreground="#C678DD">&gt;</Run>
+    <Run Foreground="#5C6370">&lt;!-- Page content here --&gt;</Run>
+<Run Foreground="#C678DD">&lt;/antd:Modal&gt;</Run>
+
+<Run Foreground="#5C6370">// Code-behind:</Run>
+<Run Foreground="#C678DD">DemoModal</Run>.IsOpen = <Run Foreground="#D19A66">true</Run>;</TextBlock>
+                    </Expander>
+
                     <!-- Section: Modal Width -->
                     <TextBlock Text="Custom Width"
                                FontSize="{DynamicResource AntDesign.FontSize.LG}"

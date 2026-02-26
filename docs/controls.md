@@ -27,6 +27,7 @@
   - [Modal 对话框](#modal-对话框)
   - [Drawer 抽屉](#drawer-抽屉)
   - [Spin 加载中](#spin-加载中)
+  - [Popconfirm 气泡确认框](#popconfirm-气泡确认框)
   - [Result 结果](#result-结果)
   - [Message 全局提示](#message-全局提示)
 - [导航 Navigation](#导航-navigation)
@@ -377,6 +378,29 @@ AntDesign.WPF 为标准 WPF `Button` 提供了 9 种预设样式，包含按下�
 | `Delay` | `int` | `0` | 延迟显示 (毫秒) |
 
 **优化**: 仅在 `IsSpinning=true` 时运行动画，减少 CPU 占用
+
+### Popconfirm 气泡确认框
+
+```xml
+<antd:Popconfirm Title="确认删除吗?"
+                 OkText="确定"
+                 CancelText="取消"
+                 Confirmed="OnConfirmed">
+    <Button Content="Delete" />
+</antd:Popconfirm>
+```
+
+| 属性 | 类型 | 默认值 | 说明 |
+|---|---|---|---|
+| `Title` | `string` | `null` | 确认提示文本 |
+| `OkText` | `string` | `"OK"` | 确认按钮文字 |
+| `CancelText` | `string` | `"Cancel"` | 取消按钮文字 |
+| `OkType` | `PopconfirmOkType` | `Primary` | 确认按钮类型 |
+| `Placement` | `PlacementMode` | `Top` | 弹出位置 |
+| `IsOpen` | `bool` | `false` | 是否显示 |
+| `Icon` | `object` | `null` | 自定义图标 |
+
+**事件**: `Confirmed`, `Cancelled`
 
 ### Result 结果
 
