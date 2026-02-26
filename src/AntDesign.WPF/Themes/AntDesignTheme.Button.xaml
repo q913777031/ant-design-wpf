@@ -9,6 +9,25 @@
     -->
 
     <!-- =====================================================================
+         AntDesignFocusVisual
+         Custom keyboard-focus visual that matches the Ant Design primary color
+         and corner radius instead of the default dotted Windows rectangle.
+         ===================================================================== -->
+    <Style x:Key="AntDesignFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="{DynamicResource AntDesign.Brush.Primary}"
+                            BorderThickness="2"
+                            CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                            Margin="-2"
+                            SnapsToDevicePixels="True" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- =====================================================================
          AntDesignDefaultButton
          Default / outlined variant: white background, border, text color.
          ===================================================================== -->
@@ -20,7 +39,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -29,7 +48,11 @@
                             BorderBrush="{DynamicResource AntDesign.Brush.Border}"
                             BorderThickness="1"
                             CornerRadius="{DynamicResource AntDesign.CornerRadius}"
-                            SnapsToDevicePixels="True">
+                            SnapsToDevicePixels="True"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Border.RenderTransform>
                         <ContentPresenter x:Name="ContentSite"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -51,6 +74,30 @@
                                     Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground"
                                     Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                         <!-- Disabled -->
                         <Trigger Property="IsEnabled" Value="False">
@@ -79,7 +126,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -88,7 +135,11 @@
                             BorderBrush="Transparent"
                             BorderThickness="1"
                             CornerRadius="{DynamicResource AntDesign.CornerRadius}"
-                            SnapsToDevicePixels="True">
+                            SnapsToDevicePixels="True"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Border.RenderTransform>
                         <ContentPresenter x:Name="ContentSite"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -106,6 +157,30 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="RootBorder" Property="Background"
                                     Value="{DynamicResource AntDesign.Brush.Primary.Active}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                         <!-- Disabled -->
                         <Trigger Property="IsEnabled" Value="False">
@@ -136,7 +211,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -198,7 +273,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -249,7 +324,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -300,7 +375,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -309,7 +384,11 @@
                             BorderBrush="Transparent"
                             BorderThickness="1"
                             CornerRadius="{DynamicResource AntDesign.CornerRadius}"
-                            SnapsToDevicePixels="True">
+                            SnapsToDevicePixels="True"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Border.RenderTransform>
                         <ContentPresenter x:Name="ContentSite"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -327,6 +406,30 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="RootBorder" Property="Background"
                                     Value="{DynamicResource AntDesign.Brush.Error.Active}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                         <!-- Disabled -->
                         <Trigger Property="IsEnabled" Value="False">
@@ -355,7 +458,7 @@
         <Setter Property="Cursor"            Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment"   Value="Center" />
-        <Setter Property="FocusVisualStyle"  Value="{x:Null}" />
+        <Setter Property="FocusVisualStyle"  Value="{StaticResource AntDesignFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -364,7 +467,11 @@
                             BorderBrush="{DynamicResource AntDesign.Brush.Error}"
                             BorderThickness="1"
                             CornerRadius="{DynamicResource AntDesign.CornerRadius}"
-                            SnapsToDevicePixels="True">
+                            SnapsToDevicePixels="True"
+                            RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                        </Border.RenderTransform>
                         <ContentPresenter x:Name="ContentSite"
                                           Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -386,6 +493,30 @@
                                     Value="{DynamicResource AntDesign.Brush.Error.Active}" />
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground"
                                     Value="{DynamicResource AntDesign.Brush.Error.Active}" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="0.97" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="RootBorder"
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                         To="1.0" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                         <!-- Disabled -->
                         <Trigger Property="IsEnabled" Value="False">

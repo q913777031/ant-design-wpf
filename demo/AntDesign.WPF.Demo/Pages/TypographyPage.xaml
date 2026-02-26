@@ -1,0 +1,144 @@
+<UserControl x:Class="AntDesign.WPF.Demo.Pages.TypographyPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="700">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="24" MaxWidth="800">
+
+            <!-- Page Title -->
+            <TextBlock Text="Typography"
+                       FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,8" />
+            <TextBlock Text="Basic text writing, including headings, body, lists, and more."
+                       FontSize="{DynamicResource AntDesign.FontSize}"
+                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                       Margin="0,0,0,32" />
+
+            <!-- Headings -->
+            <TextBlock Text="Headings"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="h1. Ant Design WPF"
+                               FontSize="{DynamicResource AntDesign.FontSize.H1}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,12" />
+                    <TextBlock Text="h2. Ant Design WPF"
+                               FontSize="{DynamicResource AntDesign.FontSize.H2}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,12" />
+                    <TextBlock Text="h3. Ant Design WPF"
+                               FontSize="{DynamicResource AntDesign.FontSize.H3}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,12" />
+                    <TextBlock Text="h4. Ant Design WPF"
+                               FontSize="{DynamicResource AntDesign.FontSize.H4}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,12" />
+                    <TextBlock Text="h5. Ant Design WPF"
+                               FontSize="{DynamicResource AntDesign.FontSize.H5}"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- Body Text -->
+            <TextBlock Text="Body Text"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Regular (14px) — Ant Design is an enterprise-class WPF UI design language and component library with a set of high-quality components."
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,12" />
+                    <TextBlock Text="Large (16px) — An enterprise-class WPF UI designed for web applications."
+                               FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,12" />
+                    <TextBlock Text="Small (12px) — Caption text and secondary information."
+                               FontSize="{DynamicResource AntDesign.FontSize.SM}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- Color Variants -->
+            <TextBlock Text="Color Variants"
+                       FontSize="{DynamicResource AntDesign.FontSize.LG}"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource AntDesign.Brush.Text}"
+                       Margin="0,0,0,16" />
+
+            <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
+                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource AntDesign.CornerRadius}"
+                    Padding="24"
+                    Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Primary text color"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Secondary text color"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Tertiary text color"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Disabled text color"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Disabled}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Success color text"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Success}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Warning color text"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Warning}"
+                               Margin="0,0,0,8" />
+                    <TextBlock Text="Error / Danger color text"
+                               FontSize="{DynamicResource AntDesign.FontSize}"
+                               Foreground="{DynamicResource AntDesign.Brush.Error}"
+                               Margin="0,0,0,0" />
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

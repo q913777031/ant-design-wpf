@@ -1,5 +1,8 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using System.Windows.Input;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -111,6 +114,33 @@ public class Pagination : Control
     public static readonly DependencyProperty PageCountProperty =
         PageCountPropertyKey.DependencyProperty;
 
+    /// <summary>Identifies the <see cref="PreviousPageCommand"/> dependency property.</summary>
+    public static readonly DependencyProperty PreviousPageCommandProperty =
+        DependencyProperty.Register(
+            nameof(PreviousPageCommand),
+            typeof(ICommand),
+            typeof(Pagination),
+            new PropertyMetadata(null));
+
+    /// <summary>Identifies the <see cref="NextPageCommand"/> dependency property.</summary>
+    public static readonly DependencyProperty NextPageCommandProperty =
+        DependencyProperty.Register(
+            nameof(NextPageCommand),
+            typeof(ICommand),
+            typeof(Pagination),
+            new PropertyMetadata(null));
+
+    /// <summary>
+    /// Identifies the <see cref="GoToPageCommand"/> dependency property.
+    /// The command parameter is the one-based page number (<see cref="int"/>).
+    /// </summary>
+    public static readonly DependencyProperty GoToPageCommandProperty =
+        DependencyProperty.Register(
+            nameof(GoToPageCommand),
+            typeof(ICommand),
+            typeof(Pagination),
+            new PropertyMetadata(null));
+
     // -------------------------------------------------------------------------
     // Static Constructor
     // -------------------------------------------------------------------------
@@ -195,6 +225,36 @@ public class Pagination : Control
         private set => SetValue(PageCountPropertyKey, value);
     }
 
+    /// <summary>
+    /// Gets or sets a command that is executed when the user navigates to the previous page.
+    /// The command is invoked with the new (resulting) page number as its parameter.
+    /// </summary>
+    public ICommand? PreviousPageCommand
+    {
+        get => (ICommand?)GetValue(PreviousPageCommandProperty);
+        set => SetValue(PreviousPageCommandProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets a command that is executed when the user navigates to the next page.
+    /// The command is invoked with the new (resulting) page number as its parameter.
+    /// </summary>
+    public ICommand? NextPageCommand
+    {
+        get => (ICommand?)GetValue(NextPageCommandProperty);
+        set => SetValue(NextPageCommandProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets a command that is executed when the user navigates to a specific page.
+    /// The command parameter is the one-based target page number (<see cref="int"/>).
+    /// </summary>
+    public ICommand? GoToPageCommand
+    {
+        get => (ICommand?)GetValue(GoToPageCommandProperty);
+        set => SetValue(GoToPageCommandProperty, value);
+    }
+
     // -------------------------------------------------------------------------
     // Events
     // -------------------------------------------------------------------------
@@ -241,6 +301,16 @@ public class Pagination : Control
         }
 
         UpdatePageCount();
+        UpdateCommandStates();
+    }
+
+    /// <summary>
+    /// Raises <see cref="CommandManager.InvalidateRequerySuggested"/> so that any bound
+    /// <see cref="ICommand.CanExecute"/> is re-evaluated after the page state changes.
+    /// </summary>
+    private void UpdateCommandStates()
+    {
+        CommandManager.InvalidateRequerySuggested();
     }
 
     // -------------------------------------------------------------------------
@@ -277,7 +347,13 @@ public class Pagination : Control
     private static void OnCurrentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var pg = (Pagination)d;
-        pg.RaiseEvent(new RoutedPropertyChangedEventArgs<int>((int)e.OldValue, (int)e.NewValue, CurrentChangedEvent));
+        int newPage = (int)e.NewValue;
+        pg.RaiseEvent(new RoutedPropertyChangedEventArgs<int>((int)e.OldValue, newPage, CurrentChangedEvent));
+
+        // Invoke GoToPageCommand with the new page number.
+        var cmd = pg.GoToPageCommand;
+        if (cmd != null && cmd.CanExecute(newPage))
+            cmd.Execute(newPage);
     }
 
     private static void OnTotalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -285,6 +361,7 @@ public class Pagination : Control
         var pg = (Pagination)d;
         pg.UpdatePageCount();
         pg.CoerceValue(CurrentProperty);
+        pg.UpdateCommandStates();
     }
 
     private static void OnPageSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -293,6 +370,7 @@ public class Pagination : Control
         pg.UpdatePageCount();
         pg.CoerceValue(CurrentProperty);
         pg.RaiseEvent(new RoutedPropertyChangedEventArgs<int>((int)e.OldValue, (int)e.NewValue, PageSizeChangedEvent));
+        pg.UpdateCommandStates();
     }
 
     // -------------------------------------------------------------------------
@@ -309,13 +387,27 @@ public class Pagination : Control
     private void OnPrevClick(object sender, RoutedEventArgs e)
     {
         if (Current > 1)
+        {
             Current--;
+            // PreviousPageCommand is invoked after Current changes (OnCurrentChanged fires GoToPageCommand).
+            // Additionally invoke PreviousPageCommand directly for consumers who bind to it.
+            var cmd = PreviousPageCommand;
+            if (cmd != null && cmd.CanExecute(Current))
+                cmd.Execute(Current);
+        }
     }
 
     private void OnNextClick(object sender, RoutedEventArgs e)
     {
         if (Current < PageCount)
+        {
             Current++;
+            // NextPageCommand is invoked after Current changes (OnCurrentChanged fires GoToPageCommand).
+            // Additionally invoke NextPageCommand directly for consumers who bind to it.
+            var cmd = NextPageCommand;
+            if (cmd != null && cmd.CanExecute(Current))
+                cmd.Execute(Current);
+        }
     }
 
     private void OnQuickJumperKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -340,4 +432,8 @@ public class Pagination : Control
     {
         if (Current < PageCount) Current++;
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new PaginationAutomationPeer(this);
 }

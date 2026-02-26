@@ -1,6 +1,8 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -235,4 +237,8 @@ public class Badge : ContentControl
             ? $"{overflow}+"
             : count.ToString();
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new BadgeAutomationPeer(this);
 }

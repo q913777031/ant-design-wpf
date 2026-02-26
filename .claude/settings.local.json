@@ -33,7 +33,10 @@
       "Bash(xargs grep:*)",
       "Bash(ls:*)",
       "Bash(find:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(powershell:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)"
     ]
   }
 }

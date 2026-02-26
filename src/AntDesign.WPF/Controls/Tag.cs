@@ -1,6 +1,8 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AntDesign.WPF.Automation;
 using AntDesign.WPF.Colors;
 
 namespace AntDesign.WPF.Controls;
@@ -189,4 +191,8 @@ public class Tag : ContentControl
         IsTagVisible = false;
         RaiseEvent(new RoutedEventArgs(ClosedEvent, this));
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new TagAutomationPeer(this);
 }

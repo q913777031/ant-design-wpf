@@ -1,9 +1,11 @@
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -492,4 +494,8 @@ public class Modal : ContentControl
 
         return null;
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new ModalAutomationPeer(this);
 }

@@ -1,5 +1,7 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -160,4 +162,8 @@ public class Card : ContentControl
         // Named parts are resolved by WPF automatically; override here
         // if additional wiring is required in future iterations.
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new CardAutomationPeer(this);
 }

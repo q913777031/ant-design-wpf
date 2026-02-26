@@ -1,5 +1,7 @@
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using AntDesign.WPF.Automation;
 
 namespace AntDesign.WPF.Controls;
 
@@ -192,4 +194,8 @@ public class Progress : Control
         double value = (double)baseValue;
         return value < 1d ? 1d : value;
     }
+
+    /// <inheritdoc/>
+    protected override AutomationPeer OnCreateAutomationPeer()
+        => new ProgressAutomationPeer(this);
 }
