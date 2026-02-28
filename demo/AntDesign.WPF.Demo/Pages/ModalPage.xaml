@@ -11,28 +11,28 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Modal"
+            <TextBlock Text="{DynamicResource Modal.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Modal dialogs for displaying messages that require attention."
+            <TextBlock Text="{DynamicResource Modal.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- The Modal wraps the entire content area -->
             <antd:Modal x:Name="DemoModal"
-                        Title="Basic Modal"
-                        DialogContent="Some contents in the modal dialog. Click OK or Cancel to close."
-                        OkText="OK"
-                        CancelText="Cancel">
+                        Title="{DynamicResource Modal.BasicModal}"
+                        DialogContent="{DynamicResource Modal.DefaultContent}"
+                        OkText="{DynamicResource Modal.OK}"
+                        CancelText="{DynamicResource Modal.Cancel}">
 
                 <!-- Page content (behind the modal overlay) -->
                 <StackPanel>
 
                     <!-- Section: Basic Modal -->
-                    <TextBlock Text="Basic Modal"
+                    <TextBlock Text="{DynamicResource Modal.BasicModal}"
                                FontSize="{DynamicResource AntDesign.FontSize.LG}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -45,16 +45,16 @@
                             Padding="24"
                             Margin="0,0,0,24">
                         <StackPanel>
-                            <TextBlock Text="Click the button to open a modal dialog:"
+                            <TextBlock Text="{DynamicResource Modal.ClickToOpen}"
                                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                        Margin="0,0,0,16" />
                             <WrapPanel Orientation="Horizontal">
                                 <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                        Content="Open Modal"
+                                        Content="{DynamicResource Modal.OpenModal}"
                                         Margin="0,0,8,8"
                                         Click="OpenModal_Click" />
                                 <Button Style="{StaticResource AntDesignDefaultButton}"
-                                        Content="Open Confirm Modal"
+                                        Content="{DynamicResource Modal.OpenConfirm}"
                                         Margin="0,0,8,8"
                                         Click="OpenConfirmModal_Click" />
                             </WrapPanel>
@@ -76,7 +76,7 @@
                     </Expander>
 
                     <!-- Section: Modal Width -->
-                    <TextBlock Text="Custom Width"
+                    <TextBlock Text="{DynamicResource Modal.CustomWidth}"
                                FontSize="{DynamicResource AntDesign.FontSize.LG}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -89,11 +89,11 @@
                             Padding="24"
                             Margin="0,0,0,24">
                         <StackPanel>
-                            <TextBlock Text="Open a 720px wide modal:"
+                            <TextBlock Text="{DynamicResource Modal.OpenWideDesc}"
                                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                        Margin="0,0,0,16" />
                             <Button Style="{StaticResource AntDesignDefaultButton}"
-                                    Content="Open Wide Modal"
+                                    Content="{DynamicResource Modal.OpenWide}"
                                     HorizontalAlignment="Left"
                                     Click="OpenWideModal_Click" />
                         </StackPanel>

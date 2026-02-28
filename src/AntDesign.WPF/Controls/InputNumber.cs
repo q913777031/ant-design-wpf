@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -289,8 +290,8 @@ public class InputNumber : Control
         if (Value is double v)
         {
             _textBox.Text = Precision.HasValue
-                ? v.ToString("F" + Precision.Value)
-                : v.ToString("G");
+                ? v.ToString("F" + Precision.Value, CultureInfo.InvariantCulture)
+                : v.ToString("G", CultureInfo.InvariantCulture);
         }
         else
         {

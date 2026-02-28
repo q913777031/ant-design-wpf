@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Badge"
+            <TextBlock Text="{DynamicResource Badge.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Small numerical value or status descriptor for UI elements."
+            <TextBlock Text="{DynamicResource Badge.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Badge with Count -->
-            <TextBlock Text="Badge with Count"
+            <TextBlock Text="{DynamicResource Badge.WithCount}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -67,7 +67,7 @@
             </Border>
 
             <!-- Section: Badge Dot -->
-            <TextBlock Text="Badge Dot"
+            <TextBlock Text="{DynamicResource Badge.Dot}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -88,7 +88,7 @@
                                 CornerRadius="{DynamicResource AntDesign.CornerRadius}" />
                     </antd:Badge>
                     <antd:Badge Dot="True" Margin="0,0,32,0">
-                        <TextBlock Text="Notification"
+                        <TextBlock Text="{DynamicResource Badge.Notification}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Primary}" />
                     </antd:Badge>
@@ -96,7 +96,7 @@
             </Border>
 
             <!-- Section: Status Badges -->
-            <TextBlock Text="Status Badges"
+            <TextBlock Text="{DynamicResource Badge.Status}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -111,23 +111,23 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
                         <antd:Badge Status="Success" Margin="0,0,8,0" />
-                        <TextBlock Text="Success" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                        <TextBlock Text="{DynamicResource Badge.Success}" Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
                         <antd:Badge Status="Processing" Margin="0,0,8,0" />
-                        <TextBlock Text="Processing" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                        <TextBlock Text="{DynamicResource Badge.Processing}" Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
                         <antd:Badge Status="Default" Margin="0,0,8,0" />
-                        <TextBlock Text="Default" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                        <TextBlock Text="{DynamicResource Badge.Default}" Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
                         <antd:Badge Status="Error" Margin="0,0,8,0" />
-                        <TextBlock Text="Error" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                        <TextBlock Text="{DynamicResource Badge.Error}" Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <antd:Badge Status="Warning" Margin="0,0,8,0" />
-                        <TextBlock Text="Warning" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                        <TextBlock Text="{DynamicResource Badge.Warning}" Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                 </StackPanel>
             </Border>

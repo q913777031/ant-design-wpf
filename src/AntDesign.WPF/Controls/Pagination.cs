@@ -308,7 +308,7 @@ public class Pagination : Control
     /// Raises <see cref="CommandManager.InvalidateRequerySuggested"/> so that any bound
     /// <see cref="ICommand.CanExecute"/> is re-evaluated after the page state changes.
     /// </summary>
-    private void UpdateCommandStates()
+    private static void UpdateCommandStates()
     {
         CommandManager.InvalidateRequerySuggested();
     }
@@ -361,7 +361,7 @@ public class Pagination : Control
         var pg = (Pagination)d;
         pg.UpdatePageCount();
         pg.CoerceValue(CurrentProperty);
-        pg.UpdateCommandStates();
+        UpdateCommandStates();
     }
 
     private static void OnPageSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -370,7 +370,7 @@ public class Pagination : Control
         pg.UpdatePageCount();
         pg.CoerceValue(CurrentProperty);
         pg.RaiseEvent(new RoutedPropertyChangedEventArgs<int>((int)e.OldValue, (int)e.NewValue, PageSizeChangedEvent));
-        pg.UpdateCommandStates();
+        UpdateCommandStates();
     }
 
     // -------------------------------------------------------------------------

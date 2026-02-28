@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Popconfirm"
+            <TextBlock Text="{DynamicResource Popconfirm.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A simple and compact confirmation dialog of an action."
+            <TextBlock Text="{DynamicResource Popconfirm.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic -->
-            <TextBlock Text="Basic"
+            <TextBlock Text="{DynamicResource Popconfirm.Basic}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -35,32 +35,32 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Click the button to see the popconfirm:"
+                    <TextBlock Text="{DynamicResource Popconfirm.ClickToSee}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,16" />
                     <WrapPanel Orientation="Horizontal">
-                        <antd:Popconfirm Title="Are you sure you want to delete this?"
+                        <antd:Popconfirm Title="{DynamicResource Popconfirm.DeleteConfirm}"
                                          Confirmed="OnDeleteConfirmed"
                                          Margin="0,0,16,8">
                             <Button Style="{StaticResource AntDesignDangerButton}"
-                                    Content="Delete" />
+                                    Content="{DynamicResource Popconfirm.Delete}" />
                         </antd:Popconfirm>
 
-                        <antd:Popconfirm Title="Proceed with this action?"
-                                         OkText="Yes"
-                                         CancelText="No"
+                        <antd:Popconfirm Title="{DynamicResource Popconfirm.ProceedAction}"
+                                         OkText="{DynamicResource Popconfirm.Yes}"
+                                         CancelText="{DynamicResource Popconfirm.No}"
                                          Margin="0,0,16,8">
                             <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                    Content="Confirm Action" />
+                                    Content="{DynamicResource Popconfirm.ConfirmAction}" />
                         </antd:Popconfirm>
 
-                        <antd:Popconfirm Title="Are you sure?"
+                        <antd:Popconfirm Title="{DynamicResource Popconfirm.AreYouSure}"
                                          OkType="Danger"
-                                         OkText="Delete"
-                                         CancelText="Cancel"
+                                         OkText="{DynamicResource Popconfirm.Delete}"
+                                         CancelText="{DynamicResource Popconfirm.Cancel}"
                                          Margin="0,0,0,8">
                             <Button Style="{StaticResource AntDesignDefaultButton}"
-                                    Content="Danger Confirm" />
+                                    Content="{DynamicResource Popconfirm.DangerConfirm}" />
                         </antd:Popconfirm>
                     </WrapPanel>
                     <TextBlock x:Name="StatusText"

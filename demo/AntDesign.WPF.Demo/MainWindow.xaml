@@ -135,25 +135,43 @@
                         BorderThickness="0,0,0,1">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
-                            <!-- Logo mark -->
+                            <!-- Logo mark: vector ant -->
                             <Border Width="28"
                                     Height="28"
                                     CornerRadius="6"
                                     Background="{DynamicResource AntDesign.Brush.Primary}"
                                     Margin="0,0,10,0">
-                                <TextBlock Text="A"
-                                           FontSize="15"
-                                           FontWeight="Bold"
-                                           Foreground="White"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center" />
+                                <Viewbox Width="18" Height="18" Margin="0,1,0,0">
+                                    <Canvas Width="24" Height="24">
+                                        <!-- Head -->
+                                        <Ellipse Canvas.Left="8" Canvas.Top="1" Width="8" Height="7" Fill="White" />
+                                        <!-- Eyes -->
+                                        <Ellipse Canvas.Left="9.5" Canvas.Top="3" Width="2" Height="2" Fill="{DynamicResource AntDesign.Brush.Primary}" />
+                                        <Ellipse Canvas.Left="12.5" Canvas.Top="3" Width="2" Height="2" Fill="{DynamicResource AntDesign.Brush.Primary}" />
+                                        <!-- Antennae -->
+                                        <Line X1="10" Y1="1.5" X2="7" Y2="0" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <Line X1="14" Y1="1.5" X2="17" Y2="0" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <!-- Thorax -->
+                                        <Ellipse Canvas.Left="9" Canvas.Top="8" Width="6" Height="5" Fill="White" />
+                                        <!-- Abdomen -->
+                                        <Ellipse Canvas.Left="7" Canvas.Top="13" Width="10" Height="9" Fill="White" />
+                                        <!-- Legs left -->
+                                        <Line X1="9" Y1="10" X2="4" Y2="7" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <Line X1="9" Y1="12" X2="3" Y2="12" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <Line X1="9" Y1="15" X2="4" Y2="18" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <!-- Legs right -->
+                                        <Line X1="15" Y1="10" X2="20" Y2="7" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <Line X1="15" Y1="12" X2="21" Y2="12" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                        <Line X1="15" Y1="15" X2="20" Y2="18" Stroke="White" StrokeThickness="1.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                                    </Canvas>
+                                </Viewbox>
                             </Border>
                             <StackPanel VerticalAlignment="Center">
-                                <TextBlock Text="Ant Design WPF"
+                                <TextBlock Text="{DynamicResource Demo.AppTitle}"
                                            FontSize="14"
                                            FontWeight="SemiBold"
                                            Foreground="{DynamicResource AntDesign.Brush.Text}" />
-                                <TextBlock Text="v1.0.0"
+                                <TextBlock Text="{DynamicResource Demo.Version}"
                                            FontSize="11"
                                            Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}" />
                             </StackPanel>
@@ -184,6 +202,7 @@
                                      CaretBrush="{DynamicResource AntDesign.Brush.Primary}"
                                      VerticalAlignment="Center"
                                      MinWidth="160"
+                                     AutomationProperties.Name="Search components"
                                      TextChanged="SearchBox_TextChanged">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox">
@@ -192,7 +211,7 @@
                                                 <ControlTemplate TargetType="TextBox">
                                                     <Grid>
                                                         <TextBlock x:Name="Placeholder"
-                                                                   Text="Search components..."
+                                                                   Text="{DynamicResource Demo.SearchPlaceholder}"
                                                                    FontSize="13"
                                                                    Foreground="{DynamicResource AntDesign.Brush.Text.Quaternary}"
                                                                    VerticalAlignment="Center"
@@ -224,6 +243,7 @@
                              SelectionChanged="NavList_SelectionChanged"
                              Background="Transparent"
                              BorderThickness="0"
+                             AutomationProperties.Name="Component navigation"
                              Padding="0,0,0,16"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                              ItemContainerStyle="{StaticResource NavItemStyle}">
@@ -285,7 +305,7 @@
                     <!-- Page Title -->
                     <TextBlock x:Name="PageTitleText"
                                DockPanel.Dock="Left"
-                               Text="Ant Design WPF"
+                               Text="{DynamicResource Demo.AppTitle}"
                                VerticalAlignment="Center"
                                FontSize="15"
                                FontWeight="SemiBold"
@@ -298,7 +318,7 @@
                                 HorizontalAlignment="Right">
 
                         <!-- Color Pickers -->
-                        <TextBlock Text="Color:"
+                        <TextBlock Text="{DynamicResource Demo.ColorLabel}"
                                    VerticalAlignment="Center"
                                    Margin="0,0,8,0"
                                    FontSize="12"
@@ -308,36 +328,42 @@
                                 Background="#1677FF"
                                 Margin="3,0"
                                 ToolTip="Blue"
+                                AutomationProperties.Name="Set primary color to Blue"
                                 Template="{StaticResource ColorSwatchTemplate}"
                                 Click="SetPrimaryColor_Click" />
                         <Button Tag="Green"
                                 Background="#52C41A"
                                 Margin="3,0"
                                 ToolTip="Green"
+                                AutomationProperties.Name="Set primary color to Green"
                                 Template="{StaticResource ColorSwatchTemplate}"
                                 Click="SetPrimaryColor_Click" />
                         <Button Tag="Red"
                                 Background="#FF4D4F"
                                 Margin="3,0"
                                 ToolTip="Red"
+                                AutomationProperties.Name="Set primary color to Red"
                                 Template="{StaticResource ColorSwatchTemplate}"
                                 Click="SetPrimaryColor_Click" />
                         <Button Tag="Purple"
                                 Background="#722ED1"
                                 Margin="3,0"
                                 ToolTip="Purple"
+                                AutomationProperties.Name="Set primary color to Purple"
                                 Template="{StaticResource ColorSwatchTemplate}"
                                 Click="SetPrimaryColor_Click" />
                         <Button Tag="Orange"
                                 Background="#FA8C16"
                                 Margin="3,0"
                                 ToolTip="Orange"
+                                AutomationProperties.Name="Set primary color to Orange"
                                 Template="{StaticResource ColorSwatchTemplate}"
                                 Click="SetPrimaryColor_Click" />
                         <Button Tag="Cyan"
                                 Background="#13C2C2"
                                 Margin="3,0,12,0"
                                 ToolTip="Cyan"
+                                AutomationProperties.Name="Set primary color to Cyan"
                                 Template="{StaticResource ColorSwatchTemplate}"
                                 Click="SetPrimaryColor_Click" />
 
@@ -350,11 +376,26 @@
                         <!-- Theme Toggle -->
                         <Button x:Name="ThemeToggleBtn"
                                 Style="{StaticResource ThemeToggleStyle}"
-                                ToolTip="Toggle Light / Dark Theme"
+                                ToolTip="{DynamicResource Demo.ThemeTooltip}"
+                                AutomationProperties.Name="Toggle light/dark theme"
                                 Click="ToggleTheme_Click">
                             <TextBlock x:Name="ThemeIcon"
                                        Text="&#9728;"
                                        FontSize="16"
+                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                        </Button>
+
+                        <!-- Language Toggle -->
+                        <Button x:Name="LangToggleBtn"
+                                Style="{StaticResource ThemeToggleStyle}"
+                                ToolTip="EN / 中文"
+                                AutomationProperties.Name="Toggle language"
+                                Click="ToggleLanguage_Click"
+                                Margin="4,0,0,0">
+                            <TextBlock x:Name="LangIcon"
+                                       Text="{DynamicResource Demo.LanguageToggle}"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
                                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
                         </Button>
                     </StackPanel>

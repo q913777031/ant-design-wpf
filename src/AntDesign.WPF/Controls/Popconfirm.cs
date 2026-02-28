@@ -268,7 +268,22 @@ public class Popconfirm : ContentControl
         MouseLeftButtonUp -= OnTriggerClick;
         MouseLeftButtonUp += OnTriggerClick;
 
+        Unloaded -= OnUnloaded;
+        Unloaded += OnUnloaded;
+
         UpdateVisualState(false);
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        if (_okButton is not null)     _okButton.Click     -= OnOkButtonClick;
+        if (_cancelButton is not null) _cancelButton.Click -= OnCancelButtonClick;
+        if (_popup is not null)
+        {
+            _popup.Opened -= OnPopupOpened;
+            _popup.Closed -= OnPopupClosed;
+        }
+        MouseLeftButtonUp -= OnTriggerClick;
     }
 
     // -------------------------------------------------------------------------

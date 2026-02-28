@@ -14,6 +14,8 @@ public partial class TablePage : UserControl
 
     private void TablePage_Loaded(object sender, RoutedEventArgs e)
     {
+        Loaded -= TablePage_Loaded;
+
         SampleDataGrid.ItemsSource = new List<PersonRecord>
         {
             new("John Brown",  32, "New York No. 1 Lake Park",       "nice, developer"),

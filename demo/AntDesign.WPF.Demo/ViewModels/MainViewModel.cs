@@ -1,18 +1,38 @@
 namespace AntDesign.WPF.Demo.ViewModels;
 
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Input;
 using AntDesign.WPF;
-using AntDesign.WPF.Input;
+using AntDesign.WPF.Demo.Helpers;
 
-public class NavigationItem
+public class NavigationItem : ViewModelBase
 {
-    public string Title { get; set; } = "";
-    public string Category { get; set; } = "";
+    private string _title = "";
+    private string _category = "";
+
+    public string TitleKey { get; set; } = "";
+    public string CategoryKey { get; set; } = "";
     public string PageKey { get; set; } = "";
     public string Icon { get; set; } = "";
+
+    public string Title
+    {
+        get => _title;
+        set => SetProperty(ref _title, value);
+    }
+
+    public string Category
+    {
+        get => _category;
+        set => SetProperty(ref _category, value);
+    }
+
+    public void Refresh()
+    {
+        Title = LanguageHelper.GetString(TitleKey);
+        Category = LanguageHelper.GetString(CategoryKey);
+    }
 }
 
 public class MainViewModel : ViewModelBase
@@ -20,14 +40,10 @@ public class MainViewModel : ViewModelBase
     private NavigationItem? _selectedItem;
     private bool _isDarkTheme;
     private string _searchText = "";
-    private ObservableCollection<NavigationItem> _filteredItems = new();
+    private readonly ObservableCollection<NavigationItem> _filteredItems = new();
 
     public ObservableCollection<NavigationItem> AllItems { get; } = new();
-    public ObservableCollection<NavigationItem> FilteredItems
-    {
-        get => _filteredItems;
-        set => SetProperty(ref _filteredItems, value);
-    }
+    public ObservableCollection<NavigationItem> FilteredItems => _filteredItems;
 
     public NavigationItem? SelectedItem
     {
@@ -55,81 +71,97 @@ public class MainViewModel : ViewModelBase
         }
     }
 
-    public ICommand ToggleThemeCommand { get; }
-    public ICommand SetPrimaryColorCommand { get; }
-
     public MainViewModel()
     {
-        ToggleThemeCommand = new RelayCommand(() => IsDarkTheme = !IsDarkTheme);
-        SetPrimaryColorCommand = new RelayCommand<string>(colorName => { /* handled in view */ });
-
         InitializeNavigation();
-        FilteredItems = new ObservableCollection<NavigationItem>(AllItems);
+        FilterNavigation();
+    }
+
+    public void RefreshNavigation()
+    {
+        foreach (var item in AllItems)
+            item.Refresh();
+
+        FilterNavigation();
     }
 
     private void InitializeNavigation()
     {
         // Overview
-        AllItems.Add(new NavigationItem { Title = "Welcome", Category = "Overview", PageKey = "Welcome", Icon = "H" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Welcome", CategoryKey = "Nav.Cat.Overview", PageKey = "Welcome", Icon = "H" });
 
         // General
-        AllItems.Add(new NavigationItem { Title = "Button", Category = "General", PageKey = "Button", Icon = "B" });
-        AllItems.Add(new NavigationItem { Title = "Typography", Category = "General", PageKey = "Typography", Icon = "T" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Button", CategoryKey = "Nav.Cat.General", PageKey = "Button", Icon = "B" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Typography", CategoryKey = "Nav.Cat.General", PageKey = "Typography", Icon = "T" });
 
         // Data Entry
-        AllItems.Add(new NavigationItem { Title = "Input", Category = "Data Entry", PageKey = "Input", Icon = "I" });
-        AllItems.Add(new NavigationItem { Title = "CheckBox", Category = "Data Entry", PageKey = "CheckBox", Icon = "C" });
-        AllItems.Add(new NavigationItem { Title = "Select", Category = "Data Entry", PageKey = "Select", Icon = "S" });
-        AllItems.Add(new NavigationItem { Title = "Switch", Category = "Data Entry", PageKey = "Switch", Icon = "W" });
-        AllItems.Add(new NavigationItem { Title = "Rate", Category = "Data Entry", PageKey = "Rate", Icon = "R" });
-        AllItems.Add(new NavigationItem { Title = "Slider & DatePicker", Category = "Data Entry", PageKey = "DataEntry", Icon = "D" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Input", CategoryKey = "Nav.Cat.DataEntry", PageKey = "Input", Icon = "I" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.CheckBox", CategoryKey = "Nav.Cat.DataEntry", PageKey = "CheckBox", Icon = "C" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Select", CategoryKey = "Nav.Cat.DataEntry", PageKey = "Select", Icon = "S" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Switch", CategoryKey = "Nav.Cat.DataEntry", PageKey = "Switch", Icon = "W" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Rate", CategoryKey = "Nav.Cat.DataEntry", PageKey = "Rate", Icon = "R" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.DataEntry", CategoryKey = "Nav.Cat.DataEntry", PageKey = "DataEntry", Icon = "D" });
 
         // Data Display
-        AllItems.Add(new NavigationItem { Title = "Card", Category = "Data Display", PageKey = "Card", Icon = "C" });
-        AllItems.Add(new NavigationItem { Title = "Tag", Category = "Data Display", PageKey = "Tag", Icon = "T" });
-        AllItems.Add(new NavigationItem { Title = "Badge", Category = "Data Display", PageKey = "Badge", Icon = "B" });
-        AllItems.Add(new NavigationItem { Title = "Table", Category = "Data Display", PageKey = "Table", Icon = "T" });
-        AllItems.Add(new NavigationItem { Title = "Tabs", Category = "Data Display", PageKey = "Tabs", Icon = "T" });
-        AllItems.Add(new NavigationItem { Title = "Timeline", Category = "Data Display", PageKey = "Timeline", Icon = "L" });
-        AllItems.Add(new NavigationItem { Title = "Divider", Category = "Data Display", PageKey = "Divider", Icon = "D" });
-        AllItems.Add(new NavigationItem { Title = "Empty", Category = "Data Display", PageKey = "Empty", Icon = "E" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Card", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Card", Icon = "C" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Tag", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Tag", Icon = "T" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Badge", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Badge", Icon = "B" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Table", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Table", Icon = "T" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Tabs", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Tabs", Icon = "T" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Timeline", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Timeline", Icon = "L" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Divider", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Divider", Icon = "D" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Empty", CategoryKey = "Nav.Cat.DataDisplay", PageKey = "Empty", Icon = "E" });
 
         // Feedback
-        AllItems.Add(new NavigationItem { Title = "Alert", Category = "Feedback", PageKey = "Alert", Icon = "A" });
-        AllItems.Add(new NavigationItem { Title = "Progress", Category = "Feedback", PageKey = "Progress", Icon = "P" });
-        AllItems.Add(new NavigationItem { Title = "Spin", Category = "Feedback", PageKey = "Spin", Icon = "S" });
-        AllItems.Add(new NavigationItem { Title = "Modal", Category = "Feedback", PageKey = "Modal", Icon = "M" });
-        AllItems.Add(new NavigationItem { Title = "Drawer", Category = "Feedback", PageKey = "Drawer", Icon = "D" });
-        AllItems.Add(new NavigationItem { Title = "Popconfirm", Category = "Feedback", PageKey = "Popconfirm", Icon = "P" });
-        AllItems.Add(new NavigationItem { Title = "Message", Category = "Feedback", PageKey = "Message", Icon = "M" });
-        AllItems.Add(new NavigationItem { Title = "Result", Category = "Feedback", PageKey = "Result", Icon = "R" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Alert", CategoryKey = "Nav.Cat.Feedback", PageKey = "Alert", Icon = "A" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Progress", CategoryKey = "Nav.Cat.Feedback", PageKey = "Progress", Icon = "P" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Spin", CategoryKey = "Nav.Cat.Feedback", PageKey = "Spin", Icon = "S" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Modal", CategoryKey = "Nav.Cat.Feedback", PageKey = "Modal", Icon = "M" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Drawer", CategoryKey = "Nav.Cat.Feedback", PageKey = "Drawer", Icon = "D" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Popconfirm", CategoryKey = "Nav.Cat.Feedback", PageKey = "Popconfirm", Icon = "P" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Message", CategoryKey = "Nav.Cat.Feedback", PageKey = "Message", Icon = "M" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Result", CategoryKey = "Nav.Cat.Feedback", PageKey = "Result", Icon = "R" });
 
         // Navigation
-        AllItems.Add(new NavigationItem { Title = "Steps", Category = "Navigation", PageKey = "Steps", Icon = "S" });
-        AllItems.Add(new NavigationItem { Title = "Pagination", Category = "Navigation", PageKey = "Pagination", Icon = "P" });
-        AllItems.Add(new NavigationItem { Title = "Segmented", Category = "Navigation", PageKey = "Segmented", Icon = "S" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Steps", CategoryKey = "Nav.Cat.Navigation", PageKey = "Steps", Icon = "S" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Pagination", CategoryKey = "Nav.Cat.Navigation", PageKey = "Pagination", Icon = "P" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Segmented", CategoryKey = "Nav.Cat.Navigation", PageKey = "Segmented", Icon = "S" });
 
         // Settings
-        AllItems.Add(new NavigationItem { Title = "Theme", Category = "Settings", PageKey = "Theme", Icon = "T" });
+        AllItems.Add(new NavigationItem { TitleKey = "Nav.Theme", CategoryKey = "Nav.Cat.Settings", PageKey = "Theme", Icon = "T" });
+
+        // Resolve initial titles
+        foreach (var item in AllItems)
+            item.Refresh();
     }
 
     private void FilterNavigation()
     {
-        if (string.IsNullOrWhiteSpace(SearchText))
-        {
-            FilteredItems = new ObservableCollection<NavigationItem>(AllItems);
-        }
-        else
-        {
-            var query = SearchText.ToLowerInvariant();
-            FilteredItems = new ObservableCollection<NavigationItem>(
-                AllItems.Where(i => i.Title.ToLowerInvariant().Contains(query) ||
-                                    i.Category.ToLowerInvariant().Contains(query)));
-        }
+        _filteredItems.Clear();
+
+        var items = string.IsNullOrWhiteSpace(SearchText)
+            ? AllItems
+            : AllItems.Where(i => i.Title.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                                  i.Category.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                                  i.PageKey.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+
+        foreach (var item in items)
+            _filteredItems.Add(item);
     }
 
     private void OnThemeChanged()
     {
         ThemeHelper.SetBaseTheme(IsDarkTheme ? BaseTheme.Dark : BaseTheme.Light);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            _filteredItems.Clear();
+            AllItems.Clear();
+        }
+
+        base.Dispose(disposing);
     }
 }

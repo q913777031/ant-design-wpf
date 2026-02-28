@@ -1,0 +1,559 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ==================== Common / Shell ==================== -->
+    <sys:String x:Key="Demo.ShowCode">Show Code</sys:String>
+    <sys:String x:Key="Demo.HideCode">Hide Code</sys:String>
+    <sys:String x:Key="Demo.AppTitle">Ant Design WPF</sys:String>
+    <sys:String x:Key="Demo.Version">v1.0.0</sys:String>
+    <sys:String x:Key="Demo.SearchPlaceholder">Search components...</sys:String>
+    <sys:String x:Key="Demo.ColorLabel">Color:</sys:String>
+    <sys:String x:Key="Demo.ThemeTooltip">Toggle Light / Dark Theme</sys:String>
+    <sys:String x:Key="Demo.LanguageToggle">EN/中</sys:String>
+
+    <!-- ==================== Navigation Categories ==================== -->
+    <sys:String x:Key="Nav.Cat.Overview">Overview</sys:String>
+    <sys:String x:Key="Nav.Cat.General">General</sys:String>
+    <sys:String x:Key="Nav.Cat.DataEntry">Data Entry</sys:String>
+    <sys:String x:Key="Nav.Cat.DataDisplay">Data Display</sys:String>
+    <sys:String x:Key="Nav.Cat.Feedback">Feedback</sys:String>
+    <sys:String x:Key="Nav.Cat.Navigation">Navigation</sys:String>
+    <sys:String x:Key="Nav.Cat.Settings">Settings</sys:String>
+
+    <!-- ==================== Navigation Items ==================== -->
+    <sys:String x:Key="Nav.Welcome">Welcome</sys:String>
+    <sys:String x:Key="Nav.Button">Button</sys:String>
+    <sys:String x:Key="Nav.Typography">Typography</sys:String>
+    <sys:String x:Key="Nav.Input">Input</sys:String>
+    <sys:String x:Key="Nav.CheckBox">CheckBox</sys:String>
+    <sys:String x:Key="Nav.Select">Select</sys:String>
+    <sys:String x:Key="Nav.Switch">Switch</sys:String>
+    <sys:String x:Key="Nav.Rate">Rate</sys:String>
+    <sys:String x:Key="Nav.DataEntry">Slider &amp; DatePicker</sys:String>
+    <sys:String x:Key="Nav.Card">Card</sys:String>
+    <sys:String x:Key="Nav.Tag">Tag</sys:String>
+    <sys:String x:Key="Nav.Badge">Badge</sys:String>
+    <sys:String x:Key="Nav.Table">Table</sys:String>
+    <sys:String x:Key="Nav.Tabs">Tabs</sys:String>
+    <sys:String x:Key="Nav.Timeline">Timeline</sys:String>
+    <sys:String x:Key="Nav.Divider">Divider</sys:String>
+    <sys:String x:Key="Nav.Empty">Empty</sys:String>
+    <sys:String x:Key="Nav.Alert">Alert</sys:String>
+    <sys:String x:Key="Nav.Progress">Progress</sys:String>
+    <sys:String x:Key="Nav.Spin">Spin</sys:String>
+    <sys:String x:Key="Nav.Modal">Modal</sys:String>
+    <sys:String x:Key="Nav.Drawer">Drawer</sys:String>
+    <sys:String x:Key="Nav.Popconfirm">Popconfirm</sys:String>
+    <sys:String x:Key="Nav.Message">Message</sys:String>
+    <sys:String x:Key="Nav.Result">Result</sys:String>
+    <sys:String x:Key="Nav.Steps">Steps</sys:String>
+    <sys:String x:Key="Nav.Pagination">Pagination</sys:String>
+    <sys:String x:Key="Nav.Segmented">Segmented</sys:String>
+    <sys:String x:Key="Nav.Theme">Theme</sys:String>
+
+    <!-- ==================== Welcome Page ==================== -->
+    <sys:String x:Key="Welcome.Title">Ant Design WPF</sys:String>
+    <sys:String x:Key="Welcome.Desc">A comprehensive WPF control library following Ant Design specifications.</sys:String>
+    <sys:String x:Key="Welcome.Features">30+ controls  ·  Light/Dark theme  ·  Design tokens  ·  MVVM ready  ·  Accessibility</sys:String>
+    <sys:String x:Key="Welcome.Stat.Controls">Custom Controls</sys:String>
+    <sys:String x:Key="Welcome.Stat.Themes">WPF Theme Overrides</sys:String>
+    <sys:String x:Key="Welcome.Stat.Palettes">Color Palettes</sys:String>
+    <sys:String x:Key="Welcome.Stat.Tokens">Design Tokens</sys:String>
+    <sys:String x:Key="Welcome.QuickStart">Quick Start</sys:String>
+    <sys:String x:Key="Welcome.Step1">Step 1</sys:String>
+    <sys:String x:Key="Welcome.Step1.Desc">— Install NuGet Package</sys:String>
+    <sys:String x:Key="Welcome.Step2">Step 2</sys:String>
+    <sys:String x:Key="Welcome.Step2.Desc">— Configure App.xaml</sys:String>
+    <sys:String x:Key="Welcome.Step3">Step 3</sys:String>
+    <sys:String x:Key="Welcome.Step3.Desc">— Use Controls</sys:String>
+    <sys:String x:Key="Welcome.ColorPalette">Color Palette</sys:String>
+    <sys:String x:Key="Welcome.Primary">Primary</sys:String>
+    <sys:String x:Key="Welcome.SemanticColors">Semantic Colors</sys:String>
+    <sys:String x:Key="Welcome.NeutralText">Neutral / Text</sys:String>
+    <sys:String x:Key="Welcome.Success">Success</sys:String>
+    <sys:String x:Key="Welcome.Info">Info</sys:String>
+    <sys:String x:Key="Welcome.Warning">Warning</sys:String>
+    <sys:String x:Key="Welcome.Error">Error</sys:String>
+    <sys:String x:Key="Welcome.Title.Label">Title</sys:String>
+    <sys:String x:Key="Welcome.Secondary">Secondary</sys:String>
+    <sys:String x:Key="Welcome.Tertiary">Tertiary</sys:String>
+    <sys:String x:Key="Welcome.Border">Border</sys:String>
+    <sys:String x:Key="Welcome.Fill">Fill</sys:String>
+    <sys:String x:Key="Welcome.FeaturesTitle">Features</sys:String>
+    <sys:String x:Key="Welcome.Feature1.Title">Design Token System</sys:String>
+    <sys:String x:Key="Welcome.Feature1.Desc">100+ design tokens for colors, typography, spacing, and more. Fully dynamic at runtime.</sys:String>
+    <sys:String x:Key="Welcome.Feature2.Title">Light / Dark Theme</sys:String>
+    <sys:String x:Key="Welcome.Feature2.Desc">One-click theme switching with smooth transitions. All 120 color tokens update instantly.</sys:String>
+    <sys:String x:Key="Welcome.Feature3.Title">High Performance</sys:String>
+    <sys:String x:Key="Welcome.Feature3.Desc">Frozen brushes, ISupportInitialize, cached pages, and optimized animations.</sys:String>
+    <sys:String x:Key="Welcome.Feature4.Title">Accessibility</sys:String>
+    <sys:String x:Key="Welcome.Feature4.Desc">AutomationPeer for all controls, keyboard navigation, focus management, screen reader support.</sys:String>
+    <sys:String x:Key="Welcome.Feature5.Title">MVVM Ready</sys:String>
+    <sys:String x:Key="Welcome.Feature5.Desc">Built-in RelayCommand, ICommand support on all interactive controls, two-way bindings.</sys:String>
+    <sys:String x:Key="Welcome.Feature6.Title">Easy Integration</sys:String>
+    <sys:String x:Key="Welcome.Feature6.Desc">Single NuGet package. Add 2 lines to App.xaml and start using antd: namespace.</sys:String>
+    <sys:String x:Key="Welcome.LivePreview">Live Controls Preview</sys:String>
+    <sys:String x:Key="Welcome.Alert.Success">Welcome to Ant Design WPF!</sys:String>
+    <sys:String x:Key="Welcome.Alert.SuccessDesc">This library provides enterprise-grade UI components.</sys:String>
+    <sys:String x:Key="Welcome.Alert.Info">Use the sidebar to explore all available controls.</sys:String>
+    <sys:String x:Key="Welcome.RuntimeTheme">Runtime Theme Switching</sys:String>
+    <sys:String x:Key="Welcome.RuntimeTheme.Desc">Use the color swatches and theme toggle in the top bar to see all controls update in real-time.</sys:String>
+
+    <!-- ==================== Button Page ==================== -->
+    <sys:String x:Key="Button.Title">Button</sys:String>
+    <sys:String x:Key="Button.Desc">To trigger an operation.</sys:String>
+    <sys:String x:Key="Button.Types">Button Types</sys:String>
+    <sys:String x:Key="Button.Types.Desc">There are primary button, default button, dashed button, text button and link button in Ant Design.</sys:String>
+    <sys:String x:Key="Button.Primary">Primary</sys:String>
+    <sys:String x:Key="Button.Default">Default</sys:String>
+    <sys:String x:Key="Button.Dashed">Dashed</sys:String>
+    <sys:String x:Key="Button.Text">Text</sys:String>
+    <sys:String x:Key="Button.Link">Link</sys:String>
+    <sys:String x:Key="Button.Danger">Danger Buttons</sys:String>
+    <sys:String x:Key="Button.Danger.Desc">danger is a property of Button which could be Primary, Default or Dashed.</sys:String>
+    <sys:String x:Key="Button.PrimaryDanger">Primary Danger</sys:String>
+    <sys:String x:Key="Button.DefaultDanger">Default Danger</sys:String>
+    <sys:String x:Key="Button.TextDanger">Text Danger</sys:String>
+    <sys:String x:Key="Button.LinkDanger">Link Danger</sys:String>
+    <sys:String x:Key="Button.Size">Size</sys:String>
+    <sys:String x:Key="Button.Size.Desc">In addition to the default size, Button has large and small variants.</sys:String>
+    <sys:String x:Key="Button.Size.Primary">Primary:</sys:String>
+    <sys:String x:Key="Button.Size.Default">Default:</sys:String>
+    <sys:String x:Key="Button.Size.Dashed">Dashed:</sys:String>
+    <sys:String x:Key="Button.Large">Large</sys:String>
+    <sys:String x:Key="Button.Small">Small</sys:String>
+    <sys:String x:Key="Button.Disabled">Disabled</sys:String>
+    <sys:String x:Key="Button.Disabled.Desc">To mark a button as disabled, add the IsEnabled=False attribute.</sys:String>
+    <sys:String x:Key="Button.PrimaryDisabled">Primary (disabled)</sys:String>
+    <sys:String x:Key="Button.DefaultDisabled">Default (disabled)</sys:String>
+    <sys:String x:Key="Button.DashedDisabled">Dashed (disabled)</sys:String>
+    <sys:String x:Key="Button.TextDisabled">Text (disabled)</sys:String>
+    <sys:String x:Key="Button.LinkDisabled">Link (disabled)</sys:String>
+
+    <!-- ==================== Typography Page ==================== -->
+    <sys:String x:Key="Typography.Title">Typography</sys:String>
+    <sys:String x:Key="Typography.Desc">Basic text writing, including headings, body, lists, and more.</sys:String>
+    <sys:String x:Key="Typography.Headings">Headings</sys:String>
+    <sys:String x:Key="Typography.H1">h1. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H2">h2. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H3">h3. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H4">h4. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H5">h5. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.BodyText">Body Text</sys:String>
+    <sys:String x:Key="Typography.Regular">Regular (14px) — Ant Design is an enterprise-class WPF UI design language and component library with a set of high-quality components.</sys:String>
+    <sys:String x:Key="Typography.Large">Large (16px) — An enterprise-class WPF UI designed for web applications.</sys:String>
+    <sys:String x:Key="Typography.Small">Small (12px) — Caption text and secondary information.</sys:String>
+    <sys:String x:Key="Typography.ColorVariants">Color Variants</sys:String>
+    <sys:String x:Key="Typography.PrimaryColor">Primary text color</sys:String>
+    <sys:String x:Key="Typography.SecondaryColor">Secondary text color</sys:String>
+    <sys:String x:Key="Typography.TertiaryColor">Tertiary text color</sys:String>
+    <sys:String x:Key="Typography.DisabledColor">Disabled text color</sys:String>
+    <sys:String x:Key="Typography.SuccessColor">Success color text</sys:String>
+    <sys:String x:Key="Typography.WarningColor">Warning color text</sys:String>
+    <sys:String x:Key="Typography.ErrorColor">Error / Danger color text</sys:String>
+
+    <!-- ==================== Input Page ==================== -->
+    <sys:String x:Key="Input.Title">Input</sys:String>
+    <sys:String x:Key="Input.Desc">A basic widget for getting the user input is a text field.</sys:String>
+    <sys:String x:Key="Input.BasicUsage">Basic Usage</sys:String>
+    <sys:String x:Key="Input.DefaultTextBox">Default TextBox</sys:String>
+    <sys:String x:Key="Input.BasicInput">Basic input</sys:String>
+    <sys:String x:Key="Input.WithPlaceholder">With placeholder</sys:String>
+    <sys:String x:Key="Input.Placeholder">Enter your username</sys:String>
+    <sys:String x:Key="Input.Multiline">Multiline TextBox</sys:String>
+    <sys:String x:Key="Input.MultilineText">Multi-line input area</sys:String>
+    <sys:String x:Key="Input.Disabled">Disabled</sys:String>
+    <sys:String x:Key="Input.DisabledLabel">Disabled input</sys:String>
+    <sys:String x:Key="Input.Password">Password Input</sys:String>
+    <sys:String x:Key="Input.PasswordField">Password field</sys:String>
+
+    <!-- ==================== CheckBox Page ==================== -->
+    <sys:String x:Key="CheckBox.Title">Checkbox</sys:String>
+    <sys:String x:Key="CheckBox.Desc">Checkbox and Radio button components.</sys:String>
+    <sys:String x:Key="CheckBox.Section">Checkbox</sys:String>
+    <sys:String x:Key="CheckBox.Unchecked">Unchecked</sys:String>
+    <sys:String x:Key="CheckBox.Checked">Checked</sys:String>
+    <sys:String x:Key="CheckBox.Indeterminate">Indeterminate</sys:String>
+    <sys:String x:Key="CheckBox.DisabledUnchecked">Disabled (unchecked)</sys:String>
+    <sys:String x:Key="CheckBox.DisabledChecked">Disabled (checked)</sys:String>
+    <sys:String x:Key="CheckBox.RadioButton">Radio Button</sys:String>
+    <sys:String x:Key="CheckBox.RadioDesc">Radio group — select one option:</sys:String>
+    <sys:String x:Key="CheckBox.OptionA">Option A</sys:String>
+    <sys:String x:Key="CheckBox.OptionB">Option B</sys:String>
+    <sys:String x:Key="CheckBox.OptionC">Option C</sys:String>
+    <sys:String x:Key="CheckBox.Disabled">Disabled</sys:String>
+
+    <!-- ==================== Select Page ==================== -->
+    <sys:String x:Key="Select.Title">Select</sys:String>
+    <sys:String x:Key="Select.Desc">Select component to select value from options.</sys:String>
+    <sys:String x:Key="Select.BasicUsage">Basic Usage</sys:String>
+    <sys:String x:Key="Select.BasicComboBox">Basic ComboBox (Select)</sys:String>
+    <sys:String x:Key="Select.Option1">Option 1</sys:String>
+    <sys:String x:Key="Select.Option2">Option 2</sys:String>
+    <sys:String x:Key="Select.Option3">Option 3</sys:String>
+    <sys:String x:Key="Select.Option4">Option 4</sys:String>
+    <sys:String x:Key="Select.Editable">Editable ComboBox</sys:String>
+    <sys:String x:Key="Select.TypeOrSelect">Type or select...</sys:String>
+    <sys:String x:Key="Select.DisabledState">Disabled State</sys:String>
+    <sys:String x:Key="Select.DisabledComboBox">Disabled ComboBox</sys:String>
+    <sys:String x:Key="Select.Option1Disabled">Option 1 (disabled)</sys:String>
+
+    <!-- ==================== Switch Page ==================== -->
+    <sys:String x:Key="Switch.Title">Switch</sys:String>
+    <sys:String x:Key="Switch.Desc">Switching between two states.</sys:String>
+    <sys:String x:Key="Switch.Basic">Basic Switch</sys:String>
+    <sys:String x:Key="Switch.DefaultChecked">Default Switch (checked)</sys:String>
+    <sys:String x:Key="Switch.DefaultUnchecked">Default Switch (unchecked)</sys:String>
+    <sys:String x:Key="Switch.Disabled">Disabled Switch</sys:String>
+    <sys:String x:Key="Switch.Small">Small Switch</sys:String>
+    <sys:String x:Key="Switch.SmallChecked">Small Switch (checked)</sys:String>
+    <sys:String x:Key="Switch.SmallUnchecked">Small Switch (unchecked)</sys:String>
+    <sys:String x:Key="Switch.WithText">Switch with Text Content</sys:String>
+    <sys:String x:Key="Switch.On">On</sys:String>
+    <sys:String x:Key="Switch.Off">Off</sys:String>
+    <sys:String x:Key="Switch.OnOffLabel">Switch with On/Off label</sys:String>
+
+    <!-- ==================== Rate Page ==================== -->
+    <sys:String x:Key="Rate.Title">Rate</sys:String>
+    <sys:String x:Key="Rate.Desc">Rate component for collecting star ratings.</sys:String>
+    <sys:String x:Key="Rate.Basic">Basic</sys:String>
+    <sys:String x:Key="Rate.Current">Current: 3</sys:String>
+    <sys:String x:Key="Rate.HalfStar">Half Star</sys:String>
+    <sys:String x:Key="Rate.HalfDesc">Click the left half of a star for 0.5 precision:</sys:String>
+    <sys:String x:Key="Rate.ReadOnly">Read Only</sys:String>
+    <sys:String x:Key="Rate.CustomCount">Custom Star Count</sys:String>
+    <sys:String x:Key="Rate.TenStars">10 stars:</sys:String>
+    <sys:String x:Key="Rate.ThreeStars">3 stars:</sys:String>
+
+    <!-- ==================== DataEntry Page ==================== -->
+    <sys:String x:Key="DataEntry.Title">Slider / DatePicker</sys:String>
+    <sys:String x:Key="DataEntry.Desc">Form data entry controls including Slider and DatePicker.</sys:String>
+    <sys:String x:Key="DataEntry.Slider">Slider</sys:String>
+    <sys:String x:Key="DataEntry.BasicSlider">Basic Slider</sys:String>
+    <sys:String x:Key="DataEntry.SliderValue">Slider with value display</sys:String>
+    <sys:String x:Key="DataEntry.DisabledSlider">Disabled Slider</sys:String>
+    <sys:String x:Key="DataEntry.DatePicker">DatePicker</sys:String>
+    <sys:String x:Key="DataEntry.BasicDatePicker">Basic DatePicker</sys:String>
+    <sys:String x:Key="DataEntry.DisabledDatePicker">Disabled DatePicker</sys:String>
+
+    <!-- ==================== Card Page ==================== -->
+    <sys:String x:Key="Card.Title">Card</sys:String>
+    <sys:String x:Key="Card.Desc">A container for displaying content in a box with optional title and extra content.</sys:String>
+    <sys:String x:Key="Card.BasicCard">Basic Card</sys:String>
+    <sys:String x:Key="Card.CardTitle">Card Title</sys:String>
+    <sys:String x:Key="Card.BasicContent">Card content goes here. This is a basic card with a title.</sys:String>
+    <sys:String x:Key="Card.WithExtra">Card with Extra Content</sys:String>
+    <sys:String x:Key="Card.WithExtraTitle">Card with Extra</sys:String>
+    <sys:String x:Key="Card.More">More</sys:String>
+    <sys:String x:Key="Card.ExtraContent">This card has extra content in the header (top-right area).</sys:String>
+    <sys:String x:Key="Card.Hoverable">Hoverable Card</sys:String>
+    <sys:String x:Key="Card.HoverableTitle">Hoverable</sys:String>
+    <sys:String x:Key="Card.HoverableContent">Hover over this card to see the shadow effect.</sys:String>
+    <sys:String x:Key="Card.Borderless">Borderless Card</sys:String>
+    <sys:String x:Key="Card.BorderlessTitle">Borderless Card</sys:String>
+    <sys:String x:Key="Card.BorderlessContent">This card has no border. Useful on colored backgrounds.</sys:String>
+    <sys:String x:Key="Card.SmallSize">Small Size Card</sys:String>
+    <sys:String x:Key="Card.SmallTitle">Small Card</sys:String>
+    <sys:String x:Key="Card.SmallContent">A small card with compact padding.</sys:String>
+
+    <!-- ==================== Tag Page ==================== -->
+    <sys:String x:Key="Tag.Title">Tag</sys:String>
+    <sys:String x:Key="Tag.Desc">Tag for categorizing or marking.</sys:String>
+    <sys:String x:Key="Tag.BasicTags">Basic Tags</sys:String>
+    <sys:String x:Key="Tag.DefaultTag">Default Tag</sys:String>
+    <sys:String x:Key="Tag.ClosableTags">Closable Tags</sys:String>
+    <sys:String x:Key="Tag.ClosableDesc">Click the × on a tag to close it:</sys:String>
+    <sys:String x:Key="Tag.ClosableTag">Closable Tag</sys:String>
+    <sys:String x:Key="Tag.BlueClosable">Blue Closable</sys:String>
+    <sys:String x:Key="Tag.GreenClosable">Green Closable</sys:String>
+    <sys:String x:Key="Tag.RedClosable">Red Closable</sys:String>
+
+    <!-- ==================== Badge Page ==================== -->
+    <sys:String x:Key="Badge.Title">Badge</sys:String>
+    <sys:String x:Key="Badge.Desc">Small numerical value or status descriptor for UI elements.</sys:String>
+    <sys:String x:Key="Badge.WithCount">Badge with Count</sys:String>
+    <sys:String x:Key="Badge.Dot">Badge Dot</sys:String>
+    <sys:String x:Key="Badge.Notification">Notification</sys:String>
+    <sys:String x:Key="Badge.Status">Status Badges</sys:String>
+    <sys:String x:Key="Badge.Success">Success</sys:String>
+    <sys:String x:Key="Badge.Processing">Processing</sys:String>
+    <sys:String x:Key="Badge.Default">Default</sys:String>
+    <sys:String x:Key="Badge.Error">Error</sys:String>
+    <sys:String x:Key="Badge.Warning">Warning</sys:String>
+
+    <!-- ==================== Table Page ==================== -->
+    <sys:String x:Key="Table.Title">Table</sys:String>
+    <sys:String x:Key="Table.Desc">A table displays rows of data.</sys:String>
+    <sys:String x:Key="Table.BasicTable">Basic Table</sys:String>
+    <sys:String x:Key="Table.Name">Name</sys:String>
+    <sys:String x:Key="Table.Age">Age</sys:String>
+    <sys:String x:Key="Table.Address">Address</sys:String>
+    <sys:String x:Key="Table.Tags">Tags</sys:String>
+
+    <!-- ==================== Tabs Page ==================== -->
+    <sys:String x:Key="Tabs.Title">Tabs</sys:String>
+    <sys:String x:Key="Tabs.Desc">Tabs make it easy to switch between different views.</sys:String>
+    <sys:String x:Key="Tabs.BasicTabs">Basic Tabs</sys:String>
+    <sys:String x:Key="Tabs.Tab1">Tab 1</sys:String>
+    <sys:String x:Key="Tabs.Tab2">Tab 2</sys:String>
+    <sys:String x:Key="Tabs.Tab3">Tab 3</sys:String>
+    <sys:String x:Key="Tabs.Content1">Content of Tab Panel 1</sys:String>
+    <sys:String x:Key="Tabs.Content2">Content of Tab Panel 2</sys:String>
+    <sys:String x:Key="Tabs.Content3">Content of Tab Panel 3</sys:String>
+    <sys:String x:Key="Tabs.Disabled">Disabled</sys:String>
+    <sys:String x:Key="Tabs.DisabledTab">Disabled Tab</sys:String>
+    <sys:String x:Key="Tabs.RichContent">Tabs with Rich Content</sys:String>
+    <sys:String x:Key="Tabs.Home">Home</sys:String>
+    <sys:String x:Key="Tabs.Settings">Settings</sys:String>
+    <sys:String x:Key="Tabs.Profile">Profile</sys:String>
+    <sys:String x:Key="Tabs.HomeWelcome">Welcome to the Home tab</sys:String>
+    <sys:String x:Key="Tabs.HomeDesc">This tab shows home content.</sys:String>
+    <sys:String x:Key="Tabs.SettingsTitle">Settings</sys:String>
+    <sys:String x:Key="Tabs.SettingsDesc">Configure your preferences here.</sys:String>
+    <sys:String x:Key="Tabs.ProfileTitle">User Profile</sys:String>
+    <sys:String x:Key="Tabs.ProfileDesc">Manage your account information.</sys:String>
+
+    <!-- ==================== Timeline Page ==================== -->
+    <sys:String x:Key="Timeline.Title">Timeline</sys:String>
+    <sys:String x:Key="Timeline.Desc">Vertical display time flow information.</sys:String>
+    <sys:String x:Key="Timeline.Basic">Basic Timeline</sys:String>
+    <sys:String x:Key="Timeline.Item1">Create a services site 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.Item2">Solve initial network problems 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.Item3">Technical testing 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.Item4">Network problems being solved 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.WithColors">Timeline with Colors</sys:String>
+    <sys:String x:Key="Timeline.Pending">Pending Timeline</sys:String>
+
+    <!-- ==================== Divider Page ==================== -->
+    <sys:String x:Key="Divider.Title">Divider</sys:String>
+    <sys:String x:Key="Divider.Desc">A divider line separates different content.</sys:String>
+    <sys:String x:Key="Divider.Horizontal">Horizontal Divider</sys:String>
+    <sys:String x:Key="Divider.Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sys:String>
+    <sys:String x:Key="Divider.WithText">Divider with Text</sys:String>
+    <sys:String x:Key="Divider.LoremShort">Lorem ipsum dolor sit amet.</sys:String>
+    <sys:String x:Key="Divider.CenterText">Center Text</sys:String>
+    <sys:String x:Key="Divider.LeftText">Left Text</sys:String>
+    <sys:String x:Key="Divider.RightText">Right Text</sys:String>
+    <sys:String x:Key="Divider.Vertical">Vertical Divider</sys:String>
+    <sys:String x:Key="Divider.Text">Text</sys:String>
+    <sys:String x:Key="Divider.Link">Link</sys:String>
+
+    <!-- ==================== Empty Page ==================== -->
+    <sys:String x:Key="Empty.Title">Empty</sys:String>
+    <sys:String x:Key="Empty.Desc">Empty state placeholder.</sys:String>
+    <sys:String x:Key="Empty.Default">Default Empty State</sys:String>
+    <sys:String x:Key="Empty.Custom">Custom Description</sys:String>
+    <sys:String x:Key="Empty.NoResults">No matching results found</sys:String>
+    <sys:String x:Key="Empty.WithAction">Empty with Action</sys:String>
+    <sys:String x:Key="Empty.NoData">No data available</sys:String>
+    <sys:String x:Key="Empty.CreateNow">Create Now</sys:String>
+
+    <!-- ==================== Alert Page ==================== -->
+    <sys:String x:Key="Alert.Title">Alert</sys:String>
+    <sys:String x:Key="Alert.Desc">Alert component for feedback.</sys:String>
+    <sys:String x:Key="Alert.BasicTypes">Basic Alert Types</sys:String>
+    <sys:String x:Key="Alert.SuccessTips">Success Tips</sys:String>
+    <sys:String x:Key="Alert.InfoNotes">Informational Notes</sys:String>
+    <sys:String x:Key="Alert.Warning">Warning</sys:String>
+    <sys:String x:Key="Alert.Error">Error</sys:String>
+    <sys:String x:Key="Alert.WithDesc">With Description</sys:String>
+    <sys:String x:Key="Alert.SuccessDesc">Detailed description and advice about successful copywriting.</sys:String>
+    <sys:String x:Key="Alert.InfoDesc">Additional description and information about copywriting.</sys:String>
+    <sys:String x:Key="Alert.WarningDesc">This is a warning notice about copywriting.</sys:String>
+    <sys:String x:Key="Alert.ErrorDesc">This is an error message about copywriting.</sys:String>
+    <sys:String x:Key="Alert.Closable">Closable Alerts</sys:String>
+    <sys:String x:Key="Alert.ClosableDesc">Click the close button to dismiss:</sys:String>
+    <sys:String x:Key="Alert.ClosableAlert">Closable Alert</sys:String>
+    <sys:String x:Key="Alert.WarningWithDesc">Warning with Description</sys:String>
+    <sys:String x:Key="Alert.ClosableWarningDesc">You can close this warning by clicking the X button.</sys:String>
+
+    <!-- ==================== Progress Page ==================== -->
+    <sys:String x:Key="Progress.Title">Progress</sys:String>
+    <sys:String x:Key="Progress.Desc">Display the current progress of an operation flow.</sys:String>
+    <sys:String x:Key="Progress.Line">Line Progress</sys:String>
+    <sys:String x:Key="Progress.Active">70% (Active)</sys:String>
+    <sys:String x:Key="Progress.Success">100% (Success)</sys:String>
+    <sys:String x:Key="Progress.Exception">Exception</sys:String>
+    <sys:String x:Key="Progress.Circle">Circle Progress</sys:String>
+    <sys:String x:Key="Progress.Dashboard">Dashboard Progress</sys:String>
+    <sys:String x:Key="Progress.WPFStyled">WPF ProgressBar (styled)</sys:String>
+    <sys:String x:Key="Progress.Standard">Standard WPF ProgressBar with Ant Design theme</sys:String>
+    <sys:String x:Key="Progress.Indeterminate">Indeterminate ProgressBar</sys:String>
+
+    <!-- ==================== Spin Page ==================== -->
+    <sys:String x:Key="Spin.Title">Spin</sys:String>
+    <sys:String x:Key="Spin.Desc">A spinner for displaying loading state of a section.</sys:String>
+    <sys:String x:Key="Spin.BasicUsage">Basic Usage</sys:String>
+    <sys:String x:Key="Spin.SizeVariants">Size Variants</sys:String>
+    <sys:String x:Key="Spin.Small">Small</sys:String>
+    <sys:String x:Key="Spin.Default">Default</sys:String>
+    <sys:String x:Key="Spin.Large">Large</sys:String>
+    <sys:String x:Key="Spin.WithTip">With Tip Text</sys:String>
+    <sys:String x:Key="Spin.Loading">Loading...</sys:String>
+    <sys:String x:Key="Spin.Wrapping">Wrapping Content (Overlay)</sys:String>
+    <sys:String x:Key="Spin.LoadingContent">Loading content...</sys:String>
+    <sys:String x:Key="Spin.AlertTitle">Alert message title</sys:String>
+    <sys:String x:Key="Spin.AlertDesc">Further details about the context of this alert.</sys:String>
+    <sys:String x:Key="Spin.ToggleLoading">Toggle Loading</sys:String>
+
+    <!-- ==================== Modal Page ==================== -->
+    <sys:String x:Key="Modal.Title">Modal</sys:String>
+    <sys:String x:Key="Modal.Desc">Modal dialogs for displaying messages that require attention.</sys:String>
+    <sys:String x:Key="Modal.BasicModal">Basic Modal</sys:String>
+    <sys:String x:Key="Modal.DefaultContent">Some contents in the modal dialog. Click OK or Cancel to close.</sys:String>
+    <sys:String x:Key="Modal.OK">OK</sys:String>
+    <sys:String x:Key="Modal.Cancel">Cancel</sys:String>
+    <sys:String x:Key="Modal.ClickToOpen">Click the button to open a modal dialog:</sys:String>
+    <sys:String x:Key="Modal.OpenModal">Open Modal</sys:String>
+    <sys:String x:Key="Modal.OpenConfirm">Open Confirm Modal</sys:String>
+    <sys:String x:Key="Modal.CustomWidth">Custom Width</sys:String>
+    <sys:String x:Key="Modal.OpenWideDesc">Open a 720px wide modal:</sys:String>
+    <sys:String x:Key="Modal.OpenWide">Open Wide Modal</sys:String>
+    <sys:String x:Key="Modal.BasicContent">Some contents in the modal dialog.\nThis is a demonstration of the Modal control.</sys:String>
+    <sys:String x:Key="Modal.ConfirmTitle">Confirm Action</sys:String>
+    <sys:String x:Key="Modal.ConfirmContent">Are you sure you want to perform this action?\nThis operation cannot be undone.</sys:String>
+    <sys:String x:Key="Modal.YesConfirm">Yes, Confirm</sys:String>
+    <sys:String x:Key="Modal.NoCancel">No, Cancel</sys:String>
+    <sys:String x:Key="Modal.WideTitle">Wide Modal</sys:String>
+    <sys:String x:Key="Modal.WideContent">This modal dialog is 720 pixels wide, useful for displaying more content.</sys:String>
+
+    <!-- ==================== Drawer Page ==================== -->
+    <sys:String x:Key="Drawer.Title">Drawer</sys:String>
+    <sys:String x:Key="Drawer.Desc">A panel that slides in from the edge of the screen.</sys:String>
+    <sys:String x:Key="Drawer.DrawerTitle">Drawer Title</sys:String>
+    <sys:String x:Key="Drawer.ContentTitle">Drawer Content</sys:String>
+    <sys:String x:Key="Drawer.Content1">This is the content inside the drawer panel.</sys:String>
+    <sys:String x:Key="Drawer.Content2">You can place any content here, such as forms, lists, or other controls.</sys:String>
+    <sys:String x:Key="Drawer.Placement">Drawer Placement</sys:String>
+    <sys:String x:Key="Drawer.PlacementDesc">Click to open drawer from different positions:</sys:String>
+    <sys:String x:Key="Drawer.Right">Right Drawer</sys:String>
+    <sys:String x:Key="Drawer.Left">Left Drawer</sys:String>
+    <sys:String x:Key="Drawer.Top">Top Drawer</sys:String>
+    <sys:String x:Key="Drawer.Bottom">Bottom Drawer</sys:String>
+
+    <!-- ==================== Popconfirm Page ==================== -->
+    <sys:String x:Key="Popconfirm.Title">Popconfirm</sys:String>
+    <sys:String x:Key="Popconfirm.Desc">A simple and compact confirmation dialog of an action.</sys:String>
+    <sys:String x:Key="Popconfirm.Basic">Basic</sys:String>
+    <sys:String x:Key="Popconfirm.ClickToSee">Click the button to see the popconfirm:</sys:String>
+    <sys:String x:Key="Popconfirm.DeleteConfirm">Are you sure you want to delete this?</sys:String>
+    <sys:String x:Key="Popconfirm.Delete">Delete</sys:String>
+    <sys:String x:Key="Popconfirm.ProceedAction">Proceed with this action?</sys:String>
+    <sys:String x:Key="Popconfirm.Yes">Yes</sys:String>
+    <sys:String x:Key="Popconfirm.No">No</sys:String>
+    <sys:String x:Key="Popconfirm.ConfirmAction">Confirm Action</sys:String>
+    <sys:String x:Key="Popconfirm.AreYouSure">Are you sure?</sys:String>
+    <sys:String x:Key="Popconfirm.Cancel">Cancel</sys:String>
+    <sys:String x:Key="Popconfirm.DangerConfirm">Danger Confirm</sys:String>
+    <sys:String x:Key="Popconfirm.DeletedSuccess">Item deleted successfully!</sys:String>
+
+    <!-- ==================== Message Page ==================== -->
+    <sys:String x:Key="Message.Title">Message &amp; Notification</sys:String>
+    <sys:String x:Key="Message.Desc">Display global messages as feedback in response to user operations.</sys:String>
+    <sys:String x:Key="Message.Section">Message</sys:String>
+    <sys:String x:Key="Message.SectionDesc">A lightweight global notice that appears at the top of the screen.</sys:String>
+    <sys:String x:Key="Message.ClickToShow">Click to show different message types:</sys:String>
+    <sys:String x:Key="Message.SuccessBtn">Success Message</sys:String>
+    <sys:String x:Key="Message.InfoBtn">Info Message</sys:String>
+    <sys:String x:Key="Message.WarningBtn">Warning Message</sys:String>
+    <sys:String x:Key="Message.ErrorBtn">Error Message</sys:String>
+    <sys:String x:Key="Message.LoadingBtn">Loading Message</sys:String>
+    <sys:String x:Key="Message.Notification">Notification</sys:String>
+    <sys:String x:Key="Message.NotificationDesc">Display a notification message globally, supports showing as a toast popup in the corner of the screen.</sys:String>
+    <sys:String x:Key="Message.NotifyClick">Click to show notification popups in the top-right corner:</sys:String>
+    <sys:String x:Key="Message.NotifySuccess">Success Notification</sys:String>
+    <sys:String x:Key="Message.NotifyInfo">Info Notification</sys:String>
+    <sys:String x:Key="Message.NotifyWarning">Warning Notification</sys:String>
+    <sys:String x:Key="Message.NotifyError">Error Notification</sys:String>
+    <sys:String x:Key="Message.CustomDuration">Custom Duration</sys:String>
+    <sys:String x:Key="Message.DurationDesc">Messages with custom display duration:</sys:String>
+    <sys:String x:Key="Message.1SecondBtn">1 Second Message</sys:String>
+    <sys:String x:Key="Message.10SecondBtn">10 Second Message</sys:String>
+    <sys:String x:Key="Message.SuccessText">Operation completed successfully!</sys:String>
+    <sys:String x:Key="Message.InfoText">This is an informational message.</sys:String>
+    <sys:String x:Key="Message.WarningText">Please review this warning message.</sys:String>
+    <sys:String x:Key="Message.ErrorText">An error has occurred. Please try again.</sys:String>
+    <sys:String x:Key="Message.LoadingText">Loading data, please wait...</sys:String>
+    <sys:String x:Key="Message.NotifySuccessTitle">Task Completed</sys:String>
+    <sys:String x:Key="Message.NotifySuccessDesc">Your export has finished. The file is ready to download.</sys:String>
+    <sys:String x:Key="Message.NotifyInfoTitle">System Update Available</sys:String>
+    <sys:String x:Key="Message.NotifyInfoDesc">A new version (v2.0.0) is available. Click here to update.</sys:String>
+    <sys:String x:Key="Message.NotifyWarningTitle">Low Disk Space</sys:String>
+    <sys:String x:Key="Message.NotifyWarningDesc">You have less than 500 MB of free disk space remaining.</sys:String>
+    <sys:String x:Key="Message.NotifyErrorTitle">Connection Failed</sys:String>
+    <sys:String x:Key="Message.NotifyErrorDesc">Unable to connect to the server. Please check your network connection.</sys:String>
+    <sys:String x:Key="Message.ShortText">This message disappears after 1 second.</sys:String>
+    <sys:String x:Key="Message.LongText">This message stays for 10 seconds. Plenty of time to read it!</sys:String>
+
+    <!-- ==================== Result Page ==================== -->
+    <sys:String x:Key="Result.Title">Result</sys:String>
+    <sys:String x:Key="Result.Desc">Used to feed back the results of a series of operational tasks.</sys:String>
+    <sys:String x:Key="Result.Success">Success</sys:String>
+    <sys:String x:Key="Result.SuccessTitle">Successfully Purchased Cloud Server ECS!</sys:String>
+    <sys:String x:Key="Result.SuccessSubTitle">Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.</sys:String>
+    <sys:String x:Key="Result.GoConsole">Go Console</sys:String>
+    <sys:String x:Key="Result.BuyAgain">Buy Again</sys:String>
+    <sys:String x:Key="Result.Error">Error</sys:String>
+    <sys:String x:Key="Result.ErrorTitle">Submission Failed</sys:String>
+    <sys:String x:Key="Result.ErrorSubTitle">Please check and modify the following information before resubmitting.</sys:String>
+    <sys:String x:Key="Result.Warning">Warning</sys:String>
+    <sys:String x:Key="Result.WarningTitle">There are some problems with your operation.</sys:String>
+
+    <!-- ==================== Steps Page ==================== -->
+    <sys:String x:Key="Steps.Title">Steps</sys:String>
+    <sys:String x:Key="Steps.Desc">A navigation bar that guides users through the steps of a task.</sys:String>
+    <sys:String x:Key="Steps.Horizontal">Horizontal Steps</sys:String>
+    <sys:String x:Key="Steps.Finished">Finished</sys:String>
+    <sys:String x:Key="Steps.StepDesc">This is a description.</sys:String>
+    <sys:String x:Key="Steps.InProgress">In Progress</sys:String>
+    <sys:String x:Key="Steps.Waiting">Waiting</sys:String>
+    <sys:String x:Key="Steps.Previous">Previous</sys:String>
+    <sys:String x:Key="Steps.Next">Next</sys:String>
+    <sys:String x:Key="Steps.WithError">Steps with Error Status</sys:String>
+    <sys:String x:Key="Steps.InProcess">In Process</sys:String>
+    <sys:String x:Key="Steps.SmallSize">Small Size Steps</sys:String>
+
+    <!-- ==================== Pagination Page ==================== -->
+    <sys:String x:Key="Pagination.Title">Pagination</sys:String>
+    <sys:String x:Key="Pagination.Desc">A long list can be divided into several pages using Pagination.</sys:String>
+    <sys:String x:Key="Pagination.Basic">Basic</sys:String>
+    <sys:String x:Key="Pagination.More">More Pages</sys:String>
+    <sys:String x:Key="Pagination.MoreDesc">Total = 500, PageSize = 10 (50 pages)</sys:String>
+    <sys:String x:Key="Pagination.QuickJumper">Quick Jumper</sys:String>
+    <sys:String x:Key="Pagination.QuickJumperDesc">Type a page number and press Enter to jump:</sys:String>
+    <sys:String x:Key="Pagination.Simple">Simple Mode</sys:String>
+
+    <!-- ==================== Segmented Page ==================== -->
+    <sys:String x:Key="Segmented.Title">Segmented</sys:String>
+    <sys:String x:Key="Segmented.Desc">Segmented controls for switching between options.</sys:String>
+    <sys:String x:Key="Segmented.Basic">Basic</sys:String>
+    <sys:String x:Key="Segmented.Daily">Daily</sys:String>
+    <sys:String x:Key="Segmented.Weekly">Weekly</sys:String>
+    <sys:String x:Key="Segmented.Monthly">Monthly</sys:String>
+    <sys:String x:Key="Segmented.Quarterly">Quarterly</sys:String>
+    <sys:String x:Key="Segmented.Yearly">Yearly</sys:String>
+    <sys:String x:Key="Segmented.Map">Map</sys:String>
+    <sys:String x:Key="Segmented.Transit">Transit</sys:String>
+    <sys:String x:Key="Segmented.Satellite">Satellite</sys:String>
+    <sys:String x:Key="Segmented.SizeVariants">Size Variants</sys:String>
+    <sys:String x:Key="Segmented.LargeLabel">Large:</sys:String>
+    <sys:String x:Key="Segmented.DefaultLabel">Default:</sys:String>
+    <sys:String x:Key="Segmented.SmallLabel">Small:</sys:String>
+    <sys:String x:Key="Segmented.Block">Block Mode</sys:String>
+
+    <!-- ==================== Theme Page ==================== -->
+    <sys:String x:Key="Theme.Title">Theme</sys:String>
+    <sys:String x:Key="Theme.Desc">Configure theme tokens including base theme, primary color, and border radius.</sys:String>
+    <sys:String x:Key="Theme.BaseTheme">Base Theme</sys:String>
+    <sys:String x:Key="Theme.ToggleDesc">Toggle between light and dark mode:</sys:String>
+    <sys:String x:Key="Theme.Light">Light Theme</sys:String>
+    <sys:String x:Key="Theme.Dark">Dark Theme</sys:String>
+    <sys:String x:Key="Theme.PrimaryColor">Primary Color</sys:String>
+    <sys:String x:Key="Theme.ChooseColor">Choose a primary color:</sys:String>
+    <sys:String x:Key="Theme.BorderRadius">Border Radius</sys:String>
+    <sys:String x:Key="Theme.RadiusDesc">Adjust border radius (0 = square, 12 = rounded):</sys:String>
+    <sys:String x:Key="Theme.PreviewButton">Preview Button</sys:String>
+    <sys:String x:Key="Theme.ColorTokenPreview">Color Token Preview</sys:String>
+
+</ResourceDictionary>

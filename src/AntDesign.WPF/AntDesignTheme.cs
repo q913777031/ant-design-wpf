@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 using AntDesign.WPF.Colors;
@@ -48,18 +49,17 @@ public class AntDesignTheme : ResourceDictionary, ISupportInitialize
     public new void BeginInit()
     {
         base.BeginInit();
-        _initCount++;
+        Interlocked.Increment(ref _initCount);
         _isInitializing = true;
     }
 
     /// <inheritdoc/>
     public new void EndInit()
     {
-        _initCount--;
-        if (_initCount <= 0)
+        if (Interlocked.Decrement(ref _initCount) <= 0)
         {
             _isInitializing = false;
-            _initCount = 0;
+            Interlocked.Exchange(ref _initCount, 0);
             Initialize();
         }
         base.EndInit();

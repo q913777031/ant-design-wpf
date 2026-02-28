@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using AntDesign.WPF.Controls;
+using AntDesign.WPF.Demo.Helpers;
 
 namespace AntDesign.WPF.Demo.Pages;
 
@@ -13,64 +14,64 @@ public partial class MessagePage : UserControl
 
     private void MessageSuccess_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Success("Operation completed successfully!");
+        MessageService.Success(LanguageHelper.GetString("Message.SuccessText"));
     }
 
     private void MessageInfo_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Info("This is an informational message.");
+        MessageService.Info(LanguageHelper.GetString("Message.InfoText"));
     }
 
     private void MessageWarning_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Warning("Please review this warning message.");
+        MessageService.Warning(LanguageHelper.GetString("Message.WarningText"));
     }
 
     private void MessageError_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Error("An error has occurred. Please try again.");
+        MessageService.Error(LanguageHelper.GetString("Message.ErrorText"));
     }
 
     private void MessageLoading_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Loading("Loading data, please wait...", duration: 2);
+        MessageService.Loading(LanguageHelper.GetString("Message.LoadingText"), duration: 2);
     }
 
     private void NotifySuccess_Click(object sender, RoutedEventArgs e)
     {
         NotificationService.Success(
-            "Task Completed",
-            "Your export has finished. The file is ready to download.");
+            LanguageHelper.GetString("Message.NotifySuccessTitle"),
+            LanguageHelper.GetString("Message.NotifySuccessDesc"));
     }
 
     private void NotifyInfo_Click(object sender, RoutedEventArgs e)
     {
         NotificationService.Info(
-            "System Update Available",
-            "A new version (v2.0.0) is available. Click here to update.");
+            LanguageHelper.GetString("Message.NotifyInfoTitle"),
+            LanguageHelper.GetString("Message.NotifyInfoDesc"));
     }
 
     private void NotifyWarning_Click(object sender, RoutedEventArgs e)
     {
         NotificationService.Warning(
-            "Low Disk Space",
-            "You have less than 500 MB of free disk space remaining.");
+            LanguageHelper.GetString("Message.NotifyWarningTitle"),
+            LanguageHelper.GetString("Message.NotifyWarningDesc"));
     }
 
     private void NotifyError_Click(object sender, RoutedEventArgs e)
     {
         NotificationService.Error(
-            "Connection Failed",
-            "Unable to connect to the server. Please check your network connection.");
+            LanguageHelper.GetString("Message.NotifyErrorTitle"),
+            LanguageHelper.GetString("Message.NotifyErrorDesc"));
     }
 
     private void MessageShort_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Info("This message disappears after 1 second.", duration: 1);
+        MessageService.Info(LanguageHelper.GetString("Message.ShortText"), duration: 1);
     }
 
     private void MessageLong_Click(object sender, RoutedEventArgs e)
     {
-        MessageService.Info("This message stays for 10 seconds. Plenty of time to read it!", duration: 10);
+        MessageService.Info(LanguageHelper.GetString("Message.LongText"), duration: 10);
     }
 }

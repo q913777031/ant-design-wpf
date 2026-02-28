@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Progress"
+            <TextBlock Text="{DynamicResource Progress.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Display the current progress of an operation flow."
+            <TextBlock Text="{DynamicResource Progress.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Line Progress -->
-            <TextBlock Text="Line Progress"
+            <TextBlock Text="{DynamicResource Progress.Line}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -48,19 +48,19 @@
                         <antd:Progress Percent="50" />
                     </StackPanel>
                     <StackPanel Margin="0,0,0,16">
-                        <TextBlock Text="70% (Active)"
+                        <TextBlock Text="{DynamicResource Progress.Active}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    Margin="0,0,0,4" />
                         <antd:Progress Percent="70" Status="Active" />
                     </StackPanel>
                     <StackPanel Margin="0,0,0,16">
-                        <TextBlock Text="100% (Success)"
+                        <TextBlock Text="{DynamicResource Progress.Success}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    Margin="0,0,0,4" />
                         <antd:Progress Percent="100" Status="Success" />
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Text="Exception"
+                        <TextBlock Text="{DynamicResource Progress.Exception}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    Margin="0,0,0,4" />
                         <antd:Progress Percent="70" Status="Exception" />
@@ -77,7 +77,7 @@
             </Expander>
 
             <!-- Section: Circle Progress -->
-            <TextBlock Text="Circle Progress"
+            <TextBlock Text="{DynamicResource Progress.Circle}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -106,7 +106,7 @@
             </Expander>
 
             <!-- Section: Dashboard Progress -->
-            <TextBlock Text="Dashboard Progress"
+            <TextBlock Text="{DynamicResource Progress.Dashboard}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -136,7 +136,7 @@
             </Expander>
 
             <!-- Section: WPF ProgressBar -->
-            <TextBlock Text="WPF ProgressBar (styled)"
+            <TextBlock Text="{DynamicResource Progress.WPFStyled}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -149,7 +149,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Standard WPF ProgressBar with Ant Design theme"
+                    <TextBlock Text="{DynamicResource Progress.Standard}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <ProgressBar Minimum="0"
@@ -157,7 +157,7 @@
                                  Value="45"
                                  Height="8"
                                  Margin="0,0,0,16" />
-                    <TextBlock Text="Indeterminate ProgressBar"
+                    <TextBlock Text="{DynamicResource Progress.Indeterminate}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <ProgressBar Minimum="0"

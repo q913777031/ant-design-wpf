@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <antd:AntDesignTheme BaseTheme="Light" PrimaryColor="Blue" BorderRadius="6" />
                 <ResourceDictionary Source="pack://application:,,,/AntDesign.WPF;component/Themes/AntDesign.Defaults.xaml" />
+                <ResourceDictionary Source="Resources/Strings/Strings.en.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Code example expander style for demo pages -->
@@ -43,7 +44,7 @@
                                                                    VerticalAlignment="Center"
                                                                    Margin="0,0,6,0" />
                                                         <TextBlock x:Name="ToggleText"
-                                                                   Text="Show Code"
+                                                                   Text="{DynamicResource Demo.ShowCode}"
                                                                    FontSize="12"
                                                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                                                    VerticalAlignment="Center" />
@@ -51,7 +52,7 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsChecked" Value="True">
-                                                        <Setter TargetName="ToggleText" Property="Text" Value="Hide Code" />
+                                                        <Setter TargetName="ToggleText" Property="Text" Value="{DynamicResource Demo.HideCode}" />
                                                     </Trigger>
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter TargetName="ToggleText" Property="Foreground"

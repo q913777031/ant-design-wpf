@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Tag"
+            <TextBlock Text="{DynamicResource Tag.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Tag for categorizing or marking."
+            <TextBlock Text="{DynamicResource Tag.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Tags -->
-            <TextBlock Text="Basic Tags"
+            <TextBlock Text="{DynamicResource Tag.BasicTags}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -35,7 +35,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <WrapPanel Orientation="Horizontal">
-                    <antd:Tag Margin="0,0,8,8">Default Tag</antd:Tag>
+                    <antd:Tag Content="{DynamicResource Tag.DefaultTag}" Margin="0,0,8,8" />
                     <antd:Tag PresetColor="Blue" Margin="0,0,8,8">Blue</antd:Tag>
                     <antd:Tag PresetColor="Green" Margin="0,0,8,8">Green</antd:Tag>
                     <antd:Tag PresetColor="Red" Margin="0,0,8,8">Red</antd:Tag>
@@ -60,7 +60,7 @@
             </Expander>
 
             <!-- Section: Closable Tags -->
-            <TextBlock Text="Closable Tags"
+            <TextBlock Text="{DynamicResource Tag.ClosableTags}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -73,14 +73,14 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Click the × on a tag to close it:"
+                    <TextBlock Text="{DynamicResource Tag.ClosableDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,12" />
                     <WrapPanel Orientation="Horizontal">
-                        <antd:Tag Closable="True" Margin="0,0,8,8">Closable Tag</antd:Tag>
-                        <antd:Tag Closable="True" PresetColor="Blue" Margin="0,0,8,8">Blue Closable</antd:Tag>
-                        <antd:Tag Closable="True" PresetColor="Green" Margin="0,0,8,8">Green Closable</antd:Tag>
-                        <antd:Tag Closable="True" PresetColor="Red" Margin="0,0,8,8">Red Closable</antd:Tag>
+                        <antd:Tag Closable="True" Content="{DynamicResource Tag.ClosableTag}" Margin="0,0,8,8" />
+                        <antd:Tag Closable="True" PresetColor="Blue" Content="{DynamicResource Tag.BlueClosable}" Margin="0,0,8,8" />
+                        <antd:Tag Closable="True" PresetColor="Green" Content="{DynamicResource Tag.GreenClosable}" Margin="0,0,8,8" />
+                        <antd:Tag Closable="True" PresetColor="Red" Content="{DynamicResource Tag.RedClosable}" Margin="0,0,8,8" />
                     </WrapPanel>
                 </StackPanel>
             </Border>

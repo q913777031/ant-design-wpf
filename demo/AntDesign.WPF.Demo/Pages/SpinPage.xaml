@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Spin"
+            <TextBlock Text="{DynamicResource Spin.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A spinner for displaying loading state of a section."
+            <TextBlock Text="{DynamicResource Spin.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic -->
-            <TextBlock Text="Basic Usage"
+            <TextBlock Text="{DynamicResource Spin.BasicUsage}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -45,7 +45,7 @@
             </Expander>
 
             <!-- Section: Sizes -->
-            <TextBlock Text="Size Variants"
+            <TextBlock Text="{DynamicResource Spin.SizeVariants}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -60,21 +60,21 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Margin="0,0,32,0" HorizontalAlignment="Center">
                         <antd:Spin IsSpinning="True" Size="Small" />
-                        <TextBlock Text="Small"
+                        <TextBlock Text="{DynamicResource Spin.Small}"
                                    HorizontalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    Margin="0,8,0,0" />
                     </StackPanel>
                     <StackPanel Margin="0,0,32,0" HorizontalAlignment="Center">
                         <antd:Spin IsSpinning="True" Size="Default" />
-                        <TextBlock Text="Default"
+                        <TextBlock Text="{DynamicResource Spin.Default}"
                                    HorizontalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    Margin="0,8,0,0" />
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center">
                         <antd:Spin IsSpinning="True" Size="Large" />
-                        <TextBlock Text="Large"
+                        <TextBlock Text="{DynamicResource Spin.Large}"
                                    HorizontalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    Margin="0,8,0,0" />
@@ -83,7 +83,7 @@
             </Border>
 
             <!-- Section: With Tip -->
-            <TextBlock Text="With Tip Text"
+            <TextBlock Text="{DynamicResource Spin.WithTip}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -96,7 +96,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel HorizontalAlignment="Center">
-                    <antd:Spin IsSpinning="True" Tip="Loading..." />
+                    <antd:Spin IsSpinning="True" Tip="{DynamicResource Spin.Loading}" />
                 </StackPanel>
             </Border>
 
@@ -107,7 +107,7 @@
             </Expander>
 
             <!-- Section: Wrapping Content -->
-            <TextBlock Text="Wrapping Content (Overlay)"
+            <TextBlock Text="{DynamicResource Spin.Wrapping}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -120,7 +120,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <antd:Spin x:Name="ContentSpin" IsSpinning="True" Tip="Loading content...">
+                    <antd:Spin x:Name="ContentSpin" IsSpinning="True" Tip="{DynamicResource Spin.LoadingContent}">
                         <Border Background="{DynamicResource AntDesign.Brush.Bg.Container}"
                                 BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
                                 BorderThickness="1"
@@ -128,18 +128,18 @@
                                 Padding="16"
                                 Margin="0,0,0,16">
                             <StackPanel>
-                                <TextBlock Text="Alert message title"
+                                <TextBlock Text="{DynamicResource Spin.AlertTitle}"
                                            FontWeight="SemiBold"
                                            Foreground="{DynamicResource AntDesign.Brush.Text}"
                                            Margin="0,0,0,4" />
-                                <TextBlock Text="Further details about the context of this alert."
+                                <TextBlock Text="{DynamicResource Spin.AlertDesc}"
                                            Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                            TextWrapping="Wrap" />
                             </StackPanel>
                         </Border>
                     </antd:Spin>
                     <Button Style="{StaticResource AntDesignPrimaryButton}"
-                            Content="Toggle Loading"
+                            Content="{DynamicResource Spin.ToggleLoading}"
                             HorizontalAlignment="Left"
                             Click="ToggleSpin_Click" />
                 </StackPanel>

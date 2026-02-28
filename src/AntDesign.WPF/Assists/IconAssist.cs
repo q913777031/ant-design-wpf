@@ -35,13 +35,13 @@ namespace AntDesign.WPF.Assists
 
         public static object GetIcon(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return element.GetValue(IconProperty);
         }
 
         public static void SetIcon(FrameworkElement element, object value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(IconProperty, value);
         }
 
@@ -62,13 +62,13 @@ namespace AntDesign.WPF.Assists
 
         public static IconPlacement GetIconPlacement(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (IconPlacement)element.GetValue(IconPlacementProperty);
         }
 
         public static void SetIconPlacement(FrameworkElement element, IconPlacement value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(IconPlacementProperty, value);
         }
 

@@ -152,14 +152,14 @@ public class Modal : ContentControl
     /// <summary>Gets the attached dialog content for the target element.</summary>
     public static object? GetDialogContent(DependencyObject element)
     {
-        if (element is null) throw new ArgumentNullException(nameof(element));
+        ArgumentNullException.ThrowIfNull(element);
         return element.GetValue(DialogContentAttachedProperty);
     }
 
     /// <summary>Sets the attached dialog content on the target element.</summary>
     public static void SetDialogContent(DependencyObject element, object? value)
     {
-        if (element is null) throw new ArgumentNullException(nameof(element));
+        ArgumentNullException.ThrowIfNull(element);
         element.SetValue(DialogContentAttachedProperty, value);
     }
 
@@ -260,6 +260,12 @@ public class Modal : ContentControl
         CommandBindings.Add(new CommandBinding(OpenCommand,  ExecuteOpen));
         CommandBindings.Add(new CommandBinding(CloseCommand, ExecuteClose));
         PreviewKeyDown += OnPreviewKeyDown;
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        _previousFocus = null;
     }
 
     // -------------------------------------------------------------------------

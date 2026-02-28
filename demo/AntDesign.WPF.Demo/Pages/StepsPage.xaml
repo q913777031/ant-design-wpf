@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="900">
 
             <!-- Page Title -->
-            <TextBlock Text="Steps"
+            <TextBlock Text="{DynamicResource Steps.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A navigation bar that guides users through the steps of a task."
+            <TextBlock Text="{DynamicResource Steps.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Horizontal Steps -->
-            <TextBlock Text="Horizontal Steps"
+            <TextBlock Text="{DynamicResource Steps.Horizontal}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -36,25 +36,25 @@
                     Margin="0,0,0,24">
                 <StackPanel>
                     <antd:Steps Current="1" Margin="0,0,0,24">
-                        <antd:StepItem Title="Finished" Description="This is a description." />
-                        <antd:StepItem Title="In Progress" Description="This is a description." />
-                        <antd:StepItem Title="Waiting" Description="This is a description." />
+                        <antd:StepItem Title="{DynamicResource Steps.Finished}" Description="{DynamicResource Steps.StepDesc}" />
+                        <antd:StepItem Title="{DynamicResource Steps.InProgress}" Description="{DynamicResource Steps.StepDesc}" />
+                        <antd:StepItem Title="{DynamicResource Steps.Waiting}" Description="{DynamicResource Steps.StepDesc}" />
                     </antd:Steps>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Style="{StaticResource AntDesignDefaultButton}"
-                                Content="Previous"
+                                Content="{DynamicResource Steps.Previous}"
                                 Margin="0,0,8,0"
                                 Click="PreviousStep_Click" />
                         <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                Content="Next"
+                                Content="{DynamicResource Steps.Next}"
                                 Click="NextStep_Click" />
                     </StackPanel>
                 </StackPanel>
             </Border>
 
             <!-- Section: Steps with Error -->
-            <TextBlock Text="Steps with Error Status"
+            <TextBlock Text="{DynamicResource Steps.WithError}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -67,14 +67,14 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Steps Current="1" Status="Error">
-                    <antd:StepItem Title="Finished" Description="This is a description." />
-                    <antd:StepItem Title="In Process" Description="This is a description." />
-                    <antd:StepItem Title="Waiting" Description="This is a description." />
+                    <antd:StepItem Title="{DynamicResource Steps.Finished}" Description="{DynamicResource Steps.StepDesc}" />
+                    <antd:StepItem Title="{DynamicResource Steps.InProcess}" Description="{DynamicResource Steps.StepDesc}" />
+                    <antd:StepItem Title="{DynamicResource Steps.Waiting}" Description="{DynamicResource Steps.StepDesc}" />
                 </antd:Steps>
             </Border>
 
             <!-- Section: Small Size Steps -->
-            <TextBlock Text="Small Size Steps"
+            <TextBlock Text="{DynamicResource Steps.SmallSize}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -87,9 +87,9 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Steps Current="1" Size="Small">
-                    <antd:StepItem Title="Finished" />
-                    <antd:StepItem Title="In Progress" />
-                    <antd:StepItem Title="Waiting" />
+                    <antd:StepItem Title="{DynamicResource Steps.Finished}" />
+                    <antd:StepItem Title="{DynamicResource Steps.InProgress}" />
+                    <antd:StepItem Title="{DynamicResource Steps.Waiting}" />
                 </antd:Steps>
             </Border>
 

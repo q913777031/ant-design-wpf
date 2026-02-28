@@ -138,6 +138,13 @@ public class Drawer : ContentControl
         CommandBindings.Add(new CommandBinding(OpenCommand,  ExecuteOpen));
         CommandBindings.Add(new CommandBinding(CloseCommand, ExecuteClose));
         PreviewKeyDown += OnPreviewKeyDown;
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        _previousFocus = null;
+        _translateTransform = null;
     }
 
     // -------------------------------------------------------------------------

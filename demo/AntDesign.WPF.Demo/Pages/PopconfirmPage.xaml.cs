@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using AntDesign.WPF.Demo.Helpers;
 
 namespace AntDesign.WPF.Demo.Pages;
 
@@ -12,6 +13,6 @@ public partial class PopconfirmPage : UserControl
 
     private void OnDeleteConfirmed(object sender, RoutedEventArgs e)
     {
-        StatusText.Text = "Item deleted successfully!";
+        StatusText.Text = LanguageHelper.GetString("Popconfirm.DeletedSuccess");
     }
 }

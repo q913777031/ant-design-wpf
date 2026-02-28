@@ -40,13 +40,13 @@ namespace AntDesign.WPF.Assists
 
         public static ElevationLevel GetElevation(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (ElevationLevel)element.GetValue(ElevationProperty);
         }
 
         public static void SetElevation(FrameworkElement element, ElevationLevel value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(ElevationProperty, value);
         }
 

@@ -10,18 +10,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Theme"
+            <TextBlock Text="{DynamicResource Theme.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Configure theme tokens including base theme, primary color, and border radius."
+            <TextBlock Text="{DynamicResource Theme.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Light/Dark Toggle -->
-            <TextBlock Text="Base Theme"
+            <TextBlock Text="{DynamicResource Theme.BaseTheme}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -34,23 +34,23 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Toggle between light and dark mode:"
+                    <TextBlock Text="{DynamicResource Theme.ToggleDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,16" />
                     <WrapPanel Orientation="Horizontal">
                         <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                Content="Light Theme"
+                                Content="{DynamicResource Theme.Light}"
                                 Margin="0,0,8,0"
                                 Click="LightTheme_Click" />
                         <Button Style="{StaticResource AntDesignDefaultButton}"
-                                Content="Dark Theme"
+                                Content="{DynamicResource Theme.Dark}"
                                 Click="DarkTheme_Click" />
                     </WrapPanel>
                 </StackPanel>
             </Border>
 
             <!-- Section: Primary Color -->
-            <TextBlock Text="Primary Color"
+            <TextBlock Text="{DynamicResource Theme.PrimaryColor}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -63,7 +63,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Choose a primary color:"
+                    <TextBlock Text="{DynamicResource Theme.ChooseColor}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,16" />
                     <WrapPanel Orientation="Horizontal">
@@ -152,7 +152,7 @@
             </Border>
 
             <!-- Section: Border Radius -->
-            <TextBlock Text="Border Radius"
+            <TextBlock Text="{DynamicResource Theme.BorderRadius}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -165,7 +165,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Adjust border radius (0 = square, 12 = rounded):"
+                    <TextBlock Text="{DynamicResource Theme.RadiusDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
@@ -182,13 +182,13 @@
                                    Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <Button Style="{StaticResource AntDesignPrimaryButton}"
-                            Content="Preview Button"
+                            Content="{DynamicResource Theme.PreviewButton}"
                             HorizontalAlignment="Left" />
                 </StackPanel>
             </Border>
 
             <!-- Section: Token Preview -->
-            <TextBlock Text="Color Token Preview"
+            <TextBlock Text="{DynamicResource Theme.ColorTokenPreview}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"

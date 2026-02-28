@@ -38,13 +38,13 @@ namespace AntDesign.WPF.Assists
 
         public static ControlSize GetSize(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (ControlSize)element.GetValue(SizeProperty);
         }
 
         public static void SetSize(FrameworkElement element, ControlSize value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(SizeProperty, value);
         }
 

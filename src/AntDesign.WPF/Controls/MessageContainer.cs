@@ -101,11 +101,13 @@ internal sealed class MessageContainer : ItemsControl
     /// <summary>Template part name for the items host stack panel.</summary>
     public const string PART_ItemsHost = "PART_ItemsHost";
 
+    private readonly List<DispatcherTimer> _activeTimers = new();
+
     // -------------------------------------------------------------------------
     // Dependency Properties
     // -------------------------------------------------------------------------
 
-    /// <summary>Identifies the <see cref="Items"/> dependency property (observable collection shadow).</summary>
+    /// <summary>Identifies the <see cref="MessageItems"/> dependency property (observable collection shadow).</summary>
     public static readonly DependencyProperty MessageItemsProperty =
         DependencyProperty.Register(
             nameof(MessageItems),
@@ -139,6 +141,15 @@ internal sealed class MessageContainer : ItemsControl
         IsHitTestVisible = false;
         HorizontalAlignment = HorizontalAlignment.Stretch;
         VerticalAlignment   = VerticalAlignment.Top;
+
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        foreach (var timer in _activeTimers)
+            timer.Stop();
+        _activeTimers.Clear();
     }
 
     // -------------------------------------------------------------------------
@@ -162,7 +173,7 @@ internal sealed class MessageContainer : ItemsControl
     /// </summary>
     public void Add(MessageItem item)
     {
-        if (item is null) throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         MessageItems.Add(item);
 
@@ -174,9 +185,11 @@ internal sealed class MessageContainer : ItemsControl
             Interval = TimeSpan.FromSeconds(item.Duration > 0 ? item.Duration : 3d)
         };
 
+        _activeTimers.Add(timer);
         timer.Tick += (_, _) =>
         {
             timer.Stop();
+            _activeTimers.Remove(timer);
             Remove(item);
         };
 
@@ -240,7 +253,8 @@ internal sealed class MessageContainerAdorner : Adorner
     public MessageContainerAdorner(UIElement adornedElement, MessageContainer container)
         : base(adornedElement)
     {
-        _container = container ?? throw new ArgumentNullException(nameof(container));
+        ArgumentNullException.ThrowIfNull(container);
+        _container = container;
         AddVisualChild(_container);
         AddLogicalChild(_container);
         IsHitTestVisible = false;
@@ -252,7 +266,7 @@ internal sealed class MessageContainerAdorner : Adorner
     /// <inheritdoc/>
     protected override Visual GetVisualChild(int index)
     {
-        if (index != 0) throw new ArgumentOutOfRangeException(nameof(index));
+        ArgumentOutOfRangeException.ThrowIfNotEqual(index, 0);
         return _container;
     }
 

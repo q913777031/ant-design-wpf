@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Timeline"
+            <TextBlock Text="{DynamicResource Timeline.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Vertical display time flow information."
+            <TextBlock Text="{DynamicResource Timeline.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Timeline -->
-            <TextBlock Text="Basic Timeline"
+            <TextBlock Text="{DynamicResource Timeline.Basic}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -35,15 +35,15 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Timeline>
-                    <antd:TimelineItem>Create a services site 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem>Solve initial network problems 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem>Technical testing 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem>Network problems being solved 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item1}" />
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item2}" />
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item3}" />
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item4}" />
                 </antd:Timeline>
             </Border>
 
             <!-- Section: Timeline with Colors -->
-            <TextBlock Text="Timeline with Colors"
+            <TextBlock Text="{DynamicResource Timeline.WithColors}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -56,17 +56,17 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Timeline>
-                    <antd:TimelineItem Color="#52C41A">Create a services site 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem Color="#52C41A">Solve initial network problems 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem Color="#FF4D4F">Technical testing 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem>Network problems being solved 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem Color="#BFBFBF">Create a services site 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem Color="#BFBFBF">Technical testing 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Color="#52C41A" Content="{DynamicResource Timeline.Item1}" />
+                    <antd:TimelineItem Color="#52C41A" Content="{DynamicResource Timeline.Item2}" />
+                    <antd:TimelineItem Color="#FF4D4F" Content="{DynamicResource Timeline.Item3}" />
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item4}" />
+                    <antd:TimelineItem Color="#BFBFBF" Content="{DynamicResource Timeline.Item1}" />
+                    <antd:TimelineItem Color="#BFBFBF" Content="{DynamicResource Timeline.Item3}" />
                 </antd:Timeline>
             </Border>
 
             <!-- Section: Pending Timeline -->
-            <TextBlock Text="Pending Timeline"
+            <TextBlock Text="{DynamicResource Timeline.Pending}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -79,9 +79,9 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Timeline Pending="True">
-                    <antd:TimelineItem>Create a services site 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem>Solve initial network problems 2015-09-01</antd:TimelineItem>
-                    <antd:TimelineItem>Technical testing 2015-09-01</antd:TimelineItem>
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item1}" />
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item2}" />
+                    <antd:TimelineItem Content="{DynamicResource Timeline.Item3}" />
                 </antd:Timeline>
             </Border>
 
