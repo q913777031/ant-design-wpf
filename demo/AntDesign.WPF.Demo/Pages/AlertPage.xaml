@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Alert"
+            <TextBlock Text="{DynamicResource Alert.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Alert component for feedback."
+            <TextBlock Text="{DynamicResource Alert.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Alerts -->
-            <TextBlock Text="Basic Alert Types"
+            <TextBlock Text="{DynamicResource Alert.BasicTypes}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -36,16 +36,16 @@
                     Margin="0,0,0,24">
                 <StackPanel>
                     <antd:Alert Type="Success"
-                                Message="Success Tips"
+                                Message="{DynamicResource Alert.SuccessTips}"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Info"
-                                Message="Informational Notes"
+                                Message="{DynamicResource Alert.InfoNotes}"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Warning"
-                                Message="Warning"
+                                Message="{DynamicResource Alert.Warning}"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Error"
-                                Message="Error"
+                                Message="{DynamicResource Alert.Error}"
                                 Margin="0,0,0,0" />
                 </StackPanel>
             </Border>
@@ -63,7 +63,7 @@
             </Expander>
 
             <!-- Section: With Description -->
-            <TextBlock Text="With Description"
+            <TextBlock Text="{DynamicResource Alert.WithDesc}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -77,20 +77,20 @@
                     Margin="0,0,0,24">
                 <StackPanel>
                     <antd:Alert Type="Success"
-                                Message="Success Tips"
-                                Description="Detailed description and advice about successful copywriting."
+                                Message="{DynamicResource Alert.SuccessTips}"
+                                Description="{DynamicResource Alert.SuccessDesc}"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Info"
-                                Message="Informational Notes"
-                                Description="Additional description and information about copywriting."
+                                Message="{DynamicResource Alert.InfoNotes}"
+                                Description="{DynamicResource Alert.InfoDesc}"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Warning"
-                                Message="Warning"
-                                Description="This is a warning notice about copywriting."
+                                Message="{DynamicResource Alert.Warning}"
+                                Description="{DynamicResource Alert.WarningDesc}"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Error"
-                                Message="Error"
-                                Description="This is an error message about copywriting."
+                                Message="{DynamicResource Alert.Error}"
+                                Description="{DynamicResource Alert.ErrorDesc}"
                                 Margin="0,0,0,0" />
                 </StackPanel>
             </Border>
@@ -103,7 +103,7 @@
             </Expander>
 
             <!-- Section: Closable Alerts -->
-            <TextBlock Text="Closable Alerts"
+            <TextBlock Text="{DynamicResource Alert.Closable}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -116,16 +116,16 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Click the close button to dismiss:"
+                    <TextBlock Text="{DynamicResource Alert.ClosableDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,12" />
                     <antd:Alert Type="Info"
-                                Message="Closable Alert"
+                                Message="{DynamicResource Alert.ClosableAlert}"
                                 Closable="True"
                                 Margin="0,0,0,12" />
                     <antd:Alert Type="Warning"
-                                Message="Warning with Description"
-                                Description="You can close this warning by clicking the X button."
+                                Message="{DynamicResource Alert.WarningWithDesc}"
+                                Description="{DynamicResource Alert.ClosableWarningDesc}"
                                 Closable="True"
                                 Margin="0,0,0,0" />
                 </StackPanel>

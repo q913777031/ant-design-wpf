@@ -100,6 +100,15 @@ public class Spin : ContentControl
 
         if (IsSpinning)
             StartSpinning();
+
+        Unloaded -= OnUnloaded;
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        StopSpinning();
+        _spinStoryboard = null;
     }
 
     private void SetupSpinAnimation()

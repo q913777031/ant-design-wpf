@@ -10,18 +10,18 @@
         <StackPanel Margin="24" MaxWidth="900">
 
             <!-- Page Title -->
-            <TextBlock Text="Table"
+            <TextBlock Text="{DynamicResource Table.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A table displays rows of data."
+            <TextBlock Text="{DynamicResource Table.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Table -->
-            <TextBlock Text="Basic Table"
+            <TextBlock Text="{DynamicResource Table.BasicTable}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -43,10 +43,34 @@
                           HeadersVisibility="Column"
                           BorderThickness="0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
-                        <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="80" />
-                        <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="2*" />
-                        <DataGridTextColumn Header="Tags" Binding="{Binding Tags}" Width="*" />
+                        <DataGridTextColumn Binding="{Binding Name}" Width="*">
+                            <DataGridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{DynamicResource Table.Name}" />
+                                </DataTemplate>
+                            </DataGridTextColumn.HeaderTemplate>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Age}" Width="80">
+                            <DataGridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{DynamicResource Table.Age}" />
+                                </DataTemplate>
+                            </DataGridTextColumn.HeaderTemplate>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Address}" Width="2*">
+                            <DataGridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{DynamicResource Table.Address}" />
+                                </DataTemplate>
+                            </DataGridTextColumn.HeaderTemplate>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Tags}" Width="*">
+                            <DataGridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{DynamicResource Table.Tags}" />
+                                </DataTemplate>
+                            </DataGridTextColumn.HeaderTemplate>
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

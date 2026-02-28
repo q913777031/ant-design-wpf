@@ -11,34 +11,34 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Drawer"
+            <TextBlock Text="{DynamicResource Drawer.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A panel that slides in from the edge of the screen."
+            <TextBlock Text="{DynamicResource Drawer.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Drawer wrapping page content -->
             <antd:Drawer x:Name="DemoDrawer"
-                         Title="Drawer Title"
+                         Title="{DynamicResource Drawer.DrawerTitle}"
                          DrawerWidth="378"
                          DrawerHeight="300">
 
                 <antd:Drawer.DrawerContent>
                     <StackPanel Margin="16">
-                        <TextBlock Text="Drawer Content"
+                        <TextBlock Text="{DynamicResource Drawer.ContentTitle}"
                                    FontSize="{DynamicResource AntDesign.FontSize.LG}"
                                    FontWeight="SemiBold"
                                    Foreground="{DynamicResource AntDesign.Brush.Text}"
                                    Margin="0,0,0,12" />
-                        <TextBlock Text="This is the content inside the drawer panel."
+                        <TextBlock Text="{DynamicResource Drawer.Content1}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    TextWrapping="Wrap"
                                    Margin="0,0,0,8" />
-                        <TextBlock Text="You can place any content here, such as forms, lists, or other controls."
+                        <TextBlock Text="{DynamicResource Drawer.Content2}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    TextWrapping="Wrap" />
                     </StackPanel>
@@ -46,7 +46,7 @@
 
                 <StackPanel>
                     <!-- Section: Placement -->
-                    <TextBlock Text="Drawer Placement"
+                    <TextBlock Text="{DynamicResource Drawer.Placement}"
                                FontSize="{DynamicResource AntDesign.FontSize.LG}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -59,24 +59,24 @@
                             Padding="24"
                             Margin="0,0,0,24">
                         <StackPanel>
-                            <TextBlock Text="Click to open drawer from different positions:"
+                            <TextBlock Text="{DynamicResource Drawer.PlacementDesc}"
                                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                        Margin="0,0,0,16" />
                             <WrapPanel Orientation="Horizontal">
                                 <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                        Content="Right Drawer"
+                                        Content="{DynamicResource Drawer.Right}"
                                         Margin="0,0,8,8"
                                         Click="OpenRightDrawer_Click" />
                                 <Button Style="{StaticResource AntDesignDefaultButton}"
-                                        Content="Left Drawer"
+                                        Content="{DynamicResource Drawer.Left}"
                                         Margin="0,0,8,8"
                                         Click="OpenLeftDrawer_Click" />
                                 <Button Style="{StaticResource AntDesignDefaultButton}"
-                                        Content="Top Drawer"
+                                        Content="{DynamicResource Drawer.Top}"
                                         Margin="0,0,8,8"
                                         Click="OpenTopDrawer_Click" />
                                 <Button Style="{StaticResource AntDesignDefaultButton}"
-                                        Content="Bottom Drawer"
+                                        Content="{DynamicResource Drawer.Bottom}"
                                         Margin="0,0,8,8"
                                         Click="OpenBottomDrawer_Click" />
                             </WrapPanel>

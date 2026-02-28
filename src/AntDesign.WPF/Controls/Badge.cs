@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -235,7 +236,7 @@ public class Badge : ContentControl
         IsBadgeVisible = count > 0;
         DisplayCount = count > overflow
             ? $"{overflow}+"
-            : count.ToString();
+            : count.ToString(CultureInfo.InvariantCulture);
     }
 
     /// <inheritdoc/>

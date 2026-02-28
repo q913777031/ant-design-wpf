@@ -8,7 +8,7 @@ namespace AntDesign.WPF;
 /// <summary>
 /// Runtime helper for reading and mutating the active Ant Design WPF theme without reloading
 /// the entire resource dictionary.  All public methods operate on
-/// <see cref="Application.Current.Resources"/>, so they work from any thread that can
+/// <see cref="Application.Resources"/>, so they work from any thread that can
 /// access the WPF dispatcher.
 ///
 /// Typical usage:
@@ -30,12 +30,15 @@ public static class ThemeHelper
     // Read
     // ===================================================================
 
+    // Lock object to prevent race conditions in FindOrCreateAntDesignTheme.
+    private static readonly object _themeLock = new();
+
     // Resource key used to persistently store the base theme name.
     private const string BaseThemeKey = "AntDesign.BaseTheme";
 
     /// <summary>
     /// Reconstructs the logical <see cref="ITheme"/> that is currently reflected in
-    /// <see cref="Application.Current.Resources"/>.
+    /// <see cref="Application.Resources"/>.
     /// Returns a new <see cref="AntTheme"/> populated from the live resource values.
     /// If no theme has been applied yet the defaults from <see cref="AntTheme"/> are returned.
     /// </summary>
@@ -77,7 +80,7 @@ public static class ThemeHelper
 
     /// <summary>
     /// Applies <paramref name="theme"/> by regenerating every Ant Design resource key in
-    /// <see cref="Application.Current.Resources"/>.
+    /// <see cref="Application.Resources"/>.
     ///
     /// If an <see cref="AntDesignTheme"/> instance is already present as a merged dictionary
     /// it is updated in place; otherwise one is created and added.
@@ -251,7 +254,7 @@ public static class ThemeHelper
 
     /// <summary>
     /// Returns the current value of an Ant Design resource from
-    /// <see cref="Application.Current.Resources"/>.
+    /// <see cref="Application.Resources"/>.
     /// Returns <c>null</c> if the key is not present or the application has not started.
     /// </summary>
     /// <param name="key">A <see cref="DesignTokens"/> constant string.</param>
@@ -287,24 +290,27 @@ public static class ThemeHelper
     /// </summary>
     private static AntDesignTheme FindOrCreateAntDesignTheme()
     {
-        var resources = EnsureApplicationResources();
-
-        // Search merged dictionaries (top-level).
-        foreach (ResourceDictionary dict in resources.MergedDictionaries)
+        lock (_themeLock)
         {
-            if (dict is AntDesignTheme existing)
-                return existing;
-        }
+            var resources = EnsureApplicationResources();
 
-        // Not found — create a default and insert at the front so controls can override it.
-        var newTheme = new AntDesignTheme();
-        newTheme.Initialize();
-        resources.MergedDictionaries.Insert(0, newTheme);
-        return newTheme;
+            // Search merged dictionaries (top-level).
+            foreach (ResourceDictionary dict in resources.MergedDictionaries)
+            {
+                if (dict is AntDesignTheme existing)
+                    return existing;
+            }
+
+            // Not found — create a default and insert at the front so controls can override it.
+            var newTheme = new AntDesignTheme();
+            newTheme.Initialize();
+            resources.MergedDictionaries.Insert(0, newTheme);
+            return newTheme;
+        }
     }
 
     /// <summary>
-    /// Returns <see cref="Application.Current.Resources"/>, throwing if the application is
+    /// Returns <see cref="Application.Resources"/>, throwing if the application is
     /// not available (e.g. in design-time tools).
     /// </summary>
     private static ResourceDictionary EnsureApplicationResources()

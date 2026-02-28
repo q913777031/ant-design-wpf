@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using AntDesign.WPF.Demo.Helpers;
 
 namespace AntDesign.WPF.Demo.Pages;
 
@@ -12,28 +13,30 @@ public partial class ModalPage : UserControl
 
     private void OpenModal_Click(object sender, RoutedEventArgs e)
     {
-        DemoModal.Title = "Basic Modal";
-        DemoModal.DialogContent = "Some contents in the modal dialog.\nThis is a demonstration of the Modal control.";
+        DemoModal.Title = LanguageHelper.GetString("Modal.BasicModal");
+        DemoModal.DialogContent = LanguageHelper.GetString("Modal.BasicContent");
+        DemoModal.OkText = LanguageHelper.GetString("Modal.OK");
+        DemoModal.CancelText = LanguageHelper.GetString("Modal.Cancel");
         DemoModal.DialogWidth = 520;
         DemoModal.IsOpen = true;
     }
 
     private void OpenConfirmModal_Click(object sender, RoutedEventArgs e)
     {
-        DemoModal.Title = "Confirm Action";
-        DemoModal.DialogContent = "Are you sure you want to perform this action?\nThis operation cannot be undone.";
-        DemoModal.OkText = "Yes, Confirm";
-        DemoModal.CancelText = "No, Cancel";
+        DemoModal.Title = LanguageHelper.GetString("Modal.ConfirmTitle");
+        DemoModal.DialogContent = LanguageHelper.GetString("Modal.ConfirmContent");
+        DemoModal.OkText = LanguageHelper.GetString("Modal.YesConfirm");
+        DemoModal.CancelText = LanguageHelper.GetString("Modal.NoCancel");
         DemoModal.DialogWidth = 520;
         DemoModal.IsOpen = true;
     }
 
     private void OpenWideModal_Click(object sender, RoutedEventArgs e)
     {
-        DemoModal.Title = "Wide Modal";
-        DemoModal.DialogContent = "This modal dialog is 720 pixels wide, useful for displaying more content.";
-        DemoModal.OkText = "OK";
-        DemoModal.CancelText = "Cancel";
+        DemoModal.Title = LanguageHelper.GetString("Modal.WideTitle");
+        DemoModal.DialogContent = LanguageHelper.GetString("Modal.WideContent");
+        DemoModal.OkText = LanguageHelper.GetString("Modal.OK");
+        DemoModal.CancelText = LanguageHelper.GetString("Modal.Cancel");
         DemoModal.DialogWidth = 720;
         DemoModal.IsOpen = true;
     }

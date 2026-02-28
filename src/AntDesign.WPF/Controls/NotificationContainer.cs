@@ -236,6 +236,8 @@ internal sealed class NotificationContainer : ItemsControl
     // Constructor
     // -------------------------------------------------------------------------
 
+    private readonly List<DispatcherTimer> _activeTimers = new();
+
     /// <summary>Initializes a new instance of the <see cref="NotificationContainer"/> class.</summary>
     public NotificationContainer(NotificationPlacement placement)
     {
@@ -246,6 +248,15 @@ internal sealed class NotificationContainer : ItemsControl
 
         HorizontalAlignment = HorizontalAlignment.Stretch;
         VerticalAlignment   = VerticalAlignment.Stretch;
+
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        foreach (var timer in _activeTimers)
+            timer.Stop();
+        _activeTimers.Clear();
     }
 
     // -------------------------------------------------------------------------
@@ -286,7 +297,7 @@ internal sealed class NotificationContainer : ItemsControl
     /// </summary>
     public void Add(NotificationConfig config)
     {
-        if (config is null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
 
         NotificationItems.Add(config);
         IsHitTestVisible = true;
@@ -298,9 +309,11 @@ internal sealed class NotificationContainer : ItemsControl
                 Interval = TimeSpan.FromSeconds(config.Duration)
             };
 
+            _activeTimers.Add(timer);
             timer.Tick += (_, _) =>
             {
                 timer.Stop();
+                _activeTimers.Remove(timer);
                 Remove(config);
             };
 
@@ -391,7 +404,8 @@ internal sealed class NotificationContainerAdorner : Adorner
         NotificationPlacement placement)
         : base(adornedElement)
     {
-        _container = container ?? throw new ArgumentNullException(nameof(container));
+        ArgumentNullException.ThrowIfNull(container);
+        _container = container;
         Placement  = placement;
         AddVisualChild(_container);
         AddLogicalChild(_container);
@@ -404,7 +418,7 @@ internal sealed class NotificationContainerAdorner : Adorner
     /// <inheritdoc/>
     protected override Visual GetVisualChild(int index)
     {
-        if (index != 0) throw new ArgumentOutOfRangeException(nameof(index));
+        ArgumentOutOfRangeException.ThrowIfNotEqual(index, 0);
         return _container;
     }
 

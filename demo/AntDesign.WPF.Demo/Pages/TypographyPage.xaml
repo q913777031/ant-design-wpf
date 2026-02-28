@@ -10,18 +10,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Typography"
+            <TextBlock Text="{DynamicResource Typography.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Basic text writing, including headings, body, lists, and more."
+            <TextBlock Text="{DynamicResource Typography.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Headings -->
-            <TextBlock Text="Headings"
+            <TextBlock Text="{DynamicResource Typography.Headings}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -34,27 +34,27 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="h1. Ant Design WPF"
+                    <TextBlock Text="{DynamicResource Typography.H1}"
                                FontSize="{DynamicResource AntDesign.FontSize.H1}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                Margin="0,0,0,12" />
-                    <TextBlock Text="h2. Ant Design WPF"
+                    <TextBlock Text="{DynamicResource Typography.H2}"
                                FontSize="{DynamicResource AntDesign.FontSize.H2}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                Margin="0,0,0,12" />
-                    <TextBlock Text="h3. Ant Design WPF"
+                    <TextBlock Text="{DynamicResource Typography.H3}"
                                FontSize="{DynamicResource AntDesign.FontSize.H3}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                Margin="0,0,0,12" />
-                    <TextBlock Text="h4. Ant Design WPF"
+                    <TextBlock Text="{DynamicResource Typography.H4}"
                                FontSize="{DynamicResource AntDesign.FontSize.H4}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                Margin="0,0,0,12" />
-                    <TextBlock Text="h5. Ant Design WPF"
+                    <TextBlock Text="{DynamicResource Typography.H5}"
                                FontSize="{DynamicResource AntDesign.FontSize.H5}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -63,7 +63,7 @@
             </Border>
 
             <!-- Body Text -->
-            <TextBlock Text="Body Text"
+            <TextBlock Text="{DynamicResource Typography.BodyText}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -76,17 +76,17 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Regular (14px) — Ant Design is an enterprise-class WPF UI design language and component library with a set of high-quality components."
+                    <TextBlock Text="{DynamicResource Typography.Regular}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                TextWrapping="Wrap"
                                Margin="0,0,0,12" />
-                    <TextBlock Text="Large (16px) — An enterprise-class WPF UI designed for web applications."
+                    <TextBlock Text="{DynamicResource Typography.Large}"
                                FontSize="{DynamicResource AntDesign.FontSize.LG}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                TextWrapping="Wrap"
                                Margin="0,0,0,12" />
-                    <TextBlock Text="Small (12px) — Caption text and secondary information."
+                    <TextBlock Text="{DynamicResource Typography.Small}"
                                FontSize="{DynamicResource AntDesign.FontSize.SM}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                TextWrapping="Wrap"
@@ -95,7 +95,7 @@
             </Border>
 
             <!-- Color Variants -->
-            <TextBlock Text="Color Variants"
+            <TextBlock Text="{DynamicResource Typography.ColorVariants}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -108,31 +108,31 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Primary text color"
+                    <TextBlock Text="{DynamicResource Typography.PrimaryColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                Margin="0,0,0,8" />
-                    <TextBlock Text="Secondary text color"
+                    <TextBlock Text="{DynamicResource Typography.SecondaryColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
-                    <TextBlock Text="Tertiary text color"
+                    <TextBlock Text="{DynamicResource Typography.TertiaryColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Tertiary}"
                                Margin="0,0,0,8" />
-                    <TextBlock Text="Disabled text color"
+                    <TextBlock Text="{DynamicResource Typography.DisabledColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Disabled}"
                                Margin="0,0,0,8" />
-                    <TextBlock Text="Success color text"
+                    <TextBlock Text="{DynamicResource Typography.SuccessColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Success}"
                                Margin="0,0,0,8" />
-                    <TextBlock Text="Warning color text"
+                    <TextBlock Text="{DynamicResource Typography.WarningColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Warning}"
                                Margin="0,0,0,8" />
-                    <TextBlock Text="Error / Danger color text"
+                    <TextBlock Text="{DynamicResource Typography.ErrorColor}"
                                FontSize="{DynamicResource AntDesign.FontSize}"
                                Foreground="{DynamicResource AntDesign.Brush.Error}"
                                Margin="0,0,0,0" />

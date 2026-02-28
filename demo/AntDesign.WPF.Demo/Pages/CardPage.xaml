@@ -11,28 +11,28 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Card"
+            <TextBlock Text="{DynamicResource Card.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A container for displaying content in a box with optional title and extra content."
+            <TextBlock Text="{DynamicResource Card.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Card -->
-            <TextBlock Text="Basic Card"
+            <TextBlock Text="{DynamicResource Card.BasicCard}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,16" />
 
-            <antd:Card Title="Card Title"
+            <antd:Card Title="{DynamicResource Card.CardTitle}"
                        Width="400"
                        HorizontalAlignment="Left"
                        Margin="0,0,0,24">
-                <TextBlock Text="Card content goes here. This is a basic card with a title."
+                <TextBlock Text="{DynamicResource Card.BasicContent}"
                            Foreground="{DynamicResource AntDesign.Brush.Text}"
                            TextWrapping="Wrap" />
             </antd:Card>
@@ -46,22 +46,22 @@
             </Expander>
 
             <!-- Section: Card with Extra -->
-            <TextBlock Text="Card with Extra Content"
+            <TextBlock Text="{DynamicResource Card.WithExtra}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,16" />
 
-            <antd:Card Title="Card with Extra"
+            <antd:Card Title="{DynamicResource Card.WithExtraTitle}"
                        Width="400"
                        HorizontalAlignment="Left"
                        Margin="0,0,0,24">
                 <antd:Card.Extra>
                     <Button Style="{StaticResource AntDesignLinkButton}"
-                            Content="More"
+                            Content="{DynamicResource Card.More}"
                             Padding="0" />
                 </antd:Card.Extra>
-                <TextBlock Text="This card has extra content in the header (top-right area)."
+                <TextBlock Text="{DynamicResource Card.ExtraContent}"
                            Foreground="{DynamicResource AntDesign.Brush.Text}"
                            TextWrapping="Wrap" />
             </antd:Card>
@@ -78,18 +78,18 @@
             </Expander>
 
             <!-- Section: Hoverable Card -->
-            <TextBlock Text="Hoverable Card"
+            <TextBlock Text="{DynamicResource Card.Hoverable}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,16" />
 
-            <antd:Card Title="Hoverable"
+            <antd:Card Title="{DynamicResource Card.HoverableTitle}"
                        Hoverable="True"
                        Width="400"
                        HorizontalAlignment="Left"
                        Margin="0,0,0,24">
-                <TextBlock Text="Hover over this card to see the shadow effect."
+                <TextBlock Text="{DynamicResource Card.HoverableContent}"
                            Foreground="{DynamicResource AntDesign.Brush.Text}"
                            TextWrapping="Wrap" />
             </antd:Card>
@@ -103,7 +103,7 @@
             </Expander>
 
             <!-- Section: Card without Border -->
-            <TextBlock Text="Borderless Card"
+            <TextBlock Text="{DynamicResource Card.Borderless}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -112,29 +112,29 @@
             <Border Background="{DynamicResource AntDesign.Brush.Bg.Layout}"
                     Padding="12"
                     Margin="0,0,0,24">
-                <antd:Card Title="Borderless Card"
+                <antd:Card Title="{DynamicResource Card.BorderlessTitle}"
                            Bordered="False"
                            Width="400"
                            HorizontalAlignment="Left">
-                    <TextBlock Text="This card has no border. Useful on colored backgrounds."
+                    <TextBlock Text="{DynamicResource Card.BorderlessContent}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}"
                                TextWrapping="Wrap" />
                 </antd:Card>
             </Border>
 
             <!-- Section: Small Size Card -->
-            <TextBlock Text="Small Size Card"
+            <TextBlock Text="{DynamicResource Card.SmallSize}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,16" />
 
-            <antd:Card Title="Small Card"
+            <antd:Card Title="{DynamicResource Card.SmallTitle}"
                        Size="Small"
                        Width="300"
                        HorizontalAlignment="Left"
                        Margin="0,0,0,24">
-                <TextBlock Text="A small card with compact padding."
+                <TextBlock Text="{DynamicResource Card.SmallContent}"
                            Foreground="{DynamicResource AntDesign.Brush.Text}"
                            TextWrapping="Wrap" />
             </antd:Card>

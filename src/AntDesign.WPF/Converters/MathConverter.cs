@@ -23,6 +23,7 @@ namespace AntDesign.WPF.Converters
     [ValueConversion(typeof(double), typeof(double))]
     public sealed class MathConverter : IValueConverter
     {
+        private static readonly char[] s_parameterSeparators = [' ', '\t'];
         /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -84,7 +85,7 @@ namespace AntDesign.WPF.Converters
             if (string.IsNullOrWhiteSpace(parameter))
                 return false;
 
-            string[] parts = parameter.Trim().Split(new[] { ' ', '\t' }, 2, StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = parameter.Trim().Split(s_parameterSeparators, 2, StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length != 2)
                 return false;
 

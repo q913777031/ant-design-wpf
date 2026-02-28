@@ -22,13 +22,13 @@ namespace AntDesign.WPF.Assists
 
         public static string GetHint(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (string)element.GetValue(HintProperty);
         }
 
         public static void SetHint(FrameworkElement element, string value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(HintProperty, value);
         }
 
@@ -48,13 +48,13 @@ namespace AntDesign.WPF.Assists
 
         public static bool GetIsFloating(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (bool)element.GetValue(IsFloatingProperty);
         }
 
         public static void SetIsFloating(FrameworkElement element, bool value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(IsFloatingProperty, value);
         }
 
@@ -74,13 +74,13 @@ namespace AntDesign.WPF.Assists
 
         public static Brush GetHintForeground(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (Brush)element.GetValue(HintForegroundProperty);
         }
 
         public static void SetHintForeground(FrameworkElement element, Brush value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(HintForegroundProperty, value);
         }
 
@@ -100,13 +100,13 @@ namespace AntDesign.WPF.Assists
 
         public static string GetHelperText(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (string)element.GetValue(HelperTextProperty);
         }
 
         public static void SetHelperText(FrameworkElement element, string value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(HelperTextProperty, value);
         }
 

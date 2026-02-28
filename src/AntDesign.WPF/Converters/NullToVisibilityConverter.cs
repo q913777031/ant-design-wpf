@@ -33,7 +33,7 @@ namespace AntDesign.WPF.Converters
         /// <inheritdoc/>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException($"{nameof(NullToVisibilityConverter)} does not support ConvertBack.");
+            return Binding.DoNothing;
         }
     }
 }

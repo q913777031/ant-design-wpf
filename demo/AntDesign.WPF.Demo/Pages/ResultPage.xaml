@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Result"
+            <TextBlock Text="{DynamicResource Result.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Used to feed back the results of a series of operational tasks."
+            <TextBlock Text="{DynamicResource Result.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Success Result -->
-            <TextBlock Text="Success"
+            <TextBlock Text="{DynamicResource Result.Success}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -35,20 +35,20 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Result Status="Success"
-                             Title="Successfully Purchased Cloud Server ECS!"
-                             SubTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.">
+                             Title="{DynamicResource Result.SuccessTitle}"
+                             SubTitle="{DynamicResource Result.SuccessSubTitle}">
                     <WrapPanel HorizontalAlignment="Center" Margin="0,8,0,0">
                         <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                Content="Go Console"
+                                Content="{DynamicResource Result.GoConsole}"
                                 Margin="0,0,8,0" />
                         <Button Style="{StaticResource AntDesignDefaultButton}"
-                                Content="Buy Again" />
+                                Content="{DynamicResource Result.BuyAgain}" />
                     </WrapPanel>
                 </antd:Result>
             </Border>
 
             <!-- Section: Error Result -->
-            <TextBlock Text="Error"
+            <TextBlock Text="{DynamicResource Result.Error}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -61,20 +61,20 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Result Status="Error"
-                             Title="Submission Failed"
-                             SubTitle="Please check and modify the following information before resubmitting.">
+                             Title="{DynamicResource Result.ErrorTitle}"
+                             SubTitle="{DynamicResource Result.ErrorSubTitle}">
                     <WrapPanel HorizontalAlignment="Center" Margin="0,8,0,0">
                         <Button Style="{StaticResource AntDesignPrimaryButton}"
-                                Content="Go Console"
+                                Content="{DynamicResource Result.GoConsole}"
                                 Margin="0,0,8,0" />
                         <Button Style="{StaticResource AntDesignDefaultButton}"
-                                Content="Buy Again" />
+                                Content="{DynamicResource Result.BuyAgain}" />
                     </WrapPanel>
                 </antd:Result>
             </Border>
 
             <!-- Section: Warning Result -->
-            <TextBlock Text="Warning"
+            <TextBlock Text="{DynamicResource Result.Warning}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -87,9 +87,9 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <antd:Result Status="Warning"
-                             Title="There are some problems with your operation.">
+                             Title="{DynamicResource Result.WarningTitle}">
                     <Button Style="{StaticResource AntDesignPrimaryButton}"
-                            Content="Go Console"
+                            Content="{DynamicResource Result.GoConsole}"
                             HorizontalAlignment="Center"
                             Margin="0,8,0,0" />
                 </antd:Result>

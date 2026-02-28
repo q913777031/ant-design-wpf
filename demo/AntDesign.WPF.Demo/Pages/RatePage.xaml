@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Rate"
+            <TextBlock Text="{DynamicResource Rate.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Rate component for collecting star ratings."
+            <TextBlock Text="{DynamicResource Rate.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic -->
-            <TextBlock Text="Basic"
+            <TextBlock Text="{DynamicResource Rate.Basic}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -37,7 +37,7 @@
                 <StackPanel>
                     <antd:Rate Value="3" Margin="0,0,0,8" />
                     <TextBlock x:Name="RateValue"
-                               Text="Current: 3"
+                               Text="{DynamicResource Rate.Current}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
                 </StackPanel>
             </Border>
@@ -48,7 +48,7 @@
             </Expander>
 
             <!-- Section: Half Star -->
-            <TextBlock Text="Half Star"
+            <TextBlock Text="{DynamicResource Rate.HalfStar}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -61,7 +61,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Click the left half of a star for 0.5 precision:"
+                    <TextBlock Text="{DynamicResource Rate.HalfDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,12" />
                     <antd:Rate Value="2.5" AllowHalf="True" />
@@ -75,7 +75,7 @@
             </Expander>
 
             <!-- Section: Disabled -->
-            <TextBlock Text="Read Only"
+            <TextBlock Text="{DynamicResource Rate.ReadOnly}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -91,7 +91,7 @@
             </Border>
 
             <!-- Section: Custom Count -->
-            <TextBlock Text="Custom Star Count"
+            <TextBlock Text="{DynamicResource Rate.CustomCount}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -105,14 +105,14 @@
                     Margin="0,0,0,24">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
-                        <TextBlock Text="10 stars:"
+                        <TextBlock Text="{DynamicResource Rate.TenStars}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    VerticalAlignment="Center"
                                    Width="80" />
                         <antd:Rate Value="7" Count="10" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="3 stars:"
+                        <TextBlock Text="{DynamicResource Rate.ThreeStars}"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                    VerticalAlignment="Center"
                                    Width="80" />

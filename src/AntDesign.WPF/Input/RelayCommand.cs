@@ -25,7 +25,8 @@ public class RelayCommand : ICommand
     /// </param>
     public RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
     {
-        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        ArgumentNullException.ThrowIfNull(execute);
+        _execute = execute;
         _canExecute = canExecute;
     }
 
@@ -57,7 +58,10 @@ public class RelayCommand : ICommand
     /// Forces WPF to re-evaluate <see cref="CanExecute"/> for all commands.
     /// Call this when external state changes that affects can-execute logic.
     /// </summary>
+    // Intentionally an instance method so callers can invoke it on a specific command reference.
+#pragma warning disable CA1822 // Mark members as static
     public void RaiseCanExecuteChanged() => CommandManager.InvalidateRequerySuggested();
+#pragma warning restore CA1822
 }
 
 /// <summary>
@@ -81,7 +85,8 @@ public class RelayCommand<T> : ICommand
     /// </param>
     public RelayCommand(Action<T?> execute, Func<T?, bool>? canExecute = null)
     {
-        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        ArgumentNullException.ThrowIfNull(execute);
+        _execute = execute;
         _canExecute = canExecute;
     }
 
@@ -102,5 +107,8 @@ public class RelayCommand<T> : ICommand
     /// Forces WPF to re-evaluate <see cref="CanExecute"/> for all commands.
     /// Call this when external state changes that affects can-execute logic.
     /// </summary>
+    // Intentionally an instance method so callers can invoke it on a specific command reference.
+#pragma warning disable CA1822 // Mark members as static
     public void RaiseCanExecuteChanged() => CommandManager.InvalidateRequerySuggested();
+#pragma warning restore CA1822
 }

@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Divider"
+            <TextBlock Text="{DynamicResource Divider.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A divider line separates different content."
+            <TextBlock Text="{DynamicResource Divider.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Horizontal Divider -->
-            <TextBlock Text="Horizontal Divider"
+            <TextBlock Text="{DynamicResource Divider.Horizontal}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -35,19 +35,19 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    <TextBlock Text="{DynamicResource Divider.Lorem}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     <antd:Divider Margin="0,12" />
-                    <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    <TextBlock Text="{DynamicResource Divider.Lorem}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     <antd:Divider DashedLine="True" Margin="0,12" />
-                    <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    <TextBlock Text="{DynamicResource Divider.Lorem}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
                 </StackPanel>
             </Border>
 
             <!-- Section: Divider with Text -->
-            <TextBlock Text="Divider with Text"
+            <TextBlock Text="{DynamicResource Divider.WithText}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -60,22 +60,22 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Lorem ipsum dolor sit amet."
+                    <TextBlock Text="{DynamicResource Divider.LoremShort}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
-                    <antd:Divider Text="Center Text" Margin="0,12" />
-                    <TextBlock Text="Lorem ipsum dolor sit amet."
+                    <antd:Divider Text="{DynamicResource Divider.CenterText}" Margin="0,12" />
+                    <TextBlock Text="{DynamicResource Divider.LoremShort}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
-                    <antd:Divider Text="Left Text" TextAlignment="Left" Margin="0,12" />
-                    <TextBlock Text="Lorem ipsum dolor sit amet."
+                    <antd:Divider Text="{DynamicResource Divider.LeftText}" TextAlignment="Left" Margin="0,12" />
+                    <TextBlock Text="{DynamicResource Divider.LoremShort}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
-                    <antd:Divider Text="Right Text" TextAlignment="Right" Margin="0,12" />
-                    <TextBlock Text="Lorem ipsum dolor sit amet."
+                    <antd:Divider Text="{DynamicResource Divider.RightText}" TextAlignment="Right" Margin="0,12" />
+                    <TextBlock Text="{DynamicResource Divider.LoremShort}"
                                Foreground="{DynamicResource AntDesign.Brush.Text}" />
                 </StackPanel>
             </Border>
 
             <!-- Section: Vertical Divider -->
-            <TextBlock Text="Vertical Divider"
+            <TextBlock Text="{DynamicResource Divider.Vertical}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -88,11 +88,11 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="Text" Foreground="{DynamicResource AntDesign.Brush.Text}" />
+                    <TextBlock Text="{DynamicResource Divider.Text}" Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     <antd:Divider Orientation="Vertical" Margin="12,0" />
-                    <TextBlock Text="Link" Foreground="{DynamicResource AntDesign.Brush.Link}" />
+                    <TextBlock Text="{DynamicResource Divider.Link}" Foreground="{DynamicResource AntDesign.Brush.Link}" />
                     <antd:Divider Orientation="Vertical" Margin="12,0" />
-                    <TextBlock Text="Link" Foreground="{DynamicResource AntDesign.Brush.Link}" />
+                    <TextBlock Text="{DynamicResource Divider.Link}" Foreground="{DynamicResource AntDesign.Brush.Link}" />
                 </StackPanel>
             </Border>
 

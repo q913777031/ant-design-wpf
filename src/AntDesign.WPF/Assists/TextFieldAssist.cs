@@ -22,13 +22,13 @@ namespace AntDesign.WPF.Assists
 
         public static bool GetHasClearButton(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (bool)element.GetValue(HasClearButtonProperty);
         }
 
         public static void SetHasClearButton(FrameworkElement element, bool value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(HasClearButtonProperty, value);
         }
 
@@ -48,13 +48,13 @@ namespace AntDesign.WPF.Assists
 
         public static object GetPrefix(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return element.GetValue(PrefixProperty);
         }
 
         public static void SetPrefix(FrameworkElement element, object value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(PrefixProperty, value);
         }
 
@@ -74,13 +74,13 @@ namespace AntDesign.WPF.Assists
 
         public static object GetSuffix(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return element.GetValue(SuffixProperty);
         }
 
         public static void SetSuffix(FrameworkElement element, object value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(SuffixProperty, value);
         }
 
@@ -100,13 +100,13 @@ namespace AntDesign.WPF.Assists
 
         public static object GetPrefixIcon(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return element.GetValue(PrefixIconProperty);
         }
 
         public static void SetPrefixIcon(FrameworkElement element, object value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(PrefixIconProperty, value);
         }
 
@@ -126,13 +126,13 @@ namespace AntDesign.WPF.Assists
 
         public static object GetSuffixIcon(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return element.GetValue(SuffixIconProperty);
         }
 
         public static void SetSuffixIcon(FrameworkElement element, object value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(SuffixIconProperty, value);
         }
 
@@ -152,13 +152,13 @@ namespace AntDesign.WPF.Assists
 
         public static bool GetCharacterCount(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (bool)element.GetValue(CharacterCountProperty);
         }
 
         public static void SetCharacterCount(FrameworkElement element, bool value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(CharacterCountProperty, value);
         }
 
@@ -179,13 +179,13 @@ namespace AntDesign.WPF.Assists
 
         public static int GetMaxLength(FrameworkElement element)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             return (int)element.GetValue(MaxLengthProperty);
         }
 
         public static void SetMaxLength(FrameworkElement element, int value)
         {
-            if (element is null) throw new System.ArgumentNullException(nameof(element));
+            ArgumentNullException.ThrowIfNull(element);
             element.SetValue(MaxLengthProperty, value);
         }
 

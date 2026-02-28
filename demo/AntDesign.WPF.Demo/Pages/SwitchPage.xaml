@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Switch"
+            <TextBlock Text="{DynamicResource Switch.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Switching between two states."
+            <TextBlock Text="{DynamicResource Switch.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Switch -->
-            <TextBlock Text="Basic Switch"
+            <TextBlock Text="{DynamicResource Switch.Basic}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -37,19 +37,19 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
                         <antd:AntSwitch IsChecked="True" Margin="0,0,12,0" />
-                        <TextBlock Text="Default Switch (checked)"
+                        <TextBlock Text="{DynamicResource Switch.DefaultChecked}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
                         <antd:AntSwitch IsChecked="False" Margin="0,0,12,0" />
-                        <TextBlock Text="Default Switch (unchecked)"
+                        <TextBlock Text="{DynamicResource Switch.DefaultUnchecked}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <antd:AntSwitch IsEnabled="False" Margin="0,0,12,0" />
-                        <TextBlock Text="Disabled Switch"
+                        <TextBlock Text="{DynamicResource Switch.Disabled}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
                     </StackPanel>
@@ -57,7 +57,7 @@
             </Border>
 
             <!-- Section: Small Switch -->
-            <TextBlock Text="Small Switch"
+            <TextBlock Text="{DynamicResource Switch.Small}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -72,13 +72,13 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
                         <antd:AntSwitch Size="Small" IsChecked="True" Margin="0,0,12,0" />
-                        <TextBlock Text="Small Switch (checked)"
+                        <TextBlock Text="{DynamicResource Switch.SmallChecked}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <antd:AntSwitch Size="Small" IsChecked="False" Margin="0,0,12,0" />
-                        <TextBlock Text="Small Switch (unchecked)"
+                        <TextBlock Text="{DynamicResource Switch.SmallUnchecked}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>
@@ -86,7 +86,7 @@
             </Border>
 
             <!-- Section: Switch with Content -->
-            <TextBlock Text="Switch with Text Content"
+            <TextBlock Text="{DynamicResource Switch.WithText}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -101,10 +101,10 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
                         <antd:AntSwitch IsChecked="True"
-                                        CheckedContent="On"
-                                        UncheckedContent="Off"
+                                        CheckedContent="{DynamicResource Switch.On}"
+                                        UncheckedContent="{DynamicResource Switch.Off}"
                                         Margin="0,0,12,0" />
-                        <TextBlock Text="Switch with On/Off label"
+                        <TextBlock Text="{DynamicResource Switch.OnOffLabel}"
                                    VerticalAlignment="Center"
                                    Foreground="{DynamicResource AntDesign.Brush.Text}" />
                     </StackPanel>

@@ -10,7 +10,7 @@ namespace AntDesign.WPF.Controls;
 /// <remarks>
 /// All methods are thread-safe and dispatch to the UI thread automatically.
 /// Internally the service resolves (or creates) a <see cref="MessageContainer"/> in the
-/// adorner layer of <see cref="Application.Current.MainWindow"/>.
+/// adorner layer of <see cref="Application.MainWindow"/>.
 /// </remarks>
 public static class MessageService
 {

@@ -10,18 +10,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Checkbox"
+            <TextBlock Text="{DynamicResource CheckBox.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Checkbox and Radio button components."
+            <TextBlock Text="{DynamicResource CheckBox.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: CheckBox -->
-            <TextBlock Text="Checkbox"
+            <TextBlock Text="{DynamicResource CheckBox.Section}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -34,21 +34,21 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <CheckBox Content="Unchecked"
+                    <CheckBox Content="{DynamicResource CheckBox.Unchecked}"
                               IsChecked="False"
                               Margin="0,0,0,12" />
-                    <CheckBox Content="Checked"
+                    <CheckBox Content="{DynamicResource CheckBox.Checked}"
                               IsChecked="True"
                               Margin="0,0,0,12" />
-                    <CheckBox Content="Indeterminate"
+                    <CheckBox Content="{DynamicResource CheckBox.Indeterminate}"
                               IsChecked="{x:Null}"
                               IsThreeState="True"
                               Margin="0,0,0,12" />
-                    <CheckBox Content="Disabled (unchecked)"
+                    <CheckBox Content="{DynamicResource CheckBox.DisabledUnchecked}"
                               IsChecked="False"
                               IsEnabled="False"
                               Margin="0,0,0,12" />
-                    <CheckBox Content="Disabled (checked)"
+                    <CheckBox Content="{DynamicResource CheckBox.DisabledChecked}"
                               IsChecked="True"
                               IsEnabled="False"
                               Margin="0,0,0,0" />
@@ -56,7 +56,7 @@
             </Border>
 
             <!-- Section: RadioButton -->
-            <TextBlock Text="Radio Button"
+            <TextBlock Text="{DynamicResource CheckBox.RadioButton}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -69,20 +69,20 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Radio group — select one option:"
+                    <TextBlock Text="{DynamicResource CheckBox.RadioDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,12" />
-                    <RadioButton Content="Option A"
+                    <RadioButton Content="{DynamicResource CheckBox.OptionA}"
                                  GroupName="RadioGroup1"
                                  IsChecked="True"
                                  Margin="0,0,0,10" />
-                    <RadioButton Content="Option B"
+                    <RadioButton Content="{DynamicResource CheckBox.OptionB}"
                                  GroupName="RadioGroup1"
                                  Margin="0,0,0,10" />
-                    <RadioButton Content="Option C"
+                    <RadioButton Content="{DynamicResource CheckBox.OptionC}"
                                  GroupName="RadioGroup1"
                                  Margin="0,0,0,10" />
-                    <RadioButton Content="Disabled"
+                    <RadioButton Content="{DynamicResource CheckBox.Disabled}"
                                  GroupName="RadioGroup1"
                                  IsEnabled="False"
                                  Margin="0,0,0,0" />

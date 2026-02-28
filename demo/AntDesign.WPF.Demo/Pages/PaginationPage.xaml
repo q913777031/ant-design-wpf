@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Pagination"
+            <TextBlock Text="{DynamicResource Pagination.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A long list can be divided into several pages using Pagination."
+            <TextBlock Text="{DynamicResource Pagination.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic -->
-            <TextBlock Text="Basic"
+            <TextBlock Text="{DynamicResource Pagination.Basic}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -47,7 +47,7 @@
             </Expander>
 
             <!-- Section: More Pages -->
-            <TextBlock Text="More Pages"
+            <TextBlock Text="{DynamicResource Pagination.More}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -60,7 +60,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Total = 500, PageSize = 10 (50 pages)"
+                    <TextBlock Text="{DynamicResource Pagination.MoreDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,12" />
                     <antd:Pagination Total="500" PageSize="10" Current="1" />
@@ -68,7 +68,7 @@
             </Border>
 
             <!-- Section: Quick Jumper -->
-            <TextBlock Text="Quick Jumper"
+            <TextBlock Text="{DynamicResource Pagination.QuickJumper}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -81,7 +81,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Type a page number and press Enter to jump:"
+                    <TextBlock Text="{DynamicResource Pagination.QuickJumperDesc}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,12" />
                     <antd:Pagination Total="200" PageSize="10" ShowQuickJumper="True" />
@@ -96,7 +96,7 @@
             </Expander>
 
             <!-- Section: Simple Mode -->
-            <TextBlock Text="Simple Mode"
+            <TextBlock Text="{DynamicResource Pagination.Simple}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"

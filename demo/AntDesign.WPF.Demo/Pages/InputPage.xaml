@@ -10,18 +10,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Input"
+            <TextBlock Text="{DynamicResource Input.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="A basic widget for getting the user input is a text field."
+            <TextBlock Text="{DynamicResource Input.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Input -->
-            <TextBlock Text="Basic Usage"
+            <TextBlock Text="{DynamicResource Input.BasicUsage}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -34,15 +34,15 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Default TextBox"
+                    <TextBlock Text="{DynamicResource Input.DefaultTextBox}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
-                    <TextBox Text="Basic input"
+                    <TextBox Text="{DynamicResource Input.BasicInput}"
                              Width="300"
                              HorizontalAlignment="Left"
                              Margin="0,0,0,16" />
 
-                    <TextBlock Text="With placeholder"
+                    <TextBlock Text="{DynamicResource Input.WithPlaceholder}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <TextBox Width="300"
@@ -56,7 +56,7 @@
                                             <Setter.Value>
                                                 <VisualBrush AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                                     <VisualBrush.Visual>
-                                                        <TextBlock Text="Enter your username" Margin="8,0,0,0"
+                                                        <TextBlock Text="{DynamicResource Input.Placeholder}" Margin="8,0,0,0"
                                                                    Foreground="{DynamicResource AntDesign.Brush.Text.Quaternary}" />
                                                     </VisualBrush.Visual>
                                                 </VisualBrush>
@@ -68,7 +68,7 @@
                         </TextBox.Style>
                     </TextBox>
 
-                    <TextBlock Text="Multiline TextBox"
+                    <TextBlock Text="{DynamicResource Input.Multiline}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <TextBox Width="300"
@@ -77,13 +77,13 @@
                              TextWrapping="Wrap"
                              AcceptsReturn="True"
                              VerticalScrollBarVisibility="Auto"
-                             Text="Multi-line input area"
+                             Text="{DynamicResource Input.MultilineText}"
                              Margin="0,0,0,0" />
                 </StackPanel>
             </Border>
 
             <!-- Section: Disabled Input -->
-            <TextBlock Text="Disabled"
+            <TextBlock Text="{DynamicResource Input.Disabled}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -96,10 +96,10 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Disabled input"
+                    <TextBlock Text="{DynamicResource Input.DisabledLabel}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
-                    <TextBox Text="Disabled input"
+                    <TextBox Text="{DynamicResource Input.DisabledLabel}"
                              Width="300"
                              HorizontalAlignment="Left"
                              IsEnabled="False"
@@ -108,7 +108,7 @@
             </Border>
 
             <!-- Section: Password Input -->
-            <TextBlock Text="Password Input"
+            <TextBlock Text="{DynamicResource Input.Password}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -121,7 +121,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Password field"
+                    <TextBlock Text="{DynamicResource Input.PasswordField}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <PasswordBox Width="300"

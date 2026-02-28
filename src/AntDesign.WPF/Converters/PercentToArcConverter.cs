@@ -82,7 +82,7 @@ public sealed class PercentToArcConverter : IMultiValueConverter
     }
 
     public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        => throw new NotSupportedException();
+        => new object[] { Binding.DoNothing };
 }
 
 /// <summary>
@@ -147,5 +147,5 @@ public sealed class TrackArcConverter : IMultiValueConverter
     }
 
     public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        => throw new NotSupportedException();
+        => new object[] { Binding.DoNothing };
 }

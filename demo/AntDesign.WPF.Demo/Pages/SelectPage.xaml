@@ -10,18 +10,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Select"
+            <TextBlock Text="{DynamicResource Select.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Select component to select value from options."
+            <TextBlock Text="{DynamicResource Select.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic Select -->
-            <TextBlock Text="Basic Usage"
+            <TextBlock Text="{DynamicResource Select.BasicUsage}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -34,26 +34,26 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Basic ComboBox (Select)"
+                    <TextBlock Text="{DynamicResource Select.BasicComboBox}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <ComboBox Width="240"
                               HorizontalAlignment="Left"
                               SelectedIndex="0"
                               Margin="0,0,0,16">
-                        <ComboBoxItem Content="Option 1" />
-                        <ComboBoxItem Content="Option 2" />
-                        <ComboBoxItem Content="Option 3" />
-                        <ComboBoxItem Content="Option 4" />
+                        <ComboBoxItem Content="{DynamicResource Select.Option1}" />
+                        <ComboBoxItem Content="{DynamicResource Select.Option2}" />
+                        <ComboBoxItem Content="{DynamicResource Select.Option3}" />
+                        <ComboBoxItem Content="{DynamicResource Select.Option4}" />
                     </ComboBox>
 
-                    <TextBlock Text="Editable ComboBox"
+                    <TextBlock Text="{DynamicResource Select.Editable}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <ComboBox Width="240"
                               HorizontalAlignment="Left"
                               IsEditable="True"
-                              Text="Type or select..."
+                              Text="{DynamicResource Select.TypeOrSelect}"
                               Margin="0,0,0,0">
                         <ComboBoxItem Content="Apple" />
                         <ComboBoxItem Content="Banana" />
@@ -64,7 +64,7 @@
             </Border>
 
             <!-- Section: Disabled Select -->
-            <TextBlock Text="Disabled State"
+            <TextBlock Text="{DynamicResource Select.DisabledState}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -77,7 +77,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Disabled ComboBox"
+                    <TextBlock Text="{DynamicResource Select.DisabledComboBox}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <ComboBox Width="240"
@@ -85,8 +85,8 @@
                               IsEnabled="False"
                               SelectedIndex="0"
                               Margin="0,0,0,0">
-                        <ComboBoxItem Content="Option 1 (disabled)" />
-                        <ComboBoxItem Content="Option 2" />
+                        <ComboBoxItem Content="{DynamicResource Select.Option1Disabled}" />
+                        <ComboBoxItem Content="{DynamicResource Select.Option2}" />
                     </ComboBox>
                 </StackPanel>
             </Border>

@@ -1,0 +1,559 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ==================== 通用 / 外壳 ==================== -->
+    <sys:String x:Key="Demo.ShowCode">显示代码</sys:String>
+    <sys:String x:Key="Demo.HideCode">隐藏代码</sys:String>
+    <sys:String x:Key="Demo.AppTitle">Ant Design WPF</sys:String>
+    <sys:String x:Key="Demo.Version">v1.0.0</sys:String>
+    <sys:String x:Key="Demo.SearchPlaceholder">搜索组件...</sys:String>
+    <sys:String x:Key="Demo.ColorLabel">颜色：</sys:String>
+    <sys:String x:Key="Demo.ThemeTooltip">切换亮色 / 暗色主题</sys:String>
+    <sys:String x:Key="Demo.LanguageToggle">中/EN</sys:String>
+
+    <!-- ==================== 导航分类 ==================== -->
+    <sys:String x:Key="Nav.Cat.Overview">概览</sys:String>
+    <sys:String x:Key="Nav.Cat.General">通用</sys:String>
+    <sys:String x:Key="Nav.Cat.DataEntry">数据录入</sys:String>
+    <sys:String x:Key="Nav.Cat.DataDisplay">数据展示</sys:String>
+    <sys:String x:Key="Nav.Cat.Feedback">反馈</sys:String>
+    <sys:String x:Key="Nav.Cat.Navigation">导航</sys:String>
+    <sys:String x:Key="Nav.Cat.Settings">设置</sys:String>
+
+    <!-- ==================== 导航项 ==================== -->
+    <sys:String x:Key="Nav.Welcome">欢迎</sys:String>
+    <sys:String x:Key="Nav.Button">按钮 Button</sys:String>
+    <sys:String x:Key="Nav.Typography">排版 Typography</sys:String>
+    <sys:String x:Key="Nav.Input">输入框 Input</sys:String>
+    <sys:String x:Key="Nav.CheckBox">多选框 CheckBox</sys:String>
+    <sys:String x:Key="Nav.Select">选择器 Select</sys:String>
+    <sys:String x:Key="Nav.Switch">开关 Switch</sys:String>
+    <sys:String x:Key="Nav.Rate">评分 Rate</sys:String>
+    <sys:String x:Key="Nav.DataEntry">滑动条 &amp; 日期选择</sys:String>
+    <sys:String x:Key="Nav.Card">卡片 Card</sys:String>
+    <sys:String x:Key="Nav.Tag">标签 Tag</sys:String>
+    <sys:String x:Key="Nav.Badge">徽标 Badge</sys:String>
+    <sys:String x:Key="Nav.Table">表格 Table</sys:String>
+    <sys:String x:Key="Nav.Tabs">标签页 Tabs</sys:String>
+    <sys:String x:Key="Nav.Timeline">时间轴 Timeline</sys:String>
+    <sys:String x:Key="Nav.Divider">分割线 Divider</sys:String>
+    <sys:String x:Key="Nav.Empty">空状态 Empty</sys:String>
+    <sys:String x:Key="Nav.Alert">警告提示 Alert</sys:String>
+    <sys:String x:Key="Nav.Progress">进度条 Progress</sys:String>
+    <sys:String x:Key="Nav.Spin">加载中 Spin</sys:String>
+    <sys:String x:Key="Nav.Modal">对话框 Modal</sys:String>
+    <sys:String x:Key="Nav.Drawer">抽屉 Drawer</sys:String>
+    <sys:String x:Key="Nav.Popconfirm">气泡确认 Popconfirm</sys:String>
+    <sys:String x:Key="Nav.Message">全局提示 Message</sys:String>
+    <sys:String x:Key="Nav.Result">结果 Result</sys:String>
+    <sys:String x:Key="Nav.Steps">步骤条 Steps</sys:String>
+    <sys:String x:Key="Nav.Pagination">分页 Pagination</sys:String>
+    <sys:String x:Key="Nav.Segmented">分段控制器 Segmented</sys:String>
+    <sys:String x:Key="Nav.Theme">主题 Theme</sys:String>
+
+    <!-- ==================== 欢迎页 ==================== -->
+    <sys:String x:Key="Welcome.Title">Ant Design WPF</sys:String>
+    <sys:String x:Key="Welcome.Desc">一套遵循 Ant Design 规范的 WPF 控件库。</sys:String>
+    <sys:String x:Key="Welcome.Features">30+ 控件  ·  亮色/暗色主题  ·  设计令牌  ·  MVVM 就绪  ·  无障碍</sys:String>
+    <sys:String x:Key="Welcome.Stat.Controls">自定义控件</sys:String>
+    <sys:String x:Key="Welcome.Stat.Themes">WPF 主题覆盖</sys:String>
+    <sys:String x:Key="Welcome.Stat.Palettes">色彩面板</sys:String>
+    <sys:String x:Key="Welcome.Stat.Tokens">设计令牌</sys:String>
+    <sys:String x:Key="Welcome.QuickStart">快速开始</sys:String>
+    <sys:String x:Key="Welcome.Step1">步骤 1</sys:String>
+    <sys:String x:Key="Welcome.Step1.Desc">— 安装 NuGet 包</sys:String>
+    <sys:String x:Key="Welcome.Step2">步骤 2</sys:String>
+    <sys:String x:Key="Welcome.Step2.Desc">— 配置 App.xaml</sys:String>
+    <sys:String x:Key="Welcome.Step3">步骤 3</sys:String>
+    <sys:String x:Key="Welcome.Step3.Desc">— 使用控件</sys:String>
+    <sys:String x:Key="Welcome.ColorPalette">色彩面板</sys:String>
+    <sys:String x:Key="Welcome.Primary">主色</sys:String>
+    <sys:String x:Key="Welcome.SemanticColors">语义色</sys:String>
+    <sys:String x:Key="Welcome.NeutralText">中性色 / 文本</sys:String>
+    <sys:String x:Key="Welcome.Success">成功</sys:String>
+    <sys:String x:Key="Welcome.Info">信息</sys:String>
+    <sys:String x:Key="Welcome.Warning">警告</sys:String>
+    <sys:String x:Key="Welcome.Error">错误</sys:String>
+    <sys:String x:Key="Welcome.Title.Label">标题</sys:String>
+    <sys:String x:Key="Welcome.Secondary">次要</sys:String>
+    <sys:String x:Key="Welcome.Tertiary">三级</sys:String>
+    <sys:String x:Key="Welcome.Border">边框</sys:String>
+    <sys:String x:Key="Welcome.Fill">填充</sys:String>
+    <sys:String x:Key="Welcome.FeaturesTitle">特性</sys:String>
+    <sys:String x:Key="Welcome.Feature1.Title">设计令牌体系</sys:String>
+    <sys:String x:Key="Welcome.Feature1.Desc">100+ 设计令牌涵盖颜色、排版、间距等，运行时完全动态。</sys:String>
+    <sys:String x:Key="Welcome.Feature2.Title">亮色 / 暗色主题</sys:String>
+    <sys:String x:Key="Welcome.Feature2.Desc">一键主题切换，平滑过渡，120 个颜色令牌即时更新。</sys:String>
+    <sys:String x:Key="Welcome.Feature3.Title">高性能</sys:String>
+    <sys:String x:Key="Welcome.Feature3.Desc">冻结画刷、ISupportInitialize、页面缓存和优化动画。</sys:String>
+    <sys:String x:Key="Welcome.Feature4.Title">无障碍</sys:String>
+    <sys:String x:Key="Welcome.Feature4.Desc">所有控件提供 AutomationPeer，键盘导航、焦点管理、屏幕阅读器支持。</sys:String>
+    <sys:String x:Key="Welcome.Feature5.Title">MVVM 就绪</sys:String>
+    <sys:String x:Key="Welcome.Feature5.Desc">内置 RelayCommand，所有交互控件支持 ICommand，双向绑定。</sys:String>
+    <sys:String x:Key="Welcome.Feature6.Title">易于集成</sys:String>
+    <sys:String x:Key="Welcome.Feature6.Desc">单个 NuGet 包，在 App.xaml 中添加 2 行即可使用 antd: 命名空间。</sys:String>
+    <sys:String x:Key="Welcome.LivePreview">实时控件预览</sys:String>
+    <sys:String x:Key="Welcome.Alert.Success">欢迎使用 Ant Design WPF！</sys:String>
+    <sys:String x:Key="Welcome.Alert.SuccessDesc">本库提供企业级 UI 组件。</sys:String>
+    <sys:String x:Key="Welcome.Alert.Info">使用侧边栏浏览所有可用控件。</sys:String>
+    <sys:String x:Key="Welcome.RuntimeTheme">运行时主题切换</sys:String>
+    <sys:String x:Key="Welcome.RuntimeTheme.Desc">使用顶栏的颜色色板和主题切换按钮，实时查看所有控件更新。</sys:String>
+
+    <!-- ==================== 按钮页 ==================== -->
+    <sys:String x:Key="Button.Title">按钮 Button</sys:String>
+    <sys:String x:Key="Button.Desc">触发一个操作。</sys:String>
+    <sys:String x:Key="Button.Types">按钮类型</sys:String>
+    <sys:String x:Key="Button.Types.Desc">Ant Design 中有主按钮、默认按钮、虚线按钮、文本按钮和链接按钮。</sys:String>
+    <sys:String x:Key="Button.Primary">主要</sys:String>
+    <sys:String x:Key="Button.Default">默认</sys:String>
+    <sys:String x:Key="Button.Dashed">虚线</sys:String>
+    <sys:String x:Key="Button.Text">文本</sys:String>
+    <sys:String x:Key="Button.Link">链接</sys:String>
+    <sys:String x:Key="Button.Danger">危险按钮</sys:String>
+    <sys:String x:Key="Button.Danger.Desc">danger 是 Button 的属性，可以与 Primary、Default 或 Dashed 搭配使用。</sys:String>
+    <sys:String x:Key="Button.PrimaryDanger">主要危险</sys:String>
+    <sys:String x:Key="Button.DefaultDanger">默认危险</sys:String>
+    <sys:String x:Key="Button.TextDanger">文本危险</sys:String>
+    <sys:String x:Key="Button.LinkDanger">链接危险</sys:String>
+    <sys:String x:Key="Button.Size">尺寸</sys:String>
+    <sys:String x:Key="Button.Size.Desc">除默认尺寸外，Button 还有大号和小号变体。</sys:String>
+    <sys:String x:Key="Button.Size.Primary">主要：</sys:String>
+    <sys:String x:Key="Button.Size.Default">默认：</sys:String>
+    <sys:String x:Key="Button.Size.Dashed">虚线：</sys:String>
+    <sys:String x:Key="Button.Large">大</sys:String>
+    <sys:String x:Key="Button.Small">小</sys:String>
+    <sys:String x:Key="Button.Disabled">禁用</sys:String>
+    <sys:String x:Key="Button.Disabled.Desc">要禁用按钮，请添加 IsEnabled=False 属性。</sys:String>
+    <sys:String x:Key="Button.PrimaryDisabled">主要 (禁用)</sys:String>
+    <sys:String x:Key="Button.DefaultDisabled">默认 (禁用)</sys:String>
+    <sys:String x:Key="Button.DashedDisabled">虚线 (禁用)</sys:String>
+    <sys:String x:Key="Button.TextDisabled">文本 (禁用)</sys:String>
+    <sys:String x:Key="Button.LinkDisabled">链接 (禁用)</sys:String>
+
+    <!-- ==================== 排版页 ==================== -->
+    <sys:String x:Key="Typography.Title">排版 Typography</sys:String>
+    <sys:String x:Key="Typography.Desc">基本的文字书写，包括标题、正文、列表等。</sys:String>
+    <sys:String x:Key="Typography.Headings">标题</sys:String>
+    <sys:String x:Key="Typography.H1">h1. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H2">h2. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H3">h3. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H4">h4. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.H5">h5. Ant Design WPF</sys:String>
+    <sys:String x:Key="Typography.BodyText">正文</sys:String>
+    <sys:String x:Key="Typography.Regular">常规 (14px) — Ant Design 是一套企业级 WPF UI 设计语言和组件库，包含一系列高质量组件。</sys:String>
+    <sys:String x:Key="Typography.Large">大号 (16px) — 为 Web 应用设计的企业级 WPF UI。</sys:String>
+    <sys:String x:Key="Typography.Small">小号 (12px) — 辅助文本和次要信息。</sys:String>
+    <sys:String x:Key="Typography.ColorVariants">颜色变体</sys:String>
+    <sys:String x:Key="Typography.PrimaryColor">主要文本颜色</sys:String>
+    <sys:String x:Key="Typography.SecondaryColor">次要文本颜色</sys:String>
+    <sys:String x:Key="Typography.TertiaryColor">三级文本颜色</sys:String>
+    <sys:String x:Key="Typography.DisabledColor">禁用文本颜色</sys:String>
+    <sys:String x:Key="Typography.SuccessColor">成功色文本</sys:String>
+    <sys:String x:Key="Typography.WarningColor">警告色文本</sys:String>
+    <sys:String x:Key="Typography.ErrorColor">错误 / 危险色文本</sys:String>
+
+    <!-- ==================== 输入框页 ==================== -->
+    <sys:String x:Key="Input.Title">输入框 Input</sys:String>
+    <sys:String x:Key="Input.Desc">获取用户输入的基本控件是文本输入框。</sys:String>
+    <sys:String x:Key="Input.BasicUsage">基本用法</sys:String>
+    <sys:String x:Key="Input.DefaultTextBox">默认输入框</sys:String>
+    <sys:String x:Key="Input.BasicInput">基本输入</sys:String>
+    <sys:String x:Key="Input.WithPlaceholder">带占位符</sys:String>
+    <sys:String x:Key="Input.Placeholder">请输入用户名</sys:String>
+    <sys:String x:Key="Input.Multiline">多行输入框</sys:String>
+    <sys:String x:Key="Input.MultilineText">多行输入区域</sys:String>
+    <sys:String x:Key="Input.Disabled">禁用</sys:String>
+    <sys:String x:Key="Input.DisabledLabel">禁用输入</sys:String>
+    <sys:String x:Key="Input.Password">密码输入</sys:String>
+    <sys:String x:Key="Input.PasswordField">密码框</sys:String>
+
+    <!-- ==================== 多选框页 ==================== -->
+    <sys:String x:Key="CheckBox.Title">多选框 Checkbox</sys:String>
+    <sys:String x:Key="CheckBox.Desc">多选框和单选按钮组件。</sys:String>
+    <sys:String x:Key="CheckBox.Section">多选框</sys:String>
+    <sys:String x:Key="CheckBox.Unchecked">未选中</sys:String>
+    <sys:String x:Key="CheckBox.Checked">已选中</sys:String>
+    <sys:String x:Key="CheckBox.Indeterminate">不确定</sys:String>
+    <sys:String x:Key="CheckBox.DisabledUnchecked">禁用 (未选中)</sys:String>
+    <sys:String x:Key="CheckBox.DisabledChecked">禁用 (已选中)</sys:String>
+    <sys:String x:Key="CheckBox.RadioButton">单选按钮</sys:String>
+    <sys:String x:Key="CheckBox.RadioDesc">单选组 — 选择一个选项：</sys:String>
+    <sys:String x:Key="CheckBox.OptionA">选项 A</sys:String>
+    <sys:String x:Key="CheckBox.OptionB">选项 B</sys:String>
+    <sys:String x:Key="CheckBox.OptionC">选项 C</sys:String>
+    <sys:String x:Key="CheckBox.Disabled">禁用</sys:String>
+
+    <!-- ==================== 选择器页 ==================== -->
+    <sys:String x:Key="Select.Title">选择器 Select</sys:String>
+    <sys:String x:Key="Select.Desc">选择组件用于从选项中选取值。</sys:String>
+    <sys:String x:Key="Select.BasicUsage">基本用法</sys:String>
+    <sys:String x:Key="Select.BasicComboBox">基本下拉框 (Select)</sys:String>
+    <sys:String x:Key="Select.Option1">选项 1</sys:String>
+    <sys:String x:Key="Select.Option2">选项 2</sys:String>
+    <sys:String x:Key="Select.Option3">选项 3</sys:String>
+    <sys:String x:Key="Select.Option4">选项 4</sys:String>
+    <sys:String x:Key="Select.Editable">可编辑下拉框</sys:String>
+    <sys:String x:Key="Select.TypeOrSelect">输入或选择...</sys:String>
+    <sys:String x:Key="Select.DisabledState">禁用状态</sys:String>
+    <sys:String x:Key="Select.DisabledComboBox">禁用的下拉框</sys:String>
+    <sys:String x:Key="Select.Option1Disabled">选项 1 (禁用)</sys:String>
+
+    <!-- ==================== 开关页 ==================== -->
+    <sys:String x:Key="Switch.Title">开关 Switch</sys:String>
+    <sys:String x:Key="Switch.Desc">在两种状态间切换。</sys:String>
+    <sys:String x:Key="Switch.Basic">基本开关</sys:String>
+    <sys:String x:Key="Switch.DefaultChecked">默认开关 (开启)</sys:String>
+    <sys:String x:Key="Switch.DefaultUnchecked">默认开关 (关闭)</sys:String>
+    <sys:String x:Key="Switch.Disabled">禁用开关</sys:String>
+    <sys:String x:Key="Switch.Small">小号开关</sys:String>
+    <sys:String x:Key="Switch.SmallChecked">小号开关 (开启)</sys:String>
+    <sys:String x:Key="Switch.SmallUnchecked">小号开关 (关闭)</sys:String>
+    <sys:String x:Key="Switch.WithText">带文字内容的开关</sys:String>
+    <sys:String x:Key="Switch.On">开</sys:String>
+    <sys:String x:Key="Switch.Off">关</sys:String>
+    <sys:String x:Key="Switch.OnOffLabel">带开/关标签的开关</sys:String>
+
+    <!-- ==================== 评分页 ==================== -->
+    <sys:String x:Key="Rate.Title">评分 Rate</sys:String>
+    <sys:String x:Key="Rate.Desc">用于收集星级评分的评分组件。</sys:String>
+    <sys:String x:Key="Rate.Basic">基本</sys:String>
+    <sys:String x:Key="Rate.Current">当前：3</sys:String>
+    <sys:String x:Key="Rate.HalfStar">半星</sys:String>
+    <sys:String x:Key="Rate.HalfDesc">点击星星的左半部分获取 0.5 精度：</sys:String>
+    <sys:String x:Key="Rate.ReadOnly">只读</sys:String>
+    <sys:String x:Key="Rate.CustomCount">自定义星数</sys:String>
+    <sys:String x:Key="Rate.TenStars">10 颗星：</sys:String>
+    <sys:String x:Key="Rate.ThreeStars">3 颗星：</sys:String>
+
+    <!-- ==================== 数据录入页 ==================== -->
+    <sys:String x:Key="DataEntry.Title">滑动条 / 日期选择</sys:String>
+    <sys:String x:Key="DataEntry.Desc">表单数据录入控件，包括滑动条和日期选择器。</sys:String>
+    <sys:String x:Key="DataEntry.Slider">滑动条</sys:String>
+    <sys:String x:Key="DataEntry.BasicSlider">基本滑动条</sys:String>
+    <sys:String x:Key="DataEntry.SliderValue">带数值显示的滑动条</sys:String>
+    <sys:String x:Key="DataEntry.DisabledSlider">禁用滑动条</sys:String>
+    <sys:String x:Key="DataEntry.DatePicker">日期选择器</sys:String>
+    <sys:String x:Key="DataEntry.BasicDatePicker">基本日期选择器</sys:String>
+    <sys:String x:Key="DataEntry.DisabledDatePicker">禁用日期选择器</sys:String>
+
+    <!-- ==================== 卡片页 ==================== -->
+    <sys:String x:Key="Card.Title">卡片 Card</sys:String>
+    <sys:String x:Key="Card.Desc">用于在带有可选标题和附加内容的盒子中展示内容的容器。</sys:String>
+    <sys:String x:Key="Card.BasicCard">基本卡片</sys:String>
+    <sys:String x:Key="Card.CardTitle">卡片标题</sys:String>
+    <sys:String x:Key="Card.BasicContent">卡片内容在此处。这是一张带有标题的基本卡片。</sys:String>
+    <sys:String x:Key="Card.WithExtra">带额外内容的卡片</sys:String>
+    <sys:String x:Key="Card.WithExtraTitle">带额外内容</sys:String>
+    <sys:String x:Key="Card.More">更多</sys:String>
+    <sys:String x:Key="Card.ExtraContent">此卡片在标题栏（右上方区域）有额外内容。</sys:String>
+    <sys:String x:Key="Card.Hoverable">可悬停卡片</sys:String>
+    <sys:String x:Key="Card.HoverableTitle">可悬停</sys:String>
+    <sys:String x:Key="Card.HoverableContent">将鼠标悬停在此卡片上查看阴影效果。</sys:String>
+    <sys:String x:Key="Card.Borderless">无边框卡片</sys:String>
+    <sys:String x:Key="Card.BorderlessTitle">无边框卡片</sys:String>
+    <sys:String x:Key="Card.BorderlessContent">此卡片没有边框，适用于有色背景。</sys:String>
+    <sys:String x:Key="Card.SmallSize">小型卡片</sys:String>
+    <sys:String x:Key="Card.SmallTitle">小型卡片</sys:String>
+    <sys:String x:Key="Card.SmallContent">紧凑内边距的小型卡片。</sys:String>
+
+    <!-- ==================== 标签页 ==================== -->
+    <sys:String x:Key="Tag.Title">标签 Tag</sys:String>
+    <sys:String x:Key="Tag.Desc">用于分类或标记的标签。</sys:String>
+    <sys:String x:Key="Tag.BasicTags">基本标签</sys:String>
+    <sys:String x:Key="Tag.DefaultTag">默认标签</sys:String>
+    <sys:String x:Key="Tag.ClosableTags">可关闭标签</sys:String>
+    <sys:String x:Key="Tag.ClosableDesc">点击标签上的 × 关闭：</sys:String>
+    <sys:String x:Key="Tag.ClosableTag">可关闭标签</sys:String>
+    <sys:String x:Key="Tag.BlueClosable">蓝色可关闭</sys:String>
+    <sys:String x:Key="Tag.GreenClosable">绿色可关闭</sys:String>
+    <sys:String x:Key="Tag.RedClosable">红色可关闭</sys:String>
+
+    <!-- ==================== 徽标页 ==================== -->
+    <sys:String x:Key="Badge.Title">徽标 Badge</sys:String>
+    <sys:String x:Key="Badge.Desc">UI 元素的小型数值或状态描述符。</sys:String>
+    <sys:String x:Key="Badge.WithCount">带计数的徽标</sys:String>
+    <sys:String x:Key="Badge.Dot">徽标点</sys:String>
+    <sys:String x:Key="Badge.Notification">通知</sys:String>
+    <sys:String x:Key="Badge.Status">状态徽标</sys:String>
+    <sys:String x:Key="Badge.Success">成功</sys:String>
+    <sys:String x:Key="Badge.Processing">处理中</sys:String>
+    <sys:String x:Key="Badge.Default">默认</sys:String>
+    <sys:String x:Key="Badge.Error">错误</sys:String>
+    <sys:String x:Key="Badge.Warning">警告</sys:String>
+
+    <!-- ==================== 表格页 ==================== -->
+    <sys:String x:Key="Table.Title">表格 Table</sys:String>
+    <sys:String x:Key="Table.Desc">表格用于展示数据行。</sys:String>
+    <sys:String x:Key="Table.BasicTable">基本表格</sys:String>
+    <sys:String x:Key="Table.Name">姓名</sys:String>
+    <sys:String x:Key="Table.Age">年龄</sys:String>
+    <sys:String x:Key="Table.Address">地址</sys:String>
+    <sys:String x:Key="Table.Tags">标签</sys:String>
+
+    <!-- ==================== 标签页页 ==================== -->
+    <sys:String x:Key="Tabs.Title">标签页 Tabs</sys:String>
+    <sys:String x:Key="Tabs.Desc">标签页可以方便地在不同视图之间切换。</sys:String>
+    <sys:String x:Key="Tabs.BasicTabs">基本标签页</sys:String>
+    <sys:String x:Key="Tabs.Tab1">标签 1</sys:String>
+    <sys:String x:Key="Tabs.Tab2">标签 2</sys:String>
+    <sys:String x:Key="Tabs.Tab3">标签 3</sys:String>
+    <sys:String x:Key="Tabs.Content1">标签面板 1 的内容</sys:String>
+    <sys:String x:Key="Tabs.Content2">标签面板 2 的内容</sys:String>
+    <sys:String x:Key="Tabs.Content3">标签面板 3 的内容</sys:String>
+    <sys:String x:Key="Tabs.Disabled">禁用</sys:String>
+    <sys:String x:Key="Tabs.DisabledTab">禁用的标签页</sys:String>
+    <sys:String x:Key="Tabs.RichContent">富内容标签页</sys:String>
+    <sys:String x:Key="Tabs.Home">首页</sys:String>
+    <sys:String x:Key="Tabs.Settings">设置</sys:String>
+    <sys:String x:Key="Tabs.Profile">个人资料</sys:String>
+    <sys:String x:Key="Tabs.HomeWelcome">欢迎来到首页标签</sys:String>
+    <sys:String x:Key="Tabs.HomeDesc">此标签显示首页内容。</sys:String>
+    <sys:String x:Key="Tabs.SettingsTitle">设置</sys:String>
+    <sys:String x:Key="Tabs.SettingsDesc">在此配置您的偏好。</sys:String>
+    <sys:String x:Key="Tabs.ProfileTitle">用户资料</sys:String>
+    <sys:String x:Key="Tabs.ProfileDesc">管理您的账户信息。</sys:String>
+
+    <!-- ==================== 时间轴页 ==================== -->
+    <sys:String x:Key="Timeline.Title">时间轴 Timeline</sys:String>
+    <sys:String x:Key="Timeline.Desc">垂直展示时间流信息。</sys:String>
+    <sys:String x:Key="Timeline.Basic">基本时间轴</sys:String>
+    <sys:String x:Key="Timeline.Item1">创建服务站点 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.Item2">解决初始网络问题 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.Item3">技术测试 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.Item4">网络问题正在解决 2015-09-01</sys:String>
+    <sys:String x:Key="Timeline.WithColors">带颜色的时间轴</sys:String>
+    <sys:String x:Key="Timeline.Pending">待定时间轴</sys:String>
+
+    <!-- ==================== 分割线页 ==================== -->
+    <sys:String x:Key="Divider.Title">分割线 Divider</sys:String>
+    <sys:String x:Key="Divider.Desc">分割线用于分隔不同的内容。</sys:String>
+    <sys:String x:Key="Divider.Horizontal">水平分割线</sys:String>
+    <sys:String x:Key="Divider.Lorem">这是一段示例文本，用于展示分割线的效果。</sys:String>
+    <sys:String x:Key="Divider.WithText">带文字的分割线</sys:String>
+    <sys:String x:Key="Divider.LoremShort">这是一段简短的示例文本。</sys:String>
+    <sys:String x:Key="Divider.CenterText">居中文本</sys:String>
+    <sys:String x:Key="Divider.LeftText">左侧文本</sys:String>
+    <sys:String x:Key="Divider.RightText">右侧文本</sys:String>
+    <sys:String x:Key="Divider.Vertical">垂直分割线</sys:String>
+    <sys:String x:Key="Divider.Text">文本</sys:String>
+    <sys:String x:Key="Divider.Link">链接</sys:String>
+
+    <!-- ==================== 空状态页 ==================== -->
+    <sys:String x:Key="Empty.Title">空状态 Empty</sys:String>
+    <sys:String x:Key="Empty.Desc">空状态占位符。</sys:String>
+    <sys:String x:Key="Empty.Default">默认空状态</sys:String>
+    <sys:String x:Key="Empty.Custom">自定义描述</sys:String>
+    <sys:String x:Key="Empty.NoResults">未找到匹配结果</sys:String>
+    <sys:String x:Key="Empty.WithAction">带操作的空状态</sys:String>
+    <sys:String x:Key="Empty.NoData">暂无数据</sys:String>
+    <sys:String x:Key="Empty.CreateNow">立即创建</sys:String>
+
+    <!-- ==================== 警告提示页 ==================== -->
+    <sys:String x:Key="Alert.Title">警告提示 Alert</sys:String>
+    <sys:String x:Key="Alert.Desc">用于反馈的警告提示组件。</sys:String>
+    <sys:String x:Key="Alert.BasicTypes">基本警告类型</sys:String>
+    <sys:String x:Key="Alert.SuccessTips">成功提示</sys:String>
+    <sys:String x:Key="Alert.InfoNotes">信息提示</sys:String>
+    <sys:String x:Key="Alert.Warning">警告</sys:String>
+    <sys:String x:Key="Alert.Error">错误</sys:String>
+    <sys:String x:Key="Alert.WithDesc">带描述</sys:String>
+    <sys:String x:Key="Alert.SuccessDesc">成功文案的详细描述和建议。</sys:String>
+    <sys:String x:Key="Alert.InfoDesc">附加的描述和信息说明。</sys:String>
+    <sys:String x:Key="Alert.WarningDesc">这是一条关于文案的警告通知。</sys:String>
+    <sys:String x:Key="Alert.ErrorDesc">这是一条关于文案的错误信息。</sys:String>
+    <sys:String x:Key="Alert.Closable">可关闭的警告</sys:String>
+    <sys:String x:Key="Alert.ClosableDesc">点击关闭按钮关闭：</sys:String>
+    <sys:String x:Key="Alert.ClosableAlert">可关闭的警告</sys:String>
+    <sys:String x:Key="Alert.WarningWithDesc">带描述的警告</sys:String>
+    <sys:String x:Key="Alert.ClosableWarningDesc">您可以点击 X 按钮关闭此警告。</sys:String>
+
+    <!-- ==================== 进度条页 ==================== -->
+    <sys:String x:Key="Progress.Title">进度条 Progress</sys:String>
+    <sys:String x:Key="Progress.Desc">展示操作流程的当前进度。</sys:String>
+    <sys:String x:Key="Progress.Line">线形进度条</sys:String>
+    <sys:String x:Key="Progress.Active">70% (活动)</sys:String>
+    <sys:String x:Key="Progress.Success">100% (成功)</sys:String>
+    <sys:String x:Key="Progress.Exception">异常</sys:String>
+    <sys:String x:Key="Progress.Circle">环形进度条</sys:String>
+    <sys:String x:Key="Progress.Dashboard">仪表盘进度条</sys:String>
+    <sys:String x:Key="Progress.WPFStyled">WPF 进度条 (主题化)</sys:String>
+    <sys:String x:Key="Progress.Standard">使用 Ant Design 主题的标准 WPF 进度条</sys:String>
+    <sys:String x:Key="Progress.Indeterminate">不确定进度条</sys:String>
+
+    <!-- ==================== 加载中页 ==================== -->
+    <sys:String x:Key="Spin.Title">加载中 Spin</sys:String>
+    <sys:String x:Key="Spin.Desc">用于显示区域加载状态的加载指示器。</sys:String>
+    <sys:String x:Key="Spin.BasicUsage">基本用法</sys:String>
+    <sys:String x:Key="Spin.SizeVariants">尺寸变体</sys:String>
+    <sys:String x:Key="Spin.Small">小</sys:String>
+    <sys:String x:Key="Spin.Default">默认</sys:String>
+    <sys:String x:Key="Spin.Large">大</sys:String>
+    <sys:String x:Key="Spin.WithTip">带提示文本</sys:String>
+    <sys:String x:Key="Spin.Loading">加载中...</sys:String>
+    <sys:String x:Key="Spin.Wrapping">包裹内容 (遮罩层)</sys:String>
+    <sys:String x:Key="Spin.LoadingContent">正在加载内容...</sys:String>
+    <sys:String x:Key="Spin.AlertTitle">警告信息标题</sys:String>
+    <sys:String x:Key="Spin.AlertDesc">关于此警告的进一步详情。</sys:String>
+    <sys:String x:Key="Spin.ToggleLoading">切换加载</sys:String>
+
+    <!-- ==================== 对话框页 ==================== -->
+    <sys:String x:Key="Modal.Title">对话框 Modal</sys:String>
+    <sys:String x:Key="Modal.Desc">用于显示需要关注的消息的模态对话框。</sys:String>
+    <sys:String x:Key="Modal.BasicModal">基本对话框</sys:String>
+    <sys:String x:Key="Modal.DefaultContent">对话框中的一些内容。点击确定或取消来关闭。</sys:String>
+    <sys:String x:Key="Modal.OK">确定</sys:String>
+    <sys:String x:Key="Modal.Cancel">取消</sys:String>
+    <sys:String x:Key="Modal.ClickToOpen">点击按钮打开对话框：</sys:String>
+    <sys:String x:Key="Modal.OpenModal">打开对话框</sys:String>
+    <sys:String x:Key="Modal.OpenConfirm">打开确认对话框</sys:String>
+    <sys:String x:Key="Modal.CustomWidth">自定义宽度</sys:String>
+    <sys:String x:Key="Modal.OpenWideDesc">打开 720px 宽的对话框：</sys:String>
+    <sys:String x:Key="Modal.OpenWide">打开宽对话框</sys:String>
+    <sys:String x:Key="Modal.BasicContent">对话框中的一些内容。\n这是 Modal 控件的演示。</sys:String>
+    <sys:String x:Key="Modal.ConfirmTitle">确认操作</sys:String>
+    <sys:String x:Key="Modal.ConfirmContent">您确定要执行此操作吗？\n此操作无法撤销。</sys:String>
+    <sys:String x:Key="Modal.YesConfirm">是，确认</sys:String>
+    <sys:String x:Key="Modal.NoCancel">否，取消</sys:String>
+    <sys:String x:Key="Modal.WideTitle">宽对话框</sys:String>
+    <sys:String x:Key="Modal.WideContent">此对话框宽 720 像素，适合显示更多内容。</sys:String>
+
+    <!-- ==================== 抽屉页 ==================== -->
+    <sys:String x:Key="Drawer.Title">抽屉 Drawer</sys:String>
+    <sys:String x:Key="Drawer.Desc">从屏幕边缘滑出的面板。</sys:String>
+    <sys:String x:Key="Drawer.DrawerTitle">抽屉标题</sys:String>
+    <sys:String x:Key="Drawer.ContentTitle">抽屉内容</sys:String>
+    <sys:String x:Key="Drawer.Content1">这是抽屉面板内的内容。</sys:String>
+    <sys:String x:Key="Drawer.Content2">您可以在此放置任何内容，如表单、列表或其他控件。</sys:String>
+    <sys:String x:Key="Drawer.Placement">抽屉位置</sys:String>
+    <sys:String x:Key="Drawer.PlacementDesc">点击从不同位置打开抽屉：</sys:String>
+    <sys:String x:Key="Drawer.Right">右侧抽屉</sys:String>
+    <sys:String x:Key="Drawer.Left">左侧抽屉</sys:String>
+    <sys:String x:Key="Drawer.Top">顶部抽屉</sys:String>
+    <sys:String x:Key="Drawer.Bottom">底部抽屉</sys:String>
+
+    <!-- ==================== 气泡确认页 ==================== -->
+    <sys:String x:Key="Popconfirm.Title">气泡确认 Popconfirm</sys:String>
+    <sys:String x:Key="Popconfirm.Desc">一个简洁的操作确认气泡弹出框。</sys:String>
+    <sys:String x:Key="Popconfirm.Basic">基本</sys:String>
+    <sys:String x:Key="Popconfirm.ClickToSee">点击按钮查看气泡确认：</sys:String>
+    <sys:String x:Key="Popconfirm.DeleteConfirm">确定要删除吗？</sys:String>
+    <sys:String x:Key="Popconfirm.Delete">删除</sys:String>
+    <sys:String x:Key="Popconfirm.ProceedAction">继续执行此操作？</sys:String>
+    <sys:String x:Key="Popconfirm.Yes">是</sys:String>
+    <sys:String x:Key="Popconfirm.No">否</sys:String>
+    <sys:String x:Key="Popconfirm.ConfirmAction">确认操作</sys:String>
+    <sys:String x:Key="Popconfirm.AreYouSure">确定吗？</sys:String>
+    <sys:String x:Key="Popconfirm.Cancel">取消</sys:String>
+    <sys:String x:Key="Popconfirm.DangerConfirm">危险确认</sys:String>
+    <sys:String x:Key="Popconfirm.DeletedSuccess">已成功删除！</sys:String>
+
+    <!-- ==================== 全局提示页 ==================== -->
+    <sys:String x:Key="Message.Title">全局提示 &amp; 通知</sys:String>
+    <sys:String x:Key="Message.Desc">在响应用户操作时显示全局消息反馈。</sys:String>
+    <sys:String x:Key="Message.Section">全局提示</sys:String>
+    <sys:String x:Key="Message.SectionDesc">出现在屏幕顶部的轻量级全局通知。</sys:String>
+    <sys:String x:Key="Message.ClickToShow">点击显示不同类型的消息：</sys:String>
+    <sys:String x:Key="Message.SuccessBtn">成功消息</sys:String>
+    <sys:String x:Key="Message.InfoBtn">信息消息</sys:String>
+    <sys:String x:Key="Message.WarningBtn">警告消息</sys:String>
+    <sys:String x:Key="Message.ErrorBtn">错误消息</sys:String>
+    <sys:String x:Key="Message.LoadingBtn">加载消息</sys:String>
+    <sys:String x:Key="Message.Notification">通知</sys:String>
+    <sys:String x:Key="Message.NotificationDesc">全局显示通知消息，支持在屏幕角落显示为弹出提示。</sys:String>
+    <sys:String x:Key="Message.NotifyClick">点击在右上角显示通知弹窗：</sys:String>
+    <sys:String x:Key="Message.NotifySuccess">成功通知</sys:String>
+    <sys:String x:Key="Message.NotifyInfo">信息通知</sys:String>
+    <sys:String x:Key="Message.NotifyWarning">警告通知</sys:String>
+    <sys:String x:Key="Message.NotifyError">错误通知</sys:String>
+    <sys:String x:Key="Message.CustomDuration">自定义时长</sys:String>
+    <sys:String x:Key="Message.DurationDesc">自定义显示时长的消息：</sys:String>
+    <sys:String x:Key="Message.1SecondBtn">1 秒消息</sys:String>
+    <sys:String x:Key="Message.10SecondBtn">10 秒消息</sys:String>
+    <sys:String x:Key="Message.SuccessText">操作成功完成！</sys:String>
+    <sys:String x:Key="Message.InfoText">这是一条信息消息。</sys:String>
+    <sys:String x:Key="Message.WarningText">请查看此警告消息。</sys:String>
+    <sys:String x:Key="Message.ErrorText">发生错误，请重试。</sys:String>
+    <sys:String x:Key="Message.LoadingText">正在加载数据，请稍候...</sys:String>
+    <sys:String x:Key="Message.NotifySuccessTitle">任务完成</sys:String>
+    <sys:String x:Key="Message.NotifySuccessDesc">您的导出已完成，文件已准备好下载。</sys:String>
+    <sys:String x:Key="Message.NotifyInfoTitle">系统更新可用</sys:String>
+    <sys:String x:Key="Message.NotifyInfoDesc">新版本 (v2.0.0) 可用，点击此处更新。</sys:String>
+    <sys:String x:Key="Message.NotifyWarningTitle">磁盘空间不足</sys:String>
+    <sys:String x:Key="Message.NotifyWarningDesc">您的可用磁盘空间不足 500 MB。</sys:String>
+    <sys:String x:Key="Message.NotifyErrorTitle">连接失败</sys:String>
+    <sys:String x:Key="Message.NotifyErrorDesc">无法连接到服务器，请检查网络连接。</sys:String>
+    <sys:String x:Key="Message.ShortText">此消息将在 1 秒后消失。</sys:String>
+    <sys:String x:Key="Message.LongText">此消息将保持 10 秒，有充足的时间阅读！</sys:String>
+
+    <!-- ==================== 结果页 ==================== -->
+    <sys:String x:Key="Result.Title">结果 Result</sys:String>
+    <sys:String x:Key="Result.Desc">用于反馈一系列操作任务的结果。</sys:String>
+    <sys:String x:Key="Result.Success">成功</sys:String>
+    <sys:String x:Key="Result.SuccessTitle">成功购买云服务器 ECS！</sys:String>
+    <sys:String x:Key="Result.SuccessSubTitle">订单号：2017182818828182881 云服务器配置需要 1-5 分钟，请耐心等待。</sys:String>
+    <sys:String x:Key="Result.GoConsole">进入控制台</sys:String>
+    <sys:String x:Key="Result.BuyAgain">再次购买</sys:String>
+    <sys:String x:Key="Result.Error">错误</sys:String>
+    <sys:String x:Key="Result.ErrorTitle">提交失败</sys:String>
+    <sys:String x:Key="Result.ErrorSubTitle">请检查并修改以下信息后重新提交。</sys:String>
+    <sys:String x:Key="Result.Warning">警告</sys:String>
+    <sys:String x:Key="Result.WarningTitle">您的操作存在一些问题。</sys:String>
+
+    <!-- ==================== 步骤条页 ==================== -->
+    <sys:String x:Key="Steps.Title">步骤条 Steps</sys:String>
+    <sys:String x:Key="Steps.Desc">引导用户完成任务步骤的导航栏。</sys:String>
+    <sys:String x:Key="Steps.Horizontal">水平步骤条</sys:String>
+    <sys:String x:Key="Steps.Finished">已完成</sys:String>
+    <sys:String x:Key="Steps.StepDesc">这是一段描述。</sys:String>
+    <sys:String x:Key="Steps.InProgress">进行中</sys:String>
+    <sys:String x:Key="Steps.Waiting">等待中</sys:String>
+    <sys:String x:Key="Steps.Previous">上一步</sys:String>
+    <sys:String x:Key="Steps.Next">下一步</sys:String>
+    <sys:String x:Key="Steps.WithError">带错误状态的步骤条</sys:String>
+    <sys:String x:Key="Steps.InProcess">处理中</sys:String>
+    <sys:String x:Key="Steps.SmallSize">小型步骤条</sys:String>
+
+    <!-- ==================== 分页页 ==================== -->
+    <sys:String x:Key="Pagination.Title">分页 Pagination</sys:String>
+    <sys:String x:Key="Pagination.Desc">长列表可以使用分页分成多页。</sys:String>
+    <sys:String x:Key="Pagination.Basic">基本</sys:String>
+    <sys:String x:Key="Pagination.More">更多分页</sys:String>
+    <sys:String x:Key="Pagination.MoreDesc">总数 = 500，每页 = 10 (共 50 页)</sys:String>
+    <sys:String x:Key="Pagination.QuickJumper">快速跳转</sys:String>
+    <sys:String x:Key="Pagination.QuickJumperDesc">输入页码并按回车跳转：</sys:String>
+    <sys:String x:Key="Pagination.Simple">简洁模式</sys:String>
+
+    <!-- ==================== 分段控制器页 ==================== -->
+    <sys:String x:Key="Segmented.Title">分段控制器 Segmented</sys:String>
+    <sys:String x:Key="Segmented.Desc">用于在选项之间切换的分段控件。</sys:String>
+    <sys:String x:Key="Segmented.Basic">基本</sys:String>
+    <sys:String x:Key="Segmented.Daily">每日</sys:String>
+    <sys:String x:Key="Segmented.Weekly">每周</sys:String>
+    <sys:String x:Key="Segmented.Monthly">每月</sys:String>
+    <sys:String x:Key="Segmented.Quarterly">每季</sys:String>
+    <sys:String x:Key="Segmented.Yearly">每年</sys:String>
+    <sys:String x:Key="Segmented.Map">地图</sys:String>
+    <sys:String x:Key="Segmented.Transit">公交</sys:String>
+    <sys:String x:Key="Segmented.Satellite">卫星</sys:String>
+    <sys:String x:Key="Segmented.SizeVariants">尺寸变体</sys:String>
+    <sys:String x:Key="Segmented.LargeLabel">大号：</sys:String>
+    <sys:String x:Key="Segmented.DefaultLabel">默认：</sys:String>
+    <sys:String x:Key="Segmented.SmallLabel">小号：</sys:String>
+    <sys:String x:Key="Segmented.Block">填充模式</sys:String>
+
+    <!-- ==================== 主题页 ==================== -->
+    <sys:String x:Key="Theme.Title">主题 Theme</sys:String>
+    <sys:String x:Key="Theme.Desc">配置主题令牌，包括基本主题、主色和圆角。</sys:String>
+    <sys:String x:Key="Theme.BaseTheme">基本主题</sys:String>
+    <sys:String x:Key="Theme.ToggleDesc">在亮色和暗色模式之间切换：</sys:String>
+    <sys:String x:Key="Theme.Light">亮色主题</sys:String>
+    <sys:String x:Key="Theme.Dark">暗色主题</sys:String>
+    <sys:String x:Key="Theme.PrimaryColor">主色</sys:String>
+    <sys:String x:Key="Theme.ChooseColor">选择主色：</sys:String>
+    <sys:String x:Key="Theme.BorderRadius">圆角</sys:String>
+    <sys:String x:Key="Theme.RadiusDesc">调整圆角 (0 = 方形，12 = 圆角)：</sys:String>
+    <sys:String x:Key="Theme.PreviewButton">预览按钮</sys:String>
+    <sys:String x:Key="Theme.ColorTokenPreview">颜色令牌预览</sys:String>
+
+</ResourceDictionary>

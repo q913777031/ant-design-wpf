@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Empty"
+            <TextBlock Text="{DynamicResource Empty.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Empty state placeholder."
+            <TextBlock Text="{DynamicResource Empty.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Default Empty -->
-            <TextBlock Text="Default Empty State"
+            <TextBlock Text="{DynamicResource Empty.Default}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -38,7 +38,7 @@
             </Border>
 
             <!-- Section: Custom Description -->
-            <TextBlock Text="Custom Description"
+            <TextBlock Text="{DynamicResource Empty.Custom}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -50,11 +50,11 @@
                     CornerRadius="{DynamicResource AntDesign.CornerRadius}"
                     Padding="24"
                     Margin="0,0,0,24">
-                <antd:Empty Description="No matching results found" />
+                <antd:Empty Description="{DynamicResource Empty.NoResults}" />
             </Border>
 
             <!-- Section: Empty with Footer Button -->
-            <TextBlock Text="Empty with Action"
+            <TextBlock Text="{DynamicResource Empty.WithAction}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -66,9 +66,9 @@
                     CornerRadius="{DynamicResource AntDesign.CornerRadius}"
                     Padding="24"
                     Margin="0,0,0,24">
-                <antd:Empty Description="No data available">
+                <antd:Empty Description="{DynamicResource Empty.NoData}">
                     <Button Style="{StaticResource AntDesignPrimaryButton}"
-                            Content="Create Now" />
+                            Content="{DynamicResource Empty.CreateNow}" />
                 </antd:Empty>
             </Border>
 

@@ -11,18 +11,18 @@
         <StackPanel Margin="24" MaxWidth="800">
 
             <!-- Page Title -->
-            <TextBlock Text="Segmented"
+            <TextBlock Text="{DynamicResource Segmented.Title}"
                        FontSize="{DynamicResource AntDesign.FontSize.H3}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
                        Margin="0,0,0,8" />
-            <TextBlock Text="Segmented controls for switching between options."
+            <TextBlock Text="{DynamicResource Segmented.Desc}"
                        FontSize="{DynamicResource AntDesign.FontSize}"
                        Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                        Margin="0,0,0,32" />
 
             <!-- Section: Basic -->
-            <TextBlock Text="Basic"
+            <TextBlock Text="{DynamicResource Segmented.Basic}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -36,16 +36,16 @@
                     Margin="0,0,0,24">
                 <StackPanel>
                     <antd:Segmented SelectedIndex="0" Margin="0,0,0,16">
-                        <antd:SegmentedItem Content="Daily" />
-                        <antd:SegmentedItem Content="Weekly" />
-                        <antd:SegmentedItem Content="Monthly" />
-                        <antd:SegmentedItem Content="Quarterly" />
-                        <antd:SegmentedItem Content="Yearly" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Daily}" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Weekly}" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Monthly}" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Quarterly}" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Yearly}" />
                     </antd:Segmented>
                     <antd:Segmented SelectedIndex="1">
-                        <antd:SegmentedItem Content="Map" />
-                        <antd:SegmentedItem Content="Transit" />
-                        <antd:SegmentedItem Content="Satellite" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Map}" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Transit}" />
+                        <antd:SegmentedItem Content="{DynamicResource Segmented.Satellite}" />
                     </antd:Segmented>
                 </StackPanel>
             </Border>
@@ -60,7 +60,7 @@
             </Expander>
 
             <!-- Section: Size -->
-            <TextBlock Text="Size Variants"
+            <TextBlock Text="{DynamicResource Segmented.SizeVariants}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"
@@ -73,7 +73,7 @@
                     Padding="24"
                     Margin="0,0,0,24">
                 <StackPanel>
-                    <TextBlock Text="Large:"
+                    <TextBlock Text="{DynamicResource Segmented.LargeLabel}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <antd:Segmented Size="Large" SelectedIndex="0" Margin="0,0,0,16">
@@ -82,7 +82,7 @@
                         <antd:SegmentedItem Content="Large C" />
                     </antd:Segmented>
 
-                    <TextBlock Text="Default:"
+                    <TextBlock Text="{DynamicResource Segmented.DefaultLabel}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <antd:Segmented Size="Default" SelectedIndex="0" Margin="0,0,0,16">
@@ -91,7 +91,7 @@
                         <antd:SegmentedItem Content="Default C" />
                     </antd:Segmented>
 
-                    <TextBlock Text="Small:"
+                    <TextBlock Text="{DynamicResource Segmented.SmallLabel}"
                                Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}"
                                Margin="0,0,0,8" />
                     <antd:Segmented Size="Small" SelectedIndex="0">
@@ -103,7 +103,7 @@
             </Border>
 
             <!-- Section: Block -->
-            <TextBlock Text="Block Mode"
+            <TextBlock Text="{DynamicResource Segmented.Block}"
                        FontSize="{DynamicResource AntDesign.FontSize.LG}"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource AntDesign.Brush.Text}"

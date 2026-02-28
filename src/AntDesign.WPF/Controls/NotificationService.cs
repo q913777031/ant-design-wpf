@@ -41,7 +41,7 @@ public static class NotificationService
     /// </param>
     public static void Open(NotificationConfig config)
     {
-        if (config is null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
         Post(config);
     }
 
@@ -49,7 +49,7 @@ public static class NotificationService
     /// <param name="config">Notification configuration. The <see cref="NotificationConfig.Type"/> is overridden to <see cref="NotificationType.Success"/>.</param>
     public static void Success(NotificationConfig config)
     {
-        if (config is null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
         config.Type = NotificationType.Success;
         Post(config);
     }
@@ -58,7 +58,7 @@ public static class NotificationService
     /// <param name="config">Notification configuration. The <see cref="NotificationConfig.Type"/> is overridden to <see cref="NotificationType.Error"/>.</param>
     public static void Error(NotificationConfig config)
     {
-        if (config is null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
         config.Type = NotificationType.Error;
         Post(config);
     }
@@ -67,7 +67,7 @@ public static class NotificationService
     /// <param name="config">Notification configuration. The <see cref="NotificationConfig.Type"/> is overridden to <see cref="NotificationType.Warning"/>.</param>
     public static void Warning(NotificationConfig config)
     {
-        if (config is null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
         config.Type = NotificationType.Warning;
         Post(config);
     }
@@ -76,7 +76,7 @@ public static class NotificationService
     /// <param name="config">Notification configuration. The <see cref="NotificationConfig.Type"/> is overridden to <see cref="NotificationType.Info"/>.</param>
     public static void Info(NotificationConfig config)
     {
-        if (config is null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
         config.Type = NotificationType.Info;
         Post(config);
     }
