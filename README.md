@@ -1,5 +1,7 @@
 # AntDesign.WPF
 
+[![CI](https://github.com/q913777031/ant-design-wpf/actions/workflows/ci.yml/badge.svg)](https://github.com/q913777031/ant-design-wpf/actions/workflows/ci.yml)
+
 An enterprise-grade WPF control library following [Ant Design](https://ant.design) 5.x specifications. Provides 30+ beautifully themed controls, a complete design token system, light/dark theme switching, and accessibility support.
 
 一个遵循 [Ant Design](https://ant.design) 5.x 设计规范的企业级 WPF 控件库。提供 30+ 精美主题控件、完整的 Design Token 体系、明暗主题切换和无障碍支持。
