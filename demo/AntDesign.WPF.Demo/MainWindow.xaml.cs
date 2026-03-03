@@ -7,11 +7,13 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using AntDesign.WPF;
 using AntDesign.WPF.Colors;
 using AntDesign.WPF.Demo.Helpers;
 using AntDesign.WPF.Demo.Pages;
 using AntDesign.WPF.Demo.ViewModels;
+using AntDesign.WPF.Helpers;
 
 #pragma warning disable CA1001 // WPF Window cleanup is done in OnClosed, not IDisposable
 public partial class MainWindow : Window
@@ -61,6 +63,10 @@ public partial class MainWindow : Window
         InitializeComponent();
         _viewModel = new MainViewModel();
         DataContext = _viewModel;
+
+        // Set the ant logo as the window/taskbar icon
+        Icon = AntIconHelper.CreateAntIcon(
+            FindResource("AntDesign.Brush.Primary") as Brush);
 
         RefreshGroupedView();
 

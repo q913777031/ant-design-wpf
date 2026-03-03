@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:antd="https://antdesign.wpf/"
+        xmlns:controls="clr-namespace:AntDesign.WPF.Controls;assembly=AntDesign.WPF"
         mc:Ignorable="d"
         Title="Ant Design WPF"
         Width="1280"
@@ -11,7 +12,113 @@
         MinWidth="960"
         MinHeight="600"
         WindowStartupLocation="CenterScreen"
-        Style="{StaticResource AntDesignWindow}">
+        Style="{StaticResource AntDesignWindow.Borderless}">
+
+    <!-- Title bar content: page title + color swatches + theme/lang toggles -->
+    <controls:WindowHelper.TitleBarContent>
+        <Border Padding="20,0">
+            <DockPanel VerticalAlignment="Center">
+
+                <!-- Page Title -->
+                <TextBlock x:Name="PageTitleText"
+                           DockPanel.Dock="Left"
+                           Text="{DynamicResource Demo.AppTitle}"
+                           VerticalAlignment="Center"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource AntDesign.Brush.Text}" />
+
+                <!-- Right Controls -->
+                <StackPanel DockPanel.Dock="Right"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right">
+
+                    <!-- Color Pickers -->
+                    <TextBlock Text="{DynamicResource Demo.ColorLabel}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0"
+                               FontSize="12"
+                               Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+
+                    <Button Tag="Blue"
+                            Background="#1677FF"
+                            Margin="3,0"
+                            ToolTip="Blue"
+                            AutomationProperties.Name="Set primary color to Blue"
+                            Template="{StaticResource ColorSwatchTemplate}"
+                            Click="SetPrimaryColor_Click" />
+                    <Button Tag="Green"
+                            Background="#52C41A"
+                            Margin="3,0"
+                            ToolTip="Green"
+                            AutomationProperties.Name="Set primary color to Green"
+                            Template="{StaticResource ColorSwatchTemplate}"
+                            Click="SetPrimaryColor_Click" />
+                    <Button Tag="Red"
+                            Background="#FF4D4F"
+                            Margin="3,0"
+                            ToolTip="Red"
+                            AutomationProperties.Name="Set primary color to Red"
+                            Template="{StaticResource ColorSwatchTemplate}"
+                            Click="SetPrimaryColor_Click" />
+                    <Button Tag="Purple"
+                            Background="#722ED1"
+                            Margin="3,0"
+                            ToolTip="Purple"
+                            AutomationProperties.Name="Set primary color to Purple"
+                            Template="{StaticResource ColorSwatchTemplate}"
+                            Click="SetPrimaryColor_Click" />
+                    <Button Tag="Orange"
+                            Background="#FA8C16"
+                            Margin="3,0"
+                            ToolTip="Orange"
+                            AutomationProperties.Name="Set primary color to Orange"
+                            Template="{StaticResource ColorSwatchTemplate}"
+                            Click="SetPrimaryColor_Click" />
+                    <Button Tag="Cyan"
+                            Background="#13C2C2"
+                            Margin="3,0,12,0"
+                            ToolTip="Cyan"
+                            AutomationProperties.Name="Set primary color to Cyan"
+                            Template="{StaticResource ColorSwatchTemplate}"
+                            Click="SetPrimaryColor_Click" />
+
+                    <!-- Separator -->
+                    <Border Width="1"
+                            Height="20"
+                            Background="{DynamicResource AntDesign.Brush.Border.Secondary}"
+                            Margin="0,0,12,0" />
+
+                    <!-- Theme Toggle -->
+                    <Button x:Name="ThemeToggleBtn"
+                            Style="{StaticResource ThemeToggleStyle}"
+                            ToolTip="{DynamicResource Demo.ThemeTooltip}"
+                            AutomationProperties.Name="Toggle light/dark theme"
+                            Click="ToggleTheme_Click">
+                        <TextBlock x:Name="ThemeIcon"
+                                   Text="&#9728;"
+                                   FontSize="16"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                    </Button>
+
+                    <!-- Language Toggle -->
+                    <Button x:Name="LangToggleBtn"
+                            Style="{StaticResource ThemeToggleStyle}"
+                            ToolTip="EN / 中文"
+                            AutomationProperties.Name="Toggle language"
+                            Click="ToggleLanguage_Click"
+                            Margin="4,0,0,0">
+                        <TextBlock x:Name="LangIcon"
+                                   Text="{DynamicResource Demo.LanguageToggle}"
+                                   FontSize="11"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </controls:WindowHelper.TitleBarContent>
 
     <Window.Resources>
         <!-- Nav item style -->
@@ -120,9 +227,10 @@
         </Grid.ColumnDefinitions>
 
         <!-- ================================================================
-             SIDEBAR
+             SIDEBAR (below title bar overlay)
              ================================================================ -->
         <Border Grid.Column="0"
+                Margin="0,48,0,0"
                 Background="{DynamicResource AntDesign.Brush.Bg.Container}"
                 BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
                 BorderThickness="0,0,1,0">
@@ -285,129 +393,13 @@
         </Border>
 
         <!-- ================================================================
-             MAIN CONTENT AREA
+             MAIN CONTENT AREA (below title bar overlay)
              ================================================================ -->
-        <Grid Grid.Column="1"
-              Background="{DynamicResource AntDesign.Brush.Bg.Layout}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="48" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <!-- Top Bar -->
-            <Border Grid.Row="0"
-                    Background="{DynamicResource AntDesign.Brush.Bg.Container}"
-                    BorderBrush="{DynamicResource AntDesign.Brush.Border.Secondary}"
-                    BorderThickness="0,0,0,1"
-                    Padding="20,0">
-                <DockPanel VerticalAlignment="Center">
-
-                    <!-- Page Title -->
-                    <TextBlock x:Name="PageTitleText"
-                               DockPanel.Dock="Left"
-                               Text="{DynamicResource Demo.AppTitle}"
-                               VerticalAlignment="Center"
-                               FontSize="15"
-                               FontWeight="SemiBold"
-                               Foreground="{DynamicResource AntDesign.Brush.Text}" />
-
-                    <!-- Right Controls -->
-                    <StackPanel DockPanel.Dock="Right"
-                                Orientation="Horizontal"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Right">
-
-                        <!-- Color Pickers -->
-                        <TextBlock Text="{DynamicResource Demo.ColorLabel}"
-                                   VerticalAlignment="Center"
-                                   Margin="0,0,8,0"
-                                   FontSize="12"
-                                   Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
-
-                        <Button Tag="Blue"
-                                Background="#1677FF"
-                                Margin="3,0"
-                                ToolTip="Blue"
-                                AutomationProperties.Name="Set primary color to Blue"
-                                Template="{StaticResource ColorSwatchTemplate}"
-                                Click="SetPrimaryColor_Click" />
-                        <Button Tag="Green"
-                                Background="#52C41A"
-                                Margin="3,0"
-                                ToolTip="Green"
-                                AutomationProperties.Name="Set primary color to Green"
-                                Template="{StaticResource ColorSwatchTemplate}"
-                                Click="SetPrimaryColor_Click" />
-                        <Button Tag="Red"
-                                Background="#FF4D4F"
-                                Margin="3,0"
-                                ToolTip="Red"
-                                AutomationProperties.Name="Set primary color to Red"
-                                Template="{StaticResource ColorSwatchTemplate}"
-                                Click="SetPrimaryColor_Click" />
-                        <Button Tag="Purple"
-                                Background="#722ED1"
-                                Margin="3,0"
-                                ToolTip="Purple"
-                                AutomationProperties.Name="Set primary color to Purple"
-                                Template="{StaticResource ColorSwatchTemplate}"
-                                Click="SetPrimaryColor_Click" />
-                        <Button Tag="Orange"
-                                Background="#FA8C16"
-                                Margin="3,0"
-                                ToolTip="Orange"
-                                AutomationProperties.Name="Set primary color to Orange"
-                                Template="{StaticResource ColorSwatchTemplate}"
-                                Click="SetPrimaryColor_Click" />
-                        <Button Tag="Cyan"
-                                Background="#13C2C2"
-                                Margin="3,0,12,0"
-                                ToolTip="Cyan"
-                                AutomationProperties.Name="Set primary color to Cyan"
-                                Template="{StaticResource ColorSwatchTemplate}"
-                                Click="SetPrimaryColor_Click" />
-
-                        <!-- Separator -->
-                        <Border Width="1"
-                                Height="20"
-                                Background="{DynamicResource AntDesign.Brush.Border.Secondary}"
-                                Margin="0,0,12,0" />
-
-                        <!-- Theme Toggle -->
-                        <Button x:Name="ThemeToggleBtn"
-                                Style="{StaticResource ThemeToggleStyle}"
-                                ToolTip="{DynamicResource Demo.ThemeTooltip}"
-                                AutomationProperties.Name="Toggle light/dark theme"
-                                Click="ToggleTheme_Click">
-                            <TextBlock x:Name="ThemeIcon"
-                                       Text="&#9728;"
-                                       FontSize="16"
-                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
-                        </Button>
-
-                        <!-- Language Toggle -->
-                        <Button x:Name="LangToggleBtn"
-                                Style="{StaticResource ThemeToggleStyle}"
-                                ToolTip="EN / 中文"
-                                AutomationProperties.Name="Toggle language"
-                                Click="ToggleLanguage_Click"
-                                Margin="4,0,0,0">
-                            <TextBlock x:Name="LangIcon"
-                                       Text="{DynamicResource Demo.LanguageToggle}"
-                                       FontSize="11"
-                                       FontWeight="SemiBold"
-                                       Foreground="{DynamicResource AntDesign.Brush.Text.Secondary}" />
-                        </Button>
-                    </StackPanel>
-                </DockPanel>
-            </Border>
-
-            <!-- Content Area with TransitionPresenter -->
-            <antd:TransitionPresenter x:Name="ContentPresenter"
-                                      Grid.Row="1"
-                                      TransitionType="Fade"
-                                      Duration="0:0:0.2"
-                                      Background="{DynamicResource AntDesign.Brush.Bg.Layout}" />
-        </Grid>
+        <antd:TransitionPresenter x:Name="ContentPresenter"
+                                  Grid.Column="1"
+                                  Margin="0,48,0,0"
+                                  TransitionType="Fade"
+                                  Duration="0:0:0.2"
+                                  Background="{DynamicResource AntDesign.Brush.Bg.Layout}" />
     </Grid>
 </Window>
